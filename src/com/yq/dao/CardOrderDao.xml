@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.CardOrderDao">
+	
+		<insert id="insert" parameterType="com.yq.entity.CardOrder">
+			insert jdb_card_order(
+				user_name,
+				card_name,
+				user_number,
+				user_addr,
+				add_time,
+				update_time
+			)values(
+				#{userName},
+				#{cardName},
+				#{userNumber},
+				#{userAddr},
+				#{addTime}
+				#{updateTime}
+			)
+		</insert>
+		
+		<delete id="delete" parameterType="java.lang.Long">
+	    	delete from jdb_card_order where id=#{id}
+	    </delete>
+	    
+	    <update id="update" parameterType="com.yq.entity.CardOrder">
+	    	update 
+	    		jdb_card_order 
+	    	set 
+	    		user_name=#{card_name},
+	    		card_name=#{card_img},
+	    		user_number=#{card_price},
+	    		user_addr=#{card_detail},
+	    		update_time=#{updateTime} 
+	    	where 
+	    		id=#{id}
+	    </update>
+	    
+	    <select id="findById" resultType="com.yq.entity.CardOrder">
+	    	select 
+	    		id as id,
+				user_name as userName,
+				card_name as cardName,
+				user_number as userNumber,
+				user_addr as userAddr,
+				add_time as addTime,
+				update_time as upateTime 
+			from 
+				jdb_card_order 
+			where 
+				id=#{id}
+	    </select>
+	    
+	    <select id="findByUserName" resultType="com.yq.entity.CardOrder">
+	    	select 
+	    		id as id,
+				user_name as userName,
+				card_name as cardName,
+				user_number as userNumber,
+				user_addr as userAddr,
+				add_time as addTime,
+				update_time as upateTime 
+			from 
+				jdb_card_order 
+			where 
+				user_name=#{userName}
+	    </select>
+	    
+	    <select id="findAll" resultType="com.yq.entity.CardOrder">
+	    	select 
+	    		id as id,
+				user_name as userName,
+				card_name as cardName,
+				user_number as userNumber,
+				user_addr as userAddr,
+				add_time as addTime,
+				update_time as upateTime 
+			from 
+				jdb_card_order
+	    </select>
+	    
+</mapper>

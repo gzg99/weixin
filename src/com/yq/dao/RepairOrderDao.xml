@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.RepairOrderDao">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.yq.entity.RepairOrder">
+		insert into jdb_repair_order(
+			id,
+			goods_name,
+			goods_price,
+			order_time,
+			user_addr,
+			user_house_num,
+			user_name,
+			user_tel,
+			remark,
+			status,
+			create_time,
+			update_time,
+			use_card
+		)values(
+			#{id,jdbcType=BIGINT},
+			#{goodsName,jdbcType=VARCHAR},
+			#{goodsPrice,jdbcType=FLOAT},
+			#{orderTime,jdbcType=VARCHAR},
+			#{userAddr,jdbcType=VARCHAR},
+			#{userHouseNum,jdbcType=VARCHAR},
+			#{userName,jdbcType=VARCHAR},
+			#{userTel,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR},
+			#{status,jdbcType=VARCHAR},
+			#{createTime,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{useCard,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="upstatus" parameterType="java.util.Map">
+		update jdb_repair_order set status=#{status,jdbcType=VARCHAR} where id=#{id,jdbcType=BIGINT}
+	</update>
+	
+	<select id="list" parameterType="com.yq.entity.RepairOrder" resultType="com.yq.entity.RepairOrder" flushCache="true" useCache="false">
+		select 
+			id as id,
+			goods_name as goodsName,
+			goods_price as goodsPrice,
+			order_time as orderTime,
+			user_addr as userAddr,
+			user_house_num as userHouseNum,
+			user_name as userName,
+			user_tel as userTel,
+			remark as remark,
+			status as status,
+			create_time as createTime,
+			update_time as updateTime,
+			use_card as useCard 
+		from 
+			jdb_repair_order where 1=1 
+			<!-- 按日期查询订单 -->
+			<if test="start_time!=null and start_time!='' and end_time!=null and end_time!=''">
+				and create_time between #{start_time,jdbcType=VARCHAR} and #{end_time,jdbcType=VARCHAR} 
+			</if>
+			<if test="status!=null and status!=''">
+				and status=#{status,jdbcType=VARCHAR} 
+			</if>
+		order by 
+			create_time desc 
+		<if test="pageSize!=null and pageSize!=0">
+			limit #{currentNum},#{pageSize}
+		</if>
+	</select>
+	
+	<select id="count" parameterType="com.yq.entity.RepairOrder" resultType="int">
+		select count(1) from jdb_repair_order where 1=1 
+		<!-- 按日期查询订单 -->
+		<if test="start_time!=null and start_time!='' and end_time!=null and end_time!=''">
+			and create_time between #{start_time,jdbcType=VARCHAR} and #{end_time,jdbcType=VARCHAR} 
+		</if>
+		<if test="status!=null and status!=''">
+			and status=#{status,jdbcType=VARCHAR} 
+		</if>
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from jdb_repair_order where id=#{id}
+	</delete>
+
+</mapper>

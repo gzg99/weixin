@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.AdDao">
+	<insert id="insert" parameterType="com.yq.entity.Ad">
+		insert jdb_ad(
+			content,
+			name,
+			start_time,
+			end_time
+		)values(
+			#{content},
+			#{name},
+			#{startTime},
+			#{endTime}
+		) 
+    </insert>
+    
+    <update id="delete" parameterType="java.lang.Long">
+    	update jdb_ad set status=0 where id=#{id}
+    </update>
+    
+    <select id="seleteByTime" resultType="com.yq.entity.Ad" parameterType="java.util.Map">
+    	<![CDATA[
+    		select id as id, content as content,name as name, start_time as startTime,end_time as endTime,status as status 
+    			from jdb_ad where start_time < #{currentTime} and end_time > #{currentTime} and status = #{status}
+    	]]>
+    </select>
+    
+    <update id="update" parameterType="java.util.Map">
+    	update jdb_ad set content = #{content} where id=#{id}
+    </update>
+    
+    <select id="selectById" resultType="com.yq.entity.Ad">
+    	select id as id, content as content,name as name, start_time as startTime,end_time as endTime,status as status 
+    		from jdb_ad where id=#{id} and status=1
+    </select>
+    
+</mapper>
