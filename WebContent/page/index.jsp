@@ -41,30 +41,57 @@
                 <ul class="info-img">
                     <li>
                         <a href="secGoodsList.html?is_recommend=1" class="img-1"><img  src="images/b1.png" style="width:42px;height: 42px"> </a>
-                        <a href="secGoodsList.html?is_recommend=1" class="img-txt">灯具电路</a>
+                        <a href="secGoodsList.html?is_recommend=1" class="img-txt">社区服务</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=23" class="img-1"> <img  src="images/b2.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=23" class="img-txt">卫浴洁具</a>
+                        <a href="category.html?ctg_id=23" class="img-txt">安居卡</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=21" class="img-1" style=""><img  src="images/b3.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=21" class="img-txt">门窗家具</a>
+                        <a href="category.html?ctg_id=21" class="img-txt">附近工匠</a>
                     </li>
                     <li>
                         <a href="menuList.html" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
-                        <a href="menuList.html" class="img-txt">龙头管件</a>
+                        <a href="menuList.html" class="img-txt">家庭直购</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=22" class="img-1"><img  src="images/b5.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=22" class="img-txt">打孔疏通</a>
+                        <a href="category.html?ctg_id=22" class="img-txt">爱心公益</a>
                     </li>
                 </ul>
+                <ul class="info-img">
+                    <li>
+                        <a href="secGoodsList.html?is_recommend=1" class="img-1"><img  src="images/b1.png" style="width:42px;height: 42px"> </a>
+                        <a href="secGoodsList.html?is_recommend=1" class="img-txt">建材优选</a>
+                    </li>
+                    <li>
+                        <a href="category.html?ctg_id=23" class="img-1"> <img  src="images/b2.png" style="width:42px;height: 42px"></a>
+                        <a href="category.html?ctg_id=23" class="img-txt">家居优选</a>
+                    </li>
+                    <li>
+                        <a href="category.html?ctg_id=21" class="img-1" style=""><img  src="images/b3.png" style="width:42px;height: 42px"></a>
+                        <a href="category.html?ctg_id=21" class="img-txt">花卉</a>
+                    </li>
+                    <li>
+                        <a href="menuList.html" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
+                        <a href="menuList.html" class="img-txt">装修样板</a>
+                    </li>
+                </ul>
+            </div>
+            <div  id="ui-yu-ban111">
+                <ul class="ui-yu-sy-ul">
+                    <c:forEach items="${adList}" var="ad">
+                        <li><h5>${ad.name} </h5><h4>${ad.content}</h4></li>
+                    </c:forEach>
+                </ul>
+                <ol class="sy-ol">
+                </ol>
             </div>
             <div class="ssjg">
                 <ul class="ssjg-tit1">
                     <li style="margin-left: 1%"><a href="JavaScript:;">热门推荐</a></li>
-                    <li style="text-align: right;"><a href="secGoodsList.html?is_recommend=1">更多</a></li>
+                    <li style="text-align: right;"><a href="category.html?ctg_id=23">更多</a></li>
                     <div style="clear:both;"></div>
                 </ul>
                 <ul class="ssjg-ul1" style="padding-top:0;">
@@ -88,36 +115,6 @@
                     <div style="clear:both;"></div>
                 </ul>
             </div>
-            <c:forEach items="${ctgList}" var="ctgList" varStatus="s">
-                <div class="ssjg" style="padding-bottom:0;">
-                    <ul class="ssjg-tit1">
-                        <li style="margin-left: 1%"><a href="JavaScript:;">${ctgList.ctg_name }</a></li>
-                        <li style="text-align: right;"><a href="category.html?ctg_id=${ctgList.ctg_id}">更多</a></li>
-                        <div style="clear:both;"></div>
-                    </ul>
-                    <ul class="ssjg-ul1" style="padding-top:0;">
-                        <c:set value="goodsList${s.index}" var="gl"></c:set>
-                        <c:forEach items="${map[gl]}" var="glist" begin="0" end="5">
-                            <li>
-                                <div class="ssjg-tu">
-                                    <a href="goodsListById.html?goods_id=${glist.goods_id}"><img src="${glist.goods_img}"></a>
-                                </div>
-                                <h3><a href="goodsListById.html?goods_id=${glist.goods_id}">${glist.goods_name}</a></h3>
-                                <p class="ssjg-p2" style="font-size: 11px;padding-left: 5px"><span>${glist.goods_spe}</span></p>
-                                <dl class="ssjg-dl1">
-                                    <dt>
-                                        <%-- <p class="ssjg-p2" style="font-size: 9px"><span>${glist.goods_spe}</span></p> --%>
-                                            <p class="ssjg-p1" style="margin-top:10px"><span>￥${glist.goods_price}</span></p>
-                                    </dt>
-                                    <dd><a href="javascript:;" onclick="add('${glist.goods_id}','${glist.goods_name}','${glist.goods_img}','${glist.goods_spe}','${glist.goods_price}')"><img src="images/sjsc-09.gif" style="width: 25px;height: 25px"></a></dd>
-                                    <div style="clear:both;"></div>
-                                </dl>
-                            </li>
-                        </c:forEach>
-                        <div style="clear:both;"></div>
-                    </ul>
-                </div>
-            </c:forEach>
             <h3 class="ui-yu-server">便民服务 <img src="images/server-icon.png" alt=""></h3>
             <ul class="ui-yu-express">
                 <li>
@@ -136,45 +133,20 @@
                     <p>$<span>5555</span></p>
                 </li>
             </ul>
-            <div  id="ui-yu-ban111">
-                <ul class="ui-yu-sy-ul">
-                    <c:forEach items="${banList}" var="list">
-                        <li><a href="${list.url}"><img src="${list.ban_img }"></a></li>
-                    </c:forEach>
-                </ul>
-                <ol class="sy-ol">
-                </ol>
-            </div>
             <div class="ui-yu-home">
                 <h5><img src="images/yu-home.png" alt=""> <span class=""> 更多 <img src="images/server-icon.png" alt=""></span></h5>
             </div>
             <ul>
-            <c:forEach items="flash" var="item">
-            <li class="yu-ui-homeWord">
-                    <img src="">
-                    <p>国家发改委发布红头文件</p>
-                    <div>
-                       <span><img src="images/yu-like.png" alt="">123123</span>
-                       <span><img src="images/yu-comment.png" alt="">123123</span>
-                    </div>
-                </li>
-            </c:forEach>
-                <li class="yu-ui-homeWord">
-                    <img src="images/yu-news.png">
-                    <p>国家发改委发布红头文件，对于小区绿化面积提出硬性要求，人均不低于0.36m2</p>
-                    <div>
-                       <span><img src="images/yu-like.png" alt="">123123</span>
-                       <span><img src="images/yu-comment.png" alt="">123123</span>
-                    </div>
-                </li>
-                <li class="yu-ui-homeWord">
-                    <img src="images/yu-news.png">
-                    <p>国家发改委发布红头文件，对于小区绿化面积提出硬性要求，人均不低于0.36m2</p>
-                    <div>
-                       <span><img src="images/yu-like.png" alt="">123123</span>
-                       <span><img src="images/yu-comment.png" alt="">123123</span>
-                    </div>
-                </li>
+                <c:forEach items="${newsList}" var="news">
+	                <li class="yu-ui-homeWord">
+	                    <img src="${news.head_img}">
+	                    <p>${news.content}</p>
+	                    <div>
+	                       <span><img src="images/yu-like.png" alt="">${news.praise_count}</span>
+	                       <span><img src="images/yu-comment.png" alt="">${news.review_count}</span>
+	                    </div>
+	                </li>
+                </c:forEach>
             </ul>
             <div class="sy-ft"></div>
             <!--返回顶部-->

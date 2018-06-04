@@ -1,5 +1,6 @@
 package com.yq.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,14 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yq.entity.Ad;
 import com.yq.entity.Banner;
 import com.yq.entity.Cart;
 import com.yq.entity.Category;
 import com.yq.entity.Goods;
+import com.yq.entity.NewsFlash;
+import com.yq.service.AdService;
 import com.yq.service.BannerService;
 import com.yq.service.CartService;
 import com.yq.service.CategoryService;
 import com.yq.service.GoodsService;
+import com.yq.service.NewsFlashService;
 import com.yq.util.StringUtil;
 
 @Controller
@@ -39,6 +44,12 @@ public class IndexCtrl extends StringUtil{
 	@Autowired
 	private CategoryService categoryService;
 	private Category category= new Category();
+	
+	@Autowired
+	private NewsFlashService newsFlashService;
+	
+	@Autowired
+	private AdService adService;
 	
 	Map<String, Object> map = new HashMap<String, Object>();
 	
@@ -66,7 +77,7 @@ public class IndexCtrl extends StringUtil{
 		List<Banner> banList = bannerService.list(banner);//轮动图片
 		for(Banner ban: banList) {
 			if(ban.getUrl() != null) {
-				ban.setBan_img("http://localhost:8080/weixin/1467004540850.jpg");
+				ban.setBan_img(ban.getBan_img().replace("http://i.365jdb.cn", "http://localhost:8080/weixin"));
 			}
 		}
 		banner.setType(2);
@@ -77,13 +88,17 @@ public class IndexCtrl extends StringUtil{
 			}
 		}
 		//获取轮播广告
-		//List<Ad> adList = adService.seleteByTime(new Date(),1);
+		List<Ad> adList = adService.seleteByTime(new Date(),1);
+		
+		//家滴快报
+		List<NewsFlash> newsList = newsFlashService.getList(1);
+		
 		
 		goods.setCtg_id(0);
 		List<Goods> hotGoodsList = goodsService.list(goods); //本周推荐商品
 		for(Goods good: hotGoodsList) {
 			if(good.getGoods_img() != null) {
-				good.setGoods_img(good.getGoods_img().replace("http://i.365jdb.cn", "http://localhost:8080/weixin/upload"));
+				good.setGoods_img(good.getGoods_img().replace("http://i.365jdb.cn", "http://localhost:8080/weixin"));
 			}
 		}
 		category.setStatus(1);
@@ -93,20 +108,16 @@ public class IndexCtrl extends StringUtil{
 			goods.setIs_recommend(0);
 			goods.setCtg_id(ctgList.get(i).getCtg_id());
 			List<Goods> goodsList  =  goodsService.list(goods);
-			for(Goods good: goodsList) {
-				if(good.getGoods_img() != null) {
-					good.setGoods_img(good.getGoods_img().replace("http://i.365jdb.cn", "http://localhost:8080/weixin/upload"));
-				}
-			}
 			map.put("goodsList"+i, goodsList);
 		
 		}
 		ml.addObject("map",map);
+		ml.addObject("newsList", newsList);
 		ml.addObject("ctgList",ctgList);
 		ml.addObject("banList",banList);
 		ml.addObject("advList",advList);
 		ml.addObject("hotGoodsList",hotGoodsList);
-		//ml.addObject("adList", adList);
+		ml.addObject("adList", adList);
 		String oppen_id=getOppen_id(session);
 		cart.setOppen_id(oppen_id);
 		int cart_num = cartService.goodstotalnum(cart);

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.NewsFlashDao">
+
+	<select id="getList" resultType="com.yq.entity.NewsFlash">
+		select * from jdb_newsflash where status = #{status}
+	</select>
+	
+	<update id="deleteById">
+		update jdb_newsflash set status=0 where id=#{id}
+	</update>
+	
+	<insert id="add" parameterType="com.yq.entity.NewsFlash">
+		insert jdb_newsflash(
+			content,
+			head_img,
+			review_count,
+			praise_count,
+			status
+		)values(
+			#{content},
+			#{head_img},
+			#{review_count},
+			#{praise_count},
+			#{status}
+		) 
+	</insert>
+	
+	<update id="update" parameterType="java.util.Map">
+		update 
+			jdb_newsflash 
+		set 
+    		content=#{content},
+    		head_img=#{headImg}
+     	where 
+     		id=#{id}
+	</update>
+	
+	<select id="selectById" resultType="com.yq.entity.NewsFlash">
+		select * from jdb_newsflash where id=#{id}
+	</select>
+</mapper>
