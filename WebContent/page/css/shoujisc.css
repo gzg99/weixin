@@ -651,21 +651,32 @@ ssjg-tit1
 }
 .yu-ui-homeWord>p{
 	font-size: 16px;
+	word-wrap:break-word;  
+    word-break:break-all;  
+    overflow: hidden;  
 }
 .yu-ui-homeWord>div{
 	position: absolute;
-	bottom: 15px;
+	bottom: 10px;
 }
 .yu-ui-homeWord>div>span{
 	float: right;
 	margin-right: 20px;
-	display: inline-block;
-	width: 50px;
-	position: relative;
-	padding-left: 30px;
 }
 .yu-ui-homeWord>div>span>img{
 	width: 20px;
+}
+.yu-title{
+	padding-left: 150px;
+	position: relative;
+	height: 70px;
+	overflow: hidden;
+}
+.yu-title>img{
 	position: absolute;
-	left: 7px;
+	left: 20px;
+	width: 50px;
+}
+.yu-title>.swiper-container{
+	
 }

@@ -8,15 +8,18 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
             <title>家滴帮</title>
-            <link rel="stylesheet" type="text/css" href="css/style.css">
-            <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
-            <link rel="stylesheet" href="css/search.css">
-            <script type="text/javascript" src="js/jquery.js"></script>
-            <script type="text/javascript" src="js/woxiangyao.js"></script>
-            <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
-            <script type="text/javascript" src="js/foot.js"></script>
             <link rel="stylesheet" type="text/css" href="css/showTip.css">
+            <link rel="stylesheet" href="css/search.css">
+            <link rel="stylesheet" type="text/css" href="css/swiper.css">
+            <link rel="stylesheet" type="text/css" href="css/style.css">
+            <link rel="stylesheet" href="css/search.css">
+            <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
             <script type="text/javascript" src="js/showTip.js"></script>
+            <script type="text/javascript" src="js/woxiangyao.js"></script>
+            <script type="text/javascript" src="js/swiper.js"></script>
+            <script type="text/javascript" src="js/foot.js"></script>
         </head>
 
         <body id="wrap">
@@ -79,10 +82,24 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="yu-title">
+                <img src="images/yu-title_03.png" alt="">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">Slide 1</div>
+                      <div class="swiper-slide">Slide 2</div>
+                      <div class="swiper-slide">Slide 3</div>
+                      <div class="swiper-slide">Slide 4</div>
+                      <div class="swiper-slide">Slide 5</div>
+                    </div>
+                </div>
+            </div>
+
             <div  id="ui-yu-ban111">
-                <ul class="ui-yu-sy-ul">
+                <ul class="sy-ul1">
                     <c:forEach items="${adList}" var="ad">
-                        <li><h5>${ad.name} </h5><h4>${ad.content}</h4></li>
+                        <li><h5> ${ad.name} </h5><h4> ${ad.content}</h4></li>
                     </c:forEach>
                 </ul>
                 <ol class="sy-ol">

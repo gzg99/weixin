@@ -22,15 +22,23 @@ TouchSlide({
 	autoPlay:true      //自动播放
 });
 
-TouchSlide({ 
-	slideCell:"#ui-yu-ban111",   /*给最大的盒子取id名  要改的 */
-	mainCell:".ui-yu-sy-ul",    /* 只是图片  要改的 */
-	titCell:".sy-ol",   /*只是点点  要改的  */
-	effect:"leftLoop",     /*这是方向  只向左  */
-	interTime:5000,    /*时间*/
-	autoPage:true,     //自动分页
-	autoPlay:true      //自动播放
-});
+/*TouchSlide({ 
+	slideCell:"#ui-yu-ban111",  
+	mainCell:".sy-ul1",   
+	titCell:".sy-ol",  
+	effect:"leftLoop",     
+	interTime:5000,    
+	autoPage:true,    
+	autoPlay:true      
+});*/
 
+
+	var swiper = new Swiper('.swiper-container', {
+		  direction: 'vertical',
+		  autoplay: true,
+		  pagination: {
+		    clickable: true,
+		  },
+	});
 });
 
