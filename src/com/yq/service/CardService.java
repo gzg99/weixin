@@ -1,0 +1,36 @@
+package com.yq.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yq.dao.CardDao;
+import com.yq.entity.Card;
+
+@Service
+public class CardService {
+
+	@Autowired
+	private CardDao cardDao;
+	
+	public boolean insert(Card card) {
+		return cardDao.insert(card);
+	}
+	
+	public boolean delete(Long id) {
+		return cardDao.delete(id);
+	}
+	
+	public boolean update(Card card) {
+		return cardDao.update(card);
+	}
+	
+	public Card getCardById(Long id) {
+		return cardDao.getCardById(id);
+	}
+	
+	public List<Card> getAllCard() {
+		return cardDao.getAllCard();
+	}
+}
