@@ -87,24 +87,13 @@
                 <img src="images/yu-title_03.png" alt="">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide">Slide 1</div>
-                      <div class="swiper-slide">Slide 2</div>
-                      <div class="swiper-slide">Slide 3</div>
-                      <div class="swiper-slide">Slide 4</div>
-                      <div class="swiper-slide">Slide 5</div>
+                      <c:forEach items="${adList}" var="ad">
+                        <div class="swiper-slide"><h>${ad.name}</h>&nbsp;&nbsp;&nbsp;&nbsp; ${ad.content}</div>
+                      </c:forEach>
                     </div>
                 </div>
             </div>
 
-            <div  id="ui-yu-ban111">
-                <ul class="sy-ul1">
-                    <c:forEach items="${adList}" var="ad">
-                        <li><h5> ${ad.name} </h5><h4> ${ad.content}</h4></li>
-                    </c:forEach>
-                </ul>
-                <ol class="sy-ol">
-                </ol>
-            </div>
             <div class="ssjg">
                 <ul class="ssjg-tit1">
                     <li style="margin-left: 1%"><a href="JavaScript:;">热门推荐</a></li>
@@ -156,7 +145,8 @@
             <ul>
                 <c:forEach items="${newsList}" var="news">
 	                <li class="yu-ui-homeWord">
-	                    <img src="${news.head_img}">
+<%-- 	                    <img src="${news.head_img}"> --%>
+						<img src="images/yu-home.png">
 	                    <p>${news.content}</p>
 	                    <div>
 	                       <span><img src="images/yu-like.png" alt="">${news.praise_count}</span>
