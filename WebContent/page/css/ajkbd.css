@@ -1,0 +1,56 @@
+body{
+	background:#fff
+}
+.head{
+	
+  width:100%;
+  height:100px;
+  background:#fff;
+  padding:30px 20px;
+}
+
+.left{
+	width:30%;
+	float:left;
+	height:100px;
+}
+.right{
+	width:55%;
+	float:left;
+	height:100px;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px;
+}
+
+.content{
+	width:100%;
+	background;#fff;
+}
+.c{
+	
+	width:100%;
+	height:10px;
+	background:#ccc;
+}
+
+input[type='text']{
+	
+	width:60%;
+	border:0px;
+	height:30px;
+	border-bottom:1px orange solid;
+	
+}
+
+.bdbtn{
+	clear:both;
+	width:100%;
+	height:50px;
+	color:#fff;
+	background:#fabf1d;
+	text-align:center;
+	line-height:50px;
+	position: absolute;
+	margin-top:200px;
+}

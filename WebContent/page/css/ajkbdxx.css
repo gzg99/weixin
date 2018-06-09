@@ -1,0 +1,45 @@
+body{
+	background:#fff;
+	padding:10px;
+}
+.head{
+	
+  width:100%;
+  height:100px;
+  background:#fff;
+  padding:30px 20px;
+}
+
+
+.content{
+	width:100%;
+	background;#fff;
+}
+lable{
+	float:left;
+}
+p{
+	clear:both;
+}
+input[type='text']{
+	
+	width:60%;
+	border:0px;
+	height:30px;
+	border-bottom:1px orange solid;
+	float:left;
+	
+}
+
+
+.bdbtn{
+	clear:both;
+	width:100%;
+	height:50px;
+	color:#fff;
+	background:#fabf1d;
+	text-align:center;
+	line-height:50px;
+	position: absolute;
+	margin-top:200px;
+}
