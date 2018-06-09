@@ -34,8 +34,12 @@
 <P><lable>持卡人手机号</lable><input type="text" /></P>
 <P><lable>绑&nbsp;定&nbsp;地&nbsp;址&nbsp;&nbsp;&nbsp;</lable><input type="text" /></P>
 <P style="float:right;color:#ccc;wdith:80%">(注：此地址唯一且不可更改)</P>
-</div>
 
+<p class="bdbtn" href="ajk_bd.jsp" >
+  线下卡片绑定
+</p>
+
+</div>
 </div>
 
 
