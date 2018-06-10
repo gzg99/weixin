@@ -24,11 +24,13 @@
 
         <body id="wrap">
             <div class="quanbu-top">
-                <input id="goods_name" name="keyword" class="hd_keyword" placeholder="请输入商品名称" style="width: 90%;font-size: 14px" onclick="window.location.href='secList.html'">
+                <input id="goods_name" name="keyword" class="hd_keyword" placeholder="请输入商品名称" style="width: 80%;font-size: 14px" onclick="window.location.href='secList.html'">
                 <a href="areaList.html" class="qb-tleft f-l"></a>
                 <div class="qb-tright f-r">
                     <a href="secList.html"> <img src="images/sjsc-13.png"> </a>
+                    <a href=""> <img src="images/message.png"> </a>
                 </div>
+                
                 <div style="clear:both;"></div>
             </div>
             <div class="banner1" id="ban1">
@@ -43,7 +45,7 @@
             <div class="sy-info1" style="border-bottom:4px solid #E6E6E6;">
                 <ul class="info-img">
                     <li>
-                        <a href="secGoodsList.html?is_recommend=1" class="img-1"><img  src="images/b1.png" style="width:42px;height: 42px"> </a>
+                        <a href="secGoodsList.html?is_recommend=1" class="img-1"><img src="images/b1.png" style="width:42px;height: 42px"> </a>
                         <a href="secGoodsList.html?is_recommend=1" class="img-txt">社区服务</a>
                     </li>
                     <li>
@@ -65,53 +67,44 @@
                 </ul>
                 <ul class="info-img">
                     <li>
-                        <a href="secGoodsList.html?is_recommend=1" class="img-1"><img  src="images/b1.png" style="width:42px;height: 42px"> </a>
+                        <a href="secGoodsList.html?is_recommend=1" class="img-1"><img  src="images/b6.png" style="width:42px;height: 42px"> </a>
                         <a href="secGoodsList.html?is_recommend=1" class="img-txt">建材优选</a>
                     </li>
                     <li>
-                        <a href="category.html?ctg_id=23" class="img-1"> <img  src="images/b2.png" style="width:42px;height: 42px"></a>
+                        <a href="category.html?ctg_id=23" class="img-1"> <img  src="images/b7.png" style="width:42px;height: 42px"></a>
                         <a href="category.html?ctg_id=23" class="img-txt">家居优选</a>
                     </li>
                     <li>
-                        <a href="category.html?ctg_id=21" class="img-1" style=""><img  src="images/b3.png" style="width:42px;height: 42px"></a>
+                        <a href="category.html?ctg_id=21" class="img-1" style=""><img  src="images/b8.png" style="width:42px;height: 42px"></a>
                         <a href="category.html?ctg_id=21" class="img-txt">花卉</a>
                     </li>
                     <li>
-                        <a href="menuList.html" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
+                        <a href="menuList.html" class="img-1"><img  src="images/b9.png" style="width:42px;height: 42px"></a>
                         <a href="menuList.html" class="img-txt">装修样板</a>
                     </li>
                 </ul>
             </div>
 
             <div class="yu-title">
-                <img src="images/yu-title_03.png" alt="">
+                <img src="images/ad_title.png" alt="">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide">Slide 1</div>
-                      <div class="swiper-slide">Slide 2</div>
-                      <div class="swiper-slide">Slide 3</div>
-                      <div class="swiper-slide">Slide 4</div>
-                      <div class="swiper-slide">Slide 5</div>
+                      <c:forEach items="${adList}" var="ad">
+                        <div class="swiper-slide"><h4>${ad.name}</h4></br>${ad.content}</div>
+                      </c:forEach>
                     </div>
                 </div>
             </div>
 
-            <div  id="ui-yu-ban111">
-                <ul class="sy-ul1">
-                    <c:forEach items="${adList}" var="ad">
-                        <li><h5> ${ad.name} </h5><h4> ${ad.content}</h4></li>
-                    </c:forEach>
-                </ul>
-                <ol class="sy-ol">
-                </ol>
-            </div>
             <div class="ssjg">
-                <ul class="ssjg-tit1">
-                    <li style="margin-left: 1%"><a href="JavaScript:;">热门推荐</a></li>
-                    <li style="text-align: right;"><a href="category.html?ctg_id=23">更多</a></li>
-                    <div style="clear:both;"></div>
-                </ul>
-                <ul class="ssjg-ul1" style="padding-top:0;">
+<!--                 <ul class="ssjg-tit1"> -->
+<!--                     <li style="margin-left: 1%"><a href="JavaScript:;">家滴精选</a></li> -->
+<!--                     <li style="text-align: right;"><a href="category.html?ctg_id=23">更多</a></li> -->
+<!--                     <div style="clear:both;"></div> -->
+<!--                 </ul> -->
+                <h3 class="ui-yu-server">家滴精选 
+                <img src="images/more.png" alt=""></h3>
+                <ul class="ssjg-ul1" style="padding-top:10px;">
                     <c:forEach items="${hotGoodsList}" var="goodsList">
                         <li>
                             <div class="ssjg-tu">
@@ -132,7 +125,7 @@
                     <div style="clear:both;"></div>
                 </ul>
             </div>
-            <h3 class="ui-yu-server">便民服务 <img src="images/server-icon.png" alt=""></h3>
+            <h3 class="ui-yu-server">便民服务 <img src="images/more.png" alt=""></h3>
             <ul class="ui-yu-express">
                 <li>
                     <img src="images/express.png" alt="">
@@ -151,16 +144,17 @@
                 </li>
             </ul>
             <div class="ui-yu-home">
-                <h5><img src="images/yu-home.png" alt=""> <span class=""> 更多 <img src="images/server-icon.png" alt=""></span></h5>
+                <h5><img src="images/yu-home.png" alt=""> <span class=""> 更多 <img src="images/more.png" alt=""></span></h5>
             </div>
             <ul>
                 <c:forEach items="${newsList}" var="news">
 	                <li class="yu-ui-homeWord">
-	                    <img src="${news.head_img}">
+<%-- 	                    <img src="${news.head_img}"> --%>
+						<img src="images/yu-home.png">
 	                    <p>${news.content}</p>
 	                    <div>
-	                       <span><img src="images/yu-like.png" alt="">${news.praise_count}</span>
-	                       <span><img src="images/yu-comment.png" alt="">${news.review_count}</span>
+	                       <span><img src="images/up_normal.png" alt="">${news.praise_count}</span>
+	                       <span><img src="images/comment.png" alt="">${news.review_count}</span>
 	                    </div>
 	                </li>
                 </c:forEach>
@@ -193,7 +187,7 @@
                 })
             }
             </script>
-            <jsp:include page="footer1.jsp"></jsp:include>
+            <jsp:include page="footer5.jsp"></jsp:include>
         </body>
 
         </html>
