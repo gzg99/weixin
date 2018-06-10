@@ -33,7 +33,7 @@
 </div>
 
 
-<div style="width:100%;margin-top:50px;position: absolute;">
+<div style="width:100%;position: absolute;height:200px">
    <div class="left">
       <p><span class="title">贵宾卡</span><img src="./images/ajk04.png" /></p>
       <p  style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
@@ -44,25 +44,15 @@
       <p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
       <p  style="clear:both;padding:5px">保洁每周一次</p>
    </div>
-</div>
-
-<a class="bdbtn" href="ajk_bd.jsp" >
+   <p class="bdbtn" href="ajk_bd.jsp" >
   线下卡片绑定
-</a>
-<div class="footer">
-<ul class="ft">
-<li>
-<img src="./images/home.png"  />
-<span>首页</span>
-</li>
-<li>发布</li>
-<li>
-<img src="./images/ajkinfo.png"  />
-我的</li>
-</ul>
-</div>
+</p>
 </div>
 
+
+</div>
+
+<jsp:include page="footer5.jsp"></jsp:include>
 
 
 </body>

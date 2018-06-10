@@ -44,6 +44,7 @@
 <a class="bdbtn" href="ajk_bd.jsp" >
   绑定并支付
 </a>
+ <jsp:include page="footer5.jsp"></jsp:include>
 </div>
 
 </div>
