@@ -51,7 +51,10 @@
 </a>
 <div class="footer">
 <ul class="ft">
-<li>首页</li>
+<li>
+<img src="./images/home.png"  />
+<span>首页</span>
+</li>
 <li>发布</li>
 <li>我的</li>
 </ul>
