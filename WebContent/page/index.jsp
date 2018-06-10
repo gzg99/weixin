@@ -24,11 +24,13 @@
 
         <body id="wrap">
             <div class="quanbu-top">
-                <input id="goods_name" name="keyword" class="hd_keyword" placeholder="请输入商品名称" style="width: 90%;font-size: 14px" onclick="window.location.href='secList.html'">
+                <input id="goods_name" name="keyword" class="hd_keyword" placeholder="请输入商品名称" style="width: 80%;font-size: 14px" onclick="window.location.href='secList.html'">
                 <a href="areaList.html" class="qb-tleft f-l"></a>
                 <div class="qb-tright f-r">
                     <a href="secList.html"> <img src="images/sjsc-13.png"> </a>
+                    <a href=""> <img src="images/message.png"> </a>
                 </div>
+                
                 <div style="clear:both;"></div>
             </div>
             <div class="banner1" id="ban1">
@@ -102,7 +104,7 @@
 <!--                 </ul> -->
                 <h3 class="ui-yu-server">家滴精选 
                 <img src="images/more.png" alt=""></h3>
-                <ul class="ssjg-ul1" style="padding-top:0;">
+                <ul class="ssjg-ul1" style="padding-top:10px;">
                     <c:forEach items="${hotGoodsList}" var="goodsList">
                         <li>
                             <div class="ssjg-tu">
