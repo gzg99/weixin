@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.yq.dao.CardDao;
 import com.yq.entity.Card;
+import com.yq.entity.Goods;
 
 @Service
 public class CardService {
@@ -23,14 +24,28 @@ public class CardService {
 	}
 	
 	public boolean update(Card card) {
-		return cardDao.update(card);
+		try {
+			int i = cardDao.update(card);
+			if(i > 0) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 	
 	public Card getCardById(Long id) {
 		return cardDao.getCardById(id);
 	}
 	
-	public List<Card> getAllCard() {
-		return cardDao.getAllCard();
+	public List<Card> getAllCard(Card card) {
+		return cardDao.getAllCard(card);
+	}
+	
+	public int count() {
+		return cardDao.count();
 	}
 }

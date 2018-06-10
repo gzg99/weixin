@@ -3,6 +3,7 @@ package com.yq.dao;
 import java.util.List;
 
 import com.yq.entity.Card;
+import com.yq.entity.Goods;
 
 public interface CardDao {
 
@@ -10,9 +11,11 @@ public interface CardDao {
 	
 	public boolean delete(Long id);
 	
-	public boolean update(Card card);
+	public int update(Card card);
 	
 	public Card getCardById(Long id);
 	
-	public List<Card> getAllCard();
+	public List<Card> getAllCard(Card card);
+	
+	public int count(); 
 }

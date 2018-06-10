@@ -72,14 +72,14 @@
 				</ul>
 			</dd>
 		</dl>
-<!-- 		<dl id="menu-product"> -->
-<!-- 			<dt><i class="Hui-iconfont">&#xe620;</i> 菜单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt> -->
-<!-- 			<dd> -->
-<!-- 				<ul> -->
-<!-- 					<li><a _href="menuList.html?status=1" href="javascript:void(0)"> 菜单查看</a></li> -->
-<!-- 				</ul> -->
-<!-- 			</dd> -->
-<!-- 		</dl> -->
+		<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe613;</i> 安居卡管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="cardList.html" href="javascript:void(0)">安居卡查看</a></li>
+				</ul>
+			</dd>
+		</dl>
 		<dl id="menu-product">
 			<dt><i class="Hui-iconfont">&#xe620;</i> 广告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
