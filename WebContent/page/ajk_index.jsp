@@ -56,7 +56,9 @@
 <span>首页</span>
 </li>
 <li>发布</li>
-<li>我的</li>
+<li>
+<img src="./images/ajkinfo.png"  />
+我的</li>
 </ul>
 </div>
 </div>
