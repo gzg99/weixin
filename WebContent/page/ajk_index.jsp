@@ -49,8 +49,15 @@
 <a class="bdbtn" href="ajk_bd.jsp" >
   线下卡片绑定
 </a>
-
+<div class="footer">
+<ul class="ft">
+<li>首页</li>
+<li>发布</li>
+<li>我的</li>
+</ul>
 </div>
+</div>
+
 
 
 </body>
