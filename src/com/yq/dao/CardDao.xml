@@ -29,10 +29,10 @@
     	update 
     		jdb_card 
     	set 
-    		card_name=#{card_name},
-    		card_img=#{card_img},
-    		card_price=#{card_price},
-    		card_detail=#{card_detail},
+    		card_name=#{cardName},
+    		card_img=#{cardImg},
+    		card_price=#{cardPrice},
+    		card_detail=#{cardDetail},
     		update_time=#{updateTime} 
     	where 
     		card_id=#{cardId}
@@ -64,6 +64,14 @@
 			update_time as updateTime 
 		from 
 			jdb_card
+			order by add_time desc 
+    	<if test="pageSize!=null and pageSize!=0">
+     		limit #{currentNum},#{pageSize}
+    	</if>
+    </select>
+    
+    <select id="count" resultType="int">
+	    select count(1) from jdb_card
     </select>
 
 </mapper>

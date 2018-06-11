@@ -1,6 +1,6 @@
 package com.yq.entity;
 
-public class Card {
+public class Card extends Page{
 
 	private Long cardId;
 	
