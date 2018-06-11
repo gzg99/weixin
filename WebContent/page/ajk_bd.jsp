@@ -38,8 +38,8 @@
 
 <div class="content">
 <h4>填写绑定信息</h4>
-<P><lable>持卡人手机<input type="text" /></lable></P>
-<P><lable>绑定地址&nbsp;&nbsp;&nbsp;<input type="text" /></lable></P>
+<P><lable>持卡人手机<input type="text" id="userNumber" /></lable></P>
+<P><lable>绑定地址&nbsp;&nbsp;&nbsp;<input type="text" id="userAddr" /></lable></P>
 
 <a class="bdbtn" href="ajk_bd.jsp" >
   绑定并支付
@@ -51,4 +51,28 @@
 
 
 </body>
+<script>
+$(".bdbtn").click(function(){
+	var  userNumber=$("#userNumber").val();
+	var userAddr=$("#userAddr").val();
+	if(userNumber=="")
+		{
+		 alert("手机不许为空");
+		}
+	if(userAddr=="")
+	{
+	 alert("地址不许为空");
+	}
+	$.ajax({
+		url:'cardOrderInsert.html',
+		type:'post',
+		data:'userNumber='+userNumber+'&userAddr='+userAddr,
+		success:function(rs){
+		}
+	});
+	
+})
+
+
+</script>
 </html>

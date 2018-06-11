@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yq.dao.CardOrderDao;
+import com.yq.entity.CardOrder;
 
 @Service
 public class CardOrderService {
@@ -13,7 +14,7 @@ public class CardOrderService {
 	@Autowired
 	private CardOrderDao cardOrderDao;
 
-	public boolean insert(CardOrderDao order) {
+	public boolean insert(CardOrder order) {
 		return cardOrderDao.insert(order);
 	}
 	
@@ -21,19 +22,19 @@ public class CardOrderService {
 		return cardOrderDao.delete(id);
 	}
 	
-	public boolean update(CardOrderDao order) {
+	public boolean update(CardOrder order) {
 		return cardOrderDao.update(order);
 	}
 	
-	public CardOrderDao findById(Long id) {
+	public CardOrder findById(Long id) {
 		return cardOrderDao.findById(id);
 	}
 	
-	public List<CardOrderDao> findByUserName(String userName) {
+	public List<CardOrder> findByUserName(String userName) {
 		return cardOrderDao.findByUserName(userName);
 	}
 	
-	public List<CardOrderDao> findAll() {
+	public List<CardOrder> findAll() {
 		return cardOrderDao.findAll();
 	}
 }

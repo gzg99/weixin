@@ -2,18 +2,20 @@ package com.yq.dao;
 
 import java.util.List;
 
+import com.yq.entity.CardOrder;
+
 public interface CardOrderDao {
 
-	public boolean insert(CardOrderDao order);
+	public boolean insert(CardOrder order);
 	
 	public boolean delete(Long id);
 	
-	public boolean update(CardOrderDao order);
+	public boolean update(CardOrder order);
 	
-	public CardOrderDao findById(Long id);
+	public CardOrder findById(Long id);
 	
-	public List<CardOrderDao> findByUserName(String userName);
+	public List<CardOrder> findByUserName(String userName);
 	
-	public List<CardOrderDao> findAll();
+	public List<CardOrder> findAll();
 	
 }

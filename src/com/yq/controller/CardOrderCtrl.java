@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.Card;
+import com.yq.entity.CardOrder;
 import com.yq.entity.Goods;
-import com.yq.service.CardService;
+import com.yq.entity.Order;
+import com.yq.service.CardOrderService;
 import com.yq.util.PageUtil;
 
 /**
@@ -25,10 +27,10 @@ import com.yq.util.PageUtil;
  * */
 @Controller
 @RequestMapping("/")
-public class CardCtrl {
+public class CardOrderCtrl {
 
 	@Autowired
-	private CardService cardService;
+	private CardOrderService service;
 	
 	@ResponseBody
 	@RequestMapping(value = "main/addCardjsp.html")
@@ -37,54 +39,27 @@ public class CardCtrl {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "main/cardInsert.html")
-	public String cardInsert(String cardName, String cardImg, Float cardPrice, String cardDetail) {
+	@RequestMapping(value = "main/cardOrderInsert.html")
+	public String cardInsert(String cardName, Long userNumber, String cardDetail) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Card card = new Card();
+		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
-		card.setCardImg(cardImg);
-		card.setCardPrice(cardPrice);
-		card.setCardDetail(cardDetail);
 		card.setAddTime(sdf.format(new Date()));
+		card.setUserNumber(userNumber);
 		card.setUpdateTime(sdf.format(new Date()));
-		return cardService.insert(card) + "";
+		return service.insert(card) + "";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "main/cardUpdate.html")
 	public String cardUpdate(Long cardId,String cardName, String cardImg, Float cardPrice, String cardDetail) {
-		Card card = new Card();
-		card.setCardId(cardId);
+		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
-		card.setCardImg(cardImg);
-		card.setCardPrice(cardPrice);
-		card.setCardDetail(cardDetail);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		card.setUpdateTime(sdf.format(new Date()));
-		return cardService.update(card) + "";
+		return service.update(card) + "";
 	}
 	
-	/**
-	 * 卡券列表
-	 * */
-	@RequestMapping(value = "/main/cardList.html")
-	public ModelAndView list(@RequestParam(defaultValue = "1") Integer currentPage, HttpServletRequest request) throws UnsupportedEncodingException {
-		try {
-			Card card = new Card();
-			int total = cardService.count();
-			PageUtil.pager(currentPage, 10, total, request);
-			card.setPageSize(10);
-			card.setCurrentNum(PageUtil.currentNum(currentPage, 10));
-			List<Card> list = cardService.getAllCard(card);
-			ModelAndView ml = new ModelAndView();
-			ml.addObject("cards", list);
-			ml.setViewName("main/card/list");
-			return ml;
-		} catch(Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 	
 	/**
 	 * 根据id查询详情
@@ -92,7 +67,7 @@ public class CardCtrl {
 	@RequestMapping(value = "/main/findCardById.html")
 	public ModelAndView findCardById(Long id) throws Exception {
 		try {
-			Card card = cardService.getCardById(id);
+			CardOrder card = service.findById(id);
 			ModelAndView ml = new ModelAndView();
 			ml.addObject("card", card);
 			ml.setViewName("main/card/info");
@@ -109,7 +84,7 @@ public class CardCtrl {
 	@RequestMapping(value = "/main/deleteCardById.html")
 	public String deleteCardById(Long id) throws Exception {
 		try {
-			boolean b = cardService.delete(id);
+			boolean b = service.delete(id);
 			return b + "";
 		}catch(Exception e) {
 			e.printStackTrace();
