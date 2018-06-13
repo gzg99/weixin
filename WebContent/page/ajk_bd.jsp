@@ -38,7 +38,13 @@
 
 <div class="content">
 <h4>填写绑定信息</h4>
-<P><lable>持卡人手机<input type="text" id="userNumber" /></lable></P>
+<P>安居卡类型
+<select id="card_name">
+
+</select>
+</P>
+<P><lable>涂层卡号<input type="text" id="cardNum" /></lable></P>
+<P><lable>持卡人手机<input type="text" id="userPhone" /></lable></P>
 <P><lable>绑定地址&nbsp;&nbsp;&nbsp;<input type="text" id="userAddr" /></lable></P>
 
 <a class="bdbtn" href="ajk_bd.jsp" >
@@ -52,21 +58,41 @@
 
 </body>
 <script>
+$(function(){
+	
+	$.ajax({
+		url:'cardAllList.html',
+		type:'post',
+		data:{},
+		success:function(rs){
+			var data = eval(rs);
+			var html="";
+			$.each(data,function(i,v){
+				html+="<option value="+v.cardName+">"+v.cardName+"</option>";
+			})
+			$("#card_name").html(html);
+		}
+		
+	})
+})
+
 $(".bdbtn").click(function(){
-	var  userNumber=$("#userNumber").val();
+	var  userPhone=$("#userPhone").val();
 	var userAddr=$("#userAddr").val();
-	if(userNumber=="")
+	if(userPhone=="")
 		{
 		 alert("手机不许为空");
 		}
+	var card_name=$("#card_name").val();
 	if(userAddr=="")
 	{
 	 alert("地址不许为空");
 	}
+	var  cardNum=$("#cardNum").val();
 	$.ajax({
 		url:'cardOrderInsert.html',
 		type:'post',
-		data:'userNumber='+userNumber+'&userAddr='+userAddr,
+		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+card_name+"&cardNum="+cardNum,
 		success:function(rs){
 		}
 	});
