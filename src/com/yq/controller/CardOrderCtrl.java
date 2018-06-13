@@ -33,8 +33,8 @@ public class CardOrderCtrl {
 	private CardOrderService service;
 	
 	@ResponseBody
-	@RequestMapping(value = "main/addCardjsp.html")
-	public ModelAndView addCardjsp() {
+	@RequestMapping(value = "main/addCardOrderjsp.html")
+	public ModelAndView addCardOrderjsp() {
 		return new ModelAndView("main/card/add");
 	}
 	
@@ -45,14 +45,14 @@ public class CardOrderCtrl {
 		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
 		card.setAddTime(sdf.format(new Date()));
-		card.setUserNumber(userNumber);
+		card.setUserPhone(userNumber);
 		card.setUpdateTime(sdf.format(new Date()));
 		return service.insert(card) + "";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "main/cardUpdate.html")
-	public String cardUpdate(Long cardId,String cardName, String cardImg, Float cardPrice, String cardDetail) {
+	@RequestMapping(value = "main/cardOrderUpdate.html")
+	public String cardOrderUpdate(Long cardId,String cardName, String cardImg, Float cardPrice, String cardDetail) {
 		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -64,8 +64,8 @@ public class CardOrderCtrl {
 	/**
 	 * 根据id查询详情
 	 * */
-	@RequestMapping(value = "/main/findCardById.html")
-	public ModelAndView findCardById(Long id) throws Exception {
+	@RequestMapping(value = "/main/findCardOrderById.html")
+	public ModelAndView findCardOrderById(Long id) throws Exception {
 		try {
 			CardOrder card = service.findById(id);
 			ModelAndView ml = new ModelAndView();
@@ -81,8 +81,8 @@ public class CardOrderCtrl {
 	/**
 	 * 删除卡券
 	 * */
-	@RequestMapping(value = "/main/deleteCardById.html")
-	public String deleteCardById(Long id) throws Exception {
+	@RequestMapping(value = "/main/deleteCardOrderById.html")
+	public String deleteCardOrderById(Long id) throws Exception {
 		try {
 			boolean b = service.delete(id);
 			return b + "";
