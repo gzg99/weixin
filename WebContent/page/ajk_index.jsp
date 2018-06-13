@@ -46,7 +46,7 @@
    </div>
    <a href="ajk_bd_xx.jsp"><p class="bdbtn">
   线下卡片绑定
-</p></a>
+</p></a>  
 </div>
 
 
