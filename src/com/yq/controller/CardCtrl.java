@@ -3,9 +3,12 @@ package com.yq.controller;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.yq.entity.Card;
 import com.yq.entity.Goods;
 import com.yq.service.CardService;
 import com.yq.util.PageUtil;
+
+import net.sf.json.JSONArray;
 
 /**
  * 家居卡管理
@@ -29,7 +35,8 @@ public class CardCtrl {
 
 	@Autowired
 	private CardService cardService;
-	
+	Map<String, Object> map = new HashMap<String, Object>();
+	private static Gson gson = new Gson();
 	@ResponseBody
 	@RequestMapping(value = "main/addCardjsp.html")
 	public ModelAndView addCardjsp() {
@@ -100,6 +107,25 @@ public class CardCtrl {
 		} catch(Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	/**
+	 * 卡券列表
+	 * */
+	@ResponseBody
+	@RequestMapping(value = "/page/cardAllList.html")
+	public void cardAllList(@RequestParam(defaultValue = "1") Integer currentPage, HttpServletResponse response,HttpServletRequest request) throws UnsupportedEncodingException {
+		try {
+			Card card = new Card();
+			List<Card> list = cardService.getAllCard(card);
+			ModelAndView ml = new ModelAndView();
+			JSONArray jsonStrs = JSONArray.fromObject(list);
+			response.setContentType("text/html;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(jsonStrs.toString());
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	/**

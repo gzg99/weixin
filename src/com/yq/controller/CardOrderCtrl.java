@@ -40,13 +40,15 @@ public class CardOrderCtrl {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "main/cardOrderInsert.html")
-	public String cardInsert(String cardName, Long userNumber, String cardDetail) {
+	@RequestMapping(value = "page/cardOrderInsert.html")
+	public String cardInsert(Long cardNum,String cardName,String userAddr, Long userPhone, String cardDetail) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
 		card.setAddTime(sdf.format(new Date()));
-		card.setUserPhone(userNumber);
+		card.setUserPhone(userPhone);
+		card.setUserAddr(userAddr);
+		card.setCardNum(cardNum);
 		card.setUpdateTime(sdf.format(new Date()));
 		return service.insert(card) + "";
 	}
