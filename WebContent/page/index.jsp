@@ -85,7 +85,7 @@
                 </ul>
             </div>
 
-            <div class="yu-title">
+            <div class="yu-title" style="padding-top:10px;">
                 <img src="images/ad_title.png" alt="">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
@@ -103,7 +103,7 @@
 <!--                     <div style="clear:both;"></div> -->
 <!--                 </ul> -->
                 <h3 class="ui-yu-server">家滴精选 
-                <img src="images/more.png" alt=""></h3>
+                <a href="category.html?ctg_id=23"><img src="images/more.png" alt=""></a></h3>
                 <ul class="ssjg-ul1" style="padding-top:10px;">
                     <c:forEach items="${hotGoodsList}" var="goodsList">
                         <li>
@@ -125,7 +125,7 @@
                     <div style="clear:both;"></div>
                 </ul>
             </div>
-            <h3 class="ui-yu-server">便民服务 <img src="images/more.png" alt=""></h3>
+            <h3 class="ui-yu-server">便民服务<a> <img src="images/more.png" alt=""></a></h3>
             <ul class="ui-yu-express">
                 <li>
                     <img src="images/express.png" alt="">

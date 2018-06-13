@@ -29,7 +29,7 @@
 <option>卡券类型</option>
 </select>
 </p>
-<h4 style="text-align:left;width:100%;float: left;">填写绑定信息</h4>
+<h4 style="padding-top:30px;text-align:left;width:100%;float: left;">填写绑定信息</h4>
 <P><lable>涂&nbsp;层&nbsp;卡&nbsp;号&nbsp;&nbsp;&nbsp;</lable><input type="text" id="cardNum"/></P>
 <P><lable>持卡人手机号</lable><input type="text" id="userPhone" /></P>
 <P><lable>绑&nbsp;定&nbsp;地&nbsp;址&nbsp;&nbsp;&nbsp;</lable><input type="text" id="userAddr"/></P>
