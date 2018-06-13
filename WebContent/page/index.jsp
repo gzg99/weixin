@@ -49,8 +49,8 @@
                         <a href="secGoodsList.html?is_recommend=1" class="img-txt">社区服务</a>
                     </li>
                     <li>
-                        <a href="ajk_index.jsp" class="img-1"> <img  src="images/b2.png" style="width:42px;height: 42px"></a>
-                        <a href="ajk_index.jsp" class="img-txt">安居卡</a>
+                        <a href="cardAll.html" class="img-1"> <img  src="images/b2.png" style="width:42px;height: 42px"></a>
+                        <a href="cardAll.html" class="img-txt">安居卡</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=21" class="img-1" style=""><img  src="images/b3.png" style="width:42px;height: 42px"></a>
