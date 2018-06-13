@@ -47,7 +47,7 @@
 <P><lable>持卡人手机<input type="text" id="userPhone" /></lable></P>
 <P><lable>绑定地址&nbsp;&nbsp;&nbsp;<input type="text" id="userAddr" /></lable></P>
 
-<a class="bdbtn" href="ajk_bd.jsp" >
+<a class="bdbtn"  >
   绑定并支付
 </a>
  <jsp:include page="footer5.jsp"></jsp:include>
@@ -94,6 +94,7 @@ $(".bdbtn").click(function(){
 		type:'post',
 		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+card_name+"&cardNum="+cardNum,
 		success:function(rs){
+			window.history.go(-1)
 		}
 	});
 	
