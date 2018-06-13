@@ -85,7 +85,23 @@ public class CardCtrl {
 			return null;
 		}
 	}
-	
+	/**
+	 * 卡券列表
+	 * */
+	@RequestMapping(value = "/page/cardAll.html")
+	public ModelAndView listAll(@RequestParam(defaultValue = "1") Integer currentPage, HttpServletRequest request) throws UnsupportedEncodingException {
+		try {
+			Card card = new Card();
+			List<Card> list = cardService.getAllCard(card);
+			ModelAndView ml = new ModelAndView();
+			ml.addObject("cards", list);
+			ml.setViewName("page/ajk_index");
+			return ml;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	/**
 	 * 根据id查询详情
 	 * */

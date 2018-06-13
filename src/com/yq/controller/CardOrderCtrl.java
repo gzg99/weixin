@@ -35,6 +35,7 @@ public class CardOrderCtrl {
 	@ResponseBody
 	@RequestMapping(value = "main/addCardOrderjsp.html")
 	public ModelAndView addCardOrderjsp() {
+		
 		return new ModelAndView("main/card/add");
 	}
 	
@@ -77,7 +78,23 @@ public class CardOrderCtrl {
 			return null;
 		}
 	}
-	
+	/**
+	 * 卡券列表
+	 * */
+	@RequestMapping(value = "/page/cardOrderList.html")
+	public ModelAndView list(@RequestParam(defaultValue = "1") Integer currentPage, HttpServletRequest request) throws UnsupportedEncodingException {
+		try {
+			CardOrder card = new CardOrder();
+			List<CardOrder> list = service.findAll();
+			ModelAndView ml = new ModelAndView();
+			ml.addObject("CardOrder", list);
+			ml.setViewName("page/ajk_index");
+			return ml;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	/**
 	 * 删除卡券
 	 * */
