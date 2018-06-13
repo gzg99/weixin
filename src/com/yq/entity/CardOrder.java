@@ -8,7 +8,9 @@ public class CardOrder {
 	
 	private String cardName;
 	
-	private Long userNumber;
+	private Long cardNum;
+	
+	private Long userPhone;
 	
 	private String userAddr;
 	
@@ -40,12 +42,12 @@ public class CardOrder {
 		this.cardName = cardName;
 	}
 
-	public Long getUserNumber() {
-		return userNumber;
+	public Long getUserPhone() {
+		return userPhone;
 	}
 
-	public void setUserNumber(Long userNumber) {
-		this.userNumber = userNumber;
+	public void setUserPhone(Long userPhone) {
+		this.userPhone = userPhone;
 	}
 
 	public String getUserAddr() {
@@ -70,6 +72,14 @@ public class CardOrder {
 
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public Long getCardNum() {
+		return cardNum;
+	}
+
+	public void setCardNum(Long cardNum) {
+		this.cardNum = cardNum;
 	}
 	
 	

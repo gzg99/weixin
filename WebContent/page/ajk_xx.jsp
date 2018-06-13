@@ -28,9 +28,9 @@
 
 <div class="content">
 
-<p class="bdbtn" href="" >
+<a class="bdbtn" href="ajk_bd.jsp" >
   卡片申请
-</p>
+</a>
 
 </div>
  <jsp:include page="footer5.jsp"></jsp:include>

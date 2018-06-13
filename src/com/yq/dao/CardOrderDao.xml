@@ -5,6 +5,7 @@
 		<insert id="insert" parameterType="com.yq.entity.CardOrder">
 			insert jdb_card_order(
 				user_name,
+				card_num,
 				card_name,
 				user_number,
 				user_addr,
@@ -12,6 +13,7 @@
 				update_time
 			)values(
 				#{userName},
+				#{cardNum},
 				#{cardName},
 				#{userNumber},
 				#{userAddr},
@@ -41,6 +43,7 @@
 	    	select 
 	    		id as id,
 				user_name as userName,
+				card_num as cardNum,
 				card_name as cardName,
 				user_number as userNumber,
 				user_addr as userAddr,
@@ -56,6 +59,7 @@
 	    	select 
 	    		id as id,
 				user_name as userName,
+				card_num as cardNum,
 				card_name as cardName,
 				user_number as userNumber,
 				user_addr as userAddr,
@@ -71,6 +75,7 @@
 	    	select 
 	    		id as id,
 				user_name as userName,
+				card_num as cardNum,
 				card_name as cardName,
 				user_number as userNumber,
 				user_addr as userAddr,

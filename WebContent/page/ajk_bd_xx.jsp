@@ -30,12 +30,12 @@
 </select>
 </p>
 <h4 style="text-align:left;width:100%;float: left;">填写绑定信息</h4>
-<P><lable>涂&nbsp;层&nbsp;卡&nbsp;号&nbsp;&nbsp;&nbsp;</lable><input type="text" /></P>
-<P><lable>持卡人手机号</lable><input type="text" /></P>
-<P><lable>绑&nbsp;定&nbsp;地&nbsp;址&nbsp;&nbsp;&nbsp;</lable><input type="text" /></P>
+<P><lable>涂&nbsp;层&nbsp;卡&nbsp;号&nbsp;&nbsp;&nbsp;</lable><input type="text" id="cardNum"/></P>
+<P><lable>持卡人手机号</lable><input type="text" id="userPhone" /></P>
+<P><lable>绑&nbsp;定&nbsp;地&nbsp;址&nbsp;&nbsp;&nbsp;</lable><input type="text" id="userAddr"/></P>
 <P style="float:right;color:#ccc;wdith:80%">(注：此地址唯一且不可更改)</P>
 
-<p class="bdbtn" href="ajk_bd.jsp" >
+<p class="bdbtn" onclick="addCardOrder()" >
   线下卡片绑定
 </p>
 
@@ -45,4 +45,17 @@
 
 
 </body>
+<script type="text/javascript">
+	function addCardOrder() {
+		var cardOrder = {};
+		cardOrder.cardNum=$("#cardNum").val();
+		cardOrder.userPhone=$("#userPhone").val();
+		cardOrder.userAddr=$("#userAddr").val();
+		$.ajax({
+			url:"",
+			data:
+		});
+	}
+</script>
+
 </html>

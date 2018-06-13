@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,46 +23,22 @@
             <script type="text/javascript" src="js/foot.js"></script>
 </head>
 <body>
-<div  class="body">
-
-<div class="li">
-<div class="left">
-   <img src="./images/ajk01.png" style='width:100%' />
-  </div>
-  <div class="right">
-  <p>365安居卡，尊享免费  保洁服务</p>
-  </div>
-  <div class="right1">
-   <p style="line-height:100px"> > </p>
-  </div>
-</div>  
- 
- <div class="li">
-<div class="left">
-   <img src="./images/ajk01.png" style='width:100%' />
-  </div>
-  <div class="right">
-  <p>365安居卡，尊享免费  保洁服务</p>
-  </div>
-  <div class="right1">
-   <p style="line-height:100px"> > </p>
-  </div>
-</div>  
-
-<div class="li">
-<div class="left">
-   <img src="./images/ajk01.png" style='width:100%' />
-  </div>
-  <div class="right">
-  <p>365安居卡，尊享免费  保洁服务</p>
-  </div>
-  <div class="right1">
-   <p style="line-height:100px"> > </p>
-  </div>
-</div>  
-   <jsp:include page="footer5.jsp"></jsp:include>
-</div>
-
+	<div class="body">
+		<c:forEach items="${cards}" var="list" varStatus="s">
+			<div class="li">
+				<div class="left">
+			   		<a href="ajk_index.jsp"><img src="./images/ajk01.png" style='width:100%' /></a>
+			  	</div>
+			  	<div class="right">
+			  		<p>${list.cardName }</p>
+			  	</div>
+			  	<div class="right1">
+			   		<p style="line-height:100px"> > </p>
+			  	</div>
+			</div> 
+		</c:forEach>
+	    <jsp:include page="footer5.jsp"></jsp:include>
+	</div>
 
 </body>
 </html>

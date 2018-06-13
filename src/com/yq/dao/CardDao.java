@@ -3,7 +3,6 @@ package com.yq.dao;
 import java.util.List;
 
 import com.yq.entity.Card;
-import com.yq.entity.Goods;
 
 public interface CardDao {
 
