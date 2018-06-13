@@ -1,11 +1,13 @@
 package com.yq.controller;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import com.yq.entity.Goods;
 import com.yq.entity.Order;
 import com.yq.service.CardOrderService;
 import com.yq.util.PageUtil;
+
+import net.sf.json.JSONArray;
 
 /**
  * 家居卡管理
@@ -41,7 +45,7 @@ public class CardOrderCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "page/cardOrderInsert.html")
-	public String cardInsert(Long cardNum,String cardName,String userAddr, Long userPhone, String cardDetail) {
+	public void cardInsert(HttpServletResponse response,Long cardNum,String cardName,String userAddr, Long userPhone, String cardDetail) throws IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
@@ -50,7 +54,10 @@ public class CardOrderCtrl {
 		card.setUserAddr(userAddr);
 		card.setCardNum(cardNum);
 		card.setUpdateTime(sdf.format(new Date()));
-		return service.insert(card) + "";
+		 service.insert(card);
+			response.setContentType("text/html;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write("");
 	}
 	
 	@ResponseBody
