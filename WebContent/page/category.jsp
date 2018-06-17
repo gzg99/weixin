@@ -31,7 +31,7 @@ document.body.addEventListener('touchmove',function(e){
  
     <body id="wrap">
     <div class="title" style="border-bottom:1px solid rgba(204, 204, 204, 0.15);text-align:center;">
-   		<span>分类</span>
+   		<span>商城分类</span>
         <div class="title-left"><a href="index.html"><img src="images/back.png" alt="" /></a></div>
         <div class="title-right"><a href="secList.html"><img src="images/sjsc-13.png" alt="" /></a></div>
     </div>

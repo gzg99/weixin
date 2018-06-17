@@ -57,8 +57,8 @@
                         <a href="category.html?ctg_id=21" class="img-txt">附近工匠</a>
                     </li>
                     <li>
-                        <a href="menuList.html" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
-                        <a href="menuList.html" class="img-txt">家庭直购</a>
+                        <a href="category.html?ctg_id=23" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
+                        <a href="category.html?ctg_id=23" class="img-txt">家庭直购</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=22" class="img-1"><img  src="images/b5.png" style="width:42px;height: 42px"></a>
@@ -97,11 +97,6 @@
             </div>
 
             <div class="ssjg">
-<!--                 <ul class="ssjg-tit1"> -->
-<!--                     <li style="margin-left: 1%"><a href="JavaScript:;">家滴精选</a></li> -->
-<!--                     <li style="text-align: right;"><a href="category.html?ctg_id=23">更多</a></li> -->
-<!--                     <div style="clear:both;"></div> -->
-<!--                 </ul> -->
                 <h3 class="ui-yu-server">家滴精选 
                 <a href="category.html?ctg_id=23"><img src="images/more.png" alt=""></a></h3>
                 <ul class="ssjg-ul1" style="padding-top:10px;">

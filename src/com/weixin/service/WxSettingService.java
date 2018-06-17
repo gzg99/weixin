@@ -17,7 +17,7 @@ public class WxSettingService {
 		return wxSettingMapper.selectByPrimaryKey(id);
 	}
 
-	public    int updateByPrimaryKeySelective(WxSetting record){
+	public int updateByPrimaryKeySelective(WxSetting record){
 		int rs = 0;
 		try {
 			rs = wxSettingMapper.updateByPrimaryKeySelective(record);

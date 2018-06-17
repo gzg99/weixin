@@ -1,12 +1,13 @@
 package com.yq.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yq.entity.CardOrder;
 
 public interface CardOrderDao {
 
-	public boolean insert(CardOrder order);
+	public int insert(CardOrder order);
 	
 	public boolean delete(Long id);
 	
@@ -17,5 +18,7 @@ public interface CardOrderDao {
 	public List<CardOrder> findByUserName(String userName);
 	
 	public List<CardOrder> findAll();
+	
+	public void upstatus(Map<String, Object> map);
 	
 }

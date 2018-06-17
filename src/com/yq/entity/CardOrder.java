@@ -12,11 +12,18 @@ public class CardOrder {
 	
 	private Long userPhone;
 	
+	private float cardPrice;
+	
 	private String userAddr;
 	
 	private String addTime;
 	
 	private String updateTime;
+	
+	//是否付款 0：未付 1：已付款
+	private Integer status;
+	
+	private String comment;
 
 	public Long getId() {
 		return id;
@@ -80,6 +87,30 @@ public class CardOrder {
 
 	public void setCardNum(Long cardNum) {
 		this.cardNum = cardNum;
+	}
+
+	public float getCardPrice() {
+		return cardPrice;
+	}
+
+	public void setCardPrice(float cardPrice) {
+		this.cardPrice = cardPrice;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 	

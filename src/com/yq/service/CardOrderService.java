@@ -1,6 +1,7 @@
 package com.yq.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class CardOrderService {
 	@Autowired
 	private CardOrderDao cardOrderDao;
 
-	public boolean insert(CardOrder order) {
+	public int insert(CardOrder order) {
 		return cardOrderDao.insert(order);
 	}
 	
@@ -36,5 +37,12 @@ public class CardOrderService {
 	
 	public List<CardOrder> findAll() {
 		return cardOrderDao.findAll();
+	}
+	
+	/**
+	 * 更改订单状态
+	 * */
+	public void upstatus(Map<String, Object> map) {
+		cardOrderDao.upstatus(map);
 	}
 }

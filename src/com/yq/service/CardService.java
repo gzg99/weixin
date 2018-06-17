@@ -41,6 +41,10 @@ public class CardService {
 		return cardDao.getCardById(id);
 	}
 	
+	public Card getCardByName(String name) {
+		return cardDao.getCardByName(name);
+	}
+	
 	public List<Card> getAllCard(Card card) {
 		return cardDao.getAllCard(card);
 	}

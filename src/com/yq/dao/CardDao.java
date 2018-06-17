@@ -14,6 +14,8 @@ public interface CardDao {
 	
 	public Card getCardById(Long id);
 	
+	public Card getCardByName(String name);
+	
 	public List<Card> getAllCard(Card card);
 	
 	public int count(); 

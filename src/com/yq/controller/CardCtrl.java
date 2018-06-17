@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,7 +35,7 @@ public class CardCtrl {
 	@Autowired
 	private CardService cardService;
 	Map<String, Object> map = new HashMap<String, Object>();
-	private static Gson gson = new Gson();
+	
 	@ResponseBody
 	@RequestMapping(value = "main/addCardjsp.html")
 	public ModelAndView addCardjsp() {
@@ -157,6 +156,24 @@ public class CardCtrl {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	@RequestMapping(value = "/page/ajkDetail.html")
+	public ModelAndView ajkDetail(Long id) {
+		Card card = cardService.getCardById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("card", card);
+		mv.setViewName("page/ajk_detail");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/page/ajkBd.html")
+	public ModelAndView ajkBd(Long id) {
+		Card card = cardService.getCardById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("card", card);
+		mv.setViewName("page/ajk_bd");
+		return mv;
 	}
 	
 }

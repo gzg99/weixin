@@ -20,46 +20,84 @@
             <script type="text/javascript" src="js/swiper.js"></script>
             <script type="text/javascript" src="js/foot.js"></script>
 </head>
-<body>
-<div  class="body">
 
-<div class="head">
-  <div class="left">
-  <img src="./images/ajk01.png"  style="height:100px;float:right;    width: 100px;"/>
-  </div>
-  
-  <div class="right">
-  <p>365安居卡，享受家滴帮优质家政服务 终生免费享受定期保洁服务，家滴帮自营产品免运费</p>
-  </div>
-</div>
-<div class="c">
-
-</div>
-
-<div class="content">
-<h4 style="padding-top:20px;">填写绑定信息</h4>
-<P style="padding-top:10px;">安居卡类型
-<select id="card_name">
-
-</select>
-</P>
-<P style="padding-top:10px;"><lable>涂层卡号<input type="text" id="cardNum" /></lable></P>
-<P style="padding-top:10px;" ><lable>持卡人手机<input type="text" id="userPhone" /></lable></P>
-<P style="padding-top:10px;"><lable>绑定地址&nbsp;&nbsp;&nbsp;<input type="text" id="userAddr" /></lable></P>
-
-<a class="bdbtn"  >
-  绑定并支付
-</a>
- <jsp:include page="footer5.jsp"></jsp:include>
-</div>
-
-</div>
-
+<body id="wrap">
+	
+    <div class="sjsc-title2">
+    	<h3 class="sjsc-t2l">卡券申请</h3>
+        <a href="" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
+    	<div class="head">
+			<div class="left">
+				<img src="./images/ajk01.png"  style="height:100px;float:right; width: 100px;"/>
+			</div>
+		 
+			<div class="right">
+				<p>365安居卡，享受家滴帮优质家政服务 终生免费享受定期保洁服务，家滴帮自营产品免运费</p>
+			</div>
+		</div>
+    </div>
+    
+    <div style="font-size: 12px;padding-left:5px; margin-top:157px;color: #A09E9E;" id="zitidian-str">
+  		安居卡类型
+    </div>
+    <div class="drdd-info2" id="zitidian-choose">
+	    ${card.cardName }
+    </div>
+    <input type="hidden" id="cardName" value="${card.cardName }">
+    
+    
+    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+  	 	涂层卡号
+    </div>
+    <div class="drdd-info4">
+    	<p>涂层卡号：</p>
+        <input type="text" id="cardNum" style="width:80%;border:0px">
+        <div style="clear:both;"></div>
+    </div>
+    
+    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+  	 	持卡人手机
+    </div>
+    <div class="drdd-info4">
+    	<p>持卡人手机：</p>
+        <input type="text" id="userPhone" style="width:75%;border:0px">
+        <div style="clear:both;"></div>
+    </div>
+    
+    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+  		绑定地址
+    </div>
+    <div class="drdd-info4">
+	    <p>绑定地址：</p>
+        <input type="text" id='userAddr' placeholder="地址具体到门牌号，卡片与地址一对一绑定" style="width:80%;border:0px">
+        <div style="clear:both;"></div>
+    </div>
+    
+    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+  		备注
+    </div>
+    <div class="drdd-info4">
+    	<p>备注：</p>
+        <input type="text" placeholder="选填，填写您对卖家的要求" id='comment' style="width:80%;border:0px">
+        <div style="clear:both;"></div>
+    </div>
+    
+    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+  		卡券价格
+    </div>
+    <div class="drdd-info2">
+    	<p class="p1 f-l">卡券价格</p>
+    	<p class="p2 f-r"><span id="">￥${card.cardPrice }</span></p>
+    	<br>
+        <div style="clear:both;"></div>
+    </div>
+    <input type="hidden" id="cardPrice" value="${card.cardPrice }">
+    <button class="drdd-btn" onclick="add()">确认付款</button>
+	<jsp:include page="footer5.jsp"></jsp:include>
 
 </body>
 <script>
 $(function(){
-	
 	$.ajax({
 		url:'cardAllList.html',
 		type:'post',
@@ -76,29 +114,41 @@ $(function(){
 	})
 })
 
-$(".bdbtn").click(function(){
-	var  userPhone=$("#userPhone").val();
+function add() {
+	var userPhone=$("#userPhone").val();
 	var userAddr=$("#userAddr").val();
-	if(userPhone=="")
-		{
-		 alert("手机不许为空");
-		}
-	var card_name=$("#card_name").val();
-	if(userAddr=="")
-	{
-	 alert("地址不许为空");
+	var cardName=$("#cardName").val();
+	var cardPrice=$("#cardPrice").val();
+	var cardNum=$("#cardNum").val();
+	var comment=$("#comment").val();
+	if(userPhone==""){
+		alert("手机不许为空");
+		return;
 	}
-	var  cardNum=$("#cardNum").val();
+	if(userAddr==""){
+		alert("地址不许为空");
+		return;
+	}
+	if(cardNum==""){
+		alert("卡号不许为空");
+		return;
+	}
 	$.ajax({
 		url:'cardOrderInsert.html',
 		type:'post',
-		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+card_name+"&cardNum="+cardNum,
+		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+cardName+"&cardNum="+cardNum+"&cardPrice="+
+			cardPrice+"&comment="+comment,
 		success:function(rs){
-			window.history.go(-1)
+			var re = /^[0-9]+.?[0-9]*$/;
+			if(re.test(rs)&&rs!=0){
+				window.location.href='payCardOrder.html?id='+rs;
+			}else{
+				alert("失败！");
+			}
 		}
 	});
 	
-})
+}
 
 
 </script>

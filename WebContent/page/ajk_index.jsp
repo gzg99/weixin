@@ -22,36 +22,33 @@
             <script type="text/javascript" src="js/foot.js"></script>
 </head>
 <body>
-<div  class="body">
-<img  src="./images/ajk02.png"/>
+<div class="body">
+	<div class="sjsc-title2">
+    	<h3 class="sjsc-t2l">卡券列表</h3>
+        <a href="index.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
+    </div>
+	<img src="./images/ajk02.png"/>
+	<c:forEach items="${cards}" var="card">
+		<div style="position:absolute;top:10%;width:100%;text-align:center">
+		 <a href="ajkDetail.html?id=${card.cardId}"><img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>
+		</div>
+	</c:forEach>
+	<div style="width:100%;position: absolute;height:200px">
+		<c:forEach items="${cards}" var="v">
+			<div class="left">
+			<p><span class="title">${v.cardName}</span><img src="./images/ajk04.png" /></p>
+			<p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
+			<p style="clear:both;padding:5px">保洁每周一次</p>
+			</div>
+		</c:forEach>
+		<a href="ajk_bd.jsp"><p class="bdbtn">
+		  	线下卡片绑定
+		</p>
+		</a>  
+	</div>
 
-<div style="position:absolute;top:10%;width:100%;text-align:center">
- <a href="ajk_xx_365.jsp"><img  src="./images/ajk01.png" style="width:80%;margin: auto;"/></a>
 </div>
-
-<div style="width:100%;text-align:center;position: absolute; top: 60%;">
- <a href="ajk_xx.jsp"><img  src="./images/ajk03.png" style="width:100%;margin: auto;"/></a>
-</div>
-
-
-<div style="width:100%;position: absolute;height:200px">
-<c:forEach items="${cards}" var="v">
-   <div class="left">
-      <p><span class="title">${v.cardName}</span><img src="./images/ajk04.png" /></p>
-      <p  style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
-      <p  style="clear:both;padding:5px">保洁每周一次</p>
-   </div>
-   </c:forEach>
-   <a href="ajk_bd.jsp"><p class="bdbtn">
-  线下卡片绑定
-</p></a>  
-</div>
-
-
-</div>
-
 <jsp:include page="footer5.jsp"></jsp:include>
-
 
 </body>
 </html>

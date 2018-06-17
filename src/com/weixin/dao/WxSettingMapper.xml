@@ -8,18 +8,18 @@
   <select id="selectByPrimaryKey" resultType="com.weixin.entity.WxSetting" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from tb_wx_setting
+    from jdb_source
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from tb_wx_setting
+    delete from jdb_source
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.weixin.entity.WxSetting" >
     <selectKey resultType="java.lang.Integer" keyProperty="id"  >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tb_wx_setting (id, appid, appsecret, 
+    insert into jdb_source (id, appid, appsecret, 
       partner, partnerkey,link)
     values (#{id,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR}, 
       #{partner,jdbcType=VARCHAR}, #{partnerkey,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR})
@@ -28,7 +28,7 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id"  >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tb_wx_setting
+    insert into jdb_source
     <trim prefix="(" suffix=")" suffixOverrides="," >
       id,
       <if test="appid != null" >
@@ -61,7 +61,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.weixin.entity.WxSetting" >
-    update tb_wx_setting
+    update jdb_source
     <set >
       <if test="appid != null" >
         appid = #{appid,jdbcType=VARCHAR},
@@ -82,7 +82,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.weixin.entity.WxSetting" >
-    update tb_wx_setting
+    update jdb_source
     set appid = #{appid,jdbcType=VARCHAR},
       appsecret = #{appsecret,jdbcType=VARCHAR},
       partner = #{partner,jdbcType=VARCHAR},
