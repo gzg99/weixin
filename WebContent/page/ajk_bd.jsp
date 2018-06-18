@@ -20,7 +20,12 @@
             <script type="text/javascript" src="js/swiper.js"></script>
             <script type="text/javascript" src="js/foot.js"></script>
 </head>
-
+<style>
+select{
+width:100%;
+height:30px;
+}
+</style>
 <body id="wrap">
 	
     <div class="sjsc-title2">
