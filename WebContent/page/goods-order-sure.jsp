@@ -18,6 +18,9 @@
 $(function(){
 	showStr("province","city","area");
 });
+$(function(){
+	init("province","city","area");
+});
 </script>
 
 </head>
@@ -26,45 +29,64 @@ $(function(){
 	
     <div class="sjsc-title2">
     	<h3 class="sjsc-t2l">订单</h3>
-        <a href="javascript:window.location.href='orderList.html'" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
-    </div>
+        <a href="orderList.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
+     </div>
      <input type="hidden" value="${addr_id}" id='addr_id'>
       
-    <dl class="drdd-info6" onclick="window.location.href='addrListTwo.html?cps_id=${cps_id}&addr_id=${addr_id}&goods_id=${goods_id }&goods_num=${goods_num}'">
-     <c:forEach items="${addr}" var="addr" begin="0" end="0">
-     <input type="hidden" value="${addr.addr_user }" id='addr_user'>
-     <input type="hidden" value="${addr.addr_tel}" id='addr_tel'>
-     <input type="hidden" value="${addr.addr_name}" id='addr_name'>
-    	<dt>
+     <dl class="drdd-info6">
+<%--      <c:forEach items="${addr}" var="addr" begin="0" end="0"> --%>
+<%--      <input type="hidden" value="${addr.addr_user }" id='addr_user'> --%>
+<%--      <input type="hidden" value="${addr.addr_tel}" id='addr_tel'> --%>
+<%--      <input type="hidden" value="${addr.addr_name}" id='addr_name'> --%>
+<!--    	 <dt> -->
+<!--        	<p> -->
+<%--            	<span class="f-l">收货人：${addr.addr_user }</span> --%>
+<%--            	<span class="f-r">联系电话：${addr.addr_tel }</span> --%>
+<!--                <div style="clear:both;"></div> -->
+<!--            </p> -->
+<!--        	<p>收货地址： -->
+<%--         	<span id="province" lang="${addr.province }"></span> --%>
+<%--         	<span id="city" lang="${addr.city }"></span> --%>
+<%--         	<span id="area" lang="${addr.area }"></span> --%>
+<!--        	</p> -->
+<!--        </dt> -->
+<%--         </c:forEach>  --%>
+<%--         <c:if test="${empty addr}"> --%>
+<!-- 			<dt style="padding-top:15px;margin-left:10px"> -->
+<!--         		<span class="f-l" >点击添加收货地址</span>    -->
+<!--         	</dt> -->
+<%-- 		</c:if> --%>
+<!--         <dd><a>></a></dd> -->
+<!--         <div style="clear:both;"></div> -->
+		<ul class="xzdz-ul1">
+    	<li>
+        	<p class="xzdz-p1 f-l">收货人</p>
+            <input type="text" placeholder="姓名" class="xzdz-ipt1 f-l" id="addr_user"/>
+            <div style="clear:both;"></div>            
+        </li>
+    	<li>
+        	<p class="xzdz-p1 f-l">手机号</p>
+            <input type="text" placeholder="11位手机号" class="xzdz-ipt1 f-l" id="addr_tel"/>
+            <div style="clear:both;"></div>            
+        </li>
+    	
+    	<li>
+        	<p class="xzdz-p1 f-l">详细地址</p>
         	<p>
-            	<span class="f-l">收货人：${addr.addr_user }</span>
-            	<span class="f-r">联系电话：${addr.addr_tel }</span>
-                <div style="clear:both;"></div>
-            </p>
-        	<p>收货地址：
-        	<span id="province" lang="${addr.province }"></span>
-        	<span id="city" lang="${addr.city }"></span>
-        	<span id="area" lang="${addr.area }"></span>
-        	<%-- <select id="province" name="province"  lang="${addr.province }" disabled="disabled" class="slt"></select> --%>
-    <%-- <select id="city" name="city" lang="${addr.city }" disabled="disabled" class="slt"></select>
-    <select id="area" name="area" lang="${addr.area }" disabled="disabled" class="slt"></select> --%>${addr.addr_name }</p>
-        </dt>
-       </c:forEach> 
-       <c:if test="${empty addr}">
-		<dt style="padding-top:15px;margin-left:10px">
-        	
-         <span class="f-l" >点击添加收货地址</span>
-            	
-              
-        </dt>
-		</c:if>
-        <dd><a>></a></dd>
-        <div style="clear:both;"></div>
+        		<select id="province" name="province"  lang="16" class="input-text" style="width: 20%"></select>
+    			<select id="city" name="city" lang="1"  class="input-text" style="width: 20%"></select>
+    			<select id="area" name="area" lang="0" class="input-text" style="width: 20%"></select>
+    		</p>
+            <input type="text" placeholder="具体到街道门牌信息" class="xzdz-ipt1 f-l" id="addr_name" />
+            <div style="clear:both;"></div>            
+        </li>
+    	
+    </ul>
     </dl>
     
     <input type="hidden" value="${goods_num}" id='tnum'>
     <input type="hidden" value="${tprice}" id='tprice'>
-       <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
   	 商品信息
     </div>
     <c:forEach items="${goods}" var="list" varStatus="s">
@@ -103,7 +125,7 @@ $(function(){
         <c:if test="${empty cps}">
         	${cpsCount}张可使用优惠券
         </c:if>
-        
+         
          <span> ></span></a>
         <div style="clear:both;"></div>
     </div>
@@ -305,15 +327,15 @@ $(function(){
     		showTip('请填写有效的收货地址');
     		return ;
     	}
-     	var province =$('#province').text();
+     	var province =$('#province').val();
 		if(province==''){
 			showTip("收货地址填写有误，请重新编辑！");return;
 		}
-		var city =$('#city').text();
+		var city =$('#city').val();
 		if(city==''){
 			showTip("收货地址填写有误，请重新编辑！");return;
 		}
-		var area =$('#area').text();
+		var area =$('#area').val();
 		if(area==''){
 			showTip("收货地址填写有误，请重新编辑！");return;
 		}

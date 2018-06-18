@@ -27,7 +27,6 @@
     	<h3 class="sjsc-t2l">卡券列表</h3>
         <a href="index.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
-<!-- 	<img src="./images/ajk02.png"/> -->
 	<c:forEach items="${cards}" var="card">
 		<div style="position:relative;margin-top:3%;width:100%;text-align:center">
 			<a href="ajkDetail.html?id=${card.cardId}"><img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>

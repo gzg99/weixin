@@ -212,7 +212,9 @@ public class OrderCtrl extends StringUtil {
 					Order ord = new Order();
 					ord.setGoods_id(gId[m]);
 					ord.setGoods_name(gName[m]);
-					ord.setGoods_img(gImg[m]);
+					if(gImg.length > 0) {
+						ord.setGoods_img(gImg[m]);
+					}
 					ord.setGoods_price(gPrice[m]);
 					ord.setGoods_num(gNum[m]);
 					ordList.add(ord);
@@ -234,7 +236,9 @@ public class OrderCtrl extends StringUtil {
 					Order ord = new Order();
 					ord.setGoods_id(gId[m]);
 					ord.setGoods_name(gName[m]);
-					ord.setGoods_img(gImg[m]);
+					if(gImg.length > 0) {
+						ord.setGoods_img(gImg[m]);
+					}
 					ord.setGoods_price(gPrice[m]);
 					ord.setGoods_num(gNum[m]);
 					ordList.add(ord);

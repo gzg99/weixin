@@ -18,7 +18,7 @@
 
     <div class="sjsc-title2">
     	<h3 class="sjsc-t2l">确认付款</h3>
-        <a href="" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
+        <a href="ajkBd.html?id=${card.cardId}" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
     
     <div class="my-dd">
