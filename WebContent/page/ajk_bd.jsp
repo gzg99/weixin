@@ -41,9 +41,11 @@
   		安居卡类型
     </div>
     <div class="drdd-info2" id="zitidian-choose">
-	    ${card.cardName }
+	    <select id="cardName">
+	    
+	    </select>
     </div>
-    <input type="hidden" id="cardName" value="${card.cardName }">
+    <!-- <input type="text" id="cardName" value="${card.cardName }"> -->
     
     
     <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
@@ -108,7 +110,7 @@ $(function(){
 			$.each(data,function(i,v){
 				html+="<option value="+v.cardName+">"+v.cardName+"</option>";
 			})
-			$("#card_name").html(html);
+			$("#cardName").html(html);
 		}
 		
 	})
