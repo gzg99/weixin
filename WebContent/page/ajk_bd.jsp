@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>安居卡绑定</title>
+<title>卡券申请</title>
  <link rel="stylesheet" type="text/css" href="css/showTip.css">
             <link rel="stylesheet" href="css/search.css">
             <link rel="stylesheet" type="text/css" href="css/swiper.css">
@@ -25,7 +25,7 @@
 	
     <div class="sjsc-title2">
     	<h3 class="sjsc-t2l">卡券申请</h3>
-        <a href="" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
+        <a href="ajkDetail.html?id=${card.cardId}" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     	<div class="head">
 			<div class="left">
 				<img src="./images/ajk01.png"  style="height:100px;float:right; width: 100px;"/>

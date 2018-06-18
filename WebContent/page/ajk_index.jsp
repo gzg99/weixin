@@ -27,18 +27,18 @@
     	<h3 class="sjsc-t2l">卡券列表</h3>
         <a href="index.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
-	<img src="./images/ajk02.png"/>
+<!-- 	<img src="./images/ajk02.png"/> -->
 	<c:forEach items="${cards}" var="card">
-		<div style="position:absolute;top:10%;width:100%;text-align:center">
-		 <a href="ajkDetail.html?id=${card.cardId}"><img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>
+		<div style="position:relative;margin-top:3%;width:100%;text-align:center">
+			<a href="ajkDetail.html?id=${card.cardId}"><img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>
 		</div>
 	</c:forEach>
-	<div style="width:100%;position: absolute;height:200px">
+	<div style="width:100%; height:200px;position: relative;margin-top:3%;">
 		<c:forEach items="${cards}" var="v">
-			<div class="left">
-			<p><span class="title">${v.cardName}</span><img src="./images/ajk04.png" /></p>
-			<p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
-			<p style="clear:both;padding:5px">保洁每周一次</p>
+			<div class="left" style="margin-bottom:3%;">
+				<p><span class="title">${v.cardName}</span><img src="./images/ajk04.png" /></p>
+				<p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
+				<p style="clear:both;padding:5px">保洁每周一次</p>
 			</div>
 		</c:forEach>
 		<a href="ajk_bd.jsp"><p class="bdbtn">

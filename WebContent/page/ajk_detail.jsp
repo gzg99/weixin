@@ -22,7 +22,7 @@
 	</head>
 	<body>
 		<div class="sjsc-title2">
-			<h3 class="sjsc-t2l">详情页</h3>
+			<h3 class="sjsc-t2l">${card.cardName }详情页</h3>
 			<a href="cardAll.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
 		</div>
 		<div class="body" >
