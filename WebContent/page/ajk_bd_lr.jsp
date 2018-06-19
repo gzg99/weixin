@@ -50,8 +50,6 @@
 <input type="text" id="lrRelatetion"  /></P>
 <P><lable>&nbsp;&nbsp;&nbsp;住&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</lable>
 <input type="text"  id="userAddr" /></P>
-<P style="float:left;color:#ccc;wdith:80%">点击此处添加情况说明</P>
-
 <p class="bdbtn" onclick="add()" >
 提交申请
 </p>
