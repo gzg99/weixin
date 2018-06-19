@@ -31,8 +31,9 @@
 <h4 style="text-align:left;width:100%;float: left;">申请人信息</h4>
 <input type="hidden" id="cardPrice" value="${card.cardPrice }">
  <input type="hidden" id="cardName"  value="${card.cardName}"/>
-<P><lable>&nbsp;&nbsp;姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</lable><input type="text" id="userName" /></P>
-<P><lable>手机号&nbsp;&nbsp;&nbsp;</lable><input type="text"  id="userName" /></P>
+<P><lable>&nbsp;&nbsp;姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</lable>
+<input type="text" id="userName" /></P>
+<P><lable>手机号&nbsp;&nbsp;&nbsp;</lable><input type="text"  id="userPhone" /></P>
 
 <div class="c">
 
@@ -50,9 +51,7 @@
 <input type="text" id="lrRelatetion"  /></P>
 <P><lable>&nbsp;&nbsp;&nbsp;住&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</lable>
 <input type="text"  id="userAddr" /></P>
-<p class="bdbtn" onclick="add()" >
-提交申请
-</p>
+  <button class="drdd-btn" onclick="add()">提交申请</button>
 </div>
  <jsp:include page="footer5.jsp"></jsp:include>
 </div>
@@ -107,7 +106,7 @@ function add() {
 		success:function(rs){
 			var re = /^[0-9]+.?[0-9]*$/;
 			if(re.test(rs)&&rs!=0){
-				window.location.href='payCardOrder.html?id='+rs;
+				window.location.href='./cardAll.html';
 			}else{
 				alert("失败！");
 			}
