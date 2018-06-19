@@ -4,7 +4,8 @@
 	
 		<insert id="insert"  useGeneratedKeys="true" keyProperty="id"
 		 parameterType="com.yq.entity.CardOrder">
-			insert jdb_card_order(
+			insert jdb_card_order
+				<trim suffixOverrides="," prefix="(" suffix=")">
 			<if test="userName != null">
 				user_name,
 			</if>
@@ -33,21 +34,23 @@
 				status,
 				</if>
 			<if test="comment != null">
-				comment
+				comment,
 				</if>
 				<if test="lrName != null">
-			lr_name
+			lr_name,
 				</if>
 				<if test="lrPhone != null">
-			lr_phone
+			lr_phone,
 				</if>
 				<if test="lrSfzh != null">
-			lr_sfzh
+			lr_sfzh,
 				</if>
 				<if test="lrRelatetion != null">
-			lr_relatetion
+			lr_relatetion,
 				</if>
-			)values(
+			
+</trim>
+<trim suffixOverrides="," prefix="values(" suffix=")">
 			<if test="userName != null">
 				#{userName},
 			</if>
@@ -76,22 +79,22 @@
 				#{status},
 				</if>
 			<if test="comment != null">
-			#{comment}
+			#{comment},
 				</if>
 			
 			<if test="lrName != null">
-			#{lrName}
+			#{lrName},
 				</if>
 				<if test="lrPhone != null">
-			#{lrPhone}
+			#{lrPhone},
 				</if>
 				<if test="lrSfzh != null">
-			#{lrSfzh}
+			#{lrSfzh},
 				</if>
 				<if test="lrRelatetion != null">
-			#{lrRelatetion}
+			#{lrRelatetion},
 				</if>
-			)
+			</trim>
 		</insert>
 		
 		<delete id="delete" parameterType="java.lang.Long">

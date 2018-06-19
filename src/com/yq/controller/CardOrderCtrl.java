@@ -82,6 +82,7 @@ public class CardOrderCtrl {
 			float cardPrice, String lrSfzh,String lrPhone,String lrRelatetion) throws IOException {		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		CardOrder card = new CardOrder();
+//		card.setCardNum(cardNum);
 		card.setCardName(cardName);
 		card.setAddTime(sdf.format(new Date()));
 		card.setUserPhone(userPhone);
