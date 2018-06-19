@@ -29,19 +29,25 @@
     </div>
 	<c:forEach items="${cards}" var="card">
 		<div style="position:relative;margin-top:3%;width:100%;text-align:center">
-			<a href="ajkDetail.html?id=${card.cardId}"><img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>
+			<a href="ajkDetail.html?id=${card.cardId}">
+			<img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>
 		</div>
 	</c:forEach>
 	<div style="width:100%; height:200px;position: relative;margin-top:3%;">
-		<c:forEach items="${cards}" var="v">
 		<a href="ajkDetail.html?id=${v.cardId}">
+			<div class="left" style="margin-bottom:3%;">
+				<p><span class="title">365卡</span><img src="./images/ajk04.png" /></p>
+				<p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
+				<p style="clear:both;padding:5px">保洁每周一次</p>
+			</div>
+			</a>
+			<a href="ajkDetail.html?id=${v.cardId}">
 			<div class="left" style="margin-bottom:3%;">
 				<p><span class="title">${v.cardName}</span><img src="./images/ajk04.png" /></p>
 				<p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
 				<p style="clear:both;padding:5px">保洁每周一次</p>
 			</div>
 			</a>
-		</c:forEach>
 		<a href="ajk_bd.jsp"><p class="bdbtn">
 		  	线下卡片绑定
 		</p>

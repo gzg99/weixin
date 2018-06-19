@@ -23,15 +23,30 @@
 	<body>
 		<div class="sjsc-title2">
 			<h3 class="sjsc-t2l">${card.cardName }详情页</h3>
-			<a href="cardAll.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
 		</div>
+		
 		<div class="body" >
+		<img src="./images/ajk01.png" alt="" style="width:100%;padding-top: 11px;"/>
+		<p style="font-size:20px;padding:10px;">${card.cardName }</p>
+		<p style="color:red;font-size:20px;padding:10px;">¥${card.cardPrice }</p>
+		<div style="background:#ccc;width:100%;height:10px">
+		</div>
+		<div style="padding:5px 10px;">
+		<ul style="width:100%;text-align:left;display:flex">
+		<li style="float:left;padding-left:20px;flex:1"><span style="color:red">.</span>售后服务免费</li>
+		<li style="float:left;width:50%;flex:1"><span style="color:red">.</span>商城专享产品</li>
+		</ul>
+		<ul style="width:100%;clear:both;text-align:left;display:flex">
+		<li style="float:left;flex:1;padding-left:20px"><span style="color:red">.</span>定期折扣</li>
+		<li style="float:left;flex:1"><span style="color:red">.</span>免费安装维修</li>
+		</ul>
+		</div>
+		<div style="background:#ccc;width:100%;height:10px">
+		</div>
 			<img src="./images/ajk05.jpg"  style="width:100%"/>
-			<img src="./images/ajk06.jpg"  style="width:100%"/>
 <!-- 			<img src="./images/ajk07.jpg"  style="width:100%"/> -->
-			
 			<div style="text-align: center;">
-				<a class="drdd-btn" href="ajkBd.html?id=${card.cardId }" >
+				<a class="drdd-btn" href="ajkBd.html?id=${card.cardId }&type=${card.type }" >
 				  卡片申请
 				</a>
 			</div>
