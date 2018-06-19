@@ -99,7 +99,7 @@ height:30px;
         <div style="clear:both;"></div>
     </div>
     <input type="hidden" id="cardPrice" value="${card.cardPrice }">
-    <button class="drdd-btn" onclick="add()">确认付款</button>
+    <button class="drdd-btn" onclick="add()">绑定至本卡</button>
 	<jsp:include page="footer5.jsp"></jsp:include>
 
 </body>
