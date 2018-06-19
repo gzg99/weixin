@@ -589,7 +589,6 @@ ssjg-tit1
 	text-align: center;
 	line-height: 45px;
 	font-size: 20px;
-	border-bottom: 2px solid #bdb0a1;
 }
 .ui-yu-server> a > img{
 	display: inline-block;
@@ -675,14 +674,14 @@ ssjg-tit1
 	width: 20px;
 }
 .yu-title{
-	padding-left: 150px;
+	padding-left: 105px;
 	position: relative;
 	height: 70px;
 	overflow: hidden;
 }
 .yu-title>img{
 	position: absolute;
-	left: 20px;
+	left: 25px;
 	width: 50px;
 }
 .yu-title>.swiper-container{

@@ -85,12 +85,12 @@
                 </ul>
             </div>
 
-            <div class="yu-title" style="padding-top:10px;">
+            <div class="yu-title" style="padding-top:10px;border-bottom: 2px solid #bdb0a1;">
                 <img src="images/ad_title.png" alt="">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                       <c:forEach items="${adList}" var="ad">
-                        <div class="swiper-slide"><h4>${ad.name}</h4></br>${ad.content}</div>
+                        <div class="swiper-slide">${ad.name}</br>${ad.content}</div>
                       </c:forEach>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     <div style="clear:both;"></div>
                 </ul>
             </div>
-            <h3 class="ui-yu-server">便民服务<a> <img src="images/more.png" alt=""></a></h3>
+            <h3 class="ui-yu-server" style="border-bottom: 2px solid #bdb0a1;">便民服务<a> <img src="images/more.png" alt=""></a></h3>
             <ul class="ui-yu-express">
                 <li>
                     <img src="images/express.png" alt="">
