@@ -20,6 +20,43 @@ public class CardOrder {
 	
 	private String updateTime;
 	
+	private String lrName;
+	private String lrPhone;
+	private String lrSfzh;
+	public String getLrName() {
+		return lrName;
+	}
+
+	public void setLrName(String lrName) {
+		this.lrName = lrName;
+	}
+
+	public String getLrPhone() {
+		return lrPhone;
+	}
+
+	public void setLrPhone(String lrPhone) {
+		this.lrPhone = lrPhone;
+	}
+
+	public String getLrSfzh() {
+		return lrSfzh;
+	}
+
+	public void setLrSfzh(String lrSfzh) {
+		this.lrSfzh = lrSfzh;
+	}
+
+	public String getLrRelatetion() {
+		return lrRelatetion;
+	}
+
+	public void setLrRelatetion(String lrRelatetion) {
+		this.lrRelatetion = lrRelatetion;
+	}
+
+	private String lrRelatetion;
+	
 	//是否付款 0：未付 1：已付款
 	private Integer status;
 	

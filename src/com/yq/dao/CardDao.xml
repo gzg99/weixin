@@ -46,6 +46,7 @@
 			card_price as cardPrice,
 			card_detail as cardDetail,
 			add_time as addTime,
+			type,
 			update_time as updateTime 
 		from 
 			jdb_card 

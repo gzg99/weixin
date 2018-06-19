@@ -5,27 +5,92 @@
 		<insert id="insert"  useGeneratedKeys="true" keyProperty="id"
 		 parameterType="com.yq.entity.CardOrder">
 			insert jdb_card_order(
+			<if test="userName != null">
 				user_name,
+			</if>
+			<if test="cardNum != null">
 				card_num,
+			</if>
+			<if test="cardName != null">	
 				card_name,
+			</if>
+			<if test="cardPrice != null">
 				card_price,
+			</if>
+			<if test="userPhone != null">
 				user_phone,
+			</if>
+			<if test="userAddr != null">
 				user_addr,
+			</if>
+			<if test="addTime != null">
 				add_time,
+			</if>
+			<if test="updateTime != null">
 				update_time,
+			</if>
+			<if test="status != null">
 				status,
+				</if>
+			<if test="comment != null">
 				comment
+				</if>
+				<if test="lrName != null">
+			lr_name
+				</if>
+				<if test="lrPhone != null">
+			lr_phone
+				</if>
+				<if test="lrSfzh != null">
+			lr_sfzh
+				</if>
+				<if test="lrRelatetion != null">
+			lr_relatetion
+				</if>
 			)values(
+			<if test="userName != null">
 				#{userName},
+			</if>
+			<if test="cardNum != null">
 				#{cardNum},
-				#{cardName},
+			</if>
+			<if test="cardName != null">	
+					#{cardName},
+			</if>
+			<if test="cardPrice != null">
 				#{cardPrice},
+			</if>
+			<if test="userPhone != null">
 				#{userPhone},
+			</if>
+			<if test="userAddr != null">
 				#{userAddr},
+			</if>
+			<if test="addTime != null">
 				#{addTime},
+			</if>
+			<if test="updateTime != null">
 				#{updateTime},
+			</if>
+			<if test="status != null">
 				#{status},
-				#{comment}
+				</if>
+			<if test="comment != null">
+			#{comment}
+				</if>
+			
+			<if test="lrName != null">
+			#{lrName}
+				</if>
+				<if test="lrPhone != null">
+			#{lrPhone}
+				</if>
+				<if test="lrSfzh != null">
+			#{lrSfzh}
+				</if>
+				<if test="lrRelatetion != null">
+			#{lrRelatetion}
+				</if>
 			)
 		</insert>
 		

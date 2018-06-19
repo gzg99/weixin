@@ -168,11 +168,18 @@ public class CardCtrl {
 	}
 	
 	@RequestMapping(value = "/page/ajkBd.html")
-	public ModelAndView ajkBd(Long id) {
+	public ModelAndView ajkBd(Long id,int type) {
 		Card card = cardService.getCardById(id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("card", card);
-		mv.setViewName("page/ajk_bd");
+		if(type==1)
+		{
+			mv.setViewName("page/ajk_bd_de");
+		}else if(type==2)
+		{
+			mv.setViewName("page/ajk_bd_lr");
+		}
+		
 		return mv;
 	}
 	

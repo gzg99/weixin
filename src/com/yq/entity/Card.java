@@ -15,6 +15,16 @@ public class Card extends Page{
 	private String addTime;
 	
 	private String updateTime;
+	
+	private  int type;
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
 
 	public Long getCardId() {
 		return cardId;

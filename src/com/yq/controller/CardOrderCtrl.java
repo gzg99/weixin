@@ -77,6 +77,27 @@ public class CardOrderCtrl {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "page/cardOrderInsertlr.html")
+	public String cardInsertlr(Long userPhone,String userAddr,String cardName, String lrName, 
+			float cardPrice, String lrSfzh,String lrPhone,String lrRelatetion) throws IOException {		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		CardOrder card = new CardOrder();
+		card.setCardName(cardName);
+		card.setAddTime(sdf.format(new Date()));
+		card.setUserPhone(userPhone);
+		card.setUserAddr(userAddr);
+		card.setLrName(lrName);
+		card.setUpdateTime(sdf.format(new Date()));
+		card.setCardPrice(cardPrice);
+		card.setStatus(0);
+		card.setLrSfzh(lrSfzh);
+		card.setLrPhone(lrPhone);
+		card.setLrName(lrName);
+		card.setLrRelatetion(lrRelatetion);
+		return service.insert(card) + "";
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "main/cardOrderUpdate.html")
 	public String cardOrderUpdate(Long cardId,String cardName, String cardImg, Float cardPrice, String cardDetail) {
 		CardOrder card = new CardOrder();
