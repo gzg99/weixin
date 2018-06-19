@@ -114,6 +114,16 @@
 	    		id=#{id}
 	    </update>
 	    
+	    
+	     <update id="updatebyphone" parameterType="com.yq.entity.CardOrder">
+	    	update 
+	    		jdb_card_order 
+	    	set 
+	    		card_num=#{cardNum}
+	    	where 
+	    		user_phone=#{userPhone}
+	    </update>
+	    
 	    <select id="findById" resultType="com.yq.entity.CardOrder">
 	    	select 
 	    		id as id,
