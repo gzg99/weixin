@@ -55,7 +55,7 @@
 .qhdj-ul1 li textarea{ width:94%; padding:10px 3% 0; font-size:14px; color:#858585; border:0;}
 
 .qhdj-tijiao{ background:#EBEBEB; width:100%; height:37px; position:fixed; left:0; bottom:0; text-align:center;}
-.qhdj-tijiao a{ display:block; height:35px; line-height:35px; border:1px solid #BFBFBF; font-size:16px; color:#ff3c00;}
+.qhdj-tijiao a{ display:block; height:35px; line-height:35px; border:1px solid #BFBFBF; font-size:16px; color:#f29133;}
 
 /*************我想要手机商城账号设置*********************/
 .zhsz-ul1{ background:#fff;}
@@ -77,9 +77,9 @@
 .ipt-box .bj-ipt2{ position:absolute; top:0; left:0; opacity:0;}
 
 /*************我想要手机商城搜索*********************/
-.sjsc-title2{ position:relative; width:100%; height:44px; background:#ffffff; border-bottom:1px solid #ff3c00; text-align:center;}
-.sjsc-title2 .sjsc-t2l{line-height:44px; font-size:16px; color:#ff3c00; font-weight:normal;}
-.sjsc-title2 .sjsc-t2r{ width:44px; height:44px; line-height:44px; text-align:center; font-size:19px; color:#ff3c00; font-family:"宋体"; position:absolute; top:0; left:0; font-weight:bold;}
+.sjsc-title2{ position:relative; width:100%; height:44px; background:#ffffff; border-bottom:1px solid #f29133; text-align:center;}
+.sjsc-title2 .sjsc-t2l{line-height:44px; font-size:16px; color:#f29133; font-weight:normal;}
+.sjsc-title2 .sjsc-t2r{ width:44px; height:44px; line-height:44px; text-align:center; font-size:19px; color:#f29133; font-family:"宋体"; position:absolute; top:0; left:0; font-weight:bold;}
 
 .sc-search{ width:100%; background:#fFF;}
 .sc-search .search-box{ padding:5px; border-bottom:1px solid #E9E9E9;}
@@ -165,7 +165,7 @@
 .drdd-ul1 li{ height:30px; line-height:30px; color:#333; font-size:12px; border-top:1px solid #eee; padding:0 10px;}
 .drdd-ul1 li input{ position:relative; top:2px; margin-right:5px;}
 
-.drdd-btn{ display:block; border-radius:3px; width:96%; height:30px; font-size:14px; color:#fff; border:0; background:#ff3c00; margin:50px auto;}
+.drdd-btn{ display:block; border-radius:3px; width:96%; height:30px; font-size:14px; color:#fff; border:0; background:#f29133; margin:50px auto;}
 
 /*************我想要手机商城确认订单1*********************/
 .drdd-info6{ background:#fff; min-height:55px; padding:0 5px; border-bottom:1px solid #eee;margin-top:3px;}
@@ -191,7 +191,7 @@
 .gwc-ft{ width:100%; padding:8px 0; background:#E4E4E4; position:fixed; left:0; bottom:49px;}
 .gwc-ft p{ float:left; line-height:30px; font-size:12px; color:#4A4A4A; margin-left:10px;}
 .gwc-ft p span{ color:#7F7F7F;}
-.gwc-ft button{ display:block; width:55px; height:30px; background:#ff3c00; border:0; font-size:12px; color:#fff; float:right; border-radius:5px; margin-right:10px;}
+.gwc-ft button{ display:block; width:55px; height:30px; background:#f29133; border:0; font-size:12px; color:#fff; float:right; border-radius:5px; margin-right:10px;}
 
 /*************我想要手机商城收货地址*********************/
 .drdd-info7{ background:#fff; height:55px; padding:0 5px; border-bottom:1px solid #eee;}
@@ -203,7 +203,7 @@
 .drdd-info7 dd a{ line-height:45px; font-family:"宋体"; font-size:16px; color:#333; font-weight:bold;}
 
 /*************我想要手机商城新增收货地址*********************/
-.sjsc-btn1{ background:#ff3c00; font-size:12px; color:#fff; border:0; border-radius:3px; padding:3px 10px; margin:11px 10px 0 0;}
+.sjsc-btn1{ background:#f29133; font-size:12px; color:#fff; border:0; border-radius:3px; padding:3px 10px; margin:11px 10px 0 0;}
 
 .xzdz-ul1{ background:#fff;}
 .xzdz-ul1 li{line-height:35px; padding-left:10px; margin:0 10px; border-bottom:1px solid #D1D1D1;}
@@ -261,12 +261,12 @@
 .qu-tu1 .atu2{ display:none;}
 .qu-tu1 img{ display:block;   width:100%; height:100%;  /*  width: 22px; height: 22px; */}
 .quanbu-ul1 li .qu-ul1a{ font-size:13px; color:#353535;}
-.quanbu-ul1 .current a{ color:#ff3c00;}
+.quanbu-ul1 .current a{ color:#f29133;}
 .quanbu-ul1 .current .atu1{ display:none;}
 .quanbu-ul1 .current .atu2{ display:block;}
 
 .quanbu-ul11 li .qu-ul1a{ font-size:13px; color:#353535;}
-.quanbu-ul11 .current a{ color:#ff3c00;}
+.quanbu-ul11 .current a{ color:#f29133;}
 .quanbu-ul11 .current .atu1{ display:none;}
 .quanbu-ul11 .current .atu2{ display:block;}
 
@@ -308,9 +308,9 @@ ssjg-tit1
 /*************我想要手机商城我的订单*********************/
 .quanbu-title2{ background:#fff; height:30px;border-bottom:1px solid #EDEDED;}
 .quanbu-title2 li{ float:left; width:25%; height:30px; line-height:30px; text-align:center;}
-.quanbu-title2 li a{ font-size:14px; color:#ff3c00;}
-.quanbu-title2 .current{ border-bottom:1px solid #ff3c00;}
-.quanbu-title2 .current a{ color:#ff3c00;}
+.quanbu-title2 li a{ font-size:14px; color:#f29133;}
+.quanbu-title2 .current{ border-bottom:1px solid #f29133;}
+.quanbu-title2 .current a{ color:#f29133;}
 
 .my-dd{ width:100%; padding-bottom:81px; margin-top:5px;}
 .my-info{ width:100%;}
@@ -448,8 +448,8 @@ ssjg-tit1
 .spxq-ul2{ height:30px; /* border-bottom:1px solid #e6e6e6; background:#fff; */ margin-bottom:5px;}
 .spxq-ul2 li{ float:left; width:33%; text-align:center; height:30px; line-height:30px;}
 .spxq-ul2 li a{ font-size:16px; color:#666;}
-.spxq-ul2 .current{ /* border-bottom:1px solid #ff3c00; */}
-.spxq-ul2 .current a{ color:#ff3c00;}
+.spxq-ul2 .current{ /* border-bottom:1px solid #f29133; */}
+.spxq-ul2 .current a{ color:#f29133;}
 .spxq-info2 .spxq-box{ width:100%;}
 .spxq-box .spxq-k1{ width:100%; text-align:center;}
 .spxq-k1 img{ display:inline-block; width:100%;}
@@ -498,8 +498,8 @@ ssjg-tit1
 
 .spxq-info3{ width:100%; height:40px; background-color:#f9f8f2; position:fixed; left:0; bottom:0;}
 .spxq-info3 .if3-btnn{ width:38%; height:30px; margin-left:2%; font-size:14px;border-radius:5px; margin-top:5px;}
-.spxq-info3 .if3-btn1{ color:#fff; border:0; background:#ff3c00;}
-.spxq-info3 .if3-btn2{ border:1px solid #ff3c00; background:#fff; color:#ff3c00;}
+.spxq-info3 .if3-btn1{ color:#fff; border:0; background:#f29133;}
+.spxq-info3 .if3-btn2{ border:1px solid #f29133; background:#fff; color:#f29133;}
 .spxq-info3 .if3-aa{ width:18%; /* margin-left:2%; */ text-align:center;}
 .if3-aa img{ display:inline-block; height:35px; margin-top:3px;}
 

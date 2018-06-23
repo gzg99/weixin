@@ -18,7 +18,7 @@
 <body id='wrap'>
 	
     <div class="quanbu-top" style="text-align:center;">
-    <span style="line-height: 25px;font-size: 16px;color: #ff3c00">家庭直购</span>
+    <span style="line-height: 25px;font-size: 16px;color: #f29133">家庭直购</span>
     	<a href="javascript:history.go(-1)" class="qb-tleft f-l"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-left: 5px"/> </a>
         <div class="qb-tright f-r">
         	<a href="secList.html"><img src="images/sjsc-13.png"></a>
@@ -50,7 +50,7 @@
             <div style="clear:both;"></div>
         </ul><br><br>
     </div>
-     <jsp:include page="footer1.jsp"></jsp:include>
+     <jsp:include page="footer5.jsp"></jsp:include>
     
     <script type="text/javascript">
 	function add(goods_id,goods_name,goods_img,goods_spe,goods_price){

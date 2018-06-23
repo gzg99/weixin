@@ -54,7 +54,7 @@
        
         <div style="clear:both;"></div>
     </div>
-    <jsp:include page="footer3.jsp"></jsp:include>
+    <jsp:include page="footer5.jsp"></jsp:include>
     <script type="text/javascript">
     function plus(goods_id,goods_price,sort){
     	var goods_num1=$('#goods_num').text();

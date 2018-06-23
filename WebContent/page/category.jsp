@@ -77,7 +77,7 @@ document.body.addEventListener('touchmove',function(e){
                 </ul>
        
     </div>
-    <jsp:include page="footer2.jsp"></jsp:include>
+    <jsp:include page="footer5.jsp"></jsp:include>
     <!-- <script type="text/javascript">
     	function stCtg(){
     		var title ='....';

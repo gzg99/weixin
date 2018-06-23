@@ -49,7 +49,7 @@
             <div style="clear:both;"></div>
         </ul><br><br>
     </div>
-     <jsp:include page="footer1.jsp"></jsp:include>
+     <jsp:include page="footer5.jsp"></jsp:include>
     
     <script type="text/javascript">
 	function add(goods_id,goods_name,goods_img,goods_spe,goods_price){
