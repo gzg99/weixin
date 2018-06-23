@@ -46,11 +46,27 @@
 			card_price as cardPrice,
 			card_detail as cardDetail,
 			add_time as addTime,
+			type,
 			update_time as updateTime 
 		from 
 			jdb_card 
 		where 
 			card_id=#{id}
+    </select>
+    
+    <select id="getCardByName" resultType="com.yq.entity.Card">
+    	select 
+    		card_id as cardId,
+			card_name as cardName,
+			card_img as cardImg,
+			card_price as cardPrice,
+			card_detail as cardDetail,
+			add_time as addTime,
+			update_time as updateTime 
+		from 
+			jdb_card 
+		where 
+			card_name=#{cardName}
     </select>
     
     <select id="getAllCard" resultType="com.yq.entity.Card">
@@ -61,7 +77,8 @@
 			card_price as cardPrice,
 			card_detail as cardDetail,
 			add_time as addTime,
-			update_time as updateTime 
+			update_time as updateTime ,
+			type 
 		from 
 			jdb_card
 			order by add_time desc 

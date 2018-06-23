@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -26,7 +27,12 @@
 		</div>
 		
 		<div class="body" >
+		<c:if test="${card.type==1}">
 		<img src="./images/ajk01.png" alt="" style="width:100%;padding-top: 11px;"/>
+		</c:if>
+		<c:if test="${card.type==2}">
+		<img src="./images/ajk03.png" alt="" style="width:100%;padding-top: 11px;"/>
+		</c:if>
 		<p style="font-size:20px;padding:10px;">${card.cardName }</p>
 		<p style="color:red;font-size:20px;padding:10px;">¥${card.cardPrice }</p>
 		<div style="background:#ccc;width:100%;height:10px">

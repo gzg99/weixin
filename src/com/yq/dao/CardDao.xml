@@ -77,7 +77,8 @@
 			card_price as cardPrice,
 			card_detail as cardDetail,
 			add_time as addTime,
-			update_time as updateTime 
+			update_time as updateTime ,
+			type 
 		from 
 			jdb_card
 			order by add_time desc 

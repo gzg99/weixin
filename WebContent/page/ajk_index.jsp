@@ -30,7 +30,12 @@
 	<c:forEach items="${cards}" var="card">
 		<div style="position:relative;margin-top:3%;width:100%;text-align:center">
 			<a href="ajkDetail.html?id=${card.cardId}">
+			<c:if test="${card.type=='1'}">
 			<img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>
+			</c:if>
+			<c:if test="${card.type=='2'}">
+			<img src="./images/ajk03.png" style="width:80%;margin:auto;"/></a>
+			</c:if>
 		</div>
 	</c:forEach>
 	<div style="width:100%; height:200px;position: relative;margin-top:3%;">

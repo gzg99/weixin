@@ -163,7 +163,13 @@ public class CardCtrl {
 		Card card = cardService.getCardById(id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("card", card);
-		mv.setViewName("page/ajk_detail");
+		if(card.getType()==1)
+		{
+			mv.setViewName("page/ajk_detail");
+		}else if(card.getType()==2){
+			mv.setViewName("page/ajk_detail");
+		}
+		
 		return mv;
 	}
 	
