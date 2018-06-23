@@ -61,7 +61,7 @@ public class CardOrderCtrl {
 	@ResponseBody
 	@RequestMapping(value = "page/cardOrderInsert.html")
 	public String cardInsert(Long userPhone,String userAddr,String cardName, Long cardNum, 
-			float cardPrice, String comment) throws IOException {		
+			float cardPrice, String comment,String type) throws IOException {		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
@@ -72,6 +72,8 @@ public class CardOrderCtrl {
 		card.setUpdateTime(sdf.format(new Date()));
 		card.setCardPrice(cardPrice);
 		card.setStatus(0);
+		card.setType(type);
+		
 		card.setComment(comment);
 		return service.insert(card) + "";
 	}
