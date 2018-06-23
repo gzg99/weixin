@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*CSS 初始化*/
 body,v,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td{margin:0;padding:0;}
-body{font-size:16px;font-family:"Microsoft Yahei",Heiti,arial,helvetica,sans-serif!important;color:#333;min-width:320px;position:relative;background:#F3F3F3;}
+body{font-size:16px;font-family:"Microsoft Yahei",Heiti,arial,helvetica,sans-serif!important;color:#333;min-width:320px;position:relative;}
 fieldset,img{border:0;}
 img{display:block;}
 ol,ul{list-style:none;}
