@@ -94,7 +94,7 @@ function add() {
 		url:'cardOrderInsert.html',
 		type:'post',
 		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+cardName+"&cardPrice="+
-			cardPrice,
+			cardPrice+"&type=1",
 		success:function(rs){
 			var re = /^[0-9]+.?[0-9]*$/;
 			if(re.test(rs)&&rs!=0){

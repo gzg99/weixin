@@ -51,6 +51,7 @@
 <input type="text" id="lrRelatetion"  /></P>
 <P><lable>&nbsp;&nbsp;&nbsp;住&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</lable>
 <input type="text"  id="userAddr" /></P>
+<input type="hidden"  id="type" value="2" />
   <button class="drdd-btn" onclick="add()">提交申请</button>
 </div>
  <jsp:include page="footer5.jsp"></jsp:include>
@@ -102,7 +103,7 @@ function add() {
 		url:'cardOrderInsertlr.html',
 		type:'post',
 		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+cardName+"&lrName="+lrName+"&cardPrice="+
-			cardPrice+"&lrSfzh="+lrSfzh+"&lrPhone="+lrPhone+"&lrRelatetion="+lrRelatetion,
+			cardPrice+"&lrSfzh="+lrSfzh+"&lrPhone="+lrPhone+"&lrRelatetion="+lrRelatetion+"&type=2",
 		success:function(rs){
 			var re = /^[0-9]+.?[0-9]*$/;
 			if(re.test(rs)&&rs!=0){

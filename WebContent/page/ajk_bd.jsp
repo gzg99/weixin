@@ -141,7 +141,7 @@ function add() {
 		return;
 	}
 	$.ajax({
-		url:'cardOrderInsert.html',
+		url:'updatebyphone.html',
 		type:'post',
 		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+cardName+"&cardNum="+cardNum+"&cardPrice="+
 			cardPrice+"&comment="+comment,
