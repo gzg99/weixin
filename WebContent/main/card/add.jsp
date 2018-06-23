@@ -74,6 +74,16 @@
 						</div>
 			</div><br>
 			<div class="row cl">
+			
+						<label class="form-label col-2">类别：</label>
+						<div class="formControls col-10">
+						<select id="type">
+						<option value="1">365安居卡</option>
+						<option value="2">老人卡</option>
+						</select>
+						</div>
+			</div><br>
+			<div class="row cl">
 				<label class="form-label col-2">图片：</label>
 				<div class="formControls col-10">
 					<input type="file" id="file" name="file" value="" class="input-text" style="width: 80%" onchange="upload()">
@@ -115,7 +125,7 @@
 		card.cardImg = $('#filepath').val();
 		card.cardPrice = $('#card_price').val();
 		card.cardDetail = $('#card_detail').val();
-		
+		card.type=$("#type").val();
 		$.ajax({
 			url:'cardInsert.html',
 			type:'post',

@@ -44,13 +44,14 @@ public class CardCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "main/cardInsert.html")
-	public String cardInsert(String cardName, String cardImg, Float cardPrice, String cardDetail) {
+	public String cardInsert(String cardName, String cardImg, Float cardPrice, String cardDetail,int type) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Card card = new Card();
 		card.setCardName(cardName);
 		card.setCardImg(cardImg);
 		card.setCardPrice(cardPrice);
 		card.setCardDetail(cardDetail);
+		card.setType(type);
 		card.setAddTime(sdf.format(new Date()));
 		card.setUpdateTime(sdf.format(new Date()));
 		return cardService.insert(card) + "";

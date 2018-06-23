@@ -9,7 +9,8 @@
 			card_price,
 			card_detail,
 			add_time,
-			update_time 
+			update_time ,
+			type
 		)values(
 			#{cardId},
 			#{cardName},
@@ -17,7 +18,8 @@
 			#{cardPrice},
 			#{cardDetail},
 			#{addTime},
-			#{updateTime}
+			#{updateTime},
+			#{type}
 		)
     </insert>
     
