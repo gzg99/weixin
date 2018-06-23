@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
 import com.yq.entity.Card;
-import com.yq.entity.Goods;
 import com.yq.service.CardService;
 import com.yq.util.PageUtil;
 
@@ -119,7 +117,6 @@ public class CardCtrl {
 		try {
 			Card card = new Card();
 			List<Card> list = cardService.getAllCard(card);
-			ModelAndView ml = new ModelAndView();
 			JSONArray jsonStrs = JSONArray.fromObject(list);
 			response.setContentType("text/html;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");

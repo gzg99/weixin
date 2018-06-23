@@ -3,7 +3,6 @@ package com.yq.controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,17 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.weixin.entity.WxSetting;
 import com.weixin.pay.action.NotifyServlet;
-import com.weixin.pay.action.TopayServlet;
 import com.weixin.pay.util.GetWxOrderno;
 import com.weixin.pay.util.RequestHandler;
 import com.weixin.pay.util.Sha1Util;
@@ -34,7 +29,6 @@ import com.weixin.pay.util.TenpayUtil;
 import com.weixin.util.WxUtil;
 import com.yq.entity.Card;
 import com.yq.entity.CardOrder;
-import com.yq.entity.Order;
 import com.yq.service.CardOrderService;
 import com.yq.service.CardService;
 
@@ -180,7 +174,6 @@ public class CardOrderCtrl {
 	}
 	
 	public static String getPackage(CardOrder order,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
-		AbstractApplicationContext ctx   = new ClassPathXmlApplicationContext(new String []{"classpath:applicationContext.xml"});
 		// 商品描述根据情况修改
 		String goods_name = order.getCardName();
 		String body = goods_name;
