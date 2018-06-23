@@ -48,7 +48,7 @@ public class ButtonController {
 			else{
 				button.setSuper_id(id);
 				button.setAdd_time(sf.format(new Date()));
-				rs  =	buttonService.insert(button);
+				rs = buttonService.insert(button);
 			}
 		}else{
 			//button.setSuper_id(id);
@@ -57,7 +57,7 @@ public class ButtonController {
 				message="button is already >= 5";
 			}else{
 				button.setAdd_time(sf.format(new Date()));
-				rs  =	buttonService.insert(button);
+				rs = buttonService.insert(button);
 			}
 		}
 		if(rs==-1){
@@ -70,7 +70,7 @@ public class ButtonController {
 	@ResponseBody
 	@RequestMapping(value="/main/buttonUpdate.html")
 	public String update(Button button){
-		int  rs  =	buttonService.updateByPrimaryKeySelective(button);
+		int rs = buttonService.updateByPrimaryKeySelective(button);
 		if(rs==-1){
 			map.put("message","update button is error!");
 		}
@@ -81,7 +81,7 @@ public class ButtonController {
 	@ResponseBody
 	@RequestMapping(value="/main/buttonSort.html")
 	public String sort(Button button){
-		int  rs  =	buttonService.sort(button);
+		int rs = buttonService.sort(button);
 		if(rs==-1){
 			map.put("message","sort is error!");
 		}
@@ -91,7 +91,7 @@ public class ButtonController {
 	@ResponseBody
 	@RequestMapping(value="/main/buttonDelete.html")
 	public String delete(Button button){
-		int  rs  = 0 ;
+		int rs = 0 ;
 		String message="";
 		if(button.getLevel()==1){
 			button.setLevel(2);
@@ -100,10 +100,10 @@ public class ButtonController {
 				rs = -5 ;
 				message = "此主菜单下有子菜单，请先删除该下子菜单!";
 			}else{
-				rs  =	buttonService.deleteByPrimaryKey(button.getId());
+				rs = buttonService.deleteByPrimaryKey(button.getId());
 			}
 		}else{
-			rs  =	buttonService.deleteByPrimaryKey(button.getId());
+			rs = buttonService.deleteByPrimaryKey(button.getId());
 		}
 		
 		if(rs==-1){
@@ -124,11 +124,11 @@ public class ButtonController {
 	@RequestMapping(value="/main/buttonList.html")
 	public ModelAndView getList(Button button,ModelAndView ml){
 		button.setLevel(1);
-		List<Button> mainBtn =	buttonService.select(button);
+		List<Button> mainBtn = buttonService.select(button);
 		for(int i = 0;i < mainBtn.size();i++){
 			button.setLevel(2);
 			button.setSuper_id(mainBtn.get(i).getId());
-			List<Button> btn =	buttonService.select(button);
+			List<Button> btn = buttonService.select(button);
 			map.put("btn"+i, btn);
 		}
 		map.put("mainBtn", mainBtn);
@@ -149,12 +149,12 @@ public class ButtonController {
 	@RequestMapping(value = "/main/cMenu.html")
 	public String cMenu(Button button){
 		button.setLevel(1);
-		List<Button> mainBtn =	buttonService.select(button);
+		List<Button> mainBtn = buttonService.select(button);
 		button.setLevel(2);
 		Map<String,Object> map = new HashMap<String, Object>();
 		for(int i = 0;i < mainBtn.size();i++){
 			button.setSuper_id(mainBtn.get(i).getId());
-			List<Button> btn =	buttonService.select(button);
+			List<Button> btn = buttonService.select(button);
 			List<Object> vl = new ArrayList<Object>();
 			if(btn.size()==0){
 				mainBtn.get(i).setUrl(mainBtn.get(i).getValue());
