@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title></title>
+<title>收货地址</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -14,7 +14,6 @@
 <body>
 
     <div class="sjsc-title2">
-    	<h3 class="sjsc-t2l">收货地址</h3>
         <a href="goodsOrderSure.html?addr_id=${addr_id}&cps_id=${cps_id}&goods_id=${goods_id }&goods_num=${goods_num}" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
     <c:forEach items="${list }" var="list" varStatus="s">

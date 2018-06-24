@@ -22,7 +22,6 @@
 </head>
 <body>
    <div class="sjsc-title2">
-    	<h3 class="sjsc-t2l">卡券申请</h3>
         <a href="ajkDetail.html?id=${card.cardId}" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
 <div  class="body" >

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>安居卡首页</title>
+<title>卡券列表</title>
  <link rel="stylesheet" type="text/css" href="css/showTip.css">
             <link rel="stylesheet" href="css/search.css">
             <link rel="stylesheet" type="text/css" href="css/swiper.css">
@@ -24,7 +24,6 @@
 <body>
 <div class="body">
 	<div class="sjsc-title2">
-    	<h3 class="sjsc-t2l">卡券列表</h3>
         <a href="index.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
 	<c:forEach items="${cards}" var="card">
