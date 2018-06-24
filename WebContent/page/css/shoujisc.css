@@ -165,7 +165,7 @@
 .drdd-ul1 li{ height:30px; line-height:30px; color:#333; font-size:12px; border-top:1px solid #eee; padding:0 10px;}
 .drdd-ul1 li input{ position:relative; top:2px; margin-right:5px;}
 
-.drdd-btn{ display:block; border-radius:3px; width:96%; height:30px; font-size:14px; color:#fff; border:0; background:#ff3c00; margin:50px auto;}
+.drdd-btn{ line-height: 30px;display:block; border-radius:3px; width:96%; height:30px; font-size:14px; color:#fff; border:0; background:#ff3c00; margin:50px auto;}
 
 /*************我想要手机商城确认订单1*********************/
 .drdd-info6{ background:#fff; min-height:55px; padding:0 5px; border-bottom:1px solid #eee;margin-top:3px;}
