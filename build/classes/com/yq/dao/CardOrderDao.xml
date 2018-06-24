@@ -48,6 +48,9 @@
 				<if test="lrRelatetion != null">
 			lr_relatetion,
 				</if>
+				<if test="type != null">
+			type,
+				</if>
 			
 </trim>
 <trim suffixOverrides="," prefix="values(" suffix=")">
@@ -93,6 +96,9 @@
 				</if>
 				<if test="lrRelatetion != null">
 			#{lrRelatetion},
+				</if>
+				<if test="type != null">
+			#{type},
 				</if>
 			</trim>
 		</insert>
