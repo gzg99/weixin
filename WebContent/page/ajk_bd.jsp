@@ -30,7 +30,8 @@ height:30px;
 	
     <div class="sjsc-title2">
     	<h3 class="sjsc-t2l">卡券申请</h3>
-        <a href="ajkDetail.html?id=${card.cardId}" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
+        <a href="cardAll.html" class="sjsc-t2r">
+        <img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     	<div class="head">
 			<div class="left">
 				<img src="./images/ajk01.png"  style="height:100px;float:right; width: 100px;"/>
