@@ -48,7 +48,8 @@
 			</div>
 			</a>
 			</c:forEach>
-		<a href="ajk_bd.jsp"><p class="bdbtn">
+		<a href="ajk_bd.jsp">
+		<p class="bdbtn">
 		  	线下卡片绑定
 		</p>
 		</a>  
