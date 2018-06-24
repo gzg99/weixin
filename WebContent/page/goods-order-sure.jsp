@@ -28,7 +28,6 @@ $(function(){
 <body id="wrap">
 	
     <div class="sjsc-title2">
-    	<h3 class="sjsc-t2l">订单</h3>
         <a href="orderList.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
      </div>
      <input type="hidden" value="${addr_id}" id='addr_id'>
@@ -73,8 +72,8 @@ $(function(){
     	<li>
         	<p class="xzdz-p1 f-l">详细地址</p>
         	<p>
-        		<select id="province" name="province"  lang="16" class="input-text" style="width: 20%"></select>
-    			<select id="city" name="city" lang="1"  class="input-text" style="width: 20%"></select>
+        		<select id="province" name="province" lang="23" class="input-text" style="width: 20%"></select>
+    			<select id="city" name="city" lang="2" class="input-text" style="width: 20%"></select>
     			<select id="area" name="area" lang="0" class="input-text" style="width: 20%"></select>
     		</p>
             <input type="text" placeholder="具体到街道门牌信息" class="xzdz-ipt1 f-l" id="addr_name" />

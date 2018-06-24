@@ -3,7 +3,6 @@ package com.yq.controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,25 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.weixin.entity.WxSetting;
 import com.weixin.pay.action.NotifyServlet;
-import com.weixin.pay.action.TopayServlet;
 import com.weixin.pay.util.GetWxOrderno;
 import com.weixin.pay.util.RequestHandler;
 import com.weixin.pay.util.Sha1Util;
 import com.weixin.pay.util.TenpayUtil;
-import com.weixin.service.WxSettingService;
+import com.weixin.util.WxUtil;
 import com.yq.entity.Card;
 import com.yq.entity.CardOrder;
-import com.yq.entity.Order;
 import com.yq.service.CardOrderService;
 import com.yq.service.CardService;
 
@@ -180,10 +174,6 @@ public class CardOrderCtrl {
 	}
 	
 	public static String getPackage(CardOrder order,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
-		AbstractApplicationContext ctx   = new ClassPathXmlApplicationContext(new String []{"classpath:applicationContext.xml"});
-		WxSettingService wxSettingService =(WxSettingService)ctx.getBean("wxSettingService") ;
-		WxSetting wxSetting  =  wxSettingService.selectByPrimaryKey(1);
-		
 		// 商品描述根据情况修改
 		String goods_name = order.getCardName();
 		String body = goods_name;
@@ -192,7 +182,7 @@ public class CardOrderCtrl {
 		int price = (int) (money*100);
 		String totalFee = price+"";
 		String openId = (String) session.getAttribute("oppen_id");
-		String notify_url = wxSetting.getLink()+"/page/noticeCardOrder.html";
+		String notify_url = WxUtil.link + "/page/noticeCardOrder.html";
 		String currTime = TenpayUtil.getCurrTime();
 		// 8位日期
 		String strTime = currTime.substring(8, currTime.length());
@@ -202,7 +192,7 @@ public class CardOrderCtrl {
 		String strReq = strTime + strRandom;
 
 		// 商户号
-		String mch_id = wxSetting.getPartner();
+		 String mch_id = "1293224901";
 		// 随机数
 		String nonce_str = strReq;
 		// 附加数据
@@ -216,8 +206,8 @@ public class CardOrderCtrl {
 		String openid = openId;
 	
 		SortedMap<String, String> packageParams = new TreeMap<String, String>();
-		packageParams.put("appid", wxSetting.getAppid());
-		packageParams.put("mch_id", wxSetting.getPartner());
+		packageParams.put("appid", WxUtil.appid);
+	    packageParams.put("mch_id", mch_id);
 		packageParams.put("nonce_str", nonce_str);
 		packageParams.put("body", body);
 		packageParams.put("attach", attach);
@@ -232,10 +222,10 @@ public class CardOrderCtrl {
 		RequestHandler reqHandler = new RequestHandler(
 				request,
 				response);
-		reqHandler.init(wxSetting.getAppid(), wxSetting.getAppsecret(), wxSetting.getPartnerkey());
+		reqHandler.init(WxUtil.appid, WxUtil.appsecret, "Sdjdb365sdjdb365sdjdb365sdjdb365");
 
 		String sign = reqHandler.createSign(packageParams);
-		String xml = "<xml>" + "<appid>" + wxSetting.getAppid() + "</appid>" + "<mch_id>"
+		String xml = "<xml>" + "<appid>" + WxUtil.appid + "</appid>" + "<mch_id>"
 				+ mch_id + "</mch_id>" + "<nonce_str>" + nonce_str
 				+ "</nonce_str>" + "<sign>" + sign + "</sign>"
 				+ "<body><![CDATA[" + body + "]]></body>" + "<attach>" + attach
@@ -265,13 +255,13 @@ public class CardOrderCtrl {
 		String nonceStr2 = nonce_str;
 		String prepay_id2 = "prepay_id=" + prepay_id;
 		String packages = prepay_id2;
-		finalpackage.put("appId", wxSetting.getAppid());
+		finalpackage.put("appId", WxUtil.appid);
 		finalpackage.put("timeStamp", timestamp);
 		finalpackage.put("nonceStr", nonceStr2);
 		finalpackage.put("package", packages);
 		finalpackage.put("signType", "MD5");
 		String finalsign = reqHandler.createSign(finalpackage);
-		request.setAttribute("appId", wxSetting.getAppid());
+		finalpackage.put("appId", WxUtil.appid);
 		request.setAttribute("timeStamp", timestamp);
 		request.setAttribute("nonceStr", nonceStr2);
 		request.setAttribute("package", packages);

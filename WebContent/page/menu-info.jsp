@@ -69,7 +69,7 @@
     <div class="spxq-info3">
     	<button class="if3-btnn if3-btn1 f-l" onclick="add()">选它</button>
     	<button class="if3-btnn if3-btn2 f-l" onclick="add()">加入购物车</button>
-        <a href="cartList.html" class="if3-aa f-l"><img src="images/cart.png" /><span style="position:fixed;color: #ff3c00" id="cart_num">${cart_num }</span></a>
+        <a href="cartList.html" class="if3-aa f-l"><img src="images/cart.png" /><span style="position:fixed;color: #f29133" id="cart_num">${cart_num }</span></a>
     </div>
 	<script type="text/javascript">
 	function add(){

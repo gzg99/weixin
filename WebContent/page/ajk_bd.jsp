@@ -29,7 +29,6 @@ height:30px;
 <body id="wrap">
 	
     <div class="sjsc-title2">
-    	<h3 class="sjsc-t2l">卡券申请</h3>
         <a href="cardAll.html" class="sjsc-t2r">
         <img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     	<div class="head">

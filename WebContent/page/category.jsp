@@ -3,35 +3,33 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="js/liebiaoye.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/liebiaoye.css" />
-        <link rel="stylesheet" type="text/css" href="css/shoujisc.css" />
-        <script type="text/javascript" src="js/jquery.js"></script><link rel="stylesheet" type="text/css" href="css/showTip.css">
-<script type="text/javascript" src="js/showTip.js"></script>
-        <style type="text/css">
-          
-    html,body
-{ 
-width:100%; 
-height:94%; 
-
-} </style>
-
-<script type="text/javascript">
-document.body.addEventListener('touchmove',function(e){
-	e.stopPropagation();
-	e.preventDefault();
-	});
-</script>
-    </head>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+	<title>商城分类</title>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/liebiaoye.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/liebiaoye.css" />
+	<link rel="stylesheet" type="text/css" href="css/shoujisc.css" />
+	<script type="text/javascript" src="js/jquery.js"></script><link rel="stylesheet" type="text/css" href="css/showTip.css">
+	<script type="text/javascript" src="js/showTip.js"></script>
+	<style type="text/css">    
+		html,body { 
+			width:100%; 
+			height:94%; 
+		} 
+	</style>
+	
+	<script type="text/javascript">
+	document.body.addEventListener('touchmove',function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		});
+	</script>	
+</head>
  
     <body id="wrap">
     <div class="title" style="border-bottom:1px solid rgba(204, 204, 204, 0.15);text-align:center;">
-   		<span>商城分类</span>
         <div class="title-left"><a href="index.html"><img src="images/back.png" alt="" /></a></div>
         <div class="title-right"><a href="secList.html"><img src="images/sjsc-13.png" alt="" /></a></div>
     </div>
@@ -77,7 +75,7 @@ document.body.addEventListener('touchmove',function(e){
                 </ul>
        
     </div>
-    <jsp:include page="footer2.jsp"></jsp:include>
+    <jsp:include page="footer5.jsp"></jsp:include>
     <!-- <script type="text/javascript">
     	function stCtg(){
     		var title ='....';

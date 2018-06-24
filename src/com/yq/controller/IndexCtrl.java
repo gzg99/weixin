@@ -75,32 +75,16 @@ public class IndexCtrl extends StringUtil{
 		
 		goods.setIs_recommend(1);
 		List<Banner> banList = bannerService.list(banner);//轮动图片
-		for(Banner ban: banList) {
-			if(ban.getUrl() != null) {
-				ban.setBan_img(ban.getBan_img().replace("http://i.365jdb.cn", "http://localhost:8080/weixin"));
-			}
-		}
 		banner.setType(2);
 		List<Banner> advList = bannerService.list(banner);//轮动图片
-		for(Banner ban: advList) {
-			if(ban.getUrl() != null) {
-				ban.setBan_img(ban.getBan_img().replace("http://i.365jdb.cn", "http://localhost:8080/weixin"));
-			}
-		}
 		//获取轮播广告
 		List<Ad> adList = adService.seleteByTime(new Date(),1);
 		
 		//家滴快报
 		List<NewsFlash> newsList = newsFlashService.getList(1);
 		
-		
 		goods.setCtg_id(0);
 		List<Goods> hotGoodsList = goodsService.list(goods); //本周推荐商品
-		for(Goods good: hotGoodsList) {
-			if(good.getGoods_img() != null) {
-				good.setGoods_img(good.getGoods_img().replace("http://i.365jdb.cn", "http://localhost:8080/weixin"));
-			}
-		}
 		category.setStatus(1);
 		List<Category> ctgList = categoryService.list(category); //1分类
 		
