@@ -44,16 +44,17 @@ height:30px;
 			</div>
 		</div>
      <input type="hidden" id="cardName"  value="${card.cardName}"/>
+     <div style="padding:20px">
     <h4>请填写绑定信息</h4>
     <div style="width:100%">
     	<p>持卡人手机：</p>
         <input type="text" id="userPhone" style="width:75%;border-bottom:1px orange solid">
     </div>
-  <div style="width:100%">
+      <div style="width:100%">
     	<p>绑定地址：</p>
         <input type="text" id="userAddr" style="width:75%;border-bottom:1px orange solid">
     </div>
-    
+     </div>
     
     <button class="drdd-btn" onclick="add()">绑定并支付</button>
 	<jsp:include page="footer5.jsp"></jsp:include>
