@@ -24,37 +24,50 @@
    <div class="sjsc-title2">
         <a href="ajkDetail.html?id=${card.cardId}" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
-<div  class="body" >
+	<div class="body" >
 
-<div class="content">
-<h4 style="text-align:left;width:100%;float: left;">申请人信息</h4>
-<input type="hidden" id="cardPrice" value="${card.cardPrice }">
- <input type="hidden" id="cardName"  value="${card.cardName}"/>
-<P><lable>&nbsp;&nbsp;姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</lable>
-<input type="text" id="userName" /></P>
-<P><lable>手机号&nbsp;&nbsp;&nbsp;</lable><input type="text"  id="userPhone" /></P>
-
-<div class="c">
-
-</div>
-
-<h4 style="text-align:left;width:100%;float: left;">老人信息</h4>
-
-<P><lable>&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-<input type="text" id="lrName" /></P>
-<P><lable>联&nbsp;系&nbsp;方&nbsp;式:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-<input type="text" id="lrPhone"   /></P>
-<P><lable>身&nbsp;份&nbsp;证&nbsp;号:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-<input type="text" id="lrSfzh"  /></P>
-<P><lable>与申请人关系:&nbsp;&nbsp;&nbsp;</lable>
-<input type="text" id="lrRelatetion"  /></P>
-<P><lable>&nbsp;&nbsp;&nbsp;住&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</lable>
-<input type="text"  id="userAddr" /></P>
-<input type="hidden"  id="type" value="2" />
-  <button class="drdd-btn" onclick="add()">提交申请</button>
-</div>
- <jsp:include page="footer5.jsp"></jsp:include>
-</div>
+		<div class="content">
+			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;">申请人信息</h4>
+			<input type="hidden" id="cardPrice" value="${card.cardPrice }"/>
+			<input type="hidden" id="cardName"  value="${card.cardName}"/>
+			<div style="padding-top:10px;">
+				<lable>&nbsp;姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</lable>
+				<input type="text" id="userName" />
+			</div>
+			<div style="padding-top:10px;">
+				<lable>手机号&nbsp;&nbsp;&nbsp;</lable>
+				<input type="text" id="userPhone" />
+			</div>
+			
+			<div class="c"></div>
+			
+			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;">老人信息</h4>
+			
+			<div style="padding-top:10px;">
+				<lable>&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>
+				<input type="text" id="lrName" />
+			</div>
+			<div style="padding-top:10px;">
+				<lable>联&nbsp;系&nbsp;方&nbsp;式:&nbsp;&nbsp;&nbsp;</lable>
+				<input type="text" id="lrPhone"/>
+			</div>
+			<div style="padding-top:10px;">
+				<lable>身&nbsp;份&nbsp;证&nbsp;号:&nbsp;&nbsp;</lable>
+				<input type="text" id="lrSfzh"/>
+			</div>
+			<div style="padding-top:10px;">
+				<lable>与申请人关系:</lable>
+				<input type="text" id="lrRelatetion"/>
+			</div>
+			<div style="padding-top:10px;">
+				<lable>&nbsp;&nbsp;&nbsp;住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</lable>
+				<input type="text" id="userAddr"/>
+			</div>
+			<input type="hidden" id="type" value="2"/>
+			<button class="drdd-btn" onclick="add()">提交申请</button>
+		</div>
+	 <jsp:include page="footer5.jsp"></jsp:include>
+	</div>
 
 
 </body>
