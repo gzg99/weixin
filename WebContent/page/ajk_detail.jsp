@@ -51,8 +51,8 @@
 		</div>
 			<img src="./images/ajk05.jpg"  style="width:100%"/>
 <!-- 			<img src="./images/ajk07.jpg"  style="width:100%"/> -->
-			<div style="text-align: center;">
-				<a class="drdd-btn" href="ajkBd.html?id=${card.cardId }&type=${card.type }" >
+			<div style="text-align: center;vertical-align: middle;">
+				<a class="drdd-btn" style="line-height: 30px;" href="ajkBd.html?id=${card.cardId }&type=${card.type }" >
 				  卡片申请
 				</a>
 			</div>
