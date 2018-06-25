@@ -33,7 +33,7 @@ height:30px;
         <img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     	<div class="head">
 			<div class="left">
-				<img src="./images/ajk01.png"  style="height:100px;float:right; width: 100px;"/>
+				<img src="./images/ajk01.png" style="height:100px;float:right; width: 100px;"/>
 			</div>
 		 
 			<div class="right">
@@ -42,7 +42,7 @@ height:30px;
 		</div>
     </div>
     
-    <div style="font-size: 12px;padding-left:5px; margin-top:157px;color: #A09E9E;" id="zitidian-str">
+    <div style="font-size: 12px;padding-left:10px; margin-top:157px;color: #A09E9E;" id="zitidian-str">
   		安居卡类型
     </div>
     <div class="drdd-info2" id="zitidian-choose">
@@ -53,7 +53,7 @@ height:30px;
     <!-- <input type="text" id="cardName" value="${card.cardName }"> -->
     
     
-    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+    <div style="font-size: 12px;padding-left:10px; margin-top:13px;color: #A09E9E">
   	 	涂层卡号
     </div>
     <div class="drdd-info4">
@@ -62,7 +62,7 @@ height:30px;
         <div style="clear:both;"></div>
     </div>
     
-    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+    <div style="font-size: 12px;padding-left:10px; margin-top:13px;color: #A09E9E">
   	 	持卡人手机
     </div>
     <div class="drdd-info4">
@@ -71,7 +71,7 @@ height:30px;
         <div style="clear:both;"></div>
     </div>
     
-    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+    <div style="font-size: 12px;padding-left:10px; margin-top:13px;color: #A09E9E">
   		绑定地址
     </div>
     <div class="drdd-info4">
@@ -80,7 +80,7 @@ height:30px;
         <div style="clear:both;"></div>
     </div>
     
-    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+    <div style="font-size: 12px;padding-left:10px; margin-top:13px;color: #A09E9E">
   		备注
     </div>
     <div class="drdd-info4">
@@ -89,7 +89,7 @@ height:30px;
         <div style="clear:both;"></div>
     </div>
     
-    <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+    <div style="font-size: 12px;padding-left:10px; margin-top:13px;color: #A09E9E">
   		卡券价格
     </div>
     <div class="drdd-info2">

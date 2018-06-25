@@ -140,7 +140,7 @@
 .drdd-info1 dd{ float:right;}
 .drdd-info1 dd a{ font-family:"宋体"; font-size:16px; color:#333;}
 
-.drdd-info2{ padding:0 5px; background:#fff; min-height:27px; line-height:27px; margin-top:3px; border-top:1px solid #eee; border-bottom:1px solid #eee;}
+.drdd-info2{ padding:0 10px; background:#fff; min-height:27px; line-height:27px; margin-top:3px; border-top:1px solid #eee; border-bottom:1px solid #eee;}
 .drdd-info2 p{ font-size:14px; color:#4A4A4A;}
 .drdd-info2 .p2 span{ color:#4A4A4A;}
 
@@ -151,7 +151,7 @@
 .drdd-h31 a{ font-size:12px; color:#333;}
 .drdd-info3 .drdd-p1{ font-size:12px; color:#f60; line-height:45px;}
 
-.drdd-info4{ background:#fff; height:35px; line-height:35px; margin-top:3px; padding:0 5px; border-top:1px solid #eee; border-bottom:1px solid #eee;}
+.drdd-info4{ background:#fff; height:35px; line-height:35px; margin-top:3px; padding:0 10px; border-top:1px solid #eee; border-bottom:1px solid #eee;}
 .drdd-info4 p{ float:left; font-size:14px; color:#333;}
 .drdd-info4 a{ float:right; font-size:14px; color:#333;}
 .drdd-info4 a span{font-family:"宋体"; font-size:16px; margin-left:3px;}
@@ -206,7 +206,7 @@
 .sjsc-btn1{ background:#f29133; font-size:12px; color:#fff; border:0; border-radius:3px; padding:3px 10px; margin:11px 10px 0 0;}
 
 .xzdz-ul1{ background:#fff;}
-.xzdz-ul1 li{line-height:35px; padding-left:10px; margin:0 10px; border-bottom:1px solid #D1D1D1;}
+.xzdz-ul1 li{line-height:35px; padding-left:5px; border-bottom:1px solid #D1D1D1;}
 .xzdz-ul1 li .xzdz-p1{ width:70px; font-size:14px; color:#333;}
 .xzdz-ul1 li .xzdz-ipt1{ width:75%; height:35px; border:0;}
 .xzdz-ul1 li .xzdz-ipt2box{ width:75%;}
