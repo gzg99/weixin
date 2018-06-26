@@ -45,13 +45,13 @@ height:30px;
      <input type="hidden" id="cardName"  value="${card.cardName}"/>
      <div style="padding:20px">
     <h4>请填写绑定信息</h4>
-    <div style="width:100%">
+    <div style="width:100%; margin-top:20px;">
     	<p>持卡人手机：</p>
-        <input type="text" id="userPhone" style="width:75%;border-bottom:1px orange solid">
+        <input type="text" id="userPhone" style="width:80%;border-bottom:1px orange solid; margin-left:30px;">
     </div>
-      <div style="width:100%">
+      <div style="width:100%; margin-top:20px;">
     	<p>绑定地址：</p>
-        <input type="text" id="userAddr" style="width:75%;border-bottom:1px orange solid">
+        <input type="text" id="userAddr" style="width:80%;border-bottom:1px orange solid; margin-left:30px;">
     </div>
      </div>
     
