@@ -31,11 +31,11 @@
 			<input type="hidden" id="cardPrice" value="${card.cardPrice }"/>
 			<input type="hidden" id="cardName"  value="${card.cardName}"/>
 			<div style="padding-top:10px;">
-				<lable>&nbsp;姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</lable>
+				<p>姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</p>
 				<input type="text" id="userName" />
 			</div>
 			<div style="padding-top:10px;">
-				<lable>手机号&nbsp;&nbsp;&nbsp;</lable>
+				<p>手机号&nbsp;&nbsp;&nbsp;</p>
 				<input type="text" id="userPhone" />
 			</div>
 			
@@ -44,23 +44,23 @@
 			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;">老人信息</h4>
 			
 			<div style="padding-top:10px;">
-				<lable>&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>
+				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 				<input type="text" id="lrName" />
 			</div>
 			<div style="padding-top:10px;">
-				<lable>联&nbsp;系&nbsp;方&nbsp;式:&nbsp;&nbsp;&nbsp;</lable>
+				<p>联&nbsp;系&nbsp;方&nbsp;式:&nbsp;&nbsp;&nbsp;</p>
 				<input type="text" id="lrPhone"/>
 			</div>
 			<div style="padding-top:10px;">
-				<lable>身&nbsp;份&nbsp;证&nbsp;号:&nbsp;&nbsp;</lable>
+				<p>身&nbsp;份&nbsp;证&nbsp;号:&nbsp;&nbsp;</p>
 				<input type="text" id="lrSfzh"/>
 			</div>
 			<div style="padding-top:10px;">
-				<lable>与申请人关系:</lable>
-				<input type="text" id="lrRelatetion"/>
+				<p>与申请人关系:</p>
+				<input type="text" style="margin-top:5px;" id="lrRelatetion"/>
 			</div>
 			<div style="padding-top:10px;">
-				<lable>&nbsp;&nbsp;&nbsp;住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</lable>
+				<p>住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</p>
 				<input type="text" id="userAddr"/>
 			</div>
 			<input type="hidden" id="type" value="2"/>

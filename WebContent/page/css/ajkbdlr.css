@@ -37,8 +37,8 @@ body{
 }
 
 input[type='text']{
-	
-	width:70%;
+	margin-left:30px;
+	width:80%;
 	border:0px;
 	height:30px;
 	border-bottom:1px orange solid;
@@ -55,7 +55,4 @@ input[type='text']{
 	line-height:50px;
 	position: absolute;
 	margin-top:30px;
-}
-p{
-	height:70px;
 }
