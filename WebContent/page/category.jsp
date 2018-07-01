@@ -17,7 +17,19 @@
 		html,body { 
 			width:100%; 
 			height:94%; 
-		} 
+		}
+		
+		.category li {
+			float: left;
+		}
+		
+		.category li:nth-child(2n) {
+			float: right;
+		}
+		
+		.category li .right-con-img {
+			text-align: center;
+		}
 	</style>
 	
 	<script type="text/javascript">
@@ -54,19 +66,14 @@
                
                 </c:forEach>
               </ul> 
-                <ul class="con-right" style="/* margin-bottom: 49px; */overflow-y:scroll">
+                <ul class="con-right category" style="/* margin-bottom: 49px; */overflow-y:scroll">
                 	<c:forEach items="${goodsList }" var="goodsList">
-                    <li class="con-right-con">
+                    <li class="con-right-con" style="width:49%;margin-top:30px;">
                         <div class="right-con-img">
                         <a href="goodsListById.html?goods_id=${goodsList.goods_id}">
                         <img src="${goodsList.goods_img}" /></a></div>
                         <div class="right-con-p">
-                      
                             <p class="p1 p-txt" onclick="window.location.href='goodsListById.html?goods_id=${goodsList.goods_id}'"><a>${goodsList.goods_name}</a></p>
-                            <p class="p2 p-txt" onclick="window.location.href='goodsListById.html?goods_id=${goodsList.goods_id}'"><span class="price-1">${goodsList.goods_spe}</span></p>
-                            <p class="p3 p-txt" style="float: left;" onclick="window.location.href='goodsListById.html?goods_id=${goodsList.goods_id}'"><span class="price-1" style="font-size: 18px">&yen;${goodsList.goods_price}</span></p>
-<%--                           <p style="float: right;margin-top: 10px"> <a href="javascript:;" onclick="add('${goodsList.goods_id}','${goodsList.goods_name}','${goodsList.goods_img}','${goodsList.goods_spe}','${goodsList.goods_price}')"><img src="images/sjsc-09.gif" style="width: 25px;height: 25px"></a> --%>
-                  			 </p>
                         </div>    
                     </li>
                     

@@ -33,7 +33,7 @@
     	<c:set value="ord${s.index}" var="ord"></c:set>
         	<div class="my-k1">
             	<ul class="my-p1">
-                	<li class="my-spl f-l">${list.add_time}</li>
+                	<li class="my-spl f-l">订单编号：${list.order_id}</li>
                 	<li class="my-spr f-r">
 					<c:if test="${list.status==0 }">待支付</c:if>
 					<c:if test="${list.status==1 }">待发货</c:if>
@@ -61,17 +61,13 @@
                 </dl>
                 </c:forEach>
                 <div class="my-p2">
-                	<span class="my-sp3 f-l">订单号：${list.order_id}</span>
+                	<span class="my-sp3 f-l">${list.add_time}</span>
+                	<button class="my-btn1 f-r" onclick="send('${list.order_id}')">发表评价</button>
                 	<c:if test="${list.status==0 }">
-                <button class="my-btn1 f-r" onclick="window.location.href='payOrder.html?order_id=${list.order_id}'">支付：￥${list.goods_total}</button>
+                		<button class="my-btn1 f-r" onclick="window.location.href='payOrder.html?order_id=${list.order_id}'">支付：￥${list.goods_total}</button>
                 	</c:if>
                 	<c:if test="${list.status!=0}">
-                	
-                	<button class="my-btn1 f-r" >￥${list.goods_total}</button>
-                	
-                	<c:if test="${list.status==1}">
-               		 <button class="my-btn1 f-r" onclick="send('${list.order_id}')">退款</button>
-                	</c:if>
+                		<button class="my-btn1 f-r" >￥${list.goods_total}</button>
                 	</c:if>
                     <div style="clear:both;"></div>
                 </div>
@@ -80,16 +76,11 @@
         	
         </div>
         <div class="my-info" style="display:none;">
-        	<c:forEach items="${map['list0']}" var="list" varStatus="s">
+        <c:forEach items="${map['list0']}" var="list" varStatus="s">
     	<c:set value="ord0${s.index}" var="ord"></c:set>
         	<div class="my-k1">
             	<ul class="my-p1">
-                	<li class="my-spl f-l">${list.add_time}</li>
-                	<li class="my-spr f-r">
-					<c:if test="${list.status==0 }">待支付</c:if>
-					<c:if test="${list.status==1 }">待发货</c:if>
-					<c:if test="${list.status==2 }">已发货</c:if>
-					</li>
+                	<li class="my-spl f-l">订单号：${list.order_id}</li>
                     <div style="clear:both;"></div>
                 </ul>
                 <c:forEach items="${map[ord]}" var="ordList">
@@ -109,7 +100,8 @@
                 </dl>
                 </c:forEach>
                 <div class="my-p2">
-                	<span class="my-sp3 f-l">订单号：${list.order_id}</span>
+                	<span class="my-sp3 f-l">${list.add_time}</span>
+                	<button class="my-btn1 f-r" onclick="send('${list.order_id}')">发表评价</button>
                 	<button class="my-btn1 f-r" onclick="window.location.href='payOrder.html?order_id=${list.order_id}'">支付：￥${list.goods_total}</button>
                     <div style="clear:both;"></div>
                 </div>
@@ -119,16 +111,11 @@
         	
         </div>
         <div class="my-info" style="display:none;">
-            <c:forEach items="${map['list1']}" var="list" varStatus="s">
+        <c:forEach items="${map['list1']}" var="list" varStatus="s">
     	<c:set value="ord1${s.index}" var="ord"></c:set>
         	<div class="my-k1">
             	<ul class="my-p1">
-                	<li class="my-spl f-l">${list.add_time}</li>
-                	<li class="my-spr f-r">
-					<c:if test="${list.status==0 }">待支付</c:if>
-					<c:if test="${list.status==1 }">待发货</c:if>
-					<c:if test="${list.status==2 }">已发货</c:if>
-					</li>
+                	<li class="my-spl f-l">订单号：${list.order_id}</li>
                     <div style="clear:both;"></div>
                 </ul>
                 <c:forEach items="${map[ord]}" var="ordList">
@@ -148,12 +135,9 @@
                 </dl>
                 </c:forEach>
                 <div class="my-p2">
-                	<span class="my-sp3 f-l">订单号：${list.order_id}</span>
-                	
-                    <button class="my-btn1 f-r">￥${list.goods_total}</button>
-                    <c:if test="${list.status==1}">
-               		 <button class="my-btn1 f-r" onclick="send('${list.order_id}')">退款</button>
-                	</c:if>
+                	<span class="my-sp3 f-l">${list.add_time}</span>
+               		<button class="my-btn1 f-r" onclick="send('${list.order_id}')">发表评价</button>
+               		<button class="my-btn1 f-r">￥${list.goods_total}</button>
                     <div style="clear:both;"></div>
                 </div>
             </div>
@@ -161,16 +145,11 @@
                  	
         </div>
         <div class="my-info" style="display:none;">
-            <c:forEach items="${map['list2']}" var="list" varStatus="s">
+        <c:forEach items="${map['list2']}" var="list" varStatus="s">
     	<c:set value="ord2${s.index}" var="ord"></c:set>
         	<div class="my-k1">
             	<ul class="my-p1">
-                	<li class="my-spl f-l">${list.add_time}</li>
-                	<li class="my-spr f-r">
-					<c:if test="${list.status==0 }">待支付</c:if>
-					<c:if test="${list.status==1 }">待发货</c:if>
-					<c:if test="${list.status==2 }">已发货</c:if>
-					</li>
+                	<li class="my-spl f-l">订单号：${list.order_id}</li>
                     <div style="clear:both;"></div>
                 </ul>
                 <c:forEach items="${map[ord]}" var="ordList">
@@ -190,7 +169,8 @@
                 </dl>
                 </c:forEach>
                 <div class="my-p2">
-                	<span class="my-sp3 f-l">订单号：${list.order_id}</span>
+                	<span class="my-sp3 f-l">${list.add_time}</span>
+                	<button class="my-btn1 f-r" onclick="send('${list.order_id}')">发表评价</button>
                     <button class="my-btn1 f-r">￥${list.goods_total}</button>
                     <div style="clear:both;"></div>
                 </div>
@@ -199,28 +179,6 @@
             
         </div>
     </div>
-    <jsp:include page="footer5.jsp"></jsp:include>	
-    		
-    		<script type="text/javascript">
-    		function send(order_id){
-    			var  b = confirm('确定退款吗？');
-        		if(!b){
-        		return ;
-        		}
-    			$.ajax({
-    				url:'orderUpdate.html',
-    				type:'post',
-    				data:'order_id='+order_id+'&status=-5',
-    				success:function(rs){
-    					if(rs==1){
-    						alert("提交成功，我们将3个工作日内给您退款！");
-    						location.reload();
-    					}else{
-    						alert("失败，请联系客服！");
-    					}
-    				}
-    			})
-    		}
-    		</script>
+    <jsp:include page="footer5.jsp"></jsp:include>
 </body>
 </html>

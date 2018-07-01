@@ -168,7 +168,7 @@
 .drdd-btn{ display:block; border-radius:3px; width:96%; height:30px; font-size:14px; color:#fff; border:0; background:#f29133; margin:50px auto;}
 
 /*************我想要手机商城确认订单1*********************/
-.drdd-info6{ background:#fff; min-height:55px; padding:0 5px; border-bottom:1px solid #eee;margin-top:3px;}
+.drdd-info6{ background:#fff; min-height:55px; padding:0 5px; border-bottom:0px solid #eee;margin-top:3px;}
 .drdd-info6 dt{ float:left; width:90%;}
 .drdd-info6 dt p{ font-size:12px; color:#333; line-height:27px;}
 .drdd-info6 dd{ float:right;}
@@ -308,7 +308,7 @@ ssjg-tit1
 /*************我想要手机商城我的订单*********************/
 .quanbu-title2{ background:#fff; height:30px;border-bottom:1px solid #EDEDED;}
 .quanbu-title2 li{ float:left; width:25%; height:30px; line-height:30px; text-align:center;}
-.quanbu-title2 li a{ font-size:14px; color:#f29133;}
+.quanbu-title2 li a{ font-size:14px;}
 .quanbu-title2 .current{ border-bottom:1px solid #f29133;}
 .quanbu-title2 .current a{ color:#f29133;}
 

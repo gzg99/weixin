@@ -30,30 +30,20 @@ $(function(){
     <div class="sjsc-title2">
         <a href="orderList.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
      </div>
-     <input type="hidden" value="${addr_id}" id='addr_id'>
-     <input type="hidden" value="${goods_num}" id='tnum'>
-     <input type="hidden" value="${tprice}" id='tprice'>
-     <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
-  	   	商品信息
-     </div>
-     <c:forEach items="${goods}" var="list" varStatus="s">
-	     <input type="hidden" value="${list.goods_id}" name='goods_id'>
-	     <input type="hidden" value="${list.goods_name}" name='goods_name'>
-	     <input type="hidden" value="${list.goods_img}" name='goods_img'>
-	     <input type="hidden" value="${list.goods_num}" name='goods_num'>
-	     <input type="hidden" value="${list.goods_price}" name='goods_price'>
-    
-	     <div class="drdd-info3">
-	    	<div class="drdd-if3tu f-l">
-	        	<a href="#"><img src="${list.goods_img}" style="width: 43px"></a>
-	        </div>
-	        <h3 class="drdd-h31 f-l"><a href="#">${list.goods_name} x${goods_num}</a></h3>
-	        <p class="drdd-p1 f-r">￥${list.goods_price}</p>
-	        <div style="clear:both;"></div>
-	     </div>
-     </c:forEach>
-      
+     
      <dl class="drdd-info6">
+		<ul class="xzdz-ul1">
+	    	<li style="float:left;">
+	            <input type="text" class="xzdz-ipt1 f-l" id="addr_user1" value="刘诗诗"/>
+          	</li>
+	    	<li style="margin-left:30%;">
+	            <input type="text" class="xzdz-ipt1 f-l" id="addr_tel1" value="15090989098"/>
+	            <input type="text" class="xzdz-ipt1 f-l" id="area1" value="北京市昌平区昌平西山口"/>         
+	        </li>
+    	</ul>
+    </dl>
+     
+    <dl class="drdd-info6" style="display:none;">
 		<ul class="xzdz-ul1">
 	    	<li>
 	        	<p class="xzdz-p1 f-l">收货人</p>
@@ -77,10 +67,29 @@ $(function(){
 	        </li>
     	</ul>
     </dl>
+     
+     <input type="hidden" value="${addr_id}" id='addr_id'>
+     <input type="hidden" value="${goods_num}" id='tnum'>
+     <input type="hidden" value="${tprice}" id='tprice'>
+     <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
+  	   	商品信息
+     </div>
+     <c:forEach items="${goods}" var="list" varStatus="s">
+	     <input type="hidden" value="${list.goods_id}" name='goods_id'>
+	     <input type="hidden" value="${list.goods_name}" name='goods_name'>
+	     <input type="hidden" value="${list.goods_img}" name='goods_img'>
+	     <input type="hidden" value="${list.goods_num}" name='goods_num'>
+	     <input type="hidden" value="${list.goods_price}" name='goods_price'>
     
-    
-    
-
+	     <div class="drdd-info3">
+	    	<div class="drdd-if3tu f-l">
+	        	<a href="#"><img src="${list.goods_img}" style="width: 43px"></a>
+	        </div>
+	        <h3 class="drdd-h31 f-l"><a href="#">${list.goods_name} x${goods_num}</a></h3>
+	        <p class="drdd-p1 f-r">￥${list.goods_price}</p>
+	        <div style="clear:both;"></div>
+	     </div>
+     </c:forEach>
     
      <c:if test="${tprice!=0}">
      <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">

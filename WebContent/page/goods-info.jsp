@@ -69,7 +69,7 @@
     <div class="spxq-info3">
     	<a href="" class="if3-aa f-l"><img src="images/notCol.png"></a>
     	<a href="cartList.html" class="if3-aa f-l"><img src="images/orderCar.png" /><span style="position:fixed;color: #f29133" id="cart_num">${cart_num }</span></a>
-    	<button class="if3-btnn1 if3-btn1 f-l" onclick="window.location.href='goodsOrder.html?goods_id=${goods_id}'">立即购买</button>
+    	<button class="if3-btnn1 if3-btn1 f-l" onclick="window.location.href='goodsOrderSure.html?goods_id=${goods_id}&goods_num=1'">立即购买</button>
     	<button class="if3-btnn1 if3-btn2 f-l" onclick="add()">加入购物车</button>
     </div>
 	<script type="text/javascript">
