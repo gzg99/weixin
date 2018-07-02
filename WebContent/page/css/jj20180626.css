@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6, div, p, ul, ol, dl, dt, dd, li, td, input, select, textarea, form, table { margin: 0; padding: 0; font-weight: normal; }
+ul { padding: 0px; margin: 0px; list-style: none; }
+li, img { padding: 0px; MARGIN: 0px; list-style: none; }
+img{ width:100%; height:100%;}
+body { font-family: "微软雅黑";}
+a, a:hover{ text-decoration: none; outline: none; color: #000;}
+a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none;}
+.clear { clear: both; font-size: 1px; height: 0; line-height: 0px; margin: 0; padding: 0; }
+
+.left{ float: left; }
+.right { float: right; }
+.red{ color: #f80606;}
+
+.search{ height: 0.9rem; width: 100%; background:#fff; box-shadow: 0 0 0.03rem rgba(0,0,0,0.2);}
+.menu{ position: fixed; bottom: 0; left: 0; width:7.5rem; height: 1.16rem;}
+.map{ height:5rem; width: 100%; }
+.small_title{ height:0.5rem; line-height: 0.5rem; text-align: center;font-size:0.25rem; color: #b5b4b4; }
+.sq_list li{ width:7.1rem; border-top: #CDCDCD solid 0.01rem;  padding: 0.25rem 0.2rem; float: left;}
+.sq_list li img{ height:1.15rem; width: 1.6rem; float: left; margin-right:0.2rem;}
+.sq_list li h1{ font-size: 0.28rem; line-height: 0.28rem; margin-top: 0.04rem;}
+.sq_list li p{font-size: 0.25rem; line-height: 0.35rem; height: 0.7rem; overflow: hidden; margin-top:0.18rem; color: #bbb6b6;}
+.sq_list_bt{ float: left; width:4.2rem;}
+.sq_list_jl{font-size: 0.25rem;  float:right; width:1.1rem; text-align: right; color: #676363; margin-top: 0.46rem;}
+
+.shop_title{ text-align: center; font-size: 0.25rem; height: 0.6rem; line-height: 0.6rem; width: 100%; float: left;}
+.shop_img{ width: 6.9rem; margin: 0 0.3rem; float: left;}
+.shop_index_img{ width: 100%; float: left;}
+.shop_index_img img,.shop_img img{ width: 100%; height: auto; float: left;}
+
+.shop_menu{width: 100%; float: left; position: relative; padding-top: 0.3rem;}
+.shop_menu_btn{ width: 0.42rem; height: 0.42rem; background: url(shop_menu_ico20180629.png) no-repeat; cursor: pointer;position: absolute; left:0.2rem; top:0.3rem; background-size: 100% 100%;}
+.shop_menu_nr{ position: absolute; left:-2.2rem; width: 2.2rem; background-color: rgba(255,255,255,0.9); box-shadow: 0 0 0.03rem rgba(0,0,0,0.3); padding-bottom: 0.25rem;}
+.shop_menu_se{ float: left; padding-left: 0.4rem; width: 1.8rem; font-size: 0.28rem; line-height: 0.6rem; margin-top: 0.2rem; background: url(shop_menu_cir20180629.png) no-repeat 0.2rem 0.26rem; background-size: 0.12rem 0.12rem;cursor: pointer;}
+.shop_menu_op{ float: left; width: 100%; font-size: 0.25rem; line-height: 0.5rem;}
+.shop_menu_op li{ padding-left: 0.45rem; width: 1.75rem; float: left; cursor: pointer;}
+.sm_list li img{height:1.86rem; width:2.1rem; margin-right:0.4rem }
+.sm_list .sq_list_bt{ width:4.6rem;}
+.sm_list li h1{ margin-top: 0.3rem;}
+.sm_list li p{font-size: 0.28rem;height: 0.28rem;line-height: 0.28rem; margin: 0.2rem 0;}
+.jg1{ margin-right:0.5rem; float: left; display: block; }
+.jg2{ border-bottom:#bbb6b6 solid 2px; height: 0.16rem;float: left;display: block;}
+
+.pingjia_nr{ background: #fff; width:6.7rem; padding: 0 0.4rem; float: left; margin-top: 0.12rem;}
+.pingjia_nr_top{ float: left; width: 100%;}
+.pingjia_nr_top img{ width: 1.2rem; height: 1.2rem;}
+.pingjia_nr_top a{ float: left; display: block; margin-right: 0.6rem; height: 1.2rem;}
+.pingjia_nr_top p{font-size: 0.24rem; color: #bbb6b6; }
+.pingjia_nr_top p span{ margin-right: 0.2rem;}
+.pingjia_nr_bt{ width:4.9rem;float: left; line-height: 0.36rem; margin: 0.2rem 0;}
+.pingjia_nr_bt h2{float: left; width:4.3rem;font-size: 0.28rem;}
+.pingjia_nr_num{ float: right; color: #bbb6b6; width: 0.6rem;font-size: 0.28rem; }
+.pingfen{ width: 100%; float: left; padding:0.25rem 0;}
+.pingfen_txt{float: left;font-size: 0.28rem; line-height: 0.28rem; margin: 0.11rem 0.3rem 0 0;}
+.pingfen ul{ float: left;}
+.pingfen ul li{ float: left; width:0.5rem; height: 0.5rem; background:url(star1.png) no-repeat center center; background-size: 100% 100%; margin-right: 0.12rem; cursor: pointer;}
+.pingfen ul .active{ background-image: url(star2.png);}
+.pingjia_nr textarea{ width: 100%; border: none; resize: none; float: left; color: #bbb6b6;font-size: 0.28rem;line-height: 0.36rem;font-family: "微软雅黑"; height: 1.08rem;}
+.sc_img{ width: 100%; float: left; border-bottom: #ddd solid 0.01rem; padding: 0.2rem 0;}
+.sc_img_btn{float: left;width: 0.9rem; height: 0.9rem; background: url(picadd.png) no-repeat center center;background-size: 100% 100%; cursor: pointer;}
+.sc_img ul{ float: left;}
+.sc_img ul li{ float: left;width: 0.9rem; height: 0.9rem; position: relative; margin-left: 0.2rem; cursor: pointer;}
+.sc_img ul li img{width: 100%; height: 100%; float: left;}
+.pingjia_nr_sub{width: 100%; float: left; padding:0.3rem 0;}
+.pingjia_nr_sub input{ width:1.6rem; height:0.5rem; border:#999 solid 1px; background:none; float:right;}
+.remove_img{ background:rgba(0,0,0,0.5);width: 0.9rem; height: 0.9rem;line-height: 0.9rem;float: left; text-align: center;color:#fff; font-size: 0.2rem; position: absolute; left:0; top:0;}

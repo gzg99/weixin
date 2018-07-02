@@ -62,7 +62,7 @@
                 </c:forEach>
                 <div class="my-p2">
                 	<span class="my-sp3 f-l">${list.add_time}</span>
-                	<button class="my-btn1 f-r" onclick="send('${list.order_id}')">发表评价</button>
+                	<button class="my-btn1 f-r" onclick="window.location.href='publishEval.html?order_id=${list.order_id}'">发表评价</button>
                 	<c:if test="${list.status==0 }">
                 		<button class="my-btn1 f-r" onclick="window.location.href='payOrder.html?order_id=${list.order_id}'">支付：￥${list.goods_total}</button>
                 	</c:if>

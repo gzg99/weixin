@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.Goods;
+import com.yq.entity.Order;
 import com.yq.entity.OrderEval;
 import com.yq.service.GoodsService;
 import com.yq.service.OrderEvalService;
+import com.yq.service.OrderService;
 import com.yq.util.StringUtil;
 
 @Controller
@@ -27,9 +29,12 @@ public class OrderEvalCtrl extends StringUtil {
 	private OrderEvalService orderEvalService;
 	
 	@Autowired
+	private OrderService orderService;
+	
+	@Autowired
 	private GoodsService goodsService;
 
-	@RequestMapping(value="eval/insert.html")
+	@RequestMapping(value="page/insertEval.html")
 	public void insertEval(HttpSession session, Long goodId, String content, int score) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		OrderEval eval = new OrderEval();
@@ -41,7 +46,7 @@ public class OrderEvalCtrl extends StringUtil {
 		orderEvalService.insertEval(eval);
 	}
 	
-	@RequestMapping(value="getListByGoodIdOpenId.html")
+	@RequestMapping(value="page/getEvalListByGoodIdOpenId.html")
 	public ModelAndView getListByGoodIdOpenId(Long goodId, HttpSession session) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("goodId", goodId);
@@ -54,6 +59,21 @@ public class OrderEvalCtrl extends StringUtil {
 		mv.addObject("goodList", goodList);
 		mv.addObject("orderList", list);
 		mv.setViewName("order-eval");
+		return mv;
+	}
+	
+	@RequestMapping(value="page/publishEval.html")
+	public ModelAndView publishEval(Integer order_id) {
+		Order d = new Order();
+		d.setOrder_id(order_id);
+		List<Order> orderList = orderService.listById(d);
+		Order order = null;
+		if(orderList != null && orderList.size() > 0) {
+			order = orderList.get(0);
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("order", order);
+		mv.setViewName("page/pingjia");
 		return mv;
 	}
 }
