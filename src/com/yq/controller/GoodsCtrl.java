@@ -19,10 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.service.CategoryService;
 import com.yq.service.GoodsService;
+import com.yq.service.OrderEvalService;
 import com.yq.util.StringUtil;
 import com.yq.util.PageUtil;
 import com.yq.entity.Category;
 import com.yq.entity.Goods;
+import com.yq.entity.OrderEval;
 
 @Controller
 @RequestMapping("/")
@@ -31,6 +33,8 @@ public class GoodsCtrl extends StringUtil {
 	private GoodsService goodsService;
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private OrderEvalService orderEvalService;
 	private Goods goods = new Goods();
 	private Category category = new Category();
 	
@@ -157,6 +161,18 @@ public class GoodsCtrl extends StringUtil {
 		ModelAndView ml = new ModelAndView();
 		ml.addObject("list", list);
 		ml.addObject("goods_id", goods_id);
+		List<OrderEval> evalList = orderEvalService.getAllEvalByGoodId(goods_id);
+		ml.addObject("eval", evalList);
+		//全部评价
+		ml.addObject("allEvalCount", evalList.size());
+		//好评
+		int goodEvalCount = orderEvalService.getGoodCountByGoodId(goods_id);
+		ml.addObject("goodEvalCount", goodEvalCount);
+		//差评
+		int badEvalCount = orderEvalService.getBadCountByGoodId(goods_id);
+		ml.addObject("badEvalCount", badEvalCount);
+		//中评
+		ml.addObject("neutralEvalCount", evalList.size() - goodEvalCount - badEvalCount);
 		ml.setViewName("page/goods-info");
 		return ml;
 	}

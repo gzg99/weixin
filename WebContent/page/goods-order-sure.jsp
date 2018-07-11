@@ -31,19 +31,19 @@ $(function(){
         <a href="orderList.html" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
      </div>
      
-     <dl class="drdd-info6">
-		<ul class="xzdz-ul1">
-	    	<li style="float:left;">
-	            <input type="text" class="xzdz-ipt1 f-l" id="addr_user1" value="刘诗诗"/>
-          	</li>
-	    	<li style="margin-left:30%;">
-	            <input type="text" class="xzdz-ipt1 f-l" id="addr_tel1" value="15090989098"/>
-	            <input type="text" class="xzdz-ipt1 f-l" id="area1" value="北京市昌平区昌平西山口"/>         
-	        </li>
-    	</ul>
-    </dl>
+<!--      <dl class="drdd-info6"> -->
+<!-- 		<ul class="xzdz-ul1"> -->
+<!-- 	    	<li style="float:left;"> -->
+<!-- 	            <input type="text" class="xzdz-ipt1 f-l" id="addr_user1" value="刘诗诗"/> -->
+<!--           	</li> -->
+<!-- 	    	<li style="margin-left:30%;"> -->
+<!-- 	            <input type="text" class="xzdz-ipt1 f-l" id="addr_tel1" value="15090989098"/> -->
+<!-- 	            <input type="text" class="xzdz-ipt1 f-l" id="area1" value="北京市昌平区昌平西山口"/>          -->
+<!-- 	        </li> -->
+<!--     	</ul> -->
+<!--     </dl> -->
      
-    <dl class="drdd-info6" style="display:none;">
+    <dl class="drdd-info6">
 		<ul class="xzdz-ul1">
 	    	<li>
 	        	<p class="xzdz-p1 f-l">收货人</p>

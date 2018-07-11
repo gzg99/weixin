@@ -23,7 +23,7 @@ public class OrderEvalService {
 		return false;
 	}
 	
-	public List<OrderEval> getAllEvalByGoodId(Long goodId) {
+	public List<OrderEval> getAllEvalByGoodId(Integer goodId) {
 		return orderEvalDao.getAllEvalByGoodId(goodId);
 	}
 	
@@ -31,17 +31,17 @@ public class OrderEvalService {
 		return orderEvalDao.getAllEvalByGoodIdOpenId(map);
 	}
 	
-	public int getCountByGoodId(Long goodId) {
+	public int getCountByGoodId(Integer goodId) {
 		return orderEvalDao.getCountByGoodId(goodId);
 	}
 	
 	//查找好评的个数
-	public int getGoodCountByGoodId(Long goodId) {
+	public int getGoodCountByGoodId(Integer goodId) {
 		return orderEvalDao.getGoodCountByGoodId(goodId);
 	}
 	
 	//查找差评的个数
-	public int getBadCountByGoodId(Long goodId) {
+	public int getBadCountByGoodId(Integer goodId) {
 		return orderEvalDao.getBadCountByGoodId(goodId);
 	}
 }

@@ -5,13 +5,13 @@
 		parameterType="com.yq.entity.OrderEval">
 		insert jdb_eval(
 			good_id,
-			oppen_id,
+			open_id,
 			content,
 			add_time,
 			score
 		)values(
 			#{good_id},
-			#{oppen_id},
+			#{open_id},
 			#{content},
 			#{add_time},
 			#{score}

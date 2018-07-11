@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.Goods;
@@ -20,6 +21,8 @@ import com.yq.service.GoodsService;
 import com.yq.service.OrderEvalService;
 import com.yq.service.OrderService;
 import com.yq.util.StringUtil;
+
+import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("/")
@@ -35,7 +38,8 @@ public class OrderEvalCtrl extends StringUtil {
 	private GoodsService goodsService;
 
 	@RequestMapping(value="page/insertEval.html")
-	public void insertEval(HttpSession session, Long goodId, String content, int score) {
+	@ResponseBody
+	public String insertEval(HttpSession session, Long goodId, String content, int score) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		OrderEval eval = new OrderEval();
 		eval.setAdd_time(format.format(new Date()));
@@ -44,6 +48,9 @@ public class OrderEvalCtrl extends StringUtil {
 		eval.setScore(score);
 		eval.setOpen_id(getOppen_id(session));
 		orderEvalService.insertEval(eval);
+		JSONObject json = new JSONObject();
+		json.put("success", true);
+		return json.toString();
 	}
 	
 	@RequestMapping(value="page/getEvalListByGoodIdOpenId.html")

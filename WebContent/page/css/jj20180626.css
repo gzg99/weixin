@@ -54,11 +54,11 @@ a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webki
 .pingfen{ width: 100%; float: left; padding:0.25rem 0;}
 .pingfen_txt{float: left;font-size: 0.28rem; line-height: 0.28rem; margin: 0.11rem 0.3rem 0 0;}
 .pingfen ul{ float: left;}
-.pingfen ul li{ float: left; width:0.5rem; height: 0.5rem; background:url(star1.png) no-repeat center center; background-size: 100% 100%; margin-right: 0.12rem; cursor: pointer;}
-.pingfen ul .active{ background-image: url(star2.png);}
+.pingfen ul li{ float: left; width:0.5rem; height: 0.5rem; background:url(../images/star1.png) no-repeat center center; background-size: 100% 100%; margin-right: 0.12rem; cursor: pointer;}
+.pingfen ul .active{ background-image: url(../images/star2.png);}
 .pingjia_nr textarea{ width: 100%; border: none; resize: none; float: left; color: #bbb6b6;font-size: 0.28rem;line-height: 0.36rem;font-family: "微软雅黑"; height: 1.08rem;}
 .sc_img{ width: 100%; float: left; border-bottom: #ddd solid 0.01rem; padding: 0.2rem 0;}
-.sc_img_btn{float: left;width: 0.9rem; height: 0.9rem; background: url(picadd.png) no-repeat center center;background-size: 100% 100%; cursor: pointer;}
+.sc_img_btn{float: left;width: 0.9rem; height: 0.9rem; background: url(../images/picadd.png) no-repeat center center;background-size: 100% 100%; cursor: pointer;}
 .sc_img ul{ float: left;}
 .sc_img ul li{ float: left;width: 0.9rem; height: 0.9rem; position: relative; margin-left: 0.2rem; cursor: pointer;}
 .sc_img ul li img{width: 100%; height: 100%; float: left;}
