@@ -66,7 +66,7 @@ public class OrderEvalCtrl extends StringUtil {
 		mv.addObject("goodList", goodList);
 		mv.addObject("orderList", list);
 		mv.setViewName("order-eval");
-		return mv;
+		return mv; 
 	}
 	
 	@RequestMapping(value="page/publishEval.html")
