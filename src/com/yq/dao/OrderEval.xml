@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.OrderEvalDao">
+	<insert id="insertEval" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.yq.entity.OrderEval">
+		insert jdb_eval(
+			good_id,
+			oppen_id,
+			content,
+			add_time,
+			score
+		)values(
+			#{good_id},
+			#{oppen_id},
+			#{content},
+			#{add_time},
+			#{score}
+		)
+	</insert>
+
+	<delete id="delete" parameterType="java.util.Map">
+		delete from jdb_eval where order_id=#{order_id}
+	</delete>
+
+	<select id="getAllEvalByGoodId" resultType="com.yq.entity.OrderEval">
+		select * from jdb_eval where good_id=#{goodId}
+	</select>
+	
+	<select id="getAllEvalByGoodIdOpenId" resultType="com.yq.entity.OrderEval">
+		select * from jdb_eval where good_id=#{goodId} and open_id=#{open_id}
+	</select>
+
+	<select id="getCountByGoodId" resultType="int">
+		select count(1) from jdb_eval where good_id=#{goodId}
+	</select>
+	
+	<select id="getGoodCountByGoodId" resultType="int">
+		<![CDATA[ select count(1) from jdb_eval where good_id=#{goodId} and score>5 ]]>
+	</select>
+	
+	<select id="getBadCountByGoodId" resultType="int">
+		<![CDATA[ select count(1) from jdb_eval where good_id=#{goodId} and score<5 ]]>
+	</select>
+
+</mapper>

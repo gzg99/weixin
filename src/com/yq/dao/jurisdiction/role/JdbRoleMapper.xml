@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.jurisdiction.role.JdbRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.jurisdiction.role.JdbRole" >
+    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    role_id, role_name, remark
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_role
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="listJdbRole" resultMap="BaseResultMap" parameterType="com.yq.entity.jurisdiction.role.JdbRole" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_role
+    limit #{currentNum}, #{pageSize}
+  </select>
+  
+  
+  <select id="countJbRole" resultType="Integer" parameterType="java.lang.String" >
+    select 
+    count(1)
+    from jdb_role
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jdb_role
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.yq.entity.jurisdiction.role.JdbRole" >
+    insert into jdb_role (role_id, role_name, remark
+      )
+    values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.yq.entity.jurisdiction.role.JdbRole" >
+    insert into jdb_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.jurisdiction.role.JdbRole" >
+    update jdb_role
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.jurisdiction.role.JdbRole" >
+    update jdb_role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

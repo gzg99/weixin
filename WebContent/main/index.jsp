@@ -145,6 +145,8 @@
 			<dd>
 				<ul>
 					<li><a _href="repwd.jsp" href="javascript:;">密码修改</a></li>
+					<li><a _href="role/listJdbRole.html" href="javascript:void(0)">角色管理</a></li>
+					<!-- <li><a _href="cardList.html" href="javascript:void(0)">安居卡查看</a></li> -->
 				</ul>
 			</dd>
 		</dl>
