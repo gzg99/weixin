@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.build.JdbGoodsBuildMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.build.JdbGoodsBuild" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_img" property="goodsImg" jdbcType="VARCHAR" />
+    <result column="goods_spe" property="goodsSpe" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="REAL" />
+    <result column="goods_brand" property="goodsBrand" jdbcType="VARCHAR" />
+    <result column="goods_material" property="goodsMaterial" jdbcType="VARCHAR" />
+    <result column="goods_color" property="goodsColor" jdbcType="VARCHAR" />
+    <result column="goods_num" property="goodsNum" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="VARCHAR" />
+    <result column="order" property="order" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="first_category" property="firstCategory" jdbcType="BIGINT" />
+    <result column="second_category" property="secondCategory" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yq.entity.build.JdbGoodsBuild" extends="BaseResultMap" >
+    <result column="goods_detail" property="goodsDetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, seller_id, goods_name, goods_img, goods_spe, goods_price, goods_brand, goods_material, 
+    goods_color, goods_num, add_time, order, status, first_category, second_category
+  </sql>
+  <sql id="Blob_Column_List" >
+    goods_detail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from jdb_goods_build
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from jdb_goods_build
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.build.JdbGoodsBuild" >
+    insert into jdb_goods_build (id, seller_id, goods_name, 
+      goods_img, goods_spe, goods_price, 
+      goods_brand, goods_material, goods_color, 
+      goods_num, add_time, order, 
+      status, first_category, second_category, 
+      goods_detail)
+    values (#{id,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsImg,jdbcType=VARCHAR}, #{goodsSpe,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=REAL}, 
+      #{goodsBrand,jdbcType=VARCHAR}, #{goodsMaterial,jdbcType=VARCHAR}, #{goodsColor,jdbcType=VARCHAR}, 
+      #{goodsNum,jdbcType=VARCHAR}, #{addTime,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{firstCategory,jdbcType=BIGINT}, #{secondCategory,jdbcType=BIGINT}, 
+      #{goodsDetail,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.build.JdbGoodsBuild" >
+    insert into jdb_goods_build
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsImg != null" >
+        goods_img,
+      </if>
+      <if test="goodsSpe != null" >
+        goods_spe,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="goodsBrand != null" >
+        goods_brand,
+      </if>
+      <if test="goodsMaterial != null" >
+        goods_material,
+      </if>
+      <if test="goodsColor != null" >
+        goods_color,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="order != null" >
+        order,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="firstCategory != null" >
+        first_category,
+      </if>
+      <if test="secondCategory != null" >
+        second_category,
+      </if>
+      <if test="goodsDetail != null" >
+        goods_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImg != null" >
+        #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpe != null" >
+        #{goodsSpe,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=REAL},
+      </if>
+      <if test="goodsBrand != null" >
+        #{goodsBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsMaterial != null" >
+        #{goodsMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsColor != null" >
+        #{goodsColor,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null" >
+        #{order,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="firstCategory != null" >
+        #{firstCategory,jdbcType=BIGINT},
+      </if>
+      <if test="secondCategory != null" >
+        #{secondCategory,jdbcType=BIGINT},
+      </if>
+      <if test="goodsDetail != null" >
+        #{goodsDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.build.JdbGoodsBuild" >
+    update jdb_goods_build
+    <set >
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImg != null" >
+        goods_img = #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpe != null" >
+        goods_spe = #{goodsSpe,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=REAL},
+      </if>
+      <if test="goodsBrand != null" >
+        goods_brand = #{goodsBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsMaterial != null" >
+        goods_material = #{goodsMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsColor != null" >
+        goods_color = #{goodsColor,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null" >
+        goods_num = #{goodsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null" >
+        order = #{order,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="firstCategory != null" >
+        first_category = #{firstCategory,jdbcType=BIGINT},
+      </if>
+      <if test="secondCategory != null" >
+        second_category = #{secondCategory,jdbcType=BIGINT},
+      </if>
+      <if test="goodsDetail != null" >
+        goods_detail = #{goodsDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yq.entity.build.JdbGoodsBuild" >
+    update jdb_goods_build
+    set seller_id = #{sellerId,jdbcType=BIGINT},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_img = #{goodsImg,jdbcType=VARCHAR},
+      goods_spe = #{goodsSpe,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=REAL},
+      goods_brand = #{goodsBrand,jdbcType=VARCHAR},
+      goods_material = #{goodsMaterial,jdbcType=VARCHAR},
+      goods_color = #{goodsColor,jdbcType=VARCHAR},
+      goods_num = #{goodsNum,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=VARCHAR},
+      order = #{order,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      first_category = #{firstCategory,jdbcType=BIGINT},
+      second_category = #{secondCategory,jdbcType=BIGINT},
+      goods_detail = #{goodsDetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.build.JdbGoodsBuild" >
+    update jdb_goods_build
+    set seller_id = #{sellerId,jdbcType=BIGINT},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_img = #{goodsImg,jdbcType=VARCHAR},
+      goods_spe = #{goodsSpe,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=REAL},
+      goods_brand = #{goodsBrand,jdbcType=VARCHAR},
+      goods_material = #{goodsMaterial,jdbcType=VARCHAR},
+      goods_color = #{goodsColor,jdbcType=VARCHAR},
+      goods_num = #{goodsNum,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=VARCHAR},
+      order = #{order,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      first_category = #{firstCategory,jdbcType=BIGINT},
+      second_category = #{secondCategory,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
