@@ -106,8 +106,6 @@
 	<br>
 	<script type="text/javascript">
 	function addrole(){
-		//var sec_name = $('#sec_name').val();
-		//alert($('#addrole').serialize());
 		var card = {};
 		card.roleName = $('#roleName').val();
 		card.remark = $('#remark').val();
