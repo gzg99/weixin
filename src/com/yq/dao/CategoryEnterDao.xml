@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yq.dao.build.JdbCategoryEnterMapper" >
-  <resultMap id="BaseResultMap" type="com.yq.entity.build.JdbCategoryEnter" >
+<mapper namespace="com.yq.dao.CategoryEnterDao" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.CategoryEnter" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
     <result column="ctg_name" property="ctgName" jdbcType="VARCHAR" />
@@ -31,13 +31,13 @@
     delete from jdb_category_enter
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yq.entity.build.JdbCategoryEnter" >
+  <insert id="insert" parameterType="com.yq.entity.CategoryEnter" >
     insert into jdb_category_enter (seller_id, ctg_name, 
       status, sort)
     values (#{sellerId,jdbcType=BIGINT}, #{ctgName,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yq.entity.build.JdbCategoryEnter" >
+  <insert id="insertSelective" parameterType="com.yq.entity.CategoryEnter" >
     insert into jdb_category_enter
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -74,7 +74,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.build.JdbCategoryEnter" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.CategoryEnter" >
     update jdb_category_enter
     <set >
       <if test="sellerId != null" >
@@ -92,7 +92,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yq.entity.build.JdbCategoryEnter" >
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.CategoryEnter" >
     update jdb_category_enter
     set seller_id = #{sellerId,jdbcType=BIGINT},
       ctg_name = #{ctgName,jdbcType=VARCHAR},

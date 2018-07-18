@@ -19,7 +19,7 @@
     <result column="indent_logistics_number" property="indentLogisticsNumber" jdbcType="VARCHAR" />
     <result column="indent_fee" property="indentFee" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="indent_commodity_num" property="indentCommodityNum" jdbcType="Integer" />
+    <result column="indent_commodity_num" property="indentCommodityNum" jdbcType="INTEGER" />
     <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
     <result column="indent_commodity" property="indentCommodity" jdbcType="VARCHAR" />
   </resultMap>
@@ -120,7 +120,7 @@
       #{indentState,jdbcType=VARCHAR}, #{indentTime,jdbcType=DATE}, #{indentAddress,jdbcType=VARCHAR}, 
       #{indentPhone,jdbcType=VARCHAR}, #{indentLogistics,jdbcType=VARCHAR}, #{indentIsLogistics,jdbcType=VARCHAR}, 
       #{indentLogisticsNumber,jdbcType=VARCHAR}, #{indentFee,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}
-      #{indentCommodityNum,jdbcType=Integer}, #{commodityName,jdbcType=VARCHAR}, #{indentCommodity,jdbcType=VARCHAR}
+      #{indentCommodityNum,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{indentCommodity,jdbcType=VARCHAR}
       )
   </insert>
   

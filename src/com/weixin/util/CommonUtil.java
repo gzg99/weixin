@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URL;
@@ -26,8 +25,6 @@ import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -94,9 +91,7 @@ public class CommonUtil extends StringUtil
   public Token getToken(String appid, String appsecret)
   {
     Long nowtime = Long.valueOf(new Date().getTime());
-    AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "classpath:applicationContext.xml" });
-    AccessTokenService accessTokenService = (AccessTokenService)ctx.getBean("accessTokenService");
-    List token_list = accessTokenService.listById(this.accessToken);
+    List<AccessToken> token_list = accessTokenService.listById(this.accessToken);
 
     Long add_time = ((AccessToken)token_list.get(0)).getAdd_time();
     Token token = new Token();
@@ -108,7 +103,7 @@ public class CommonUtil extends StringUtil
       try {
         token.setAccessToken(jsonObject.getString("access_token"));
         token.setExpiresIn(jsonObject.getInt("expires_in"));
-        Map map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("add_time", nowtime);
         map.put("access_token", jsonObject.getString("access_token"));
         accessTokenService.update(map);
