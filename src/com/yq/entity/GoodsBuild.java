@@ -19,7 +19,9 @@ public class GoodsBuild {
 
     private String goodsColor;
 
-    private String goodsNum;
+    private Long goodsNum;
+    
+    private Long goodsSales;
 
     private String addTime;
 
@@ -105,11 +107,11 @@ public class GoodsBuild {
         this.goodsColor = goodsColor;
     }
 
-    public String getGoodsNum() {
+    public Long getGoodsNum() {
         return goodsNum;
     }
 
-    public void setGoodsNum(String goodsNum) {
+    public void setGoodsNum(Long goodsNum) {
         this.goodsNum = goodsNum;
     }
 
@@ -160,4 +162,12 @@ public class GoodsBuild {
     public void setGoodsDetail(String goodsDetail) {
         this.goodsDetail = goodsDetail;
     }
+
+	public Long getGoodsSales() {
+		return goodsSales;
+	}
+
+	public void setGoodsSales(Long goodsSales) {
+		this.goodsSales = goodsSales;
+	}
 }

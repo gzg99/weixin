@@ -11,7 +11,8 @@
     <result column="goods_brand" property="goodsBrand" jdbcType="VARCHAR" />
     <result column="goods_material" property="goodsMaterial" jdbcType="VARCHAR" />
     <result column="goods_color" property="goodsColor" jdbcType="VARCHAR" />
-    <result column="goods_num" property="goodsNum" jdbcType="VARCHAR" />
+    <result column="goods_num" property="goodsNum" jdbcType="BIGINT" />
+    <result column="goods_sales" property="goodsSales" jdbcType="BIGINT" />
     <result column="add_time" property="addTime" jdbcType="VARCHAR" />
     <result column="order" property="order" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
@@ -23,7 +24,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, seller_id, goods_name, goods_img, goods_spe, goods_price, goods_brand, goods_material, 
-    goods_color, goods_num, add_time, order, status, first_category, second_category
+    goods_color, goods_num, goods_sales, add_time, order, status, first_category, second_category
   </sql>
   <sql id="Blob_Column_List" >
     goods_detail
@@ -44,15 +45,15 @@
     insert into jdb_goods_build (id, seller_id, goods_name, 
       goods_img, goods_spe, goods_price, 
       goods_brand, goods_material, goods_color, 
-      goods_num, add_time, order, 
+      goods_num, goods_sales, add_time, order, 
       status, first_category, second_category, 
       goods_detail)
     values (#{id,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, 
       #{goodsImg,jdbcType=VARCHAR}, #{goodsSpe,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=REAL}, 
       #{goodsBrand,jdbcType=VARCHAR}, #{goodsMaterial,jdbcType=VARCHAR}, #{goodsColor,jdbcType=VARCHAR}, 
-      #{goodsNum,jdbcType=VARCHAR}, #{addTime,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER}, 
-      #{status,jdbcType=TINYINT}, #{firstCategory,jdbcType=BIGINT}, #{secondCategory,jdbcType=BIGINT}, 
-      #{goodsDetail,jdbcType=LONGVARCHAR})
+      #{goodsNum,jdbcType=BIGINT}, #{goodsSales,jdbcType=BIGINT}, #{addTime,jdbcType=VARCHAR}, 
+      #{order,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{firstCategory,jdbcType=BIGINT}, 
+      #{secondCategory,jdbcType=BIGINT}, #{goodsDetail,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yq.entity.GoodsBuild" >
     insert into jdb_goods_build
@@ -86,6 +87,9 @@
       </if>
       <if test="goodsNum != null" >
         goods_num,
+      </if>
+      <if test="goodsSales != null" >
+        goods_sales,
       </if>
       <if test="addTime != null" >
         add_time,
@@ -137,6 +141,9 @@
       <if test="goodsNum != null" >
         #{goodsNum,jdbcType=VARCHAR},
       </if>
+      <if test="goodsSales != null" >
+        #{goodsSales,jdbcType=VARCHAR},
+      </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=VARCHAR},
       </if>
@@ -185,7 +192,10 @@
         goods_color = #{goodsColor,jdbcType=VARCHAR},
       </if>
       <if test="goodsNum != null" >
-        goods_num = #{goodsNum,jdbcType=VARCHAR},
+        goods_num = #{goodsNum,jdbcType=BIGINT},
+      </if>
+      <if test="goodsSales != null" >
+        goods_sales = #{goodsSales,jdbcType=BIGINT},
       </if>
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=VARCHAR},
@@ -218,7 +228,8 @@
       goods_brand = #{goodsBrand,jdbcType=VARCHAR},
       goods_material = #{goodsMaterial,jdbcType=VARCHAR},
       goods_color = #{goodsColor,jdbcType=VARCHAR},
-      goods_num = #{goodsNum,jdbcType=VARCHAR},
+      goods_num = #{goodsNum,jdbcType=BIGINT},
+      goods_sales = #{goodsSales,jdbcType=BIGINT},
       add_time = #{addTime,jdbcType=VARCHAR},
       order = #{order,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
@@ -237,7 +248,8 @@
       goods_brand = #{goodsBrand,jdbcType=VARCHAR},
       goods_material = #{goodsMaterial,jdbcType=VARCHAR},
       goods_color = #{goodsColor,jdbcType=VARCHAR},
-      goods_num = #{goodsNum,jdbcType=VARCHAR},
+      goods_num = #{goodsNum,jdbcType=BIGINT},
+      goods_sales = #{goodsSales,jdbcType=BIGINT},
       add_time = #{addTime,jdbcType=VARCHAR},
       order = #{order,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
@@ -245,4 +257,36 @@
       second_category = #{secondCategory,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <select id="getGoodsBuildByCondition">
+  	<![CDATA[
+	  	select 
+	  		<include refid="Base_Column_List" />
+	  	from 
+	  		jdb_goods_build 
+	  	where 1=1 
+	  	<if test="sellerId != null" >
+	        and seller_id = #{sellerId,jdbcType=BIGINT} 
+		</if>
+		<if test="firstCategory != null" >
+			and first_category = #{firstCategory,jdbcType=VARCHAR} 
+		</if>
+		<if test="secondCategory != null" >
+			and second_category = #{secondCategory,jdbcType=VARCHAR} 
+		</if>
+		<if test="goodsName != null" >
+			and goods_name = #{goodsName,jdbcType=REAL} 
+		</if>
+		<if test="highPrice != null" >
+			and goods_price < #{highPrice,jdbcType=VARCHAR} 
+		</if>
+		<if test="lowerPrice != null" >
+			and goods_price > #{lowerPrice,jdbcType=VARCHAR} 
+		</if>
+		<if test="salesVol != null" >
+			and goods_sales = #{goodsSales,jdbcType=BIGINT}
+		</if>
+	]]>
+  </select> 
+  
 </mapper>
