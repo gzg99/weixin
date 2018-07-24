@@ -194,7 +194,7 @@
 				<div class="dd">
 					<div class="dd_input">
 						<div class="dd_input_txt">订单编号</div>
-						<input type="text" name="indentNum">
+						<input type="text" name="indentNum" value="${indent.indentNum }">
 					</div>
 					<div class="dd_input">
 						<div class="dd_input_txt">买家姓名</div>
@@ -208,7 +208,7 @@
 					<div class="dd_xdrq w100">
 						<div class="dd_input_txt">下单日期</div>
 						<ul class="dd_xdrq_sj">
-							<li class="active">最近7日</li>
+							<li class="active" >最近7日</li>
 							<li>最近15日</li>
 							<li style="border: none;">最近30日</li>
 						</ul>

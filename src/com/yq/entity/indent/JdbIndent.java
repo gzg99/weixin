@@ -20,8 +20,7 @@ public class JdbIndent extends Page {
 
 	private String indentState;
 
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-	private Date indentTime;
+	private String indentTime;
 
 	private Date startTime;
 
@@ -105,12 +104,12 @@ public class JdbIndent extends Page {
 		this.indentState = indentState;
 	}
 
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-	public Date getIndentTime() {
+
+	public String getIndentTime() {
 		return indentTime;
 	}
 
-	public void setIndentTime(Date indentTime) {
+	public void setIndentTime(String indentTime) {
 		this.indentTime = indentTime;
 	}
 

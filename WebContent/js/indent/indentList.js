@@ -122,13 +122,15 @@ function deliverSumbit() {
 }
 
 
-
+/**
+ * 订单详情页面整合
+ * @param dataObj
+ */
 function layout(dataObj) {
 	var str = '<div class="dd_xq w100"><p> <span style="margin-right: 50px;">';
 	
 	str += '订单编号：'+dataObj[0].indentNum + '</span>'
         + '<span>成交时间：'+dataObj[0].indentTime+'</span></p><p>订单总价：¥'
-	
         + dataObj[0].indentMoney
         +'（运费 ¥'+dataObj[0].indentFee+'）</p><p> <span class="gray">'
 	    +dataObj[0].indentState+'</span></p></div>'

@@ -72,7 +72,7 @@
 				when '4' then '维权完成'
 				when '5' then '交易完成'
 			end as indent_state ,
-			indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
+			date_format(indent_time,'%Y-%m-%d %H:%m:%s') as indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
 			indent_logistics_number, indent_fee,
 			user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date
 		from jdb_indent
@@ -84,7 +84,6 @@
 		select
 			id, indent_num, indent_price, indent_quantity, indent_money,
 			indent_nickname, 
-			
 			case  indent_state
 				when '1' then '待发货'
 				when '2' then '已发货'

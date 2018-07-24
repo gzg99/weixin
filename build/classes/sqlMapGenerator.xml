@@ -20,16 +20,16 @@
 			password="estate123" />
 			
 		<!-- 所生成的bean的位置默认资源包src -->
-		<javaModelGenerator targetPackage="com.yq.entity.indent"
+		<javaModelGenerator targetPackage="com.yq.entity"
 			targetProject="weixin" />
 		<!-- 所生成的xml的影射文件的位置,默认资源包src -->
-		<sqlMapGenerator targetPackage="com.yq.dao.indent"
+		<sqlMapGenerator targetPackage="com.yq.dao"
 			targetProject="weixin" />
 		<!-- 生成Dao类存放位置 -->
-		<javaClientGenerator type="XMLMAPPER" targetPackage="com.yq.dao.indent"
-			targetProject="weixin" />
+		<!-- <javaClientGenerator type="XMLMAPPER" targetPackage="com.yq.dao.indent"
+			targetProject="weixin" /> -->
 		<!-- 为哪些表生成代码 tableName:表名 schema:不用填写,其余属性是禁用例子查询的生成 -->
-			<table schema="" tableName="jdb_indent_commodity" enableCountByExample="false"
+			<table schema="" tableName="jdb_indent" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"
 		>
