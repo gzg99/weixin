@@ -146,7 +146,15 @@
 				<ul>
 					<li><a _href="repwd.jsp" href="javascript:;">密码修改</a></li>
 					<li><a _href="role/listJdbRole.html" href="javascript:void(0)">角色管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
 					<li><a _href="indent/indentList.html" href="javascript:void(0)">订单管理</a></li>
+					<li><a _href="indent/general.html" href="javascript:void(0)">概况</a></li>
 				</ul>
 			</dd>
 		</dl>

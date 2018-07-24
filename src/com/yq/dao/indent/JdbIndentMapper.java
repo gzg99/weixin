@@ -20,9 +20,9 @@ public interface JdbIndentMapper {
     
     int updateByPrimaryKeySelective(JdbIndent record);
     
-    int selecshipments(String userId);
+    int selecshipments(JdbIndent record);
     
-    int selecsafeguard(String userId);
+    int selecsafeguard(JdbIndent record);
     
     Map<String,Object> yesterdayIndex(String userId);
 

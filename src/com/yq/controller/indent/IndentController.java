@@ -86,9 +86,9 @@ public class IndentController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/general")
+	@RequestMapping(value = "/general.html")
 	public ModelAndView general() {
-		ModelAndView view = new ModelAndView();
+		ModelAndView view = new ModelAndView("main/indent/general");
 		Map<String, Object> generalSituation = indentService.generalSituation();
 		view.addObject("generalSituation", generalSituation);
 		return view;

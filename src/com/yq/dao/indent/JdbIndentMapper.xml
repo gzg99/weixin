@@ -51,7 +51,7 @@
 				and indent_time &lt;= #{endTime}
 			</if>
 			<if test="userId != null and userId != ''">
-				and user_id &lt;= #{userId}
+				and user_id = #{userId}
 			</if>
 			<if test="commodityName != null and commodityName != ''">
 				and commodity_name = #{commodityName}
@@ -111,8 +111,7 @@
 	</select>
 
 
-	<select id="selecshipments" resultType="Integer"
-		parameterType="com.yq.entity.indent.JdbIndent">
+	<select id="selecshipments" resultType="Integer" parameterType="com.yq.entity.indent.JdbIndent">
 		select
 		count(1)
 		from jdb_indent
@@ -127,7 +126,7 @@
 		<include refid="where_list" />
 	</select>
 	<!-- 昨日指标 -->
-	<select id="yesterdayIndex" resultType="Integer"
+	<select id="yesterdayIndex" resultType="java.util.Map"
 		parameterType="com.yq.entity.indent.JdbIndent">
 
 		select

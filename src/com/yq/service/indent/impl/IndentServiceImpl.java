@@ -49,8 +49,12 @@ public class IndentServiceImpl implements IndentService {
 	@Override
 	public Map<String, Object> generalSituation() {
 		String userId = "";
-		int shipments = jdbIndentMapper.selecshipments(userId);//待发货
-		int safeguard = jdbIndentMapper.selecsafeguard(userId);//待维权
+		JdbIndent record = new JdbIndent();
+		record.setUserId(userId);
+		record.setIndentState("1");
+		int shipments = jdbIndentMapper.selecshipments(record);//待发货
+		record.setIndentState("3");
+		int safeguard = jdbIndentMapper.selecsafeguard(record);//维权中
 		Map<String,Object> yesterday= jdbIndentMapper.yesterdayIndex(userId);//昨天关键指标
 		yesterday.put("shipments", shipments);
 		yesterday.put("safeguard", safeguard);
