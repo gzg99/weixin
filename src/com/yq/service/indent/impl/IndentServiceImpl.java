@@ -71,4 +71,13 @@ public class IndentServiceImpl implements IndentService {
 		JdbIndent jdbIndent = jdbIndentMapper.selectByPrimaryKey(id);
 		return jdbIndent;
 	}
+
+	/**
+	 * 下载
+	 */
+	@Override
+	public List<JdbIndent> downloadIndentByList(JdbIndent jdbIndent) {
+		List<JdbIndent> downloadIndentByList = jdbIndentMapper.downloadIndentByList(jdbIndent);
+		return downloadIndentByList;
+	}
 }

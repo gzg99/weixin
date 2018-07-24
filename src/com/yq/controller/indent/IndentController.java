@@ -2,6 +2,8 @@ package com.yq.controller.indent;
 
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -98,35 +100,41 @@ public class IndentController {
      * 导出报表
      * @return
      */
-    @RequestMapping(value = "/export")
-    @ResponseBody
-    public void export(HttpServletRequest request,HttpServletResponse response) throws Exception {
-        //获取数据
-        //List<PageData> list = reportService.bookList(page);
+	@RequestMapping(value = "/export.html")
+	//@ResponseBody
+	public void export(HttpServletRequest request, HttpServletResponse response, JdbIndent jdbIndent) throws Exception {
+		// 获取数据
+		List<JdbIndent> downloadIndentByList = indentService.downloadIndentByList(jdbIndent);
 
-        //excel标题
-    	String[] title = {"商品","单价","数量","总金额","买家昵称","交易状态"};
+		// excel标题
+		String[] title = new String[]{ "商品", "单价", "数量", "总金额", "买家昵称", "交易状态" };
 
-		//excel文件名
-		String fileName = "订单明细表"+System.currentTimeMillis()+".xls";
-		
-		//sheet名
+		// excel文件名
+		String fileName = "订单明细表" + System.currentTimeMillis() + ".xls";
+
+		// sheet名
 		String sheetName = "订单明细表";
-
-	  /*for (int i = 0; i < list.size(); i++) {
-	         content[i] = new String[title.length];
-	         PageData obj = list.get(i);
-	         content[i][0] = obj.get("stuName").tostring();
-	         content[i][1] = obj.get("stuSex").tostring();
-	         content[i][2] = obj.get("stuAge").tostring();
-	         content[i][3] = obj.get("stuSchoolName").tostring();
-	         content[i][4] = obj.get("stuClassName").tostring();
-	　　　}*/
-
-		//创建HSSFWorkbook 
-		HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook(sheetName, title, null, null);
+		String[][] content = null;
 		
-		//响应到客户端
+		
+
+		
+		content=new String[downloadIndentByList.size()][];
+		for (int i = 0; i < downloadIndentByList.size(); i++) {
+			content[i] = new String[title.length];
+			JdbIndent indent = downloadIndentByList.get(i);
+			content[i][0] = indent.getCommodityName();
+			content[i][1] = indent.getIndentPrice();
+			content[i][2] = indent.getIndentQuantity();
+			content[i][3] = indent.getIndentMoney();
+			content[i][4] = indent.getIndentNickname();
+			content[i][5] = indent.getIndentState();
+		}
+
+		// 创建HSSFWorkbook
+		HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook(sheetName, title, content, null);
+
+		// 响应到客户端
 		try {
 			this.setResponseHeader(response, fileName);
 			OutputStream os = response.getOutputStream();

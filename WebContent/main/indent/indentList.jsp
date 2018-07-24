@@ -228,8 +228,8 @@
 					</ul>
 				</div>
 				<div class="dd_list_xzbg w100">
-					<a href="###" class="left fh">发货</a> <a href="###"
-						class="right xzbg ">下载表格</a>
+					<a href="###" class="left fh">发货</a> 
+					<a href="export.html" class="right xzbg ">下载表格</a>
 				</div>
 				<div class="dd_list_table w100">
 					<table width="818" border="0" cellspacing="0" cellpadding="0">

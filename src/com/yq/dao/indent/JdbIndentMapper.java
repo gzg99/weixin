@@ -16,6 +16,8 @@ public interface JdbIndentMapper {
 
     List<JdbIndent> selectIndentByList(JdbIndent jdbIndent);
     
+    List<JdbIndent> downloadIndentByList(JdbIndent jdbIndent);
+    
     int total(JdbIndent jdbIndent);
     
     int updateByPrimaryKeySelective(JdbIndent record);

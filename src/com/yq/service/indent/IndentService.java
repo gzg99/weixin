@@ -1,5 +1,6 @@
 package com.yq.service.indent;
 
+import java.util.List;
 import java.util.Map;
 
 import com.yq.entity.indent.JdbIndent;
@@ -13,4 +14,6 @@ public interface IndentService {
 	Map<String, Object> generalSituation();
 	
 	JdbIndent selectByPrimaryKey(String id);
+	
+	List<JdbIndent> downloadIndentByList(JdbIndent jdbIndent);
 }
