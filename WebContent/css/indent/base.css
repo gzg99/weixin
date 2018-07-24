@@ -1,0 +1,55 @@
+﻿body, h1, h2, h3, h4, h5, h6, div, p, ul, ol, dl, dt, dd, li, td, input, select, textarea, form, table { margin: 0; padding: 0; font-weight: normal;}
+li, img { padding: 0px; margin: 0px; list-style: none; }
+a,img { text-decoration: none; outline: none; margin: 0px; padding: 0px; }
+a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none; color:#333;}
+img{ width:100%; height:100%;}
+input,textarea{ resize: none; border: none;background: none;outline: none;border-radius: 0;}
+body { font-family: "微软雅黑"; font-size:14px; color: #333;}
+.clear { clear: both; font-size: 1px; height: 0; line-height: 0px; margin: 0; padding: 0; }
+.left{ float: left; }
+.right { float: right;}
+.w100{float: left;width: 100%; }
+.hide{display: none;}
+.gray{color:#999;}
+.blue{ color:#0000FF;}
+.red{ color:#f00;}
+
+.top{ height:60px; line-height: 60px; color: #fff; background: #666; width: 100%; text-indent: 22px; font-size: 24px;}
+.left{ width: 160px; float: left;}
+.left a{float: left;display: block; padding-left:50px; width: 110px; height: 60px; line-height: 60px;}
+
+.gk{ background: url(u484.png) no-repeat 10px center;}
+.active.gk{background-image: url(u139.png);}
+.tjsp{ background: url(u22.png) no-repeat 10px center;}
+.active.tjsp{background-image: url(u28.png);}
+.flgl{ background: url(u92.png) no-repeat 10px center;}
+.active.flgl{background-image: url(u98.png);}
+.spgl{ background: url(u36.png) no-repeat 10px center;}
+.active.spgl{background-image: url(u42.png);}
+.ddgl{ background: url(u50.png) no-repeat 10px center;}
+.active.ddgl{background-image: url(u56.png);}
+.yfgl{ background: url(u64.png) no-repeat 10px center;}
+.active.yfgl{background-image: url(u70.png);}
+.xtgl{ background: url(u78.png) no-repeat 10px center;}
+.active.xtgl{background-image: url(u84.png);}
+.active{ background-color: #fff; color: #0000FF;}
+
+.title{width: 100%;background: #E4E4E4;height: 27px;border-bottom: #818181 solid 1px;}
+.title_box{width: 140px; height: 20px; line-height: 18px; background: url(u172.png) no-repeat; float: left; text-align: center; margin-top:8px;}
+.content{ width:100%; float: left; padding: 50px 0 0 70px;}
+.row{ width: 100%; float:left; padding-bottom: 40px;}
+
+.fh_box{ position:absolute; width:240px; background:#fff; border:#999 solid 1px; padding:10px;}
+.wl_tab{padding:20px 0; border-top:#999 solid 1px; margin-top:10px;}
+.wl_tab_ck{ float:left; }
+.wl_tab_ck+div{ margin-left:30px;}
+.wl_tab_ck input{ margin-right:5px;}
+.wl_nr select{ width:102px; height:22px; margin-top:5px; margin-bottom:10px;}
+.wl_nr input[type=text]{ height:22px; border:#A9A9A9 solid 1px; width:230px; padding:0 5px; margin-top:5px;}
+.wl_nr_ts{ padding:10px 0;}
+.wl_no{ padding:16px 0 34px; text-indent:10px;}
+.wl_btn{ padding:10px 0;}
+.wl_btn button{border-radius:5px; width: 85px;height: 28px; float:left; cursor:pointer;}
+.wl_btn1{ color:#fff; background:#00CC33; border:#00CC33 solid 1px; margin-right:50px;}
+.wl_btn2{ color:#797979; background:#fff; border:#797979 solid 1px;}
+.dd_title{ border-bottom:#797979 solid 1px; height:28px; line-height:28px; margin-top:30px;}

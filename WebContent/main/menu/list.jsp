@@ -138,8 +138,7 @@
 	}
 	function downPage() {
 		if (parseInt(currentPage) < parseInt(totalPage)) {
-			window.location.href = 'menuList.html?currentPage='
-					+ (parseInt(currentPage) + 1)+'&status=1';
+			window.location.href = 'menuList.html?currentPage=' + (parseInt(currentPage) + 1)+'&status=1';
 			return;
 		}
 	}

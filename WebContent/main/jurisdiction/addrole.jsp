@@ -15,8 +15,7 @@
 <link href="../css/H-ui.min.css" rel="stylesheet" type="text/css" />
 <link href="../css/H-ui.admin.css" rel="stylesheet" type="text/css" />
 <link href="../lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
-<link href="../lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet"
-	type="text/css" />
+<link href="../lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
 
 <script src="../js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="../js/ajaxfileupload.js"></script>

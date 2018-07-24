@@ -19,6 +19,8 @@ import com.yq.service.indent.IndentService;
 import com.yq.util.ExcelUtil;
 import com.yq.util.PageUtil;
 
+import net.sf.json.JSONArray;
+
 /**
  * 订单管理
  * 
@@ -43,10 +45,23 @@ public class IndentController {
 		Map<String, Object> indentList = indentService.selectIndentByList(jdbIndent);
 		PageUtil.pager(jdbIndent.getCurrentPage(), 10, Integer.parseInt(indentList.get("total").toString()), request);
 		ModelAndView view = new ModelAndView("main/indent/indentList");
-		view.addObject("indentList", indentList);
+		view.addObject("indentList", indentList.get("listIndent"));
 
 		return view;
 
+	}
+	
+	/**
+	 * 发货查询单条
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "/selJdbIndent.html")
+	@ResponseBody
+	public String selJdbIndent(String id) {
+		JdbIndent jdbIndent = indentService.selectByPrimaryKey(id);
+		JSONArray jsonStrs = JSONArray.fromObject(jdbIndent);
+		return jsonStrs.toString();
 	}
 
 	/**
@@ -55,7 +70,8 @@ public class IndentController {
 	 * @param jdbIndent
 	 * @return
 	 */
-	@RequestMapping("/deliverGood.html")
+	@RequestMapping(value = "/deliverGood.html")
+	@ResponseBody
 	public String deliverGood(JdbIndent jdbIndent) {
 		String sess = "0";
 		int up = indentService.updateByPrimaryKeySelective(jdbIndent);

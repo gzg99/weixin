@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
 "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
-<generatorConfiguration>
+<generatorConfiguration> 
 	<!-- 制定mysql的驱动包的路径 千万别放中文路径下 -->
 	<classPathEntry location="D:/mysql.jar" />
 	<!-- 配置数据源和生成的代码所存放的位置 -->

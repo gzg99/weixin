@@ -1,320 +1,364 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yq.dao.indent.JdbIndentMapper" >
-  <resultMap id="BaseResultMap" type="com.yq.entity.indent.JdbIndent" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="indent_num" property="indentNum" jdbcType="VARCHAR" />
-    <result column="indent_price" property="indentPrice" jdbcType="VARCHAR" />
-    <result column="indent_quantity" property="indentQuantity" jdbcType="VARCHAR" />
-    <result column="indent_money" property="indentMoney" jdbcType="VARCHAR" />
-    <result column="indent_nickname" property="indentNickname" jdbcType="VARCHAR" />
-    <result column="indent_state" property="indentState" jdbcType="VARCHAR" />
-    <result column="indent_time" property="indentTime" jdbcType="DATE" />
-    <result column="startTime" property="startTime" jdbcType="DATE" />
-    <result column="endTime" property="endTime" jdbcType="DATE" />
-    <result column="indent_address" property="indentAddress" jdbcType="VARCHAR" />
-    <result column="indent_phone" property="indentPhone" jdbcType="VARCHAR" />
-    <result column="indent_logistics" property="indentLogistics" jdbcType="VARCHAR" />
-    <result column="indent_is_logistics" property="indentIsLogistics" jdbcType="VARCHAR" />
-    <result column="indent_logistics_number" property="indentLogisticsNumber" jdbcType="VARCHAR" />
-    <result column="indent_fee" property="indentFee" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="indent_commodity_num" property="indentCommodityNum" jdbcType="INTEGER" />
-    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
-    <result column="indent_commodity" property="indentCommodity" jdbcType="VARCHAR" />
-  </resultMap>
-  
-  <sql id="Base_Column_List" >
-    id, indent_num, indent_price, indent_quantity, indent_money, indent_nickname, indent_state, 
-    indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics, 
-    indent_logistics_number, indent_fee, user_id,indent_commodity_num,commodity_name,indent_commodity
-  </sql>
-  
-  <sql id="where_list" >
-    <where>
-        <if test="indentState != null and indentState != ''">
-            and indent_state = #{indentState}
-        </if>
-        <if test="indentNum != null and indentNum != ''">
-            and indent_num = #{indentNum}
-        </if>
-        <if test="indentNickname != null and indentNickname != ''">
-            and indent_nickname = #{indentNickname}
-        </if>
-        <if test="startTime != null and startTime != ''">
-            and indent_time &gt;= #{startTime}
-        </if>
-        <if test="endTime != null and endTime != ''">
-            and indent_time &lt;= #{endTime}
-        </if>
-        <if test="userId != null and userId != ''">
-            and user_id &lt;= #{userId}
-        </if>
-    </where>
-  </sql>
-  
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from jdb_indent
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  
-  <select id="selectIndentByList" resultMap="BaseResultMap" parameterType="com.yq.entity.indent.JdbIndent" >
-    select 
-    <include refid="Base_Column_List" />
-    from jdb_indent
-    where id = #{id,jdbcType=VARCHAR}
-    <include refid="where_list" />
-    limit #{currentNum}, #{pageSize}
-  </select>
-  
-  
-  <select id="total" resultType="Integer" parameterType="com.yq.entity.indent.JdbIndent" >
-    select 
-    count(1)
-    from jdb_indent
-    <include refid="where_list" />
-  </select>
-  
-  
-  <select id="selecshipments" resultType="Integer" parameterType="com.yq.entity.indent.JdbIndent" >
-    select 
-    count(1)
-    from jdb_indent
-    <include refid="where_list" />
-  </select>
-  
-  <select id="selecsafeguard" resultType="Integer" parameterType="com.yq.entity.indent.JdbIndent" >
-    select 
-    count(1)
-    from jdb_indent
-    <include refid="where_list" />
-  </select>
-  <!-- 昨日指标 -->
-  <select id="yesterdayIndex" resultType="Integer" parameterType="com.yq.entity.indent.JdbIndent" >
-    
-    select 
-    	count(1) as ds,sum(indent_commodity_num) as num,sum(indent_money) as money 
-    from 
-    	jdb_indent 
-    where  
-    	date_format(indent_time, '%y-%m-%d') = date_sub(date_format(now(), '%y-%m-%d'), interval 1 day);
+<mapper namespace="com.yq.dao.indent.JdbIndentMapper">
+	<resultMap id="BaseResultMap" type="com.yq.entity.indent.JdbIndent">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="indent_num" property="indentNum" jdbcType="VARCHAR" />
+		<result column="indent_price" property="indentPrice" jdbcType="VARCHAR" />
+		<result column="indent_quantity" property="indentQuantity" jdbcType="VARCHAR" />
+		<result column="indent_money" property="indentMoney" jdbcType="VARCHAR" />
+		<result column="indent_nickname" property="indentNickname" jdbcType="VARCHAR" />
+		<result column="indent_state" property="indentState" jdbcType="VARCHAR" />
+		<result column="indent_time" property="indentTime" jdbcType="TIMESTAMP" />
+		<result column="indent_date" property="indentDate" jdbcType="DATE" />
+		<result column="startTime" property="startTime" jdbcType="DATE" />
+		<result column="endTime" property="endTime" jdbcType="DATE" />
+		<result column="indent_address" property="indentAddress" jdbcType="VARCHAR" />
+		<result column="indent_phone" property="indentPhone" jdbcType="VARCHAR" />
+		<result column="indent_logistics" property="indentLogistics" jdbcType="VARCHAR" />
+		<result column="indent_is_logistics" property="indentIsLogistics" jdbcType="VARCHAR" />
+		<result column="indent_logistics_number" property="indentLogisticsNumber" jdbcType="VARCHAR" />
+		<result column="indent_fee" property="indentFee" jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="indent_commodity_num" property="indentCommodityNum" jdbcType="INTEGER" />
+		<result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+		<result column="indent_commodity" property="indentCommodity" jdbcType="VARCHAR" />
+	</resultMap>
 
-  </select>
-  
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from jdb_indent
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  
-  <insert id="insert" parameterType="com.yq.entity.indent.JdbIndent" >
-    insert into jdb_indent (id, indent_num, indent_price, 
-      indent_quantity, indent_money, indent_nickname, 
-      indent_state, indent_time, indent_address, 
-      indent_phone, indent_logistics, indent_is_logistics, 
-      indent_logistics_number, indent_fee, user_id,indent_commodity_num,commodity_name,indent_commodity
-      )
-    values (#{id,jdbcType=VARCHAR}, #{indentNum,jdbcType=VARCHAR}, #{indentPrice,jdbcType=VARCHAR}, 
-      #{indentQuantity,jdbcType=VARCHAR}, #{indentMoney,jdbcType=VARCHAR}, #{indentNickname,jdbcType=VARCHAR}, 
-      #{indentState,jdbcType=VARCHAR}, #{indentTime,jdbcType=DATE}, #{indentAddress,jdbcType=VARCHAR}, 
-      #{indentPhone,jdbcType=VARCHAR}, #{indentLogistics,jdbcType=VARCHAR}, #{indentIsLogistics,jdbcType=VARCHAR}, 
-      #{indentLogisticsNumber,jdbcType=VARCHAR}, #{indentFee,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}
-      #{indentCommodityNum,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{indentCommodity,jdbcType=VARCHAR}
-      )
-  </insert>
-  
-  <insert id="insertSelective" parameterType="com.yq.entity.indent.JdbIndent" >
-    insert into jdb_indent
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="indentNum != null" >
-        indent_num,
-      </if>
-      <if test="indentPrice != null" >
-        indent_price,
-      </if>
-      <if test="indentQuantity != null" >
-        indent_quantity,
-      </if>
-      <if test="indentMoney != null" >
-        indent_money,
-      </if>
-      <if test="indentNickname != null" >
-        indent_nickname,
-      </if>
-      <if test="indentState != null" >
-        indent_state,
-      </if>
-      <if test="indentTime != null" >
-        indent_time,
-      </if>
-      <if test="indentAddress != null" >
-        indent_address,
-      </if>
-      <if test="indentPhone != null" >
-        indent_phone,
-      </if>
-      <if test="indentLogistics != null" >
-        indent_logistics,
-      </if>
-      <if test="indentIsLogistics != null" >
-        indent_is_logistics,
-      </if>
-      <if test="indentLogisticsNumber != null" >
-        indent_logistics_number,
-      </if>
-      <if test="indentFee != null" >
-        indent_fee,
-      </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="indentCommodityNum != null" >
-        indent_commodity_num,
-      </if>
-      <if test="commodityName != null" >
-        commodity_name,
-      </if>
-      <if test="indentCommodity != null" >
-        indent_commodity,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="indentNum != null" >
-        #{indentNum,jdbcType=VARCHAR},
-      </if>
-      <if test="indentPrice != null" >
-        #{indentPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="indentQuantity != null" >
-        #{indentQuantity,jdbcType=VARCHAR},
-      </if>
-      <if test="indentMoney != null" >
-        #{indentMoney,jdbcType=VARCHAR},
-      </if>
-      <if test="indentNickname != null" >
-        #{indentNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="indentState != null" >
-        #{indentState,jdbcType=VARCHAR},
-      </if>
-      <if test="indentTime != null" >
-        #{indentTime,jdbcType=DATE},
-      </if>
-      <if test="indentAddress != null" >
-        #{indentAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="indentPhone != null" >
-        #{indentPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="indentLogistics != null" >
-        #{indentLogistics,jdbcType=VARCHAR},
-      </if>
-      <if test="indentIsLogistics != null" >
-        #{indentIsLogistics,jdbcType=VARCHAR},
-      </if>
-      <if test="indentLogisticsNumber != null" >
-        #{indentLogisticsNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="indentFee != null" >
-        #{indentFee,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="indentCommodityNum != null" >
-        #{indentCommodityNum,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityName != null" >
-        #{commodityName,jdbcType=VARCHAR},
-      </if>
-      <if test="indentCommodity != null" >
-        #{indentCommodity,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  
-  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.indent.JdbIndent" >
-    update jdb_indent
-    <set >
-      <if test="indentNum != null" >
-        indent_num = #{indentNum,jdbcType=VARCHAR},
-      </if>
-      <if test="indentPrice != null" >
-        indent_price = #{indentPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="indentQuantity != null" >
-        indent_quantity = #{indentQuantity,jdbcType=VARCHAR},
-      </if>
-      <if test="indentMoney != null" >
-        indent_money = #{indentMoney,jdbcType=VARCHAR},
-      </if>
-      <if test="indentNickname != null" >
-        indent_nickname = #{indentNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="indentState != null" >
-        indent_state = #{indentState,jdbcType=VARCHAR},
-      </if>
-      <if test="indentTime != null" >
-        indent_time = #{indentTime,jdbcType=DATE},
-      </if>
-      <if test="indentAddress != null" >
-        indent_address = #{indentAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="indentPhone != null" >
-        indent_phone = #{indentPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="indentLogistics != null" >
-        indent_logistics = #{indentLogistics,jdbcType=VARCHAR},
-      </if>
-      <if test="indentIsLogistics != null" >
-        indent_is_logistics = #{indentIsLogistics,jdbcType=VARCHAR},
-      </if>
-      <if test="indentLogisticsNumber != null" >
-        indent_logistics_number = #{indentLogisticsNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="indentFee != null" >
-        indent_fee = #{indentFee,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="indentCommodityNum != null" >
-        indent_commodity_num = #{indentCommodityNum,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityName != null" >
-        commodity_name = #{commodityName,jdbcType=VARCHAR},
-      </if>
-      <if test="indentCommodity != null" >
-        indent_commodity = #{indentCommodity,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  
-  <update id="updateByPrimaryKey" parameterType="com.yq.entity.indent.JdbIndent" >
-    update jdb_indent
-    set indent_num = #{indentNum,jdbcType=VARCHAR},
-      indent_price = #{indentPrice,jdbcType=VARCHAR},
-      indent_quantity = #{indentQuantity,jdbcType=VARCHAR},
-      indent_money = #{indentMoney,jdbcType=VARCHAR},
-      indent_nickname = #{indentNickname,jdbcType=VARCHAR},
-      indent_state = #{indentState,jdbcType=VARCHAR},
-      indent_time = #{indentTime,jdbcType=DATE},
-      indent_address = #{indentAddress,jdbcType=VARCHAR},
-      indent_phone = #{indentPhone,jdbcType=VARCHAR},
-      indent_logistics = #{indentLogistics,jdbcType=VARCHAR},
-      indent_is_logistics = #{indentIsLogistics,jdbcType=VARCHAR},
-      indent_logistics_number = #{indentLogisticsNumber,jdbcType=VARCHAR},
-      indent_fee = #{indentFee,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  
+	<sql id="Base_Column_List">
+		id, indent_num, indent_price, indent_quantity, indent_money,
+		indent_nickname, indent_state,
+		indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
+		indent_logistics_number, indent_fee,
+		user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date
+	</sql>
+
+	<sql id="where_list">
+		<where>
+			<if test="indentState != null and indentState != ''">
+				and indent_state = #{indentState}
+			</if>
+			<if test="indentNum != null and indentNum != ''">
+				and indent_num = #{indentNum}
+			</if>
+			<if test="indentNickname != null and indentNickname != ''">
+				and indent_nickname = #{indentNickname}
+			</if>
+			<if test="startTime != null and startTime != ''">
+				and indent_time &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and indent_time &lt;= #{endTime}
+			</if>
+			<if test="userId != null and userId != ''">
+				and user_id &lt;= #{userId}
+			</if>
+			<if test="commodityName != null and commodityName != ''">
+				and commodity_name = #{commodityName}
+			</if>
+		</where>
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		id, indent_num, indent_price, indent_quantity, indent_money,
+			indent_nickname, 
+			
+			case  indent_state
+				when '1' then '待发货'
+				when '2' then '已发货'
+				when '3' then '维权中'
+				when '4' then '维权完成'
+				when '5' then '交易完成'
+			end as indent_state ,
+			indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
+			indent_logistics_number, indent_fee,
+			user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date
+		from jdb_indent
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectIndentByList" resultMap="BaseResultMap"
+		parameterType="com.yq.entity.indent.JdbIndent">
+		select
+			id, indent_num, indent_price, indent_quantity, indent_money,
+			indent_nickname, 
+			
+			case  indent_state
+				when '1' then '待发货'
+				when '2' then '已发货'
+				when '3' then '维权中'
+				when '4' then '维权完成'
+				when '5' then '交易完成'
+			end as indent_state ,
+			indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
+			indent_logistics_number, indent_fee,
+			user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date
+		from 
+		    jdb_indent
+
+		<include refid="where_list" />
+		limit #{currentNum}, #{pageSize}
+	</select>
+
+
+	<select id="total" resultType="Integer" parameterType="com.yq.entity.indent.JdbIndent">
+		select
+		count(1)
+		from jdb_indent
+		<include refid="where_list" />
+	</select>
+
+
+	<select id="selecshipments" resultType="Integer"
+		parameterType="com.yq.entity.indent.JdbIndent">
+		select
+		count(1)
+		from jdb_indent
+		<include refid="where_list" />
+	</select>
+
+	<select id="selecsafeguard" resultType="Integer"
+		parameterType="com.yq.entity.indent.JdbIndent">
+		select
+		count(1)
+		from jdb_indent
+		<include refid="where_list" />
+	</select>
+	<!-- 昨日指标 -->
+	<select id="yesterdayIndex" resultType="Integer"
+		parameterType="com.yq.entity.indent.JdbIndent">
+
+		select
+		count(1) as ds,sum(indent_commodity_num) as num,sum(indent_money) as money
+		from
+		jdb_indent
+		where
+		date_format(indent_time, '%y-%m-%d') = date_sub(date_format(now(), '%y-%m-%d'), interval 1
+		day);
+
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from jdb_indent
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insert" parameterType="com.yq.entity.indent.JdbIndent">
+		insert into jdb_indent (id, indent_num, indent_price,
+		indent_quantity, indent_money, indent_nickname,
+		indent_state, indent_time, indent_address,
+		indent_phone, indent_logistics, indent_is_logistics,
+		indent_logistics_number, indent_fee,
+		user_id,indent_commodity_num,commodity_name,indent_commodity
+		)
+		values (#{id,jdbcType=VARCHAR}, #{indentNum,jdbcType=VARCHAR},
+		#{indentPrice,jdbcType=VARCHAR},
+		#{indentQuantity,jdbcType=VARCHAR}, #{indentMoney,jdbcType=VARCHAR}, #{indentNickname,jdbcType=VARCHAR},
+		#{indentState,jdbcType=VARCHAR}, #{indentTime,jdbcType=DATE},
+		#{indentAddress,jdbcType=VARCHAR},
+		#{indentPhone,jdbcType=VARCHAR}, #{indentLogistics,jdbcType=VARCHAR},
+		#{indentIsLogistics,jdbcType=VARCHAR},
+		#{indentLogisticsNumber,jdbcType=VARCHAR},
+		#{indentFee,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}
+		#{indentCommodityNum,jdbcType=INTEGER},
+		#{commodityName,jdbcType=VARCHAR}, #{indentCommodity,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.yq.entity.indent.JdbIndent">
+		insert into jdb_indent
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="indentNum != null">
+				indent_num,
+			</if>
+			<if test="indentPrice != null">
+				indent_price,
+			</if>
+			<if test="indentQuantity != null">
+				indent_quantity,
+			</if>
+			<if test="indentMoney != null">
+				indent_money,
+			</if>
+			<if test="indentNickname != null">
+				indent_nickname,
+			</if>
+			<if test="indentState != null">
+				indent_state,
+			</if>
+			<if test="indentTime != null">
+				indent_time,
+			</if>
+			<if test="indentAddress != null">
+				indent_address,
+			</if>
+			<if test="indentPhone != null">
+				indent_phone,
+			</if>
+			<if test="indentLogistics != null">
+				indent_logistics,
+			</if>
+			<if test="indentIsLogistics != null">
+				indent_is_logistics,
+			</if>
+			<if test="indentLogisticsNumber != null">
+				indent_logistics_number,
+			</if>
+			<if test="indentFee != null">
+				indent_fee,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="indentCommodityNum != null">
+				indent_commodity_num,
+			</if>
+			<if test="commodityName != null">
+				commodity_name,
+			</if>
+			<if test="indentCommodity != null">
+				indent_commodity,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="indentNum != null">
+				#{indentNum,jdbcType=VARCHAR},
+			</if>
+			<if test="indentPrice != null">
+				#{indentPrice,jdbcType=VARCHAR},
+			</if>
+			<if test="indentQuantity != null">
+				#{indentQuantity,jdbcType=VARCHAR},
+			</if>
+			<if test="indentMoney != null">
+				#{indentMoney,jdbcType=VARCHAR},
+			</if>
+			<if test="indentNickname != null">
+				#{indentNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="indentState != null">
+				#{indentState,jdbcType=VARCHAR},
+			</if>
+			<if test="indentTime != null">
+				#{indentTime,jdbcType=DATE},
+			</if>
+			<if test="indentAddress != null">
+				#{indentAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="indentPhone != null">
+				#{indentPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="indentLogistics != null">
+				#{indentLogistics,jdbcType=VARCHAR},
+			</if>
+			<if test="indentIsLogistics != null">
+				#{indentIsLogistics,jdbcType=VARCHAR},
+			</if>
+			<if test="indentLogisticsNumber != null">
+				#{indentLogisticsNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="indentFee != null">
+				#{indentFee,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="indentCommodityNum != null">
+				#{indentCommodityNum,jdbcType=VARCHAR},
+			</if>
+			<if test="commodityName != null">
+				#{commodityName,jdbcType=VARCHAR},
+			</if>
+			<if test="indentCommodity != null">
+				#{indentCommodity,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.indent.JdbIndent">
+		update jdb_indent
+		<set>
+			<if test="indentNum != null">
+				indent_num = #{indentNum,jdbcType=VARCHAR},
+			</if>
+			<if test="indentPrice != null">
+				indent_price = #{indentPrice,jdbcType=VARCHAR},
+			</if>
+			<if test="indentQuantity != null">
+				indent_quantity = #{indentQuantity,jdbcType=VARCHAR},
+			</if>
+			<if test="indentMoney != null">
+				indent_money = #{indentMoney,jdbcType=VARCHAR},
+			</if>
+			<if test="indentNickname != null">
+				indent_nickname = #{indentNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="indentState != null">
+				indent_state = #{indentState,jdbcType=VARCHAR},
+			</if>
+			<if test="indentTime != null">
+				indent_time = #{indentTime,jdbcType=DATE},
+			</if>
+			<if test="indentAddress != null">
+				indent_address = #{indentAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="indentPhone != null">
+				indent_phone = #{indentPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="indentLogistics != null">
+				indent_logistics = #{indentLogistics,jdbcType=VARCHAR},
+			</if>
+			<if test="indentIsLogistics != null">
+				indent_is_logistics = #{indentIsLogistics,jdbcType=VARCHAR},
+			</if>
+			<if test="indentLogisticsNumber != null">
+				indent_logistics_number = #{indentLogisticsNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="indentFee != null">
+				indent_fee = #{indentFee,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="indentCommodityNum != null">
+				indent_commodity_num = #{indentCommodityNum,jdbcType=VARCHAR},
+			</if>
+			<if test="commodityName != null">
+				commodity_name = #{commodityName,jdbcType=VARCHAR},
+			</if>
+			<if test="indentCommodity != null">
+				indent_commodity = #{indentCommodity,jdbcType=VARCHAR},
+			</if>
+			indent_date = now(),
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.yq.entity.indent.JdbIndent">
+		update jdb_indent
+		set indent_num = #{indentNum,jdbcType=VARCHAR},
+		indent_price = #{indentPrice,jdbcType=VARCHAR},
+		indent_quantity = #{indentQuantity,jdbcType=VARCHAR},
+		indent_money = #{indentMoney,jdbcType=VARCHAR},
+		indent_nickname = #{indentNickname,jdbcType=VARCHAR},
+		indent_state = #{indentState,jdbcType=VARCHAR},
+		indent_time = #{indentTime,jdbcType=DATE},
+		indent_address = #{indentAddress,jdbcType=VARCHAR},
+		indent_phone = #{indentPhone,jdbcType=VARCHAR},
+		indent_logistics = #{indentLogistics,jdbcType=VARCHAR},
+		indent_is_logistics = #{indentIsLogistics,jdbcType=VARCHAR},
+		indent_logistics_number = #{indentLogisticsNumber,jdbcType=VARCHAR},
+		indent_fee = #{indentFee,jdbcType=VARCHAR},
+		user_id = #{userId,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+
 </mapper>

@@ -22,6 +22,7 @@ import net.sf.json.JSONArray;
 
 /**
  * 角色管理
+ * 
  * @author 超
  *
  */
@@ -31,12 +32,13 @@ public class RoleController {
 
 	@Autowired
 	RoleService roleService;
-	
+
 	@Autowired
 	MenuService menuService;
-	
+
 	/**
 	 * 增加角色
+	 * 
 	 * @param record
 	 * @return
 	 */
@@ -44,12 +46,12 @@ public class RoleController {
 	@RequestMapping(value = "/addRole.html")
 	public String insertSelective(JdbRole record) {
 		int insert = roleService.insertSelective(record);
-		return insert+"";
+		return insert + "";
 	}
-	
-	
+
 	/**
 	 * 跳转增加角色页面
+	 * 
 	 * @param record
 	 * @return
 	 */
@@ -58,10 +60,10 @@ public class RoleController {
 		ModelAndView view = new ModelAndView("main/jurisdiction/addrole");
 		return view;
 	}
-	
-	
+
 	/**
 	 * 给角色授权
+	 * 
 	 * @param jdbUserRole
 	 * @return
 	 */
@@ -69,16 +71,16 @@ public class RoleController {
 	@RequestMapping(value = "/deleteRoleById.html")
 	public String deleteRoleById(String id) {
 		int del = roleService.deleteRoleById(id);
-		return del+"";
+		return del + "";
 	}
-	
+
 	/**
 	 * 角色列表
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/listJdbRole.html")
-	public ModelAndView listJdbRole(@RequestParam(defaultValue = "1")Integer currentPage, HttpServletRequest request) {
+	public ModelAndView listJdbRole(@RequestParam(defaultValue = "1") Integer currentPage, HttpServletRequest request) {
 		Map<String, Object> listRole = roleService.listJdbRole(currentPage);
 		ModelAndView view = new ModelAndView();
 		PageUtil.pager(currentPage, 10, Integer.parseInt(listRole.get("total").toString()), request);
@@ -86,23 +88,24 @@ public class RoleController {
 		view.setViewName("main/jurisdiction/role");
 		return view;
 	}
-	
+
 	/**
 	 * 查询所有菜单
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/selectMenu.html")
 	@ResponseBody
 	public String selectByList() {
-		
-		List<Map<String,Object>> listMenu =  menuService.selectByList();
+		List<Map<String, Object>> listMenu = menuService.selectByList();
 		JSONArray jsonStrs = JSONArray.fromObject(listMenu);
 		return jsonStrs.toString();
-		
+
 	}
-	
+
 	/**
 	 * 给角色授权
+	 * 
 	 * @param jdbUserRole
 	 * @return
 	 */
@@ -110,6 +113,6 @@ public class RoleController {
 	@RequestMapping(value = "/addRoleMenu.html")
 	public String addRoleMenu(JdbMenuRole jdbMenuRole) {
 		int insert = roleService.insertMenuRole(jdbMenuRole);
-		return insert+"";
+		return insert + "";
 	}
 }

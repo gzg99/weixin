@@ -56,4 +56,15 @@ public class IndentServiceImpl implements IndentService {
 		yesterday.put("safeguard", safeguard);
 		return yesterday;
 	}
+
+	/**
+	 * 发货查询单条
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public JdbIndent selectByPrimaryKey(String id) {
+		JdbIndent jdbIndent = jdbIndentMapper.selectByPrimaryKey(id);
+		return jdbIndent;
+	}
 }

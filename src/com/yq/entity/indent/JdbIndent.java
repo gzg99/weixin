@@ -2,6 +2,7 @@ package com.yq.entity.indent;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yq.entity.Page;
 
 public class JdbIndent extends Page {
@@ -19,6 +20,7 @@ public class JdbIndent extends Page {
 
 	private String indentState;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	private Date indentTime;
 
 	private Date startTime;
@@ -44,6 +46,8 @@ public class JdbIndent extends Page {
 	private String commodityName;
 	
 	private int indentCommodity;
+	
+	private Date indentDate;
 
 	public String getId() {
 		return id;
@@ -101,6 +105,7 @@ public class JdbIndent extends Page {
 		this.indentState = indentState;
 	}
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	public Date getIndentTime() {
 		return indentTime;
 	}
@@ -203,6 +208,14 @@ public class JdbIndent extends Page {
 
 	public void setIndentCommodity(int indentCommodity) {
 		this.indentCommodity = indentCommodity;
+	}
+
+	public Date getIndentDate() {
+		return indentDate;
+	}
+
+	public void setIndentDate(Date indentDate) {
+		this.indentDate = indentDate;
 	}
 	
 	
