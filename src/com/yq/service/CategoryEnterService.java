@@ -18,11 +18,23 @@ public class CategoryEnterService {
 		return categoryEnterDao.categoryFirstBySellerId(sellerId);
 	}
 	
-	public void addCategory(CategoryEnter record) {
-		categoryEnterDao.insert(record);
+	public CategoryEnter selectById(Long id) {
+		return categoryEnterDao.selectByPrimaryKey(id);
 	}
 	
-	public void delCategory(Long id) {
-		categoryEnterDao.deleteByPrimaryKey(id);
+	public int addCategory(CategoryEnter record) {
+		return categoryEnterDao.insert(record);
+	}
+	
+	public int delCategory(Long id) {
+		return categoryEnterDao.deleteByPrimaryKey(id);
+	}
+	
+	public int updateCategoryEnter(CategoryEnter record) {
+		return categoryEnterDao.updateCategoryEnter(record);
+	}
+	
+	public int updateCategoryEnterById(CategoryEnter record) {
+		return categoryEnterDao.updateByPrimaryKey(record);
 	}
 }

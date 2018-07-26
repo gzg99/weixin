@@ -1,20 +1,15 @@
 package com.yq.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.yq.entity.Category;
 import com.yq.entity.CategoryEnter;
-import com.yq.entity.Goods;
 import com.yq.service.CategoryEnterService;
-import com.yq.service.CategoryService;
-import com.yq.service.GoodsService;
 
 @Controller
 @RequestMapping("/")
@@ -22,22 +17,49 @@ public class categoryEnterCtrl {
 	@Autowired
 	private CategoryEnterService categoryEnterService;
 	
+	@RequestMapping(value = "/main/ctgBuildListById.html")
 	@ResponseBody
-	@RequestMapping(value = "/page/categoryEnterAdd.html")
-	public void addCategory(String name, int type, Long sellerId) {
+	public ModelAndView ctgBuildListById(Long id) {
+		CategoryEnter ctg = categoryEnterService.selectById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("category", ctg);
+		mv.setViewName("/main/categoryBuild/info");
+		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/main/categoryEnterAdd.html")
+	public String addCategory(Long sellerId, String firstCategory, String secondCategory) {
 		CategoryEnter category = new CategoryEnter();
-		categoryEnterService.addCategory(category);
+		category.setSellerId(sellerId);
+		category.setFirstCategory(firstCategory);
+		category.setSecondCategory(secondCategory);
+		return categoryEnterService.addCategory(category) + "";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/page/categoryEnterDel.html")
-	public void delCategory(Long id) {
-		categoryEnterService.delCategory(id);
+	@RequestMapping(value = "/main/categoryEnterDel.html")
+	public String delCategory(Long id) {
+		return categoryEnterService.delCategory(id) + "";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/page/getCategoryEnterBySellerId.html")
+	@RequestMapping(value = "/main/getCategoryEnterBySellerId.html")
 	public List<CategoryEnter> getCategoryEnterBySellerId(Long sellerId) {
 		return categoryEnterService.selectFirstBySellerId(sellerId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/main/updateCategoryEnter.html")
+	public String updateCategoryEnter(Long id, Long sellerId, String firstCategory, String secondCategory) {
+		//更新sellerId下的所有一级分类
+		CategoryEnter category = new CategoryEnter();
+		category.setFirstCategory(firstCategory); 
+		category.setSellerId(sellerId);
+		int i = categoryEnterService.updateCategoryEnter(category);
+		CategoryEnter ctg = new CategoryEnter();
+		ctg.setSecondCategory(secondCategory);
+		ctg.setId(id);
+		return categoryEnterService.updateCategoryEnterById(ctg) + "";
 	}
 }

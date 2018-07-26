@@ -14,8 +14,8 @@
     <result column="goods_num" property="goodsNum" jdbcType="BIGINT" />
     <result column="goods_sales" property="goodsSales" jdbcType="BIGINT" />
     <result column="add_time" property="addTime" jdbcType="VARCHAR" />
-    <result column="order" property="order" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="ord" property="ord" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="first_category" property="firstCategory" jdbcType="BIGINT" />
     <result column="second_category" property="secondCategory" jdbcType="BIGINT" />
   </resultMap>
@@ -24,7 +24,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, seller_id, goods_name, goods_img, goods_spe, goods_price, goods_brand, goods_material, 
-    goods_color, goods_num, goods_sales, add_time, order, status, first_category, second_category
+    goods_color, goods_num, goods_sales, add_time, ord, type, first_category, second_category
   </sql>
   <sql id="Blob_Column_List" >
     goods_detail
@@ -45,14 +45,14 @@
     insert into jdb_goods_build (id, seller_id, goods_name, 
       goods_img, goods_spe, goods_price, 
       goods_brand, goods_material, goods_color, 
-      goods_num, goods_sales, add_time, order, 
-      status, first_category, second_category, 
+      goods_num, goods_sales, add_time, ord, 
+      type, first_category, second_category, 
       goods_detail)
     values (#{id,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, 
       #{goodsImg,jdbcType=VARCHAR}, #{goodsSpe,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=REAL}, 
       #{goodsBrand,jdbcType=VARCHAR}, #{goodsMaterial,jdbcType=VARCHAR}, #{goodsColor,jdbcType=VARCHAR}, 
       #{goodsNum,jdbcType=BIGINT}, #{goodsSales,jdbcType=BIGINT}, #{addTime,jdbcType=VARCHAR}, 
-      #{order,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{firstCategory,jdbcType=BIGINT}, 
+      #{ord,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{firstCategory,jdbcType=BIGINT}, 
       #{secondCategory,jdbcType=BIGINT}, #{goodsDetail,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yq.entity.GoodsBuild" >
@@ -94,11 +94,11 @@
       <if test="addTime != null" >
         add_time,
       </if>
-      <if test="order != null" >
-        order,
+      <if test="ord != null" >
+        ord,
       </if>
-      <if test="status != null" >
-        status,
+      <if test="type != null" >
+        type,
       </if>
       <if test="firstCategory != null" >
         first_category,
@@ -147,11 +147,11 @@
       <if test="addTime != null" >
         #{addTime,jdbcType=VARCHAR},
       </if>
-      <if test="order != null" >
-        #{order,jdbcType=INTEGER},
+      <if test="ord != null" >
+        #{ord,jdbcType=INTEGER},
       </if>
-      <if test="status != null" >
-        #{status,jdbcType=TINYINT},
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
       </if>
       <if test="firstCategory != null" >
         #{firstCategory,jdbcType=BIGINT},
@@ -200,11 +200,11 @@
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=VARCHAR},
       </if>
-      <if test="order != null" >
-        order = #{order,jdbcType=INTEGER},
+      <if test="ord != null" >
+        ord = #{ord,jdbcType=INTEGER},
       </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
       </if>
       <if test="firstCategory != null" >
         first_category = #{firstCategory,jdbcType=BIGINT},
@@ -231,8 +231,8 @@
       goods_num = #{goodsNum,jdbcType=BIGINT},
       goods_sales = #{goodsSales,jdbcType=BIGINT},
       add_time = #{addTime,jdbcType=VARCHAR},
-      order = #{order,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
+      ord = #{ord,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
       first_category = #{firstCategory,jdbcType=BIGINT},
       second_category = #{secondCategory,jdbcType=BIGINT},
       goods_detail = #{goodsDetail,jdbcType=LONGVARCHAR}
@@ -251,42 +251,95 @@
       goods_num = #{goodsNum,jdbcType=BIGINT},
       goods_sales = #{goodsSales,jdbcType=BIGINT},
       add_time = #{addTime,jdbcType=VARCHAR},
-      order = #{order,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
+      ord = #{ord,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
       first_category = #{firstCategory,jdbcType=BIGINT},
       second_category = #{secondCategory,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
   
-  <select id="getGoodsBuildByCondition">
-  	<![CDATA[
+  <select id="getGoodsBuildByCondition" parameterType="com.yq.entity.GoodsBuildSearchVo" 
+  	resultType="com.yq.entity.GoodsBuild">
 	  	select 
-	  		<include refid="Base_Column_List" />
+	    	    id as id, seller_id as sellerId, goods_name as goodsName, goods_img as goodsImg, 
+	    	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_brand as goodsBrand, 
+	    	    goods_material as goodsMaterial, goods_color as goodsColor, goods_num as goodsNum, 
+	    	    goods_sales as goodsSales, add_time as addTime, ord as ord, type as type, 
+	    	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodDetail 
 	  	from 
 	  		jdb_goods_build 
 	  	where 1=1 
-	  	<if test="sellerId != null" >
+	  	<if test="sellerId != null and sellerId!=0" >
 	        and seller_id = #{sellerId,jdbcType=BIGINT} 
 		</if>
-		<if test="firstCategory != null" >
+		<if test="firstCategory != null and firstCategory!=0" >
+			and first_category = #{firstCategory,jdbcType=BIGINT} 
+		</if>
+		<if test="secondCategory != null and secondCategory!=0" >
+			and second_category = #{secondCategory,jdbcType=BIGINT} 
+		</if>
+		<if test="goodsName != null" >
+			and goods_name = #{goodsName,jdbcType=VARCHAR} 
+		</if>
+		<if test="highPrice != null and highPrice!=0" >
+			 and goods_price <![CDATA[ < ]]> #{highPrice,jdbcType=VARCHAR}  
+		</if>
+		<if test="lowerPrice != null and lowerPrice!=0" >
+			and goods_price <![CDATA[ > ]]> #{lowerPrice,jdbcType=VARCHAR} 
+		</if>
+		<if test="salesVolLow != null and salesVolLow!=0" >
+			 and goods_sales <![CDATA[ > ]]> #{salesVolLow,jdbcType=FLOAT} 
+		</if>
+		<if test="salesVolHight != null and salesVolHight!=0" >
+			 and goods_sales <![CDATA[ < ]]> #{salesVolHight,jdbcType=FLOAT} 
+		</if>
+			order by ${orderStr}
+			limit #{start,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+  </select>
+  
+    <select id="count" parameterType="com.yq.entity.GoodsBuildSearchVo" 
+  		resultType="java.lang.Integer">
+	  	select 
+	    	count(*) 
+	  	from 
+	  		jdb_goods_build
+	  	where 1=1 
+	  	<if test="sellerId != null and sellerId!=0" >
+	        and seller_id = #{sellerId,jdbcType=BIGINT} 
+		</if>
+		<if test="firstCategory != null and firstCategory!=0" >
 			and first_category = #{firstCategory,jdbcType=VARCHAR} 
 		</if>
-		<if test="secondCategory != null" >
+		<if test="secondCategory != null and secondCategory!=0" >
 			and second_category = #{secondCategory,jdbcType=VARCHAR} 
 		</if>
 		<if test="goodsName != null" >
 			and goods_name = #{goodsName,jdbcType=REAL} 
 		</if>
-		<if test="highPrice != null" >
-			and goods_price < #{highPrice,jdbcType=VARCHAR} 
+		<if test="highPrice != null and highPrice!=0" >
+			 and goods_price <![CDATA[ < ]]> #{highPrice,jdbcType=VARCHAR}  
 		</if>
-		<if test="lowerPrice != null" >
-			and goods_price > #{lowerPrice,jdbcType=VARCHAR} 
+		<if test="lowerPrice != null and lowerPrice!=0" >
+			and goods_price <![CDATA[ > ]]> #{lowerPrice,jdbcType=VARCHAR} 
 		</if>
-		<if test="salesVol != null" >
-			and goods_sales = #{goodsSales,jdbcType=BIGINT}
+		<if test="salesVolLow != null and salesVolLow!=0" >
+			 and goods_sales <![CDATA[ > ]]> #{salesVolLow,jdbcType=BIGINT} 
 		</if>
-	]]>
-  </select> 
+		<if test="salesVolHight != null and salesVolHight!=0" >
+			 and goods_sales <![CDATA[ < ]]> #{salesVolHight,jdbcType=BIGINT} 
+		</if>
+  </select>
+  
+  <select id="selectById" parameterType="java.lang.Long" resultType="com.yq.entity.GoodsBuild">
+	select 
+   	    id as id, seller_id as sellerId, goods_name as goodsName, goods_img as goodsImg, 
+   	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_brand as goodsBrand, 
+   	    goods_material as goodsMaterial, goods_color as goodsColor, goods_num as goodsNum, 
+   	    goods_sales as goodsSales, add_time as addTime, ord as ord, type as type, 
+   	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodDetail 
+	 from 
+	  	jdb_goods_build 
+	 where id=#{id,jdbcType=BIGINT}
+  </select>
   
 </mapper>

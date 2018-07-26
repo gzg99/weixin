@@ -14,6 +14,8 @@ public interface CategoryEnterDao {
     CategoryEnter selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(CategoryEnter record);
+    
+    int updateCategoryEnter(CategoryEnter record);
 
     int updateByPrimaryKey(CategoryEnter record);
     

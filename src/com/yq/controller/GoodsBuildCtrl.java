@@ -4,16 +4,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.yq.entity.Category;
+import com.yq.entity.CategoryEnter;
 import com.yq.entity.GoodsBuild;
 import com.yq.entity.GoodsBuildSearchVo;
+import com.yq.service.CategoryEnterService;
 import com.yq.service.GoodsBuildService;
+import com.yq.util.PageUtil;
 
 /**
  * 建材类商家入驻商品ctrl
@@ -25,47 +33,135 @@ public class GoodsBuildCtrl {
 	@Autowired
 	private GoodsBuildService goodsBuildService;
 	
+	@Autowired
+	private CategoryEnterService categoryEnterService;
+	
+	@RequestMapping(value = "/main/goodsBuildAddjsp.html")
+	public ModelAndView goodsBuildAddjsp(Long sellerId) {
+		ModelAndView ml = new ModelAndView();
+		List<CategoryEnter> list = categoryEnterService.selectFirstBySellerId(1l);
+		ml.addObject("category", list);
+		ml.setViewName("main/goodsBuild/add");
+		return ml;
+	}
+	
+	/**
+	 * 初始化查询商品列表
+	 * */
+	@RequestMapping(value = "/main/goodsBuildList.html")
+	public ModelAndView goodsBuildList(int pageNo, int pageSize, ModelAndView mv, HttpServletRequest request) {
+		GoodsBuildSearchVo search = new GoodsBuildSearchVo();
+		search.setPageNo(pageNo);
+		search.setPageSize(pageSize);
+		int total = goodsBuildService.count(search);
+		PageUtil.pager(pageNo, pageSize, total, request);
+		search.setStart(PageUtil.currentNum(pageNo, pageSize));
+		search.setOrderStr("add_time");
+		List<GoodsBuild> list = goodsBuildService.getGoodsBuildByCondition(search);
+		mv.addObject("goods", list);
+		mv.setViewName("main/goodsBuild/list");
+		return mv;
+	}
+	
+	
 	/**
 	 * 添加商品
 	 * */
 	@ResponseBody
-	@RequestMapping(value = "/page/goodsBuildAdd.html")
-	public void goodssBuildAdd(JSONObject json) {
-		Long firstCategory = json.getLong("firstCategory");
-		Long secondCategory = json.getLong("secondCategory");
-		Long sellerId = json.getLong("sellerId");
-		String goodsName = json.getString("goodsName");
-		String goodsBrand = json.getString("goodsBrand");
-		String goodsColor = json.getString("goodsColor");
-		String goodsDetail = json.getString("goodsDetail");
-		String goodsImg = json.getString("goodsImg");
-		String goodsMaterial = json.getString("goodsMaterial");
-		Long goodsNum = json.getLong("goodsNum");
-		String goodsSpe = json.getString("goodsSpe");
-		GoodsBuild goods = new GoodsBuild();
-		goods.setFirstCategory(firstCategory);
-		goods.setSecondCategory(secondCategory);
-		goods.setSellerId(sellerId);
-		goods.setGoodsName(goodsName);
+	@RequestMapping(value = "/main/goodsBuildAdd.html")
+	public String goodssBuildAdd(GoodsBuild goods) {
+		if(goods.getSellerId() == null) {
+			return 0+"";
+		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:ss");
 		goods.setAddTime(sdf.format(new Date()));
-		goods.setGoodsBrand(goodsBrand);
-		goods.setGoodsColor(goodsColor);
-		goods.setGoodsDetail(goodsDetail);
-		goods.setGoodsImg(goodsImg);
-		goods.setGoodsMaterial(goodsMaterial);
-		goods.setGoodsNum(goodsNum);
-		goods.setGoodsSales(0L);
-		goods.setGoodsSpe(goodsSpe);
-		goodsBuildService.goodsBuildAdd(goods);
+		return goodsBuildService.goodsBuildAdd(goods) + "";
 	}
 	
 	/**
 	 * 条件查询
 	 * */
-	public List<GoodsBuild> searchGoodsInfoByCondition(@RequestBody GoodsBuildSearchVo goodsBuildSearchVo) {
-		return goodsBuildService.getGoodsBuildByCondition(goodsBuildSearchVo);
+	@ResponseBody
+	@RequestMapping(value = "/main/searchGoodsInfoByCondition.html")
+	public ModelAndView searchGoodsInfoByCondition(String goodsName, @RequestParam(defaultValue = "0")Long sellerId, 
+			@RequestParam(defaultValue = "0")Long firstCategory, 
+			@RequestParam(defaultValue = "0")Long secondCategory, 
+			@RequestParam(defaultValue = "0d")Double highPrice, 
+			@RequestParam(defaultValue = "0d")Double lowerPrice, 
+			@RequestParam(defaultValue = "0")Long salesVolHight ,
+			@RequestParam(defaultValue = "0")Long salesVolLow,
+			@RequestParam(defaultValue = "1")Integer pageNo ,
+			@RequestParam(defaultValue = "10")Integer pageSize,
+			HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		GoodsBuildSearchVo goodsBuildSearchVo = new GoodsBuildSearchVo();
+		goodsBuildSearchVo.setGoodsName(goodsName);
+		goodsBuildSearchVo.setSellerId(sellerId);
+		goodsBuildSearchVo.setFirstCategory(firstCategory);
+		goodsBuildSearchVo.setSecondCategory(secondCategory);
+		goodsBuildSearchVo.setHighPrice(highPrice);
+		goodsBuildSearchVo.setLowerPrice(lowerPrice);
+		goodsBuildSearchVo.setSalesVolHight(salesVolHight);
+		goodsBuildSearchVo.setSalesVolLow(salesVolLow);
+		goodsBuildSearchVo.setPageNo(pageNo);
+		goodsBuildSearchVo.setPageSize(pageSize);
+		int total = goodsBuildService.count(goodsBuildSearchVo);
+		PageUtil.pager(pageNo, pageSize, total, request);
+		goodsBuildSearchVo.setStart(PageUtil.currentNum(pageNo, pageSize));
+		goodsBuildSearchVo.setOrderStr("add_time");
+		List<GoodsBuild> list = goodsBuildService.getGoodsBuildByCondition(goodsBuildSearchVo);
+		mv.addObject("goods", list);
+		if(goodsName != null) {
+			mv.addObject("goodsName", goodsName);
+		}
+		if(sellerId != null && sellerId != 0) {
+			mv.addObject("sellerId", sellerId);
+		}
+		if(firstCategory != null && firstCategory != 0) {
+			mv.addObject("firstCategory", firstCategory);
+		}
+		if(secondCategory != null && secondCategory != 0) {
+			mv.addObject("secondCategory", secondCategory);
+		}
+		if(highPrice != null && highPrice != 0) {
+			mv.addObject("highPrice", highPrice);
+		}
+		if(lowerPrice != null && lowerPrice != 0) {
+			mv.addObject("lowerPrice", lowerPrice);
+		}
+		if(salesVolHight != null && salesVolHight != 0) {
+			mv.addObject("salesVolHight", salesVolHight);
+		}
+		if(salesVolLow != null && salesVolLow != 0) {
+			mv.addObject("salesVolLow", salesVolLow);
+		}
+		mv.setViewName("main/goodsBuild/list");
+		return mv;
 	}
 	
+	/**
+	 * 商品修改
+	 * */
+	@RequestMapping("main/goodsBuildUpdate.html")
+	@ResponseBody
+	public String updateGoodsInfo(GoodsBuild goods) {
+		if(goods.getId() == null) {
+			return 0 + "";
+		}
+		return goodsBuildService.updateGoodsInfo(goods) + "";
+	}
+	
+	/**
+	 * 根据id查询商品
+	 * */
+	@RequestMapping("main/getGoodsBuildById.html")
+	@ResponseBody
+	public ModelAndView getGoodsBuildById(Long id) {
+		ModelAndView mv = new ModelAndView();
+		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
+		mv.addObject("goods", goods);
+		mv.setViewName("main/goodsBuild/info");
+		return mv;
+	}
 	
 }

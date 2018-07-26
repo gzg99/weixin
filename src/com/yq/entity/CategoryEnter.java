@@ -5,7 +5,9 @@ public class CategoryEnter {
 
     private Long sellerId;
 
-    private String ctgName;
+    private String firstCategory;
+    
+    private String secondCategory;
 
     private Integer status;
 
@@ -27,14 +29,6 @@ public class CategoryEnter {
         this.sellerId = sellerId;
     }
 
-    public String getCtgName() {
-        return ctgName;
-    }
-
-    public void setCtgName(String ctgName) {
-        this.ctgName = ctgName;
-    }
-
     public Integer getStatus() {
         return status;
     }
@@ -50,4 +44,20 @@ public class CategoryEnter {
     public void setSort(Integer sort) {
         this.sort = sort;
     }
+
+	public String getFirstCategory() {
+		return firstCategory;
+	}
+
+	public void setFirstCategory(String firstCategory) {
+		this.firstCategory = firstCategory;
+	}
+
+	public String getSecondCategory() {
+		return secondCategory;
+	}
+
+	public void setSecondCategory(String secondCategory) {
+		this.secondCategory = secondCategory;
+	}
 }

@@ -4,12 +4,13 @@
   <resultMap id="BaseResultMap" type="com.yq.entity.CategoryEnter" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
-    <result column="ctg_name" property="ctgName" jdbcType="VARCHAR" />
+    <result column="first_category" property="firstCategory" jdbcType="VARCHAR" />
+    <result column="second_category" property="secondCategory" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, seller_id, ctg_name, status, sort
+    id, seller_id, first_category, second_category, status, sort
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -32,9 +33,9 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.yq.entity.CategoryEnter" >
-    insert into jdb_category_enter (seller_id, ctg_name, 
+    insert into jdb_category_enter (seller_id, first_category, second_category,  
       status, sort)
-    values (#{sellerId,jdbcType=BIGINT}, #{ctgName,jdbcType=VARCHAR}, 
+    values (#{sellerId,jdbcType=BIGINT}, #{firstCategory,jdbcType=VARCHAR}, #{secondCategory,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.yq.entity.CategoryEnter" >
@@ -46,8 +47,11 @@
       <if test="sellerId != null" >
         seller_id,
       </if>
-      <if test="ctgName != null" >
-        ctg_name,
+      <if test="firstCategory != null" >
+        first_category,
+      </if>
+      <if test="secondCategory != null" >
+        second_category,
       </if>
       <if test="status != null" >
         status,
@@ -63,8 +67,11 @@
       <if test="sellerId != null" >
         #{sellerId,jdbcType=BIGINT},
       </if>
-      <if test="ctgName != null" >
-        #{ctgName,jdbcType=VARCHAR},
+      <if test="firstCategory != null" >
+        #{firstCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCategory != null" >
+        #{secondCategory,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -80,8 +87,11 @@
       <if test="sellerId != null" >
         seller_id = #{sellerId,jdbcType=BIGINT},
       </if>
-      <if test="ctgName != null" >
-        ctg_name = #{ctgName,jdbcType=VARCHAR},
+      <if test="firstCategory != null" >
+        first_category = #{firstCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCategory != null" >
+        second_category = #{secondCategory,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -95,9 +105,20 @@
   <update id="updateByPrimaryKey" parameterType="com.yq.entity.CategoryEnter" >
     update jdb_category_enter
     set seller_id = #{sellerId,jdbcType=BIGINT},
-      ctg_name = #{ctgName,jdbcType=VARCHAR},
+      first_category = #{firstCategory,jdbcType=VARCHAR},
+      second_category = #{secondCategory,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <update id="updateCategoryEnter" parameterType="com.yq.entity.CategoryEnter" >
+    update jdb_category_enter
+    <set >
+      <if test="firstCategory != null" >
+        first_category = #{firstCategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seller_id = #{sellerId,jdbcType=BIGINT}
   </update>
 </mapper>

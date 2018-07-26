@@ -1,6 +1,7 @@
 package com.yq.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yq.entity.GoodsBuild;
 import com.yq.entity.GoodsBuildSearchVo;
@@ -12,13 +13,15 @@ public interface GoodsBuildDao {
 
     int insertSelective(GoodsBuild record);
 
-    GoodsBuild selectByPrimaryKey(Long id);
+    GoodsBuild selectById(Long id);
 
     int updateByPrimaryKeySelective(GoodsBuild record);
 
     int updateByPrimaryKeyWithBLOBs(GoodsBuild record);
 
     int updateByPrimaryKey(GoodsBuild record);
+    
+    int count(GoodsBuildSearchVo search);
     
     List<GoodsBuild> getGoodsBuildByCondition(GoodsBuildSearchVo search);
 }

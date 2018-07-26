@@ -25,9 +25,9 @@ public class GoodsBuild {
 
     private String addTime;
 
-    private Integer order;
+    private Integer ord;
 
-    private Byte status;
+    private String type;
 
     private Long firstCategory;
 
@@ -123,22 +123,6 @@ public class GoodsBuild {
         this.addTime = addTime;
     }
 
-    public Integer getOrder() {
-        return order;
-    }
-
-    public void setOrder(Integer order) {
-        this.order = order;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
     public Long getFirstCategory() {
         return firstCategory;
     }
@@ -169,5 +153,21 @@ public class GoodsBuild {
 
 	public void setGoodsSales(Long goodsSales) {
 		this.goodsSales = goodsSales;
+	}
+
+	public Integer getOrd() {
+		return ord;
+	}
+
+	public void setOrd(Integer ord) {
+		this.ord = ord;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

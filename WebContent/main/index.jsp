@@ -149,6 +149,7 @@
 				</ul>
 			</dd>
 		</dl>
+		
 		<dl id="menu-comments">
 			<dt><i class="Hui-iconfont">&#xe622;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -158,6 +159,19 @@
 				</ul>
 			</dd>
 		</dl>
+		
+		<!-- 商家入驻后台模块 start -->
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="categoryEnterList.html" href="javascript:;">分类管理</a></li>
+					<li><a _href="goodsBuildList.html?pageNo=1&pageSize=10" href="javascript:;">商品管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		
+		<!-- 商家入驻后台模块end -->
 	</div>
 </aside>
 <div class="dislpayArrow"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

@@ -16,7 +16,17 @@ public class GoodsBuildSearchVo {
 	
 	private Double lowerPrice;
 	
-	private Long salesVol;
+	private Long salesVolLow;
+	
+	private Long salesVolHight;
+	
+	private Integer pageSize;
+	
+	private Integer pageNo;
+	
+	private Integer start;
+	
+	private String orderStr;
 
 	public Long getFirstCategory() {
 		return firstCategory;
@@ -58,20 +68,60 @@ public class GoodsBuildSearchVo {
 		this.lowerPrice = lowerPrice;
 	}
 
-	public Long getSalesVol() {
-		return salesVol;
-	}
-
-	public void setSalesVol(Long salesVol) {
-		this.salesVol = salesVol;
-	}
-
 	public Long getSellerId() {
 		return sellerId;
 	}
 
 	public void setSellerId(Long sellerId) {
 		this.sellerId = sellerId;
+	}
+
+	public Integer getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public Integer getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
+	}
+
+	public String getOrderStr() {
+		return orderStr;
+	}
+
+	public void setOrderStr(String orderStr) {
+		this.orderStr = orderStr;
+	}
+
+	public Integer getStart() {
+		return start;
+	}
+
+	public void setStart(Integer start) {
+		this.start = start;
+	}
+
+	public Long getSalesVolLow() {
+		return salesVolLow;
+	}
+
+	public void setSalesVolLow(Long salesVolLow) {
+		this.salesVolLow = salesVolLow;
+	}
+
+	public Long getSalesVolHight() {
+		return salesVolHight;
+	}
+
+	public void setSalesVolHight(Long salesVolHight) {
+		this.salesVolHight = salesVolHight;
 	}
 	
 }
