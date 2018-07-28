@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.yq.entity.Cart;
-import com.yq.service.CartService;
+import com.yq.entity.CartBuild;
+import com.yq.service.CartBuildService;
 import com.yq.util.StringUtil;
 @Controller
 @RequestMapping
-public class CartCtrl extends StringUtil{
+public class CartBuildCtrl extends StringUtil{
 	@Autowired
-	private  CartService  cartService;
-	private Cart cart= new Cart();
+	private CartBuildService cartService;
+	private CartBuild cart= new CartBuild();
 
 	private static Gson gson=new Gson();
 	Map<String, Object> map = new HashMap<String, Object>();
@@ -33,7 +33,7 @@ public class CartCtrl extends StringUtil{
 
 	
 	@ResponseBody
-	@RequestMapping(value = "/page/cartInsert.html")
+	@RequestMapping(value = "/page/cartBuildInsert.html")
 	public void insert(Integer goods_id,String goods_name,String goods_img,String goods_spe,Float goods_price,Float goods_total,
 			@RequestParam(defaultValue="1")Integer goods_num,String oppen_id,HttpServletResponse response,HttpSession session) {
 		try {
@@ -66,10 +66,10 @@ public class CartCtrl extends StringUtil{
 			map2.put("rs_code", rs);
 			map2.put("cart_num", cart_num);
 			response.getWriter().write(gson.toJson(map2));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	@ResponseBody
 	@RequestMapping(value = "/page/cartUpdate.html")
@@ -126,7 +126,7 @@ public class CartCtrl extends StringUtil{
 	@RequestMapping(value = "/page/cartList.html")
 	public ModelAndView list(String oppen_id,HttpSession session) {
 		cart.setOppen_id(getOppen_id(session));
-		List<Cart> list = cartService.list(cart);
+		List<CartBuild> list = cartService.list(cart);
 		Float tprice = cartService.goodstotalprice(cart);
 		int  tnum = cartService.goodstotalnum(cart);
 		ModelAndView ml = new ModelAndView();

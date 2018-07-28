@@ -16,4 +16,6 @@ public interface IndentService {
 	JdbIndent selectByPrimaryKey(String id);
 	
 	List<JdbIndent> downloadIndentByList(JdbIndent jdbIndent);
+	
+	int insert(JdbIndent jdbIndent);
 }

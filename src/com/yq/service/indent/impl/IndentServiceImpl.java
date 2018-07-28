@@ -80,4 +80,10 @@ public class IndentServiceImpl implements IndentService {
 		List<JdbIndent> downloadIndentByList = jdbIndentMapper.downloadIndentByList(jdbIndent);
 		return downloadIndentByList;
 	}
+
+	@Override
+	public int insert(JdbIndent jdbIndent) {
+		// TODO Auto-generated method stub
+		return jdbIndentMapper.insert(jdbIndent);
+	}
 }
