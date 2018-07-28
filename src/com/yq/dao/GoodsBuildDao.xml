@@ -342,4 +342,18 @@
 	 where id=#{id,jdbcType=BIGINT}
   </select>
   
+  <select id="getGoodsBuildListBySellerId" parameterType="java.util.Map" resultType="com.yq.entity.GoodsBuild">
+	select 
+   	    id as id, seller_id as sellerId, goods_name as goodsName, goods_img as goodsImg, 
+   	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_brand as goodsBrand, 
+   	    goods_material as goodsMaterial, goods_color as goodsColor, goods_num as goodsNum, 
+   	    goods_sales as goodsSales, add_time as addTime, ord as ord, type as type, 
+   	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodDetail 
+	 from 
+	  	jdb_goods_build 
+	 where seller_id=#{sellerId,jdbcType=BIGINT} 
+	 and first_category=#{firstCategory,jdbcType=VARCHAR} 
+	 and second_category=#{secondCategory,jdbcType=VARCHAR}
+  </select>
+  
 </mapper>

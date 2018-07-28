@@ -1,6 +1,8 @@
 package com.yq.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +35,13 @@ public class GoodsBuildService {
 	
 	public GoodsBuild getGoodsBuildById(Long id) {
 		return goodsBuildDao.selectById(id);
+	}
+	
+	public List<GoodsBuild> getGoodsBuildListBySellerId(Long sellerId, String firstCategory, String secondCategory) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("sellerId", sellerId);
+		map.put("firstCategory", firstCategory);
+		map.put("secondCategory", secondCategory);
+		return goodsBuildDao.getGoodsBuildListBySellerId(map);
 	}
 }

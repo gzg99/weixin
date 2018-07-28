@@ -269,8 +269,8 @@ public class IndentController extends StringUtil{
 	@RequestMapping(value = "/page/indentInsert.html")
 	public String insert(String goods_id, String goods_name, String goods_img, String goods_spe, String goods_price,
 			String goods_num, String goods_total, String goods_total_num, String cps_id, String cps_name,
-			@RequestParam(defaultValue = "0") String cps_price, String addr_name, String receive, String oppen_id,
-			String status, String note, HttpSession session) {
+			@RequestParam(defaultValue = "0") String cps_price, String addr_name, String oppen_id,
+			String status, HttpSession session) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String add_time = sdf.format(new Date());

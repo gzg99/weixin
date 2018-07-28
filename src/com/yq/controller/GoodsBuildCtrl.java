@@ -1,21 +1,21 @@
 package com.yq.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yq.entity.Category;
 import com.yq.entity.CategoryEnter;
 import com.yq.entity.GoodsBuild;
 import com.yq.entity.GoodsBuildSearchVo;
@@ -161,6 +161,37 @@ public class GoodsBuildCtrl {
 		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
 		mv.addObject("goods", goods);
 		mv.setViewName("main/goodsBuild/info");
+		return mv;
+	}
+	
+	/**
+	 * 根据商家id查询
+	 * */
+	@RequestMapping("page/getGoodsBuildListBySellerId.html")
+	@ResponseBody
+	public ModelAndView getGoodsBuildListBySellerId(Long sellerId) {
+		sellerId = 1L;
+		ModelAndView mv = new ModelAndView();
+		List<CategoryEnter> list =  categoryEnterService.selectFirstBySellerId(sellerId);
+		Map<String, List<String>> map = new HashMap<>();
+		//组装成需要的格式
+		for(CategoryEnter category: list) {
+			if(map.containsKey(category.getFirstCategory())) {
+				map.get(category.getFirstCategory()).add(category.getSecondCategory());
+			} else {
+				List<String> listChild = new ArrayList<>();
+				listChild.add(category.getSecondCategory());
+				map.put(category.getFirstCategory(), listChild);
+			}
+		}
+		mv.addObject("map", map);
+		//默认查询第一个分类
+		String firstCategory = list.get(0).getFirstCategory();
+		String secondCategory = list.get(0).getSecondCategory();
+		List<GoodsBuild> goodsList = goodsBuildService.getGoodsBuildListBySellerId(sellerId, firstCategory, secondCategory);
+		mv.addObject("list", goodsList);
+		mv.addObject("secondCategory", secondCategory);
+		mv.setViewName("page/dpsy");
 		return mv;
 	}
 	

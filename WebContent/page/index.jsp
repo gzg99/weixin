@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-        <!doctype html>
-        <html>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <!doctype html>
+    <html>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
@@ -67,8 +66,8 @@
                 </ul>
                 <ul class="info-img">
                     <li>
-                        <a href="secGoodsList.html?is_recommend=1" class="img-1"><img  src="images/b6.png" style="width:42px;height: 42px"> </a>
-                        <a href="secGoodsList.html?is_recommend=1" class="img-txt">建材优选</a>
+                        <a href="getGoodsBuildListBySellerId.html?sellerId=1" class="img-1"><img  src="images/b6.png" style="width:42px;height: 42px"> </a>
+                        <a href="getGoodsBuildListBySellerId.html?sellerId=1" class="img-txt">建材优选</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=23" class="img-1"> <img  src="images/b7.png" style="width:42px;height: 42px"></a>

@@ -24,4 +24,6 @@ public interface GoodsBuildDao {
     int count(GoodsBuildSearchVo search);
     
     List<GoodsBuild> getGoodsBuildByCondition(GoodsBuildSearchVo search);
-}
+    
+    List<GoodsBuild> getGoodsBuildListBySellerId(Map<String, Object> map);
+ }

@@ -1,6 +1,9 @@
 package com.yq.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,12 +44,6 @@ public class categoryEnterCtrl {
 	@RequestMapping(value = "/main/categoryEnterDel.html")
 	public String delCategory(Long id) {
 		return categoryEnterService.delCategory(id) + "";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/main/getCategoryEnterBySellerId.html")
-	public List<CategoryEnter> getCategoryEnterBySellerId(Long sellerId) {
-		return categoryEnterService.selectFirstBySellerId(sellerId);
 	}
 	
 	@ResponseBody

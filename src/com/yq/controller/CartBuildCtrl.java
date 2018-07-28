@@ -72,7 +72,7 @@ public class CartBuildCtrl extends StringUtil{
 		}
 	}
 	@ResponseBody
-	@RequestMapping(value = "/page/cartUpdate.html")
+	@RequestMapping(value = "/page/cartBuildUpdate.html")
 	public void update(Float goods_price,Float goods_total,Integer goods_num,Integer goods_id,Integer s,HttpServletResponse response,HttpSession session) {
 		try {	
 //		setOppen_id("111", session);//测试代码，模仿登录
@@ -106,7 +106,7 @@ public class CartBuildCtrl extends StringUtil{
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/page/cartDel.html")
+	@RequestMapping(value = "/page/cartBuildDel.html")
 	public void delete(Integer goods_id,HttpSession session,HttpServletResponse response) {
 		int cart_num =Integer.parseInt(session.getAttribute("cart_num").toString())-1;
 		session.setAttribute("cart_num", cart_num);
@@ -123,7 +123,7 @@ public class CartBuildCtrl extends StringUtil{
 		}
 	}
 	
-	@RequestMapping(value = "/page/cartList.html")
+	@RequestMapping(value = "/page/cartBuildList.html")
 	public ModelAndView list(String oppen_id,HttpSession session) {
 		cart.setOppen_id(getOppen_id(session));
 		List<CartBuild> list = cartService.list(cart);

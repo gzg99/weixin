@@ -77,14 +77,14 @@ $(function(){
      <c:forEach items="${goods}" var="list" varStatus="s">
 	     <input type="hidden" value="${list.goods_id}" name='goods_id'>
 	     <input type="hidden" value="${list.goods_name}" name='goods_name'>
-	     <input type="hidden" value="${list.goods_img}" name='goods_img'>
+<%-- 	     <input type="hidden" value="${list.goods_img}" name='goods_img'> --%>
 	     <input type="hidden" value="${list.goods_num}" name='goods_num'>
 	     <input type="hidden" value="${list.goods_price}" name='goods_price'>
     
 	     <div class="drdd-info3">
-	    	<div class="drdd-if3tu f-l">
-	        	<a href="#"><img src="${list.goods_img}" style="width: 43px"></a>
-	        </div>
+<!-- 	    	<div class="drdd-if3tu f-l"> -->
+<%-- 	        	<a href="#"><img src="${list.goods_img}" style="width: 43px"></a> --%>
+<!-- 	        </div> -->
 	        <h3 class="drdd-h31 f-l"><a href="#">${list.goods_name} x${goods_num}</a></h3>
 	        <p class="drdd-p1 f-r">￥${list.goods_price}</p>
 	        <div style="clear:both;"></div>
@@ -161,13 +161,6 @@ $(function(){
     	<p class="p2 f-r"><span id="wuliu">￥${fgt_price}</span></p>
         <br>
         
-        
-        <div style="border-bottom:1px solid #DED9D9;">
-         <c:forEach items="${cps}" var="cps">
-        <p class="p1 f-l">优惠券抵扣</p>
-    	<p class="p2 f-r" ><span id="">￥${cps.cps_price}</span></p>
-        <br ></c:forEach>
-        </div>
         <p class="p1 f-l">共<span id="tnumStr">${goods_num }</span>件商品</p>
     	<p class="p2 f-r">总计：<span id="tpriceStr" style="color: #f60">￥${tprice}</span></p>
         <div style="clear:both;"></div>
@@ -176,7 +169,6 @@ $(function(){
     <script type="text/javascript">
     function fgt(){
     	var wuliu ='${fgt_price}';
-    	
     	var tprice= '${tprice}';
     	var fgt_price= $('#fgt_price').val();
     	if(fgt_price!=-2&&fgt_price!=-1){ //选择自提点
@@ -267,15 +259,6 @@ $(function(){
     	var goods_total= $('#tprice').val();
     	var goods_total_num= $('#tnum').val();
     	
-    	var cps_id= $('#cps_id').val();
-    	var cps_name= $('#cps_name').val();
-    	var cps_price= $('#cps_price').val();
-    	if(typeof(cps_name)=='undefined'){
-    		cps_id= '';
-    		cps_name= '';
-        	cps_price=0;
-    	}
-    	var receive ="";
     	var addr_user=$('#addr_user').val();
     	var addr_tel=$('#addr_tel').val();
     	var addr_name=$('#addr_name').val();
@@ -322,7 +305,6 @@ $(function(){
 			showTip("收货地址填写有误，请重新编辑！");return;
 		}
 
-		
     	var addr_name=addr_user+' '+addr_tel+' '+province+' '+city+' '+ area+' '+addr_name;
     	$.ajax({
 			url:'indentInsert.html',
@@ -334,16 +316,12 @@ $(function(){
 			+'&goods_num='+goods_total_num
 			+'&goods_total='+goods_total
 			+'&goods_total_num='+goods_total_num
-			+'&cps_id='+cps_id
-			+'&cps_name='+cps_name
-			+'&cps_price='+cps_price
-			+'&addr_name='+addr_name
-			+'&receive='+receive,
+			+'&addr_name='+addr_name,
 			success:function(rs){
 				var re = /^[0-9]+.?[0-9]*$/;    
 				if(re.test(rs)&&rs!=0){
 					
-					window.location.href='payOrder.html?order_id='+rs;
+					window.location.href='payOrder.html?id='+rs;
 				}else{
 					alert("失败！");
 				}

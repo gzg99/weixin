@@ -7,6 +7,6 @@
   </select>
   
   <update id="update" parameterType="com.weixin.entity.AccessToken">
-  	update jdb_access_token set  access_token=#{access_token} , add_time=#{add_time} where id = 1 
+  	update jdb_access_token set access_token=#{access_token} , add_time=#{add_time} where id = 1 
   </update>
 </mapper>
