@@ -19,7 +19,8 @@
 	<ul class="sq_list">
 		<c:forEach items="${list}" var="list">
 			<li>
-				<a href="#">
+				<a href="getSellerListBySellerAreaId.html?sellerAreaId=${list.id }&firstLink=${list.firstLink}&
+				secondLink=${list.secondLink}">
 					<img src="${list.sellerImg }" alt="" />
 					<div class="sq_list_bt">
 						<h1>${list.sellerArea }</h1>
