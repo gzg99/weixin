@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.SellerAreaDao">
+	<select id="getAllSellerArea" resultType="com.yq.entity.SellerArea">
+		select 
+			id as id, 
+			seller_area as sellerArea, 
+			first_link as firstLink, 
+			second_link as secondLink,
+			seller_img as sellerImg, 
+			seller_detail as sellerDetail, 
+			add_time as addTime 
+		from jdb_seller_area;
+	</select>
+	
+</mapper>

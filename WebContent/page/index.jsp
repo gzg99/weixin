@@ -66,8 +66,8 @@
                 </ul>
                 <ul class="info-img">
                     <li>
-                        <a href="getGoodsBuildListBySellerId.html?sellerId=1" class="img-1"><img  src="images/b6.png" style="width:42px;height: 42px"> </a>
-                        <a href="getGoodsBuildListBySellerId.html?sellerId=1" class="img-txt">建材优选</a>
+                        <a href="getAllSellerAreaList.html" class="img-1"><img  src="images/b6.png" style="width:42px;height: 42px"> </a>
+                        <a href="getAllSellerAreaList.html" class="img-txt">建材优选</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=23" class="img-1"> <img  src="images/b7.png" style="width:42px;height: 42px"></a>
