@@ -20,6 +20,8 @@ public class JdbEvaluate {
     private String pictureThird;
     
     private Date evaluateDate;
+    
+    private String sellerId;
 
     public String getId() {
         return id;
@@ -91,6 +93,14 @@ public class JdbEvaluate {
 
 	public void setEvaluateDate(Date evaluateDate) {
 		this.evaluateDate = evaluateDate;
+	}
+
+	public String getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
 	}
 
     

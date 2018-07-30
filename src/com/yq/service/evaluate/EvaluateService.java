@@ -9,4 +9,6 @@ public interface EvaluateService {
 	 int insertSelective(JdbEvaluate record);
 	 
 	 Map<String,Object> showEvaluate(String commodityId);
+	 
+	 
 }

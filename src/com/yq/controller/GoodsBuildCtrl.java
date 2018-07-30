@@ -21,8 +21,10 @@ import com.yq.entity.Goods;
 import com.yq.entity.GoodsBuild;
 import com.yq.entity.GoodsBuildSearchVo;
 import com.yq.entity.OrderEval;
+import com.yq.entity.evaluate.JdbEvaluate;
 import com.yq.service.CategoryEnterService;
 import com.yq.service.GoodsBuildService;
+import com.yq.service.evaluate.EvaluateService;
 import com.yq.util.PageUtil;
 
 /**
@@ -37,6 +39,9 @@ public class GoodsBuildCtrl {
 	
 	@Autowired
 	private CategoryEnterService categoryEnterService;
+	
+	@Autowired
+	EvaluateService evaluateService;
 	
 	@RequestMapping(value = "/main/goodsBuildAddjsp.html")
 	public ModelAndView goodsBuildAddjsp(Long sellerId) {
@@ -209,18 +214,18 @@ public class GoodsBuildCtrl {
 		ModelAndView ml = new ModelAndView();
 		ml.addObject("goods", goods);
 		ml.addObject("goods_id", id);
-//		List<OrderEval> evalList = orderEvalService.getAllEvalByGoodId(goods_id);
-//		ml.addObject("eval", evalList);
-//		//全部评价
-//		ml.addObject("allEvalCount", evalList.size());
-//		//好评
-//		int goodEvalCount = orderEvalService.getGoodCountByGoodId(goods_id);
-//		ml.addObject("goodEvalCount", goodEvalCount);
-//		//差评
-//		int badEvalCount = orderEvalService.getBadCountByGoodId(goods_id);
-//		ml.addObject("badEvalCount", badEvalCount);
-//		//中评
-//		ml.addObject("neutralEvalCount", evalList.size() - goodEvalCount - badEvalCount);
+		Map<String,Object> evalList = evaluateService.showEvaluate(id+"");
+		ml.addObject("eval", evalList);
+		//全部评价
+		ml.addObject("allEvalCount", evalList.size());
+		//好评
+		/*int goodEvalCount = orderEvalService.getGoodCountByGoodId(goods_id);
+		ml.addObject("goodEvalCount", goodEvalCount);
+		//差评
+		int badEvalCount = orderEvalService.getBadCountByGoodId(goods_id);
+		ml.addObject("badEvalCount", badEvalCount);
+		//中评
+		ml.addObject("neutralEvalCount", evalList.size() - goodEvalCount - badEvalCount);*/
 		ml.setViewName("page/goodsBuild-info");
 		return ml;
 	}

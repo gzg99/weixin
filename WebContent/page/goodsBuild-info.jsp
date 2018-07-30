@@ -48,6 +48,7 @@
 	    </div>
 	    <div class="spxq-info1">
 	    	<ul class="spxq-ul1">
+	    	<button class="my-btn1 f-r" onclick="window.location.href='evaluate/toEvaluatePage.html?id=${goods.id}'">发表评价</button>
 	        	<li>
 	            	<h3><a href="#">${goods.goodsName}</a></h3>
 	                <div>
@@ -74,11 +75,15 @@
     </div>
     <div class="evalDiv" style="display:none;">
     	<ul class="spxq-ul2">
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">全部评价(${allEvalCount})</a></li>
+        	<li class="current" style="width: 25%;"><a href="JavaScript:;">全部评价(${eval.showEvaluate.sumEvaluate})</a></li>
         	<li class="current" style="width: 25%;"><a href="JavaScript:;">好评(${goodEvalCount})</a></li>
         	<li class="current" style="width: 25%;"><a href="JavaScript:;">中评(${neutralEvalCount})</a></li>
         	<li class="current" style="width: 25%;"><a href="JavaScript:;">差评(${badEvalCount})</a></li>
-            <div style="clear:both;"></div>
+            <div style="clear:both;">
+                <c:forEach items="${eval.showEvaluateBylist }" var="eval" varStatus="s">
+                    <div>${eval.evaluateContent }</div>
+                </c:forEach>
+            </div>
         </ul>
     </div>
     <div class="spxq-info3">

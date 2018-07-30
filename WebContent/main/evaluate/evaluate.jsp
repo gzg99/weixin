@@ -14,12 +14,12 @@
 	<form action="" method="post" id="addevaluate" enctype="multipart/form-data">
 
 		<input type="hidden" name="grade" id="grade">
-		<input type="hidden" name="commodityId" id="commodityId" value="fadfsadasretxd">
-		<input type="hidden" name="userId" id="userId" value="dsdwe323">
+		<input type="hidden" name="commodityId" id="commodityId" value="${order.goods_id}">
+		<input type="hidden" name="userId" id="userId" value="${order.order_id }">
 		 <li class="pingjia_nr">
 		      <div class="pingjia_nr_top">
 			      <a href="#"><img src="images/shop_img04.jpg" alt=""/></a>
-				  <div class="pingjia_nr_bt"><h2>此处为商品名称</h2><div class="pingjia_nr_num">x2</div></div>
+				  <div class="pingjia_nr_bt"><h2>${order.goods_name }</h2><div class="pingjia_nr_num">x${order.goods_total_num }</div></div>
 <!-- 				  <p><span>商品属性</span><span>商品属性</span></p> -->
 			 </div>
 			 <div class="pingfen">

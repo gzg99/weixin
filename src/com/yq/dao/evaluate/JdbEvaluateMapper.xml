@@ -10,11 +10,12 @@
     <result column="picture_first" property="pictureFirst" jdbcType="VARCHAR" />
     <result column="picture_second" property="pictureSecond" jdbcType="VARCHAR" />
     <result column="picture_third" property="pictureThird" jdbcType="VARCHAR" />
+    <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
     <result column="evaluate_date" property="evaluateDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, grade, user_id, commodity_id, evaluate_content, picture_first, picture_second, 
-    picture_third,evaluate_date
+    picture_third,evaluate_date,seller_id
   </sql>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -83,6 +84,10 @@
         evaluate_date,
       </if>
       
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      
       
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -113,6 +118,9 @@
       
       <if test="evaluateDate != null" >
         #{evaluateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=TIMESTAMP},
       </if>
       
       

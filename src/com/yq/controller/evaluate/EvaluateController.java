@@ -1,10 +1,10 @@
 package com.yq.controller.evaluate;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yq.entity.GoodsBuild;
 import com.yq.entity.evaluate.JdbEvaluate;
+import com.yq.service.GoodsBuildService;
 import com.yq.service.evaluate.EvaluateService;
+import com.yq.util.StringUtil;
 import com.yq.util.UUIDUtils;
 
 /**
@@ -26,20 +29,26 @@ import com.yq.util.UUIDUtils;
  *
  */
 @Controller
-@RequestMapping(value = "main/evaluate")
-public class EvaluateController {
+@RequestMapping(value = "page/evaluate")
+public class EvaluateController extends StringUtil{
 
 	@Autowired
 	EvaluateService evaluateService;
 
+	@Autowired
+	private GoodsBuildService goodsBuildService;
+	
 	/**
 	 * 进入评价页面
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/toEvaluatePage.html")
-	public ModelAndView toEvaluatePage() {
-		ModelAndView view = new ModelAndView("main/evaluate/evaluate");
+	public ModelAndView toEvaluatePage(Long id) {
+		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
+		ModelAndView view = new ModelAndView("page/evaluate/evaluate");
+		view.addObject("goods", goods);
+		view.addObject("goods_id", id);
 		return view;
 	}
 
@@ -51,7 +60,7 @@ public class EvaluateController {
 	 */
 	@RequestMapping(value = "/toevaluate.html", method = RequestMethod.POST)
 	public @ResponseBody String evaluate(@RequestParam( value = "filePath", required = false ) MultipartFile files, HttpServletRequest reques,
-			JdbEvaluate jdbEvaluate) {
+			JdbEvaluate jdbEvaluate,HttpSession session) {
 		if (files != null ) {
 			MultipartFile file = files;
 			// 保存文件
@@ -60,6 +69,7 @@ public class EvaluateController {
 		}
 		String suc = "0";
 		jdbEvaluate.setId(UUIDUtils.getUUID());
+		jdbEvaluate.setUserId(this.getOppen_id(session));
 		int i = evaluateService.insertSelective(jdbEvaluate);
 
 		if (i > 0) {
@@ -106,5 +116,7 @@ public class EvaluateController {
 		view.addObject("showEvaluate", map);
 		return view;
 	}
+	
+	
 	
 }
