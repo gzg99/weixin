@@ -32,7 +32,7 @@
 					 <li class="active"></li>
 				 </ul>
 			 </div>
-			 <textarea id="evaluateContent" placeholder="请填写1~300字的评价"></textarea>
+			 <textarea id="evaluateContent" name="evaluateContent" placeholder="请填写1~300字的评价"></textarea>
 			 <div class="sc_img">
 <!-- 			 <input type="file" name="path1" id="path1"> -->
 			     <div class="sc_img_btn" onclick="path1.click()"></div>
@@ -46,9 +46,9 @@
 </ul>
 
 <div class="clear"></div>
-<div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
-<script src="../../js/evaluate/base.js"></script>
-<script src="../js/jquery-1.11.2.min.js"></script>	
+<script type="text/javascript" src="../../js/evaluate/base.js"></script>
+<script type="text/javascript" src="../lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>	
 <script>
 $(function(){
 	$("#grade").val("5");
@@ -138,15 +138,13 @@ function remove_img(e){
     			$("#addprizebut").removeAttr("disabled");
     		},
     		success : function(msg) {
-    			closePop();
-    			if (msg == "succ") {
-    				alertModelPop("操作成功", function() {
-    					window.location.href = prizeViewUrl;
-    				});
+    			
+    			if (msg == "1") {
+    				alert('感谢您的评价');
+    				layer.msg('感谢您的评价');
     			} else {
 
-    				alertModelPop("操作失败，请正确填写收件人信息");
-    				$("#addprizebut").removeAttr("addprizebut");
+    				layer.msg("操作失败");
     			}
     		}
     	});

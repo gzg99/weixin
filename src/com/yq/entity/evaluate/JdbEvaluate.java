@@ -1,5 +1,7 @@
 package com.yq.entity.evaluate;
 
+import java.util.Date;
+
 public class JdbEvaluate {
     private String id;
 
@@ -16,6 +18,8 @@ public class JdbEvaluate {
     private String pictureSecond;
 
     private String pictureThird;
+    
+    private Date evaluateDate;
 
     public String getId() {
         return id;
@@ -80,4 +84,14 @@ public class JdbEvaluate {
     public void setPictureThird(String pictureThird) {
         this.pictureThird = pictureThird;
     }
+
+	public Date getEvaluateDate() {
+		return evaluateDate;
+	}
+
+	public void setEvaluateDate(Date evaluateDate) {
+		this.evaluateDate = evaluateDate;
+	}
+
+    
 }

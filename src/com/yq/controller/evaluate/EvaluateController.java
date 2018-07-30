@@ -1,12 +1,11 @@
 package com.yq.controller.evaluate;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.logging.log4j.core.helpers.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -94,4 +93,11 @@ public class EvaluateController {
 		}
 		return "";
 	}
+	
+	public ModelAndView showEvaluate(String commodityId) {
+		ModelAndView view = new ModelAndView();
+		List<JdbEvaluate>evaluateService = null;
+		return view;
+	}
+	
 }

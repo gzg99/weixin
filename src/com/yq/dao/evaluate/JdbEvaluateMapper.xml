@@ -10,17 +10,27 @@
     <result column="picture_first" property="pictureFirst" jdbcType="VARCHAR" />
     <result column="picture_second" property="pictureSecond" jdbcType="VARCHAR" />
     <result column="picture_third" property="pictureThird" jdbcType="VARCHAR" />
+    <result column="evaluate_date" property="evaluateDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, grade, user_id, commodity_id, evaluate_content, picture_first, picture_second, 
-    picture_third
+    picture_third,evaluate_date
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from jdb_evaluate
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  
+  <select id="showEvaluate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_evaluate
+    where commodity_id = #{id,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from jdb_evaluate
     where id = #{id,jdbcType=VARCHAR}
@@ -60,6 +70,12 @@
       <if test="pictureThird != null" >
         picture_third,
       </if>
+      
+      <if test="evaluateDate != null" >
+        evaluate_date,
+      </if>
+      
+      
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -86,6 +102,12 @@
       <if test="pictureThird != null" >
         #{pictureThird,jdbcType=VARCHAR},
       </if>
+      
+      <if test="evaluateDate != null" >
+        #{evaluateDate,jdbcType=TIMESTAMP},
+      </if>
+      
+      
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.evaluate.JdbEvaluate" >

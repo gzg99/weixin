@@ -1,5 +1,7 @@
 package com.yq.service.evaluate.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ public class EvaluateServiceImpl implements EvaluateService{
 	
 	@Override
 	public int insertSelective(JdbEvaluate record) {
+		record.setEvaluateDate(new Date());
 		int i = jdbEvaluateMapper.insertSelective(record);
 		return i;
 	}
