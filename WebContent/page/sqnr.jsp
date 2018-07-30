@@ -22,7 +22,7 @@
 <ul class="sq_list">
 	<c:forEach items="${list }" var="seller">
 		<li>
-		 	<a href="#">
+		 	<a href="getGoodsBuildListBySellerId.html?sellerId=${seller.id }">
 	     		<img src="${seller.sellerImg }" alt="" />
 			    <div class="sq_list_bt">
 					<h1>${seller.sellerName }</h1>
