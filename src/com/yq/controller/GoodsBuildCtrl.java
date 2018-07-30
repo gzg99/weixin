@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.CategoryEnter;
+import com.yq.entity.Goods;
 import com.yq.entity.GoodsBuild;
 import com.yq.entity.GoodsBuildSearchVo;
+import com.yq.entity.OrderEval;
 import com.yq.service.CategoryEnterService;
 import com.yq.service.GoodsBuildService;
 import com.yq.util.PageUtil;
@@ -193,6 +195,34 @@ public class GoodsBuildCtrl {
 		mv.addObject("secondCategory", secondCategory);
 		mv.setViewName("page/dpsy");
 		return mv;
+	}
+	
+	/**
+	 * 根据商品id查询商品详情
+	 * 
+	 * @param goods_id
+	 * @return
+	 */
+	@RequestMapping(value = "/page/goodsBuildListById.html")
+	public ModelAndView goodsBuildListById(Long id) {
+		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
+		ModelAndView ml = new ModelAndView();
+		ml.addObject("goods", goods);
+		ml.addObject("goods_id", id);
+//		List<OrderEval> evalList = orderEvalService.getAllEvalByGoodId(goods_id);
+//		ml.addObject("eval", evalList);
+//		//全部评价
+//		ml.addObject("allEvalCount", evalList.size());
+//		//好评
+//		int goodEvalCount = orderEvalService.getGoodCountByGoodId(goods_id);
+//		ml.addObject("goodEvalCount", goodEvalCount);
+//		//差评
+//		int badEvalCount = orderEvalService.getBadCountByGoodId(goods_id);
+//		ml.addObject("badEvalCount", badEvalCount);
+//		//中评
+//		ml.addObject("neutralEvalCount", evalList.size() - goodEvalCount - badEvalCount);
+		ml.setViewName("page/goodsBuild-info");
+		return ml;
 	}
 	
 }

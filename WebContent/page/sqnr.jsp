@@ -32,9 +32,7 @@
 		 	</a>
 		</li>
 	</c:forEach>
-	 
 </ul>
-
 
 <div class="clear"></div>
 <div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>

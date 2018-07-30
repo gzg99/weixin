@@ -37,7 +37,7 @@
 	<ul class="sq_list sm_list">
 		<c:forEach items="${list}" var="goods">
 			<li>
-				 <a href="#">
+				 <a href="goodsBuildListById.html?id=${goods.id }">
 		     		<img src="${goods.goodsImg }" alt="" />
 				    <div class="sq_list_bt">
 						<h1>${goods.goodsName }</h1>
@@ -56,19 +56,19 @@
 <div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
 
 <script>
-$(function(){
-	var shop_menu_nr=$(".shop_menu_nr")
-	var left_val=shop_menu_nr.css("left");
-	$(".shop_menu_btn").click(function(){
-		var new_val=shop_menu_nr.css("left");
-		if(left_val!==new_val){
-			shop_menu_nr.stop().animate({left:left_val},200);
-		}else{
-			shop_menu_nr.stop().animate({left:0},200);
-		}
-		
+	$(function(){
+		var shop_menu_nr=$(".shop_menu_nr")
+		var left_val=shop_menu_nr.css("left");
+		$(".shop_menu_btn").click(function(){
+			var new_val=shop_menu_nr.css("left");
+			if(left_val!==new_val){
+				shop_menu_nr.stop().animate({left:left_val},200);
+			}else{
+				shop_menu_nr.stop().animate({left:0},200);
+			}
+			
+		});
 	});
-});
 	
 </script>
 </body>
