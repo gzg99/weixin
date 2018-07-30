@@ -206,7 +206,7 @@ public class IndentController extends StringUtil{
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/page/goodsOrderSure.html")
+	@RequestMapping(value = "/page/goodsBuildOrderSure.html")
 	public ModelAndView goodsOrder(Long goods_id, Integer goods_num,
 			@RequestParam(defaultValue = "0") Integer cps_id, @RequestParam(defaultValue = "0") Integer addr_id,
 			String cps_name, @RequestParam(defaultValue = "0") Float cps_price, String oppen_id, HttpSession session) {
