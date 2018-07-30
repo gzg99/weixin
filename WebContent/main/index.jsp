@@ -156,6 +156,7 @@
 				<ul>
 					<li><a _href="indent/indentList.html" href="javascript:void(0)">订单管理</a></li>
 					<li><a _href="indent/general.html" href="javascript:void(0)">概况</a></li>
+					<li><a _href="evaluate/toEvaluatePage.html" href="javascript:void(0)">评价</a></li>
 				</ul>
 			</dd>
 		</dl>

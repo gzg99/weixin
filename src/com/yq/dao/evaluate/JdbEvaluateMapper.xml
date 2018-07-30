@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.evaluate.JdbEvaluateMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.evaluate.JdbEvaluate" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="commodity_id" property="commodityId" jdbcType="VARCHAR" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="picture_first" property="pictureFirst" jdbcType="VARCHAR" />
+    <result column="picture_second" property="pictureSecond" jdbcType="VARCHAR" />
+    <result column="picture_third" property="pictureThird" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, grade, user_id, commodity_id, evaluate_content, picture_first, picture_second, 
+    picture_third
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_evaluate
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jdb_evaluate
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.evaluate.JdbEvaluate" >
+    insert into jdb_evaluate (id, grade, user_id, 
+      commodity_id, evaluate_content, picture_first, 
+      picture_second, picture_third)
+    values (#{id,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{commodityId,jdbcType=VARCHAR}, #{evaluateContent,jdbcType=VARCHAR}, #{pictureFirst,jdbcType=VARCHAR}, 
+      #{pictureSecond,jdbcType=VARCHAR}, #{pictureThird,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.evaluate.JdbEvaluate" >
+    insert into jdb_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="commodityId != null" >
+        commodity_id,
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content,
+      </if>
+      <if test="pictureFirst != null" >
+        picture_first,
+      </if>
+      <if test="pictureSecond != null" >
+        picture_second,
+      </if>
+      <if test="pictureThird != null" >
+        picture_third,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateContent != null" >
+        #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureFirst != null" >
+        #{pictureFirst,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureSecond != null" >
+        #{pictureSecond,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureThird != null" >
+        #{pictureThird,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.evaluate.JdbEvaluate" >
+    update jdb_evaluate
+    <set >
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null" >
+        commodity_id = #{commodityId,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureFirst != null" >
+        picture_first = #{pictureFirst,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureSecond != null" >
+        picture_second = #{pictureSecond,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureThird != null" >
+        picture_third = #{pictureThird,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.evaluate.JdbEvaluate" >
+    update jdb_evaluate
+    set grade = #{grade,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      commodity_id = #{commodityId,jdbcType=VARCHAR},
+      evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      picture_first = #{pictureFirst,jdbcType=VARCHAR},
+      picture_second = #{pictureSecond,jdbcType=VARCHAR},
+      picture_third = #{pictureThird,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
