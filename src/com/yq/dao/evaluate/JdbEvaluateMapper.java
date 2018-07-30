@@ -1,6 +1,7 @@
 package com.yq.dao.evaluate;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yq.entity.evaluate.JdbEvaluate;
 
@@ -13,9 +14,11 @@ public interface JdbEvaluateMapper {
 
     JdbEvaluate selectByPrimaryKey(String id);
     
-    List<JdbEvaluate> showEvaluate(String commodityId);
+    List<JdbEvaluate> showEvaluateBylist(String commodityId);
 
     int updateByPrimaryKeySelective(JdbEvaluate record);
 
     int updateByPrimaryKey(JdbEvaluate record);
+    
+    Map<String,Object> showEvaluate(String commodityId);
 }

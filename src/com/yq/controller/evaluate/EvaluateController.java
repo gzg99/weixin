@@ -1,8 +1,8 @@
 package com.yq.controller.evaluate;
 
 import java.io.File;
-import java.sql.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -94,9 +94,16 @@ public class EvaluateController {
 		return "";
 	}
 	
+	/**
+	 * 评价列表
+	 * @param commodityId
+	 * @return
+	 */
+	@RequestMapping(value="/showEvaluate.html")
 	public ModelAndView showEvaluate(String commodityId) {
 		ModelAndView view = new ModelAndView();
-		List<JdbEvaluate>evaluateService = null;
+		Map<String,Object> map = evaluateService.showEvaluate(commodityId);
+		view.addObject("showEvaluate", map);
 		return view;
 	}
 	
