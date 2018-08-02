@@ -1,6 +1,8 @@
 package com.yq.controller.evaluate;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,8 @@ import com.yq.service.GoodsBuildService;
 import com.yq.service.evaluate.EvaluateService;
 import com.yq.util.StringUtil;
 import com.yq.util.UUIDUtils;
+
+import net.sf.json.JSONArray;
 
 /**
  * 评价
@@ -111,12 +115,33 @@ public class EvaluateController extends StringUtil{
 	 */
 	@RequestMapping(value="/showEvaluate.html")
 	public ModelAndView showEvaluate(String commodityId) {
-		ModelAndView view = new ModelAndView();
+		ModelAndView view = new ModelAndView("page/evaluate/showEvaluate");
+		commodityId = "349";
 		Map<String,Object> map = evaluateService.showEvaluate(commodityId);
 		view.addObject("showEvaluate", map);
+		view.addObject("commodityId", commodityId);
 		return view;
 	}
 	
+	
+	/**
+	 * 评价列表
+	 * @param commodityId
+	 * @return
+	 */
+	@RequestMapping(value="/showEvaluateAj.html")
+	public @ResponseBody String showEvaluateAj(String commodityId,String grade) {
+		commodityId = "349";
+		Map<String,Object> mapData = new HashMap<String,Object>();
+		mapData.put("commodityId", commodityId);
+		mapData.put("grade", grade);
+		
+		List<Map<String,Object>> map = evaluateService.showEvaluateAj(mapData);
+		
+		JSONArray jsonStrs = JSONArray.fromObject(map);
+		return jsonStrs.toString();
+		
+	}
 	
 	
 }

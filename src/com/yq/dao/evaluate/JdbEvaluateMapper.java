@@ -14,7 +14,7 @@ public interface JdbEvaluateMapper {
 
     JdbEvaluate selectByPrimaryKey(String id);
     
-    List<JdbEvaluate> showEvaluateBylist(String commodityId);
+    List<Map<String,Object>> showEvaluateBylist(Map<String,Object>mapData);
 
     int updateByPrimaryKeySelective(JdbEvaluate record);
 

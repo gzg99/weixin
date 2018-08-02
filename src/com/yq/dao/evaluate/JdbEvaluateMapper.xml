@@ -27,17 +27,39 @@
   
   <select id="showEvaluate" resultType="java.util.Map" parameterType="java.lang.String">
 
-	select count(1) as sumEvaluate ,concat(round(sum(grade)/ (count(1)*5)*100, 1),'%') as goodreputation
-	
-	from jdb_evaluate
-	where commodity_id = #{commodityId,jdbcType=VARCHAR}
-</select>
+	select
+	 count(1) as sumEvaluate,
+	 (select count(1) from jdb_evaluate where grade &gt;='4' and commodity_id=#{commodityId,jdbcType=VARCHAR}) as goodev ,
+	 (select count(1) from jdb_evaluate where grade ='3' and commodity_id=#{commodityId,jdbcType=VARCHAR}) as centreev ,
+	 (select count(1) from jdb_evaluate where grade &lt;='2' and commodity_id=#{commodityId,jdbcType=VARCHAR}) as differenceev 
+	 from  jdb_evaluate where commodity_id=#{commodityId,jdbcType=VARCHAR}
+	 
+  </select>
   
-  <select id="showEvaluateBylist" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="showEvaluateBylist" resultType="java.util.Map" parameterType="java.util.Map" >
     select 
-    <include refid="Base_Column_List" />
-    from jdb_evaluate
-    where commodity_id = #{id,jdbcType=VARCHAR}
+        e.id,            e.grade,           e.user_id,       e.commodity_id,  e.evaluate_content, 
+        e.picture_first, e.picture_second,  e.picture_third, e.evaluate_date, e.seller_id,
+        u.realname,      u.head_img
+    from 
+        jdb_evaluate e
+	left join 
+	    jdb_user u 
+	on 
+	    e.user_id = u.user_id
+    where 
+        commodity_id = #{commodityId,jdbcType=VARCHAR}
+        <if test="grade != null and grade != ''">
+            <if test="grade == 4">
+                and grade &gt;='4' 
+            </if>
+            <if test="grade == 3">
+                and grade ='3' 
+            </if>
+            <if test="grade == 2">
+                and grade &lt;='2'
+            </if>
+        </if>
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >

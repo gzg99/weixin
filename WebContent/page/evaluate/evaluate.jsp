@@ -58,12 +58,10 @@ $(function(){
 	$(".pingfen ul li").click(function(){
 		if($(this).attr("class").indexOf("active")!=-1){
 			$(this).nextAll().removeClass("active");
-			//alert(5-$(this).nextAll().length);
 			$("#grade").val(5-$(this).nextAll().length);
 		}else{
 			$(this).addClass("active");
 			$(this).prevAll().addClass("active");
-			//alert(1+$(this).prevAll().length);
 			$("#grade").val(1+$(this).prevAll().length);
 		};
 	});
