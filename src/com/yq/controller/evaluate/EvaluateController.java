@@ -116,7 +116,6 @@ public class EvaluateController extends StringUtil{
 	@RequestMapping(value="/showEvaluate.html")
 	public ModelAndView showEvaluate(String commodityId) {
 		ModelAndView view = new ModelAndView("page/evaluate/showEvaluate");
-		commodityId = "349";
 		Map<String,Object> map = evaluateService.showEvaluate(commodityId);
 		view.addObject("showEvaluate", map);
 		view.addObject("commodityId", commodityId);
@@ -131,7 +130,6 @@ public class EvaluateController extends StringUtil{
 	 */
 	@RequestMapping(value="/showEvaluateAj.html")
 	public @ResponseBody String showEvaluateAj(String commodityId,String grade) {
-		commodityId = "349";
 		Map<String,Object> mapData = new HashMap<String,Object>();
 		mapData.put("commodityId", commodityId);
 		mapData.put("grade", grade);
