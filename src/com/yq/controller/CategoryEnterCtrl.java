@@ -1,6 +1,9 @@
 package com.yq.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.CategoryEnter;
 import com.yq.service.CategoryEnterService;
+
+import net.sf.json.JSONArray;
 
 @Controller
 @RequestMapping("/")
@@ -29,8 +34,19 @@ public class CategoryEnterCtrl {
 	
 	@RequestMapping(value = "/main/getSecondCategoryByFirst.html")
 	@ResponseBody
-	public String getSecondCategoryByFirst(String firstCategory) {
-		return categoryEnterService.getSecondCategoryByFirst(firstCategory).toString();
+	public void getSecondCategoryByFirst(String firstCategory, HttpServletResponse response) {
+		List<String> list = categoryEnterService.getSecondCategoryByFirst(firstCategory);
+		JSONArray jsonStrs = JSONArray.fromObject(list);
+		 
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		System.out.println(jsonStrs);
+		try {
+			response.getWriter().write(jsonStrs.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping(value = "/main/ctgBuildAddjsp.html")

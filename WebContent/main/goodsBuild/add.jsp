@@ -76,7 +76,7 @@
 				<div class="formControls col-10">
 				<select id="firstCategory" class="input-text" style="width: 80%" onchange="secondCategorySel()">
 					<c:forEach items="${category}" var="ctg">
-						<option value="${ctg.id}">${ctg.firstCategory }</option>
+						<option value="${ctg.firstCategory}">${ctg.firstCategory }</option>
 					</c:forEach>
 				</select>
 				</div>
@@ -238,14 +238,18 @@
 	}
 	
 	function secondCategorySel() {
-		var firstCategory = $(".firstCategory").val();
+		var firstCategory = $("#firstCategory").val();
 		$.ajax({
 			url:"getSecondCategoryByFirst.html",
 			type:"POST",
 			data:{"firstCategory":firstCategory},
 			dataType:'json',
 			success:function(result){
-				var aa='123';
+				var str = "";
+				for(var i = 0;i<result.length;i++){
+					str += "<option value='"+result[i]+"'>"+result[i]+"</option>";
+				}
+				$("#secondCategory").html(str);
 			}
 		});
 	}
