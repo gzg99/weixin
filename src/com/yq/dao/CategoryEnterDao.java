@@ -22,4 +22,6 @@ public interface CategoryEnterDao {
     List<CategoryEnter> categoryFirstBySellerId(Long sellerId);
     
     List<String> getSecondCategoryByFirst(String firstCategory);
+    
+    List<CategoryEnter> getCategoryByRecord(CategoryEnter record);
 }

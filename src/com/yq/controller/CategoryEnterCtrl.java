@@ -33,6 +33,11 @@ public class CategoryEnterCtrl {
 		return categoryEnterService.getSecondCategoryByFirst(firstCategory).toString();
 	}
 	
+	@RequestMapping(value = "/main/ctgBuildAddjsp.html")
+	public ModelAndView ctgBuildAddjsp() {
+		return new ModelAndView("main/categoryBuild/add");
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/main/categoryEnterAdd.html")
 	public String addCategory(Long sellerId, String firstCategory, String secondCategory) {
@@ -40,6 +45,11 @@ public class CategoryEnterCtrl {
 		category.setSellerId(sellerId);
 		category.setFirstCategory(firstCategory);
 		category.setSecondCategory(secondCategory);
+		//查询分类名称是否重复
+		List<CategoryEnter> list = categoryEnterService.getCategoryByRecord(category);
+		if(list != null && list.size() > 0) {
+			return 0+"";
+		}
 		return categoryEnterService.addCategory(category) + "";
 	}
 	
@@ -52,12 +62,23 @@ public class CategoryEnterCtrl {
 	@ResponseBody
 	@RequestMapping(value = "/main/updateCategoryEnter.html")
 	public String updateCategoryEnter(Long id, Long sellerId, String firstCategory, String secondCategory) {
+		//查询分类名称是否重复
+		CategoryEnter category1 = new CategoryEnter();
+		category1.setSellerId(sellerId);
+		category1.setFirstCategory(firstCategory);
+		category1.setSecondCategory(secondCategory);
+		List<CategoryEnter> list = categoryEnterService.getCategoryByRecord(category1);
+		if(list != null && list.size() > 0) {
+			return 0+"";
+		}
 		//更新sellerId下的所有一级分类
 		CategoryEnter category = new CategoryEnter();
 		category.setFirstCategory(firstCategory); 
 		category.setSellerId(sellerId);
 		int i = categoryEnterService.updateCategoryEnter(category);
 		CategoryEnter ctg = new CategoryEnter();
+		ctg.setFirstCategory(firstCategory); 
+		ctg.setSellerId(sellerId);
 		ctg.setSecondCategory(secondCategory);
 		ctg.setId(id);
 		return categoryEnterService.updateCategoryEnterById(ctg) + "";
