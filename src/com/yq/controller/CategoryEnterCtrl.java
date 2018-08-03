@@ -1,5 +1,7 @@
 package com.yq.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,4 +62,16 @@ public class CategoryEnterCtrl {
 		ctg.setId(id);
 		return categoryEnterService.updateCategoryEnterById(ctg) + "";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/main/categoryEnterList.html")
+	public ModelAndView categoryEnterList(Long sellerId) {
+		List<CategoryEnter> list = categoryEnterService.categoryEnterList(sellerId);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", list);
+		mv.setViewName("main/categoryBuild/list");
+		return mv;
+	}
+	
+	
 }

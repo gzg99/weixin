@@ -166,7 +166,7 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a _href="categoryEnterList.html" href="javascript:;">分类管理</a></li>
+					<li><a _href="categoryEnterList.html?sellerId=1" href="javascript:;">分类管理</a></li>
 					<li><a _href="goodsBuildList.html?pageNo=1&pageSize=10" href="javascript:;">商品管理</a></li>
 				</ul>
 			</dd>

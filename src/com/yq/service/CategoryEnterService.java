@@ -41,4 +41,8 @@ public class CategoryEnterService {
 	public List<String> getSecondCategoryByFirst(String firstCategory) {
 		return categoryEnterDao.getSecondCategoryByFirst(firstCategory);
 	}
+	
+	public List<CategoryEnter> categoryEnterList(Long sellerId) {
+		return categoryEnterDao.categoryFirstBySellerId(sellerId);
+	}
 }
