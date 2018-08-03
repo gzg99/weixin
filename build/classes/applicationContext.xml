@@ -17,28 +17,26 @@
 
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close" 
-		p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://120.27.11.164:3306/weixin" 
-		p:username="estate"
+		destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://120.27.11.164:3306/weixin" p:username="estate"
 		p:password="estate123">
-	<property name="validationQuery">
+		<property name="validationQuery">
 			<value>SELECT 1</value>
 		</property>
 		<property name="testOnBorrow">
 			<value>true</value>
 		</property>
-	</bean>	
+	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:com/*/dao/*.xml"/>
+		<property name="mapperLocations" value="classpath:com/*/dao/*.xml" />
 	</bean>
-	
+
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.*.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-	
+
 	<aop:aspectj-autoproxy />
 
 	<!-- 配置事务管理器 -->
@@ -47,8 +45,7 @@
 		p:dataSource-ref="dataSource" />
 	<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务 -->
 	<aop:config proxy-target-class="true">
-		<aop:pointcut id="serviceMethod"
-			expression="execution(* com.*.service..*(..)))" />
+		<aop:pointcut id="serviceMethod" expression="execution(* com.*.service..*(..)))" />
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
 	</aop:config>
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -56,11 +53,16 @@
 			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
-	
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	    <property name="dataSource" ref="dataSource" />
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<!-- 	enable transaction annotation support -->
+	<bean name="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	<!-- enable transaction annotation support -->
 	<tx:annotation-driven transaction-manager="txManager" />
-	
+
 </beans>
