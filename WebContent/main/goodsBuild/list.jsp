@@ -156,14 +156,17 @@
 	</div>
 	<script type="text/javascript">
 	function del(id){
-		var  b = confirm('确定下架？');
+		var b = confirm('确定下架？');
+		var obj = {};
+		obj.id=id;
+		obj.type=0;
 		if(!b){
 			return ;
 		}
 		$.ajax({
 			url:'goodsBuildUpdate.html',
 			type:'post',
-			data:'id='+id+'&status=下架',
+			data:obj,
 			success:function(rs){
 				if(rs==1){
 					alert("成功！");

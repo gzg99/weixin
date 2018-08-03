@@ -30,7 +30,10 @@
 <body style="padding-bottom:1.2rem;">
 <div class="clear"></div>
 <div class="sp_top">
-	<div class="sp_top_bt"><i class="iconfont icon-zuo"></i>商品评价</div>
+	<div class="sp_top_bt">
+        <span class="current" style="width: 50%; background: blue;"><a href="JavaScript:;" onclick="show('detailDiv')">图文详情</a></span>
+        <span class="current" style="width: 50%"><a href="JavaScript:;" onclick="show('evalDiv')">评价</a></span>
+	</div>
 	<div class="sp_top_tab">
 	    <div class="sp_top_btn active" onclick="chickGoods('')">全部<br/><span>${showEvaluate.showEvaluate.sumEvaluate}</span></div>
 		<div class="sp_top_btn" onclick="chickGoods('4')">好评<br/><span>${showEvaluate.showEvaluate.goodev}</span></div>

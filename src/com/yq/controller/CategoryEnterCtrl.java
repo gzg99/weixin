@@ -1,10 +1,5 @@
 package com.yq.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +11,7 @@ import com.yq.service.CategoryEnterService;
 
 @Controller
 @RequestMapping("/")
-public class categoryEnterCtrl {
+public class CategoryEnterCtrl {
 	@Autowired
 	private CategoryEnterService categoryEnterService;
 	
@@ -28,6 +23,12 @@ public class categoryEnterCtrl {
 		mv.addObject("category", ctg);
 		mv.setViewName("/main/categoryBuild/info");
 		return mv;
+	}
+	
+	@RequestMapping(value = "/main/getSecondCategoryByFirst.html")
+	@ResponseBody
+	public String getSecondCategoryByFirst(String firstCategory) {
+		return categoryEnterService.getSecondCategoryByFirst(firstCategory).toString();
 	}
 	
 	@ResponseBody

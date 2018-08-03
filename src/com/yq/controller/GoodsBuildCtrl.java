@@ -77,11 +77,14 @@ public class GoodsBuildCtrl {
 	@ResponseBody
 	@RequestMapping(value = "/main/goodsBuildAdd.html")
 	public String goodssBuildAdd(GoodsBuild goods) {
+		goods.setSellerId(1L);
 		if(goods.getSellerId() == null) {
 			return 0+"";
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:ss");
 		goods.setAddTime(sdf.format(new Date()));
+		goods.setType(1);
+		goods.setGoodsSales(0L);
 		return goodsBuildService.goodsBuildAdd(goods) + "";
 	}
 	

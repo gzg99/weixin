@@ -27,7 +27,7 @@ public class GoodsBuild {
 
     private Integer ord;
 
-    private String type;
+    private Integer type;
 
     private Long firstCategory;
 
@@ -163,11 +163,11 @@ public class GoodsBuild {
 		this.ord = ord;
 	}
 
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 }

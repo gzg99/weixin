@@ -74,9 +74,9 @@
 			<div class="row cl">
 				<label class="form-label col-2">一级分类：</label>
 				<div class="formControls col-10">
-				<select id="firstCategory" class="input-text" style="width: 80%">
+				<select id="firstCategory" class="input-text" style="width: 80%" onchange="secondCategorySel()">
 					<c:forEach items="${category}" var="ctg">
-						<option value="${ctg.id}">${ctg.ctgName }</option>
+						<option value="${ctg.id}">${ctg.firstCategory }</option>
 					</c:forEach>
 				</select>
 				</div>
@@ -233,6 +233,19 @@
 			error : function(data, status, e) //相当于java中catch语句块的用法  
 			{alert('失败');
 				
+			}
+		});
+	}
+	
+	function secondCategorySel() {
+		var firstCategory = $(".firstCategory").val();
+		$.ajax({
+			url:"getSecondCategoryByFirst.html",
+			type:"POST",
+			data:{"firstCategory":firstCategory},
+			dataType:'json',
+			success:function(result){
+				var aa='123';
 			}
 		});
 	}

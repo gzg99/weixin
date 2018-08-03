@@ -25,8 +25,11 @@
     where seller_id = #{sellerId,jdbcType=BIGINT}
   </select>
   
-  
-  
+    <select id="getSecondCategoryByFirst" resultType="java.lang.String" parameterType="java.lang.String" >
+    select second_category as secondCategory 
+    from jdb_category_enter
+    where first_category = #{firstCategory,jdbcType=VARCHAR}
+  </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from jdb_category_enter

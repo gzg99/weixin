@@ -20,4 +20,6 @@ public interface CategoryEnterDao {
     int updateByPrimaryKey(CategoryEnter record);
     
     List<CategoryEnter> categoryFirstBySellerId(Long sellerId);
+    
+    List<String> getSecondCategoryByFirst(String firstCategory);
 }

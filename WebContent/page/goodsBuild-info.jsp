@@ -16,20 +16,21 @@
 
 <link rel="stylesheet" type="text/css" href="css/showTip.css">
 <script type="text/javascript" src="js/showTip.js"></script>
+<style type="text/css">
+	.sp_top{ font-size: 0.28rem; height:0.8rem; width: 100%; position: fixed;top: 0;left: 0; line-height: 0.8rem; text-align: center;}
+	.sp_top_bt{ width: 100%; float: left;background-color:#fff; border-bottom: #ddd solid 0.02rem;}
+</style>
 </head>
 
-<body id="wrap">	
-    <div class="sjsc-title1">
-    	<h3 class="sjsc-t1l f-l"><a href="JavaScript:history.go(-1)"><span class="le"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></span></a></h3>
-        <div style="clear:both;"></div>
-    </div>
-    <div>
-    	<ul class="spxq-ul2">
-        	<li class="current" style="width: 50%; background: blue;"><a href="JavaScript:;" onclick="show('detailDiv')">图文详情</a></li>
-        	<li class="current" style="width: 50%"><a href="JavaScript:;" onclick="show('evalDiv')">评价</a></li>
-            <div style="clear:both;"></div>
-        </ul>
-    </div>
+<body style="padding-bottom:1.2rem;">
+<div class="clear"></div>
+<div class="sp_top">
+	<div class="sp_top_bt">        	
+		<span class="current" style="width: 50%; background: blue;"><a href="JavaScript:;" onclick="show('detailDiv')">图文详情</a></span>
+        <span class="current" style="width: 50%">
+        <a href="JavaScript:;" onclick="window.location.href='evaluate/showEvaluate.html?commodityId=${goods.id}'">评价</a>
+        </span>
+	</div>
     <div class="detailDiv">
 	    <input type="hidden" value="${goods.id}" id="id">
 	    <input type="hidden" value="${goods.goodsName}" id="goodsName">
@@ -73,24 +74,12 @@
 	        </div>
 	    </div>
     </div>
-    <div class="evalDiv" style="display:none;">
-    	<ul class="spxq-ul2">
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">全部评价(${eval.showEvaluate.sumEvaluate})</a></li>
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">好评(${goodEvalCount})</a></li>
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">中评(${neutralEvalCount})</a></li>
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">差评(${badEvalCount})</a></li>
-            <div style="clear:both;">
-                <c:forEach items="${eval.showEvaluateBylist }" var="eval" varStatus="s">
-                    <div>${eval.evaluateContent }</div>
-                </c:forEach>
-            </div>
-        </ul>
-    </div>
     <div class="spxq-info3">
     	<a href="" class="if3-aa f-l"><img src="images/notCol.png"></a>
     	<a href="cartList.html" class="if3-aa f-l"><img src="images/orderCar.png" /><span style="position:fixed;color: #f29133" id="cart_num">${cart_num }</span></a>
     	<button class="if3-btnn1 if3-btn1 f-l" onclick="window.location.href='goodsOrderSure.html?id=${id}&goods_num=1'">立即购买</button>
     	<button class="if3-btnn1 if3-btn2 f-l" onclick="add()">加入购物车</button>
+    </div>
     </div>
 	<script type="text/javascript">
 		function add(){
@@ -130,23 +119,11 @@
 				success:function(rs){
 					if(rs==1){
 						showTip("已加入购物车！");
-						//location.reload();
 					}else{
 						showTip("加入购物车失败！");
 					}
 				}
 			})
-		}
-		
-		function show(cls) {
-			if(cls == "detailDiv") {
-				$(".detailDiv").show();
-				$(".evalDiv").hide();
-			} else {
-				$(".detailDiv").hide();
-				$(".evalDiv").show();
-			}
-			
 		}
 	</script>
 	
