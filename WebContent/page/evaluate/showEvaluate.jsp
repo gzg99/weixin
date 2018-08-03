@@ -59,7 +59,7 @@
 <script type="text/javascript" src="../../js/evaluate/base.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
-
+var commodityId = ${commodityId};
 $(function(){
 	$(".sp_top_btn").click(function(){
 		$(this).siblings().removeClass("active");
@@ -67,7 +67,7 @@ $(function(){
 	});
 });
 
-var commodityId = ${commodityId};
+
 function chickGoods(grade) {
 	
 	var url = "showEvaluateAj.html"
@@ -88,8 +88,12 @@ function chickGoods(grade) {
 				+"<div class='pinglun_na'>"
 				+"<div class='pinglun_sj'>"+timestampToTime(obj.evaluate_date.time) +"</div>"	
 				+"<div class='pinglun_name'>"+obj.realname+"</div>"	
-				+"<ul class='pinglun_xing'><li class='active'></li><li class='active'></li><li></li><li></li></ul>"	
-				+"<div class='pinglun_txt'>"+obj.evaluate_content +"</div></div></div>"	;
+				+"<ul class='pinglun_xing'>";
+				for(var i =0; i<obj.grade;i++) {
+					html+="<li></li>";
+				}
+				html+="</ul>";	
+				html+="<div class='pinglun_txt'>"+obj.evaluate_content +"</div></div></div>";
 			})
 			$(".pinglun").html(html);
 		}
