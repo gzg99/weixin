@@ -17,4 +17,10 @@ public class SellerService {
 	public List<Seller> getSellerListBySellerAreaId(Long sellerAreaId) {
 		return sellerDao.getSellerListBySellerAreaId(sellerAreaId);
 	}
+	
+	
+	public int insertSeller(Seller seller) {
+		int i = sellerDao.insertSeller(seller);
+		return i;
+	}
 }
