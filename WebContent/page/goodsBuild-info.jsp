@@ -7,8 +7,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>商品详情</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
+<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/woxiangyao.js"></script>
 <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
@@ -26,7 +27,7 @@
 <div class="clear"></div>
 <div class="sp_top">
 	<div class="sp_top_bt">        	
-		<span class="current" style="width: 50%; background: blue;"><a href="JavaScript:;" onclick="show('detailDiv')">图文详情</a></span>
+		<span class="current" style="width: 50%;"><a href="JavaScript:;">图文详情</a></span>
         <span class="current" style="width: 50%">
         <a href="JavaScript:;" onclick="window.location.href='evaluate/showEvaluate.html?commodityId=${goods.id}'">评价</a>
         </span>

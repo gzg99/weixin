@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.jurisdiction.role.JdbMenuRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.jurisdiction.role.JdbMenuRole" >
+    <id column="menu_role_id" property="menuRoleId" jdbcType="VARCHAR" />
+    <result column="menu_id" property="menuId" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    menu_role_id, menu_id, role_id
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_menu_role
+    where menu_role_id = #{menuRoleId,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jdb_menu_role
+    where role_id = #{roldId,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.yq.entity.jurisdiction.role.JdbMenuRole" >
+    insert into jdb_menu_role (menu_role_id, menu_id, role_id
+      )
+    values (#{menuRoleId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <insert id="insertList" parameterType="java.util.List" >
+    insert into jdb_menu_role (menu_role_id, menu_id, role_id)
+    values 
+    <foreach collection="list" item="record"  separator="," >
+    (replace(uuid(),'-',''), #{record.menuId,jdbcType=VARCHAR}, #{record.roleId,jdbcType=VARCHAR})
+    </foreach>
+    
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.yq.entity.jurisdiction.role.JdbMenuRole" >
+    insert into jdb_menu_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuRoleId != null" >
+        menu_role_id,
+      </if>
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuRoleId != null" >
+        #{menuRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.jurisdiction.role.JdbMenuRole" >
+    update jdb_menu_role
+    <set >
+      <if test="menuId != null" >
+        menu_id = #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_role_id = #{menuRoleId,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.jurisdiction.role.JdbMenuRole" >
+    update jdb_menu_role
+    set menu_id = #{menuId,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=VARCHAR}
+    where menu_role_id = #{menuRoleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

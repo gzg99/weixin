@@ -29,9 +29,9 @@ public class GoodsBuild {
 
     private Integer type;
 
-    private Long firstCategory;
+    private String firstCategory;
 
-    private Long secondCategory;
+    private String secondCategory;
 
     private String goodsDetail;
 
@@ -123,19 +123,19 @@ public class GoodsBuild {
         this.addTime = addTime;
     }
 
-    public Long getFirstCategory() {
+    public String getFirstCategory() {
         return firstCategory;
     }
 
-    public void setFirstCategory(Long firstCategory) {
+    public void setFirstCategory(String firstCategory) {
         this.firstCategory = firstCategory;
     }
 
-    public Long getSecondCategory() {
+    public String getSecondCategory() {
         return secondCategory;
     }
 
-    public void setSecondCategory(Long secondCategory) {
+    public void setSecondCategory(String secondCategory) {
         this.secondCategory = secondCategory;
     }
 

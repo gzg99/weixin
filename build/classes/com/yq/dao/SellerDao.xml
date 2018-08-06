@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.SellerDao">
+	<select id="getSellerListBySellerAreaId" resultType="com.yq.entity.Seller">
+		select 
+			id as id, 
+			user_name as userName,
+			password as password,
+			seller_area_id as sellerAreaId, 
+			seller_name as sellerName, 
+			seller_img as sellerImg, 
+			address as address, 
+			seller_detail as sellerDetail, 
+			add_time as addTime 
+		from jdb_seller 
+		where seller_area_id=#{sellerAreaId,jdbcType=BIGINT}
+	</select>
+	
+	<select id="getSellerByCondition" parameterType="java.util.HashMap" resultType="com.yq.entity.Seller">
+		select 
+			id as id, 
+			user_name as userName,
+			password as password,
+			seller_area_id as sellerAreaId, 
+			seller_name as sellerName, 
+			seller_img as sellerImg, 
+			address as address, 
+			seller_detail as sellerDetail, 
+			add_time as addTime 
+		from jdb_seller 
+		where user_name=#{username,jdbcType=VARCHAR} 
+		and password=#{password,jdbcType=VARCHAR} 
+	</select>
+	
+	<insert id="insertSeller"  parameterType="com.yq.entity.Seller" >
+		insert into jdb_seller
+		    (seller_area_id,address,user_name,password,seller_name,seller_img,seller_detail,add_time)
+		values 
+		    (#{sellerAreaId}, #{address},#{userName}, #{password},#{sellerName} ,#{sellerImg},#{sellerDetail},now())
+	</insert>
+	
+</mapper>

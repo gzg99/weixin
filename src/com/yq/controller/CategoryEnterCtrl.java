@@ -91,7 +91,7 @@ public class CategoryEnterCtrl {
 		CategoryEnter category = new CategoryEnter();
 		category.setFirstCategory(firstCategory); 
 		category.setSellerId(sellerId);
-		int i = categoryEnterService.updateCategoryEnter(category);
+		categoryEnterService.updateCategoryEnter(category);
 		CategoryEnter ctg = new CategoryEnter();
 		ctg.setFirstCategory(firstCategory); 
 		ctg.setSellerId(sellerId);

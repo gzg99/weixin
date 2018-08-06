@@ -34,22 +34,22 @@
 <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
 <script>
-			var editor;
-			KindEditor.ready(function(K) {
-				editor = K.create('textarea[name="content"]', {
-					resizeType : 1,
-					allowPreviewEmoticons : false,
-					allowImageUpload : true,
-					afterBlur : function() {
-						this.sync();
-					},
-					items : [
-						'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-						'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link','fullscreen']
-				});
-			});
-		</script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			afterBlur : function() {
+				this.sync();
+			},
+			items : [
+				'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link','fullscreen']
+		});
+	});
+</script>
 <title>基本设置</title>
 
 </head>
@@ -165,23 +165,25 @@
 	<script type="text/javascript">
 	function add(){
 		var goods = {};
-		goods.goodsName = $('#goodsName').val();
-		goods.sellerId = $('#sellerId').val();
-		goods.goodsSpe = $('#goodsSpe').val();
-		goods.goodsImg = $('#filepath').val();
-		goods.goodsPrice = $('#goodsPrice').val();
-		goods.goodsDetail = $('#goodsDetail').val();
-		goods.firstCategory = $('#firstCategory').val();
-		goods.secondCategory = $('#secondCategory').val();
-		goods.goodsNum = $('#goodsNum').val();
-		goods.goodsBrand = $('#goodsBrand').val();
-		goods.goodsMaterial = $('#goodsMaterial').val();
-		goods.goodsColor = $('#goodsColor').val();
+		var goodsName = $('#goodsName').val();
+		var goodsSpe = $('#goodsSpe').val();
+		var goodsImg = $('#filepath').val();
+		var goodsPrice = $('#goodsPrice').val();
+		var goodsDetail = $('#goodsDetail').val();
+		var firstCategory = $('#firstCategory').val();
+		var secondCategory = $('#secondCategory').val();
+		var goodsNum = $('#goodsNum').val();
+		var goodsBrand = $('#goodsBrand').val();
+		var goodsMaterial = $('#goodsMaterial').val();
+		var goodsColor = $('#goodsColor').val();
 		
 		$.ajax({
 			url:'goodsBuildAdd.html',
 			type:'post',
-			data:goods,
+		    data: 'goodsName='+goodsName+'&goodsSpe='+goodsSpe+'&goodsImg='+goodsImg+'&goodsPrice='+goodsPrice
+			+'&goodsDetail='+goodsDetail+'&firstCategory='+firstCategory+'&secondCategory='+secondCategory
+			+'&goodsNum='+goodsNum+'&goodsBrand='+goodsBrand+'&goodsMaterial='+goodsMaterial
+			+'&goodsColor='+goodsColor,
 			dataType:'json',
 			success:function(rs){
 				if(rs==1){

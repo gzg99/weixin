@@ -8,14 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.JsonObject;
 import com.yq.entity.CategoryEnter;
 import com.yq.entity.Goods;
 import com.yq.entity.GoodsBuild;
@@ -26,6 +30,7 @@ import com.yq.service.CategoryEnterService;
 import com.yq.service.GoodsBuildService;
 import com.yq.service.evaluate.EvaluateService;
 import com.yq.util.PageUtil;
+
 
 /**
  * 建材类商家入驻商品ctrl
@@ -56,10 +61,11 @@ public class GoodsBuildCtrl {
 	 * 初始化查询商品列表
 	 * */
 	@RequestMapping(value = "/main/goodsBuildList.html")
-	public ModelAndView goodsBuildList(int pageNo, int pageSize, ModelAndView mv, HttpServletRequest request) {
+	public ModelAndView goodsBuildList(Long sellerId, int pageNo, int pageSize, ModelAndView mv, HttpServletRequest request) {
 		GoodsBuildSearchVo search = new GoodsBuildSearchVo();
 		search.setPageNo(pageNo);
 		search.setPageSize(pageSize);
+		search.setSellerId(sellerId);
 		int total = goodsBuildService.count(search);
 		PageUtil.pager(pageNo, pageSize, total, request);
 		search.setStart(PageUtil.currentNum(pageNo, pageSize));
@@ -76,8 +82,22 @@ public class GoodsBuildCtrl {
 	 * */
 	@ResponseBody
 	@RequestMapping(value = "/main/goodsBuildAdd.html")
-	public String goodssBuildAdd(GoodsBuild goods) {
-		goods.setSellerId(1L);
+	public String goodsBuildAdd(String goodsName,String goodsSpe, String goodsImg, float goodsPrice,
+			String goodsDetail, String firstCategory, String secondCategory, Long goodsNum,
+			String goodsBrand, String goodsMaterial, String goodsColor, HttpSession session) {
+		GoodsBuild goods = new GoodsBuild();
+		goods.setGoodsName(goodsName);
+		goods.setGoodsSpe(goodsSpe);
+		goods.setGoodsImg(goodsImg);
+		goods.setGoodsPrice(goodsPrice);
+		goods.setGoodsDetail(goodsDetail);
+		goods.setFirstCategory(firstCategory);
+		goods.setSecondCategory(secondCategory);
+		goods.setGoodsNum(goodsNum);
+		goods.setGoodsBrand(goodsBrand);
+		goods.setGoodsMaterial(goodsMaterial);
+		goods.setGoodsColor(goodsColor);
+		goods.setSellerId((Long)session.getAttribute("id"));
 		if(goods.getSellerId() == null) {
 			return 0+"";
 		}
@@ -221,14 +241,6 @@ public class GoodsBuildCtrl {
 		ml.addObject("eval", evalList);
 		//全部评价
 		ml.addObject("allEvalCount", evalList.size());
-		//好评
-		/*int goodEvalCount = orderEvalService.getGoodCountByGoodId(goods_id);
-		ml.addObject("goodEvalCount", goodEvalCount);
-		//差评
-		int badEvalCount = orderEvalService.getBadCountByGoodId(goods_id);
-		ml.addObject("badEvalCount", badEvalCount);
-		//中评
-		ml.addObject("neutralEvalCount", evalList.size() - goodEvalCount - badEvalCount);*/
 		ml.setViewName("page/goodsBuild-info");
 		return ml;
 	}

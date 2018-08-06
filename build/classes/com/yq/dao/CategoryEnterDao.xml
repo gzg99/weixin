@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.CategoryEnterDao" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.CategoryEnter" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="first_category" property="firstCategory" jdbcType="VARCHAR" />
+    <result column="second_category" property="secondCategory" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, seller_id, first_category, second_category, status, sort
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_category_enter
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="categoryFirstBySellerId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_category_enter
+    where seller_id = #{sellerId,jdbcType=BIGINT}
+  </select>
+  
+    <select id="getSecondCategoryByFirst" resultType="java.lang.String" parameterType="java.lang.String" >
+    select second_category as secondCategory 
+    from jdb_category_enter
+    where first_category = #{firstCategory,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from jdb_category_enter
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.CategoryEnter" >
+    insert into jdb_category_enter (seller_id, first_category, second_category,  
+      status, sort)
+    values (#{sellerId,jdbcType=BIGINT}, #{firstCategory,jdbcType=VARCHAR}, #{secondCategory,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.CategoryEnter" >
+    insert into jdb_category_enter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="firstCategory != null" >
+        first_category,
+      </if>
+      <if test="secondCategory != null" >
+        second_category,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="firstCategory != null" >
+        #{firstCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCategory != null" >
+        #{secondCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.CategoryEnter" >
+    update jdb_category_enter
+    <set >
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="firstCategory != null" >
+        first_category = #{firstCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCategory != null" >
+        second_category = #{secondCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.CategoryEnter" >
+    update jdb_category_enter
+    set seller_id = #{sellerId,jdbcType=BIGINT},
+      first_category = #{firstCategory,jdbcType=VARCHAR},
+      second_category = #{secondCategory,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <update id="updateCategoryEnter" parameterType="com.yq.entity.CategoryEnter" >
+    update jdb_category_enter
+    <set >
+      <if test="firstCategory != null" >
+        first_category = #{firstCategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seller_id = #{sellerId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="getCategoryByRecord" parameterType="com.yq.entity.CategoryEnter" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from jdb_category_enter 
+    where 1=1
+      <if test="sellerId != null" >
+        and seller_id = #{sellerId,jdbcType=BIGINT} 
+      </if>
+      <if test="firstCategory != null" >
+        and first_category = #{firstCategory,jdbcType=VARCHAR} 
+      </if>
+      <if test="secondCategory != null" >
+        and second_category = #{secondCategory,jdbcType=VARCHAR} 
+      </if>
+  </select>
+</mapper>

@@ -178,7 +178,7 @@
 			<dd>
 				<ul>
 					<li><a _href="categoryEnterList.html?sellerId=${id }" href="javascript:;">分类管理</a></li>
-					<li><a _href="goodsBuildList.html?pageNo=1&pageSize=10" href="javascript:;">商品管理</a></li>
+					<li><a _href="goodsBuildList.html?sellerId=${id }&pageNo=1&pageSize=10" href="javascript:;">商品管理</a></li>
 				</ul>
 			</dd>
 		</dl>

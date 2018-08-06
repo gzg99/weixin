@@ -60,26 +60,26 @@
                         <a href="category.html?ctg_id=23" class="img-txt">家庭直购</a>
                     </li>
                     <li>
-                        <a href="category.html?ctg_id=22" class="img-1"><img  src="images/b5.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=22" class="img-txt">爱心公益</a>
+                        <a href="" class="img-1"><img  src="images/b5.png" style="width:42px;height: 42px"></a>
+                        <a href="" class="img-txt">爱心公益</a>
                     </li>
                 </ul>
                 <ul class="info-img">
                     <li>
-                        <a href="getAllSellerAreaList.html" class="img-1"><img  src="images/b6.png" style="width:42px;height: 42px"> </a>
-                        <a href="getAllSellerAreaList.html" class="img-txt">建材优选</a>
+                        <a href="" class="img-1"><img  src="images/b6.png" style="width:42px;height: 42px"> </a>
+                        <a href="" class="img-txt">建材优选</a>
                     </li>
                     <li>
-                        <a href="category.html?ctg_id=23" class="img-1"> <img  src="images/b7.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=23" class="img-txt">家居优选</a>
+                        <a href="getAllSellerAreaList.html" class="img-1"> <img  src="images/b7.png" style="width:42px;height: 42px"></a>
+                        <a href="getAllSellerAreaList.html" class="img-txt">家居优选</a>
                     </li>
                     <li>
-                        <a href="category.html?ctg_id=21" class="img-1" style=""><img  src="images/b8.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=21" class="img-txt">花卉</a>
+                        <a href="" class="img-1" style=""><img  src="images/b8.png" style="width:42px;height: 42px"></a>
+                        <a href="" class="img-txt">花卉</a>
                     </li>
                     <li>
-                        <a href="menuList.html" class="img-1"><img  src="images/b9.png" style="width:42px;height: 42px"></a>
-                        <a href="menuList.html" class="img-txt">装修样板</a>
+                        <a href="" class="img-1"><img  src="images/b9.png" style="width:42px;height: 42px"></a>
+                        <a href="" class="img-txt">装修样板</a>
                     </li>
                 </ul>
             </div>
