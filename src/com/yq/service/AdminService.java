@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yq.dao.AdminDao;
+import com.yq.entity.Admin;
 import com.yq.service.AdminService;
 
 @Service
@@ -37,6 +38,10 @@ public class AdminService  {
 	}
 	public String listById(Map<String, Object> map){
 		return adminDao.listById(map);
+	}
+	
+	public Admin getAdmin(Map<String, Object> map) {
+		return adminDao.getAdmin(map);
 	}
 
 }

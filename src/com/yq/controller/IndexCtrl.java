@@ -57,8 +57,10 @@ public class IndexCtrl extends StringUtil{
 	 * 后台登录
 	 * */
 	@RequestMapping(value="/main/main.html")
-	public ModelAndView mainindex(){
-		return new ModelAndView("main/index");
+	public ModelAndView mainindex(HttpSession session){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main/index");
+		return mv;
 	}
 	
 	/**

@@ -38,7 +38,7 @@
 	<br>
 	<div class="pd-20">
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
-			<span class="l"> <a href="goodsAddjsp.html"
+			<span class="l"> <a href="sellerAreaAddjsp.html"
 				class="btn btn-primary radius"> <i class="Hui-iconfont">&#xe600;</i>
 					添加记录
 			</a></span>

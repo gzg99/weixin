@@ -73,30 +73,30 @@
 						class="input-text" style="width: 80%">
 				</div>
 
-				<label class="form-label col-2">商家地址：</label>
-				<div class="formControls col-10">
+				<label class="form-label col-2" style="margin-top:20px;">商家地址：</label>
+				<div class="formControls col-10" style="margin-top:20px;">
 					<input type="text" id="address" name="address" placeholder="请填写地址" value=""
 						class="input-text" style="width: 80%">
 				</div>
-				<label class="form-label col-2">商家详情：</label>
-				<div class="formControls col-10">
+				<label class="form-label col-2" style="margin-top:20px;">商家详情：</label>
+				<div class="formControls col-10" style="margin-top:20px;">
 					<input type="text" id="sellerDetail" name="sellerDetail" placeholder="商家详情" value=""
 						class="input-text" style="width: 80%">
 				</div>
-				<label class="form-label col-2">商家所属商圈id：</label>
-				<div class="formControls col-10">
+				<label class="form-label col-2" style="margin-top:20px;">所属商圈：</label>
+				<div class="formControls col-10" style="margin-top:20px;">
 					<input type="text" id="sellerAreaId" name="sellerAreaId" placeholder="商家所属商圈id"
 						value="" class="input-text" style="width: 80%">
 				</div>
-				<label class="form-label col-2">商家图片：</label>
-				<div class="formControls col-10">
+				<label class="form-label col-2" style="margin-top:20px;">商家图片：</label>
+				<div class="formControls col-10" style="margin-top:20px;">
 					<input type="file" id="path" name="filePath" placeholder="商家图片" value=""
 						class="input-text" style="width: 80%">
 				</div>
 			</div>
 			<br>
 			<br>
-			<div class="col-10 col-offset-2">
+			<div class="col-10 col-offset-2" style="margin-top:20px;">
 
 				<button onClick="add()" id="butt" class="btn btn-primary radius"
 					type="button">

@@ -54,7 +54,7 @@
 	<a aria-hidden="false" class="Hui-nav-toggle" href="#"></a> </header>
 <aside class="Hui-aside">
 	<input runat="server" id="divScrollValue" type="hidden" value="" />
-	<div class="menu_dropdown bk_2">
+	<div class="menu_dropdown bk_2" id="menu1">
 		<dl id="menu-article">
 			<dt><i class="Hui-iconfont">&#xe616;</i> 自提点管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -144,7 +144,6 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a _href="toAddSeller.html" href="javascript:;">用户管理</a></li>
 					<li><a _href="repwd.jsp" href="javascript:;">密码修改</a></li>
 					<li><a _href="role/listJdbRole.html" href="javascript:void(0)">角色管理</a></li>
 				</ul>
@@ -156,21 +155,13 @@
 			<dd>
 				<ul>
 					<li><a _href="sellerAreaList.html?currentPage=1" href="javascript:;">商圈管理</a></li>
-					<li><a _href="" href="javascript:void(0)">商家管理</a></li>
+					<li><a _href="toAddSeller.html" href="javascript:;">商家管理</a></li>
 				</ul>
 			</dd>
 		</dl>
-		
-		<dl id="menu-comments">
-			<dt><i class="Hui-iconfont">&#xe622;</i> 商户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a _href="sellerAreaList.html?currentPage=1" href="javascript:;">商圈管理</a></li>
-					<li><a _href="" href="javascript:void(0)">商家管理</a></li>
-				</ul>
-			</dd>
-		</dl>
-		
+	</div>
+	
+	<div class="menu_dropdown bk_2" id="menu2">
 		<dl id="menu-comments">
 			<dt><i class="Hui-iconfont">&#xe622;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -186,13 +177,11 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a _href="categoryEnterList.html?sellerId=1" href="javascript:;">分类管理</a></li>
+					<li><a _href="categoryEnterList.html?sellerId=${id }" href="javascript:;">分类管理</a></li>
 					<li><a _href="goodsBuildList.html?pageNo=1&pageSize=10" href="javascript:;">商品管理</a></li>
 				</ul>
 			</dd>
 		</dl>
-		
-		<!-- 商家入驻后台模块end -->
 	</div>
 </aside>
 <div class="dislpayArrow"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
@@ -252,6 +241,18 @@
 </script> 
 
 <script type="text/javascript">
+	var username ='${username}';
+	$(function() {
+		var name = $("#userName").val();
+		if(name=="admin") {
+			$("#menu1").show();
+			$("#menu2").hide();
+		}else{
+			$("#menu1").hide();
+			$("#menu2").show();
+		}
+	});
+	
 	var _hmt = _hmt || [];
 	(function() {
 		var hm = document.createElement("script");

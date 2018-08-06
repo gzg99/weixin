@@ -65,7 +65,7 @@ public class SellerAreaCtrl extends StringUtil {
 	@RequestMapping(value = "/main/toAddSeller.html")
 	public ModelAndView toAddSeller() {
 		
-		ModelAndView view = new ModelAndView("/page/seller/addseller");
+		ModelAndView view = new ModelAndView("main/seller/addseller");
 		
 		return view;
 	}

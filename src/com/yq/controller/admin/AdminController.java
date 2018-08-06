@@ -11,12 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yq.entity.Admin;
 import com.yq.service.AdminService;
 import com.yq.util.MD5Util;
+import com.yq.util.StringUtil;
 
 @Controller
 @RequestMapping("/admin/")
-public class AdminController {
+public class AdminController extends StringUtil{
 	private Logger log= Logger.getLogger("");
 	@Autowired
 	private AdminService adminService;
@@ -29,6 +31,11 @@ public class AdminController {
 		map.put("password",MD5Util.MD5Encode(password,""));
 		session.setAttribute("username", username);
 		session.setAttribute("password", password);
+		Admin admin = null;
+		if("1".equals(adminService.isExist(map))) {
+			admin = adminService.getAdmin(map);
+			session.setAttribute("id", admin.getAdmin_id());
+		}
 		return adminService.isExist(map);
 	}
 	

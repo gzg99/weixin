@@ -2,6 +2,8 @@ package com.yq.util;
 
 import javax.servlet.http.HttpSession;
 
+import com.yq.entity.Admin;
+
 public class StringUtil
 {
   protected Integer pagesize_1 = Integer.valueOf(10);

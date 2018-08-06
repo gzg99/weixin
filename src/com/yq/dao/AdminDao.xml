@@ -12,4 +12,8 @@
     <select id="listById" resultType="java.lang.String">
     	select password from jdb_admin where admin_id=1
     </select>
+    
+    <select id="getAdmin" resultType="com.yq.entity.Admin">
+    	select * from jdb_admin where username=#{username} and password=#{password}
+    </select>
 </mapper>
