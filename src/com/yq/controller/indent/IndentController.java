@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,11 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.yq.entity.Address;
 import com.yq.entity.Area;
 import com.yq.entity.CartBuild;
-import com.yq.entity.Coupons;
-import com.yq.entity.Freight;
-import com.yq.entity.Goods;
 import com.yq.entity.GoodsBuild;
-import com.yq.entity.Order;
 import com.yq.entity.User;
 import com.yq.entity.indent.JdbIndent;
 import com.yq.service.AddressService;
@@ -84,6 +79,8 @@ public class IndentController extends StringUtil{
 		PageUtil.pager(jdbIndent.getCurrentPage(), 10, Integer.parseInt(indentList.get("total").toString()), request);
 		ModelAndView view = new ModelAndView("main/indent/indentList");
 		view.addObject("indentList", indentList.get("listIndent"));
+		view.addObject("indentState", jdbIndent.getIndentState());
+		view.addObject("Lately", jdbIndent.getLately());
 
 		return view;
 

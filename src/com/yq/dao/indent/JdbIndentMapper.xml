@@ -23,6 +23,7 @@
 		<result column="indent_commodity_num" property="indentCommodityNum" jdbcType="INTEGER" />
 		<result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
 		<result column="indent_commodity" property="indentCommodity" jdbcType="VARCHAR" />
+		<result column="lately" property="lately" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -55,6 +56,9 @@
 			</if>
 			<if test="commodityName != null and commodityName != ''">
 				and commodity_name = #{commodityName}
+			</if>
+			<if test="lately != null and lately != ''">
+				and date_sub(curdate(), interval #{lately} day) &lt;= date(indent_time)
 			</if>
 		</where>
 	</sql>

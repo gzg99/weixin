@@ -150,3 +150,17 @@ function layout(dataObj) {
 	$(".contentS").html(str);
 		
 }
+
+
+function getPage(status) {
+	window.location.href = 'indentList.html?currentPage=1' + '&indentState='+status;
+	$(".dd_list_tab w100 ul li").addClass("active");
+	return;
+}
+
+
+function getLately(lately) {
+	window.location.href = 'indentList.html?currentPage=1' + '&lately='+lately;
+	$(".dd_list_tab w100 ul li").addClass("active");
+	return;
+}

@@ -47,6 +47,8 @@ public class JdbIndent extends Page {
 	private String indentCommodity;
 	
 	private Date indentDate;
+	
+	private String lately;
 
 	public String getId() {
 		return id;
@@ -215,6 +217,14 @@ public class JdbIndent extends Page {
 
 	public void setIndentDate(Date indentDate) {
 		this.indentDate = indentDate;
+	}
+
+	public String getLately() {
+		return lately;
+	}
+
+	public void setLately(String lately) {
+		this.lately = lately;
 	}
 	
 	

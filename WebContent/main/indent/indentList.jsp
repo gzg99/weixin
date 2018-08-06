@@ -208,9 +208,9 @@
 					<div class="dd_xdrq w100">
 						<div class="dd_input_txt">下单日期</div>
 						<ul class="dd_xdrq_sj">
-							<li class="active" >最近7日</li>
-							<li>最近15日</li>
-							<li style="border: none;">最近30日</li>
+							<li id="seven" onclick="getLately('7')" >最近7日</li>
+							<li id="fifteen" onclick="getLately('15')" >最近15日</li>
+							<li id="thirty" onclick="getLately('30')" style="border: none;">最近30日</li>
 						</ul>
 					</div>
 				</div>
@@ -220,11 +220,11 @@
 			<div class="dd_list">
 				<div class="dd_list_tab w100">
 					<ul>
-						<li class="active">全部订单</li>
-						<li>待发货</li>
-						<li>已发货</li>
-						<li>维权中</li>
-						<li style="border: none;">维权完成</li>
+						<li id="selAll" onclick="getPage('')" class="active">全部订单</li>
+						<li id="seldai" onclick="getPage('1')">待发货</li>
+						<li id="selyi" onclick="getPage('2')">已发货</li>
+						<li id="selwei" onclick="getPage('3')">维权中</li>
+						<li id="selwan" onclick="getPage('4')" style="border: none;">维权完成</li>
 					</ul>
 				</div>
 				<div class="dd_list_xzbg w100">
@@ -263,8 +263,8 @@
 								<td align="center">¥ ${indent.indentMoney}</td>
 								<td align="center">${indent.indentNickname}</td>
 								<td align="center"><span class="gray">${indent.indentState}</span></td>
-								<td align="center"><c:if
-										test="${indent.indentState == '待发货'}">
+								<td align="center">
+									<c:if test="${indent.indentState == '待发货'}">
 										<a class="blue" href="#" onclick="deliverGoods('${indent.id}')">发货</a>
 										<br>
 									</c:if> <a class="blue" href="#" onclick="detailsGoods('${indent.id}')">订单详情</a>
@@ -280,8 +280,7 @@
 									</span> <span> <a href="#">当前第${currentPage}页</a>
 									</span> <span> <a href="#" onclick="fpage('indentList.html')">首页</a>
 									</span> <span> <a href="#" onclick="upPage('indentList.html')">上一页</a>
-									</span> <span> <a href="#"
-										onclick="downPage('indentList.html')">下一页</a>
+									</span> <span> <a href="#" onclick="downPage('indentList.html')">下一页</a>
 									</span> <span> <a href="#" onclick="epage('indentList.html')">末页</a>
 									</span>
 								</div>
@@ -293,15 +292,44 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		var currentPage = '${currentPage}';
-		var totalPage = '${totalPage}';
-	</script>
+	
 	<script type="text/javascript" src="../../js/page.js"></script>
 	<script type="text/javascript" src="../../js/indent/indentList.js"></script>
 	<script src="../js/jquery-1.11.2.min.js"></script>
 	<script src="../../js/json2.js"></script>
 	<script type="text/javascript" src="../lib/layer/1.9.3/layer.js"></script>
+	<script type="text/javascript">
+		var currentPage = '${currentPage}';
+		var indentState = '${indentState}';
+		var totalPage = '${totalPage}';
+		var Lately = '${Lately}';
+		
+		$(function(){
+			$(".dd_list_tab ul li").removeClass("active");
+			if(indentState == 1) {
+				$("#seldai").addClass("active");
+			} else if(indentState == 2) {
+				$("#selyi").addClass("active");
+			} else if(indentState == 3) {
+				
+				$("#selwei").addClass("active");
+			}else if(indentState == 4) {
+				$("#selwan").addClass("active");
+			} else {
+				$("#selAll").addClass("active");
+			}
+			
+			$(".dd_xdrq w100 ul li").removeClass("active");
+			if(Lately == 7) {
+				$("#seven").addClass("active");
+			} else if(Lately == 15) {
+				$("#fifteen").addClass("active");
+			} else if(Lately == 30) {
+				$("#thirty").addClass("active");
+			}
+		});
+
+	</script>
 </body>
 <div class="fh_box" style="display: none;">
 	<input type="hidden" id="heddenID" /> <input type="hidden"
