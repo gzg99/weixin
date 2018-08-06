@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,12 +73,46 @@ public class SellerAreaCtrl extends StringUtil {
 	 * @return 超
 	 */
 	@RequestMapping(value = "/main/toAddSeller.html")
-	public ModelAndView toAddSeller() {
-		
+	public ModelAndView toAddSeller(String id) {
 		ModelAndView view = new ModelAndView("main/seller/addseller");
+		if(StringUtils.isNotBlank(id)){
+			Seller seller = sellerService.getSeller(id);
+			view.addObject("seller",seller);
+		}
 		
 		return view;
 	}
+	
+	/**
+	 * 商家列表页面
+	 * @param seller
+	 * @return 超
+	 */
+	@RequestMapping(value = "/main/sellerList.html")
+	public ModelAndView sellerList(@RequestParam(defaultValue = "1") Integer currentPage ) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("currentPage", currentPage);
+		
+		Map<String,Object> mapList = sellerService.getSellerByList(map);
+		ModelAndView view = new ModelAndView("main/seller/listseller");
+		view.addObject("mapList", mapList);
+		view.addObject("currentPage", currentPage);
+		return view;
+	}
+	
+	
+	/**
+	 * 删除商家
+	 * @param seller
+	 * @return 超
+	 */
+	@RequestMapping(value = "/main/deleteseller.html")
+	public @ResponseBody String deleteseller(Long id) {
+		int i = sellerService.deleteByPrimaryKey(id);
+		return i+"";
+	}
+	
+	
 	
 	/**
 	 * 增加商家
@@ -107,7 +142,13 @@ public class SellerAreaCtrl extends StringUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int i = sellerService.insertSeller(seller);
+		int i = 0;
+		if(seller.getId() != null) {
+			i = sellerService.updateSeller(seller);
+		} else {
+			i = sellerService.insertSeller(seller);
+		}
+		
 		return i+"";
 	}
 	

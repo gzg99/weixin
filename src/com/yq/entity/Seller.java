@@ -19,6 +19,8 @@ public class Seller {
 	private String sellerDetail;
 	
 	private String addTime;
+	
+	private String sellerArea;
 
 	public Long getId() {
 		return id;
@@ -90,6 +92,14 @@ public class Seller {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getSellerArea() {
+		return sellerArea;
+	}
+
+	public void setSellerArea(String sellerArea) {
+		this.sellerArea = sellerArea;
 	}
 	
 	

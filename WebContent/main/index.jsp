@@ -155,7 +155,8 @@
 			<dd>
 				<ul>
 					<li><a _href="sellerAreaList.html?currentPage=1" href="javascript:;">商圈管理</a></li>
-					<li><a _href="toAddSeller.html" href="javascript:;">商家管理</a></li>
+					<li><a _href="sellerList.html" href="javascript:;">商家管理</a></li>
+					
 				</ul>
 			</dd>
 		</dl>

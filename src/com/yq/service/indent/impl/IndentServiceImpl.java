@@ -26,7 +26,6 @@ public class IndentServiceImpl implements IndentService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		jdbIndent.setPageSize(10);
 		jdbIndent.setCurrentNum(PageUtil.currentNum(jdbIndent.getCurrentPage(), 10));
-		
 		int total = jdbIndentMapper.total(jdbIndent);
 		List<JdbIndent> listIndent = jdbIndentMapper.selectIndentByList(jdbIndent);
 		map.put("total", total);

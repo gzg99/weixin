@@ -66,21 +66,22 @@
 	<div class="pd-20" style="width: 80%">
 		<form action="" method="post" id="addseller" enctype="multipart/form-data">
 			<div class="row cl">
+				<input type="hidden"  name="id"value="${seller.id}" >
 				<label class="form-label col-2">用户名：</label>
 				<div class="formControls col-10">
-					<input type="text" id="userName" name="userName" placeholder="请填写名称" value=""
+					<input type="text" id="userName" name="userName" placeholder="请填写名称" value="${seller.userName}"
 						class="input-text" style="width: 80%">
 				</div>
 				
 				<label class="form-label col-2" style="margin-top:20px;">商家昵称：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<input type="text" id="sellerName" name="sellerName" placeholder="请填写昵称" value=""
+					<input type="text" id="sellerName" name="sellerName" placeholder="请填写昵称" value="${seller.sellerName}"
 						class="input-text" style="width: 80%">
 				</div>
 
 				<label class="form-label col-2" style="margin-top:20px;">商家地址：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<input type="text" id="address" name="address" placeholder="请填写地址" value=""
+					<input type="text" id="address" name="address" placeholder="请填写地址" value="${seller.address}"
 						class="input-text" style="width: 80%">
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">商家详情：</label>
@@ -94,7 +95,7 @@
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">商家图片：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<input type="file" id="path" name="filePath" placeholder="商家图片" value=""
+					<input type="file" id="path" name="filePath" placeholder="商家图片" value="${seller.sellerImg}"
 						class="input-text" style="width: 80%">
 				</div>
 			</div>
@@ -151,10 +152,11 @@
 				success : function(rs) {
 					if (rs == 1) {
 
-						alert("添加成功！");
+						alert("操作成功！");
+						window.location.href = 'sellerList.html'
 					} else {
 
-						alert("添加失败！");
+						alert("操作失败！");
 					}
 				},
 				error : function(req, textStatus, errThrow){
