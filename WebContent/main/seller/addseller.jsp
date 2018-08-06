@@ -64,12 +64,17 @@
 	<br>
 	<br>
 	<div class="pd-20" style="width: 80%">
-		<form action="" method="post" id="addseller"enctype="multipart/form-data">
+		<form action="" method="post" id="addseller" enctype="multipart/form-data">
 			<div class="row cl">
-
-				<label class="form-label col-2">商家名称：</label>
+				<label class="form-label col-2">用户名：</label>
 				<div class="formControls col-10">
-					<input type="text" id="sellerName" name="sellerName" placeholder="请填写名称" value=""
+					<input type="text" id="userName" name="userName" placeholder="请填写名称" value=""
+						class="input-text" style="width: 80%">
+				</div>
+				
+				<label class="form-label col-2" style="margin-top:20px;">商家昵称：</label>
+				<div class="formControls col-10" style="margin-top:20px;">
+					<input type="text" id="sellerName" name="sellerName" placeholder="请填写昵称" value=""
 						class="input-text" style="width: 80%">
 				</div>
 
@@ -80,13 +85,11 @@
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">商家详情：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<input type="text" id="sellerDetail" name="sellerDetail" placeholder="商家详情" value=""
-						class="input-text" style="width: 80%">
+					<textarea name="sellerDetail" id="sellerDetail" style="width: 80%;height: 100px;"></textarea>
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">所属商圈：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<input type="text" id="sellerAreaId" name="sellerAreaId" placeholder="商家所属商圈id"
-						value="" class="input-text" style="width: 80%">
+					<select id="sellerAreaId" class="input-text" style="width: 80%"></select>
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">商家图片：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
@@ -111,6 +114,21 @@
 	<br>
 	
 	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url:"getAllSellerArea.html",
+				type:"POST",
+				dataType:'json',
+				success:function(result){
+					var str = "";
+					for(var i = 0;i<result.length;i++){
+						str += "<option value='"+result[i].id+"'>"+result[i].sellerArea+"</option>";
+					}
+					$("#sellerAreaId").html(str);
+				}
+			});
+		});
+		
 		function add() {
 			var formData = new FormData($("#addseller")[0]);
 			var url = 'insertSeller.html';

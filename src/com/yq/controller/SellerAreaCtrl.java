@@ -2,6 +2,8 @@ package com.yq.controller;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,7 @@ import com.yq.entity.Seller;
 import com.yq.entity.SellerArea;
 import com.yq.service.SellerAreaService;
 import com.yq.service.SellerService;
+import com.yq.util.MD5Util;
 import com.yq.util.PageUtil;
 import com.yq.util.StringUtil;
 import com.yq.util.UUIDUtils;
@@ -44,6 +48,13 @@ public class SellerAreaCtrl extends StringUtil {
 		mv.addObject("list", list);
 		mv.setViewName("page/jjsy");
 		return mv;
+	}
+	
+	@RequestMapping(value="main/getAllSellerArea.html")
+	@ResponseBody
+	public String getAllSellerArea() {
+		List<SellerArea> list = sellerAreaService.getAllSellerArea();
+		return JSONObject.valueToString(list);
 	}
 	
 	@RequestMapping(value = "page/getSellerListBySellerAreaId.html")
@@ -85,7 +96,16 @@ public class SellerAreaCtrl extends StringUtil {
 			String path = saveFile(reques, file);
 			seller.setSellerImg(path);
 		}
-		
+		//默认出事密码为123456
+		seller.setPassword(MD5Util.MD5Encode("123456",""));
+		try {
+			seller.setAddress(URLDecoder.decode(seller.getAddress(), "utf-8"));
+			seller.setSellerName(URLDecoder.decode(seller.getSellerName(), "utf-8"));
+			seller.setSellerDetail(URLDecoder.decode(seller.getSellerDetail(), "utf-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int i = sellerService.insertSeller(seller);
 		return i+"";
 	}

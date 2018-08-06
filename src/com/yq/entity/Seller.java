@@ -4,6 +4,10 @@ public class Seller {
 
 	private Long id;
 	
+	private String userName;
+	
+	private String password;
+	
 	private Long sellerAreaId;
 	
 	private String sellerName;
@@ -70,6 +74,22 @@ public class Seller {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	
