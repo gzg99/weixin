@@ -27,7 +27,7 @@
 			    <table align="center" width="100%">
 			    	<c:forEach items="${entry.value}" var="link">
 				    	<ul class="shop_menu_op">
-		       				<li>${link}</li>
+		       				<li onclick="window.location.href='getGoodsBuildListByCon.html?sellerId=${sellerId}&firstCategory=${entry.key }&secondCategory=${link }'">${link}</li>
 		    			</ul>
 				    </c:forEach>
 			    </table>

@@ -336,7 +336,7 @@
    	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_brand as goodsBrand, 
    	    goods_material as goodsMaterial, goods_color as goodsColor, goods_num as goodsNum, 
    	    goods_sales as goodsSales, add_time as addTime, ord as ord, type as type, 
-   	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodDetail 
+   	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodsDetail 
 	 from 
 	  	jdb_goods_build 
 	 where id=#{id,jdbcType=BIGINT}

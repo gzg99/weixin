@@ -74,65 +74,21 @@ $(function(){
      <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
   	   	商品信息
      </div>
-     <c:forEach items="${goods}" var="list" varStatus="s">
-	     <input type="hidden" value="${list.goods_id}" name='goods_id'>
-	     <input type="hidden" value="${list.goods_name}" name='goods_name'>
-<%-- 	     <input type="hidden" value="${list.goods_img}" name='goods_img'> --%>
-	     <input type="hidden" value="${list.goods_num}" name='goods_num'>
-	     <input type="hidden" value="${list.goods_price}" name='goods_price'>
-	     <input type="hidden" value="${list.userId}" name='userId'>
+	     <input type="hidden" value="${goods.id}" name='goods_id'>
+	     <input type="hidden" value="${goods.goodsName}" name='goods_name'>
+	     <input type="hidden" value="${goods.goodsImg}" name='goods_img'>
+	     <input type="hidden" value="${goods.goodsNum}" name='goods_num'>
+	     <input type="hidden" value="${goods.goodsPrice}" name='goods_price'>
+	     <input type="hidden" value="${goods.sellerId}" name='userId'>
     
 	     <div class="drdd-info3">
-<!-- 	    	<div class="drdd-if3tu f-l"> -->
-<%-- 	        	<a href="#"><img src="${list.goods_img}" style="width: 43px"></a> --%>
-<!-- 	        </div> -->
-	        <h3 class="drdd-h31 f-l"><a href="#">${list.goods_name} x${goods_num}</a></h3>
-	        <p class="drdd-p1 f-r">￥${list.goods_price}</p>
+	    	<div class="drdd-if3tu f-l">
+	        	<a href="#"><img src="${goods.goodsImg}" style="width: 43px"></a>
+	        </div>
+	        <h3 class="drdd-h31 f-l"><a href="#">${goods.goodsName} x${tnum}</a></h3>
+	        <p class="drdd-p1 f-r">￥${goods.goodsPrice}</p>
 	        <div style="clear:both;"></div>
 	     </div>
-     </c:forEach>
-    
-<%--      <c:if test="${tprice!=0}"> --%>
-<!--      <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E"> -->
-<!--   	  优惠券 -->
-<!--     </div> -->
-<%--     <div class="drdd-info4" onclick="window.location.href='goodsCoupons.html?addr_id=${addr_id}&goods_id=${goods_id }&goods_num=${goods_num}'" > --%>
-<!--     	<p>优惠券</p> -->
-<!--         <a > -->
-<%--         <c:forEach items="${cps}" var="cps"> --%>
-<%--         <input type="hidden" value="${cps.cps_id}" id='cps_id'> --%>
-<%--         <input type="hidden" value="${cps.cps_name}" id='cps_name' > --%>
-<%--         <input type="hidden" value="${cps.cps_price}" id='cps_price'> --%>
-<%--         ${cps.cps_name} ￥${cps.cps_price} --%>
-<%--         </c:forEach> --%>
-<%--         <c:if test="${empty cps}"> --%>
-<%--         	${cpsCount}张可使用优惠券 --%>
-<%--         </c:if> --%>
-         
-<!--          <span> ></span></a> -->
-<!--         <div style="clear:both;"></div> -->
-<!--     </div> -->
-<%--     </c:if> --%>
-   <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
-  	  配送方式
-    </div>
-    <div class="drdd-info4">
-    	<p>配送方式</p>
-    	<a href="#">
-    	<select id="fgt_price" onchange="fgt()" style="border: 0">
-    	<option value="-2">请选择</option>
-    	<option value="-1">快递：
-    	<c:if test="${fgt_price==0}">免运费</c:if>
-    	<c:if test="${fgt_price!=0}">${fgt_price}元</c:if>
-    	 </option>
-    	<option value="${fgt_price}" style="">免费自提点<%-- ：<c:forEach items="${userList}" var="userList">${userList.area_name}
-    	<input type="hidden" value="${userList.area_name}" id="area_name">
-    	</c:forEach> --%>
-    	</option>
-    	</select>
-        <span>></span></a>
-        <div style="clear:both;"></div>
-    </div>
     
     <div style="font-size:12px;padding-left:5px; margin-top:13px;color: #A09E9E;display:none;" id="zitidian-str">
   	  选择自提点
@@ -159,10 +115,10 @@ $(function(){
         <br>
        
         <p class="p1 f-l">物流费用</p>
-    	<p class="p2 f-r"><span id="wuliu">￥${fgt_price}</span></p>
+    	<p class="p2 f-r"><span id="wuliu">￥8</span></p>
         <br>
         
-        <p class="p1 f-l">共<span id="tnumStr">${goods_num }</span>件商品</p>
+        <p class="p1 f-l">共<span id="tnumStr">${tnum }</span>件商品</p>
     	<p class="p2 f-r">总计：<span id="tpriceStr" style="color: #f60">￥${tprice}</span></p>
         <div style="clear:both;"></div>
     </div>

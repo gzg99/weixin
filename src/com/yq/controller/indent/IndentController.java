@@ -46,7 +46,7 @@ import net.sf.json.JSONArray;
  *
  */
 @Controller
-@RequestMapping(value = "main/indent")
+@RequestMapping
 public class IndentController extends StringUtil{
 
 	@Autowired
@@ -72,7 +72,7 @@ public class IndentController extends StringUtil{
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/indentList.html")
+	@RequestMapping(value = "main/indent/indentList.html")
 	public ModelAndView indentList(HttpServletRequest request, JdbIndent jdbIndent) {
 
 		Map<String,Object> idMap = this.getSeeion(request);
@@ -93,7 +93,7 @@ public class IndentController extends StringUtil{
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/selJdbIndent.html")
+	@RequestMapping(value = "main/indent/selJdbIndent.html")
 	@ResponseBody
 	public String selJdbIndent(String id) {
 		JdbIndent jdbIndent = indentService.selectByPrimaryKey(id);
@@ -107,7 +107,7 @@ public class IndentController extends StringUtil{
 	 * @param jdbIndent
 	 * @return
 	 */
-	@RequestMapping(value = "/deliverGood.html")
+	@RequestMapping(value = "main/indent/deliverGood.html")
 	@ResponseBody
 	public String deliverGood(JdbIndent jdbIndent) {
 		String sess = "0";
@@ -123,7 +123,7 @@ public class IndentController extends StringUtil{
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/general.html")
+	@RequestMapping(value = "main/indent/general.html")
 	public ModelAndView general() {
 		ModelAndView view = new ModelAndView("main/indent/general");
 		Map<String, Object> generalSituation = indentService.generalSituation();
@@ -135,7 +135,7 @@ public class IndentController extends StringUtil{
      * 导出报表
      * @return
      */
-	@RequestMapping(value = "/export.html")
+	@RequestMapping(value = "main/indent/export.html")
 	//@ResponseBody
 	public void export(HttpServletRequest request, HttpServletResponse response, JdbIndent jdbIndent) throws Exception {
 		// 获取数据
@@ -211,15 +211,13 @@ public class IndentController extends StringUtil{
 			String cps_name, @RequestParam(defaultValue = "0") Float cps_price, String oppen_id, HttpSession session) {
 		ModelAndView ml = new ModelAndView();
 		CartBuild cart = new CartBuild();
-		GoodsBuild goods = new GoodsBuild();
 		oppen_id = getOppen_id(session);
 		cart.setOppen_id(oppen_id);
 		GoodsBuild goodsBuild = goodsBuildService.getGoodsBuildById(goods_id); // 获取订单信息
 		long userId = goodsBuild.getSellerId();
 		Float goods_total = goods_num * goodsBuild.getGoodsPrice();// 总价
-		Float tprice = goods_num * goodsBuild.getGoodsPrice();// 总价
-		ml.addObject("price", tprice); //
-		int tnum = cartBuildService.goodstotalnum(cart);// 总数量
+		Float tprice = goods_num * goodsBuild.getGoodsPrice() + 8;// 总价
+		ml.addObject("price", tprice);
 
 		Address address = new Address();
 		List<Address> addr = new ArrayList<Address>();
@@ -230,14 +228,6 @@ public class IndentController extends StringUtil{
 			address.setAddr_id(addr_id);
 			addr = addressService.listById(address);
 		}
-//		if (fgt.size() > 0) {
-//			if (tprice < fgt.get(0).getFree_price()) {
-//				tprice = tprice + fgt.get(0).getFgt_price(); // 如果总价小于免邮价，则加上运费
-//				ml.addObject("fgt_price", fgt.get(0).getFgt_price());
-//			} else {
-//				ml.addObject("fgt_price", 0);// 免运费
-//			}
-//		}
 		User user = new User();
 		user.setOppen_id(oppen_id);
 		List<User> userList = userService.listById(user);
@@ -245,7 +235,7 @@ public class IndentController extends StringUtil{
 		area.setStatus(1);
 		area.setLevel(0);
 		List<Area> areaList = areaService.list(area);
-		ml.addObject("goods", goods);
+		ml.addObject("goods", goodsBuild);
 		ml.addObject("tprice", tprice);
 		ml.addObject("addr", addr);
 		ml.addObject("tnum", goods_num);
@@ -253,11 +243,9 @@ public class IndentController extends StringUtil{
 		ml.addObject("addr_id", addr_id);
 		ml.addObject("userList", userList);
 		ml.addObject("goods_id", goods_id);
-		ml.addObject("goods_num", goods_num);
 		ml.addObject("goods_total", goods_total);
 		ml.addObject("userId", userId);
 
-		ml.addObject("tnum", tnum);
 		ml.addObject("areaList", areaList);
 		ml.setViewName("page/goods-build-order-sure");
 		return ml;
@@ -267,7 +255,7 @@ public class IndentController extends StringUtil{
 	 * 插入订单信息
 	 * */
 	@ResponseBody
-	@RequestMapping(value = "/page/indentInsert.html")
+	@RequestMapping(value = "main/indent/page/indentInsert.html")
 	public String insert(String goods_id, String goods_name, String goods_img, String goods_spe, String goods_price,
 			String goods_num, String goods_total, String goods_total_num, String cps_id, String cps_name,
 			@RequestParam(defaultValue = "0") String cps_price, String addr_name, String oppen_id,

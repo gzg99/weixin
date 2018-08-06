@@ -12,20 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
-import com.google.gson.JsonObject;
 import com.yq.entity.CategoryEnter;
-import com.yq.entity.Goods;
 import com.yq.entity.GoodsBuild;
 import com.yq.entity.GoodsBuildSearchVo;
-import com.yq.entity.OrderEval;
-import com.yq.entity.evaluate.JdbEvaluate;
 import com.yq.service.CategoryEnterService;
 import com.yq.service.GoodsBuildService;
 import com.yq.service.evaluate.EvaluateService;
@@ -49,9 +43,9 @@ public class GoodsBuildCtrl {
 	EvaluateService evaluateService;
 	
 	@RequestMapping(value = "/main/goodsBuildAddjsp.html")
-	public ModelAndView goodsBuildAddjsp(Long sellerId) {
+	public ModelAndView goodsBuildAddjsp(HttpSession session) {
 		ModelAndView ml = new ModelAndView();
-		List<CategoryEnter> list = categoryEnterService.selectFirstBySellerId(1l);
+		List<CategoryEnter> list = categoryEnterService.selectFirstBySellerId((Long)session.getAttribute("id"));
 		ml.addObject("category", list);
 		ml.setViewName("main/goodsBuild/add");
 		return ml;
@@ -200,7 +194,6 @@ public class GoodsBuildCtrl {
 	@RequestMapping("page/getGoodsBuildListBySellerId.html")
 	@ResponseBody
 	public ModelAndView getGoodsBuildListBySellerId(Long sellerId) {
-		sellerId = 1L;
 		ModelAndView mv = new ModelAndView();
 		List<CategoryEnter> list =  categoryEnterService.selectFirstBySellerId(sellerId);
 		Map<String, List<String>> map = new HashMap<>();
@@ -221,6 +214,35 @@ public class GoodsBuildCtrl {
 		List<GoodsBuild> goodsList = goodsBuildService.getGoodsBuildListBySellerId(sellerId, firstCategory, secondCategory);
 		mv.addObject("list", goodsList);
 		mv.addObject("secondCategory", secondCategory);
+		mv.addObject("sellerId", sellerId);
+		mv.setViewName("page/dpsy");
+		return mv;
+	}
+	
+	/**
+	 * 根据商家id，一级目录及二级目录查询
+	 * */
+	@RequestMapping("page/getGoodsBuildListByCon.html")
+	@ResponseBody
+	public ModelAndView getGoodsBuildListByCon(Long sellerId, String firstCategory, String secondCategory) {
+		ModelAndView mv = new ModelAndView();
+		List<CategoryEnter> list =  categoryEnterService.selectFirstBySellerId(sellerId);
+		Map<String, List<String>> map = new HashMap<>();
+		//组装成需要的格式
+		for(CategoryEnter category: list) {
+			if(map.containsKey(category.getFirstCategory())) {
+				map.get(category.getFirstCategory()).add(category.getSecondCategory());
+			} else {
+				List<String> listChild = new ArrayList<>();
+				listChild.add(category.getSecondCategory());
+				map.put(category.getFirstCategory(), listChild);
+			}
+		}
+		mv.addObject("map", map);
+		List<GoodsBuild> goodsList = goodsBuildService.getGoodsBuildListBySellerId(sellerId, firstCategory, secondCategory);
+		mv.addObject("list", goodsList);
+		mv.addObject("secondCategory", secondCategory);
+		mv.addObject("sellerId", sellerId);
 		mv.setViewName("page/dpsy");
 		return mv;
 	}
@@ -236,7 +258,7 @@ public class GoodsBuildCtrl {
 		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
 		ModelAndView ml = new ModelAndView();
 		ml.addObject("goods", goods);
-		ml.addObject("goods_id", id);
+		ml.addObject("id", id);
 		Map<String,Object> evalList = evaluateService.showEvaluate(id+"");
 		ml.addObject("eval", evalList);
 		//全部评价
@@ -244,5 +266,7 @@ public class GoodsBuildCtrl {
 		ml.setViewName("page/goodsBuild-info");
 		return ml;
 	}
+	
+	
 	
 }
