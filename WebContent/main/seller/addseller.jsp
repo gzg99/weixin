@@ -89,7 +89,8 @@
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">所属商圈：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<select id="sellerAreaId" class="input-text" style="width: 80%"></select>
+					<input type="hidden" id="sellerAreaId" name="sellerAreaId">
+					<select id="sellerAreaId1" class="input-text" style="width: 80%" onchange="getSellerArea()"></select>
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">商家图片：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
@@ -122,12 +123,19 @@
 				success:function(result){
 					var str = "";
 					for(var i = 0;i<result.length;i++){
+						if(i == 0){
+							$("#sellerAreaId").val(result[i].id);
+						}
 						str += "<option value='"+result[i].id+"'>"+result[i].sellerArea+"</option>";
 					}
-					$("#sellerAreaId").html(str);
+					$("#sellerAreaId1").html(str);
 				}
 			});
 		});
+		
+		function getSellerArea(){
+			$("#sellerAreaId").val($("#sellerAreaId1").val());
+		}
 		
 		function add() {
 			var formData = new FormData($("#addseller")[0]);
