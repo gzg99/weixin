@@ -100,7 +100,7 @@ public class EvaluateController extends StringUtil{
 				}
 				// 转存文件
 				file.transferTo(saveDir);
-				return filePath;
+				return filePath+jpg;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
