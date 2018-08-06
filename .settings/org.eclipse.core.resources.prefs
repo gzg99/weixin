@@ -2,4 +2,5 @@ eclipse.preferences.version=1
 encoding//WebContent/page/ajk_index.jsp=UTF-8
 encoding//src/com/weixin/controller/ReplyController.java=UTF-8
 encoding//src/com/weixin/util/MenuManager.java=UTF-8
+encoding//src/com/yq/entity/Seller.java=UTF-8
 encoding/<project>=UTF-8

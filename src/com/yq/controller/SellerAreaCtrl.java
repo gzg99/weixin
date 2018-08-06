@@ -3,7 +3,6 @@ package com.yq.controller;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -99,9 +98,12 @@ public class SellerAreaCtrl extends StringUtil {
 		//默认出事密码为123456
 		seller.setPassword(MD5Util.MD5Encode("123456",""));
 		try {
-			seller.setAddress(URLDecoder.decode(seller.getAddress(), "utf-8"));
-			seller.setSellerName(URLDecoder.decode(seller.getSellerName(), "utf-8"));
-			seller.setSellerDetail(URLDecoder.decode(seller.getSellerDetail(), "utf-8"));
+			//seller.setAddress(URLDecoder.decode(seller.getAddress(), "utf-8"));
+			seller.setAddress(new String (seller.getAddress().getBytes("iso8859-1"),"UTF-8"));
+			seller.setSellerName(new String (seller.getSellerName().getBytes("iso8859-1"),"UTF-8"));
+			seller.setSellerDetail(new String (seller.getSellerDetail().getBytes("iso8859-1"),"UTF-8"));
+			seller.setUserName(new String (seller.getUserName().getBytes("iso8859-1"),"UTF-8"));
+			
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -36,7 +36,7 @@
 		insert into jdb_seller
 		    (seller_area_id,address,user_name,password,seller_name,seller_img,seller_detail,add_time)
 		values 
-		    (#{sellerAreaId}, #{address},#{userName}, #{password},#{sellerName} ,#{sellerImg},#{sellerDetail},#{addTime})
+		    (#{sellerAreaId}, #{address},#{userName}, #{password},#{sellerName} ,#{sellerImg},#{sellerDetail},now())
 	</insert>
 	
 </mapper>
