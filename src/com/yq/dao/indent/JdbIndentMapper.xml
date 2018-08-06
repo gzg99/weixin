@@ -25,6 +25,7 @@
 		<result column="indent_commodity" property="indentCommodity" jdbcType="VARCHAR" />
 		<result column="lately" property="lately" jdbcType="VARCHAR" />
 		<result column="image" property="image" jdbcType="VARCHAR" />
+		<result column="open_id" property="openId" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -32,7 +33,7 @@
 		indent_nickname, indent_state,
 		indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
 		indent_logistics_number, indent_fee,
-		user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date
+		user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date,open_id
 	</sql>
 
 	<sql id="where_list">

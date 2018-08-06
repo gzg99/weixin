@@ -215,6 +215,7 @@ public class IndentController extends StringUtil{
 		oppen_id = getOppen_id(session);
 		cart.setOppen_id(oppen_id);
 		GoodsBuild goodsBuild = goodsBuildService.getGoodsBuildById(goods_id); // 获取订单信息
+		long userId = goodsBuild.getSellerId();
 		Float goods_total = goods_num * goodsBuild.getGoodsPrice();// 总价
 		Float tprice = goods_num * goodsBuild.getGoodsPrice();// 总价
 		ml.addObject("price", tprice); //
@@ -254,6 +255,7 @@ public class IndentController extends StringUtil{
 		ml.addObject("goods_id", goods_id);
 		ml.addObject("goods_num", goods_num);
 		ml.addObject("goods_total", goods_total);
+		ml.addObject("userId", userId);
 
 		ml.addObject("tnum", tnum);
 		ml.addObject("areaList", areaList);
@@ -269,12 +271,12 @@ public class IndentController extends StringUtil{
 	public String insert(String goods_id, String goods_name, String goods_img, String goods_spe, String goods_price,
 			String goods_num, String goods_total, String goods_total_num, String cps_id, String cps_name,
 			@RequestParam(defaultValue = "0") String cps_price, String addr_name, String oppen_id,
-			String status, HttpSession session) {
+			String status,String userId, HttpSession session) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String add_time = sdf.format(new Date());
 			oppen_id = getOppen_id(session);
-			JdbIndent order = new JdbIndent();
+			JdbIndent order = new JdbIndent();	
 			order.setIndentCommodity(goods_id);
 			order.setCommodityName(goods_name);
 			//order.setGoods_img(goods_img);
@@ -283,7 +285,8 @@ public class IndentController extends StringUtil{
 			order.setIndentMoney(goods_total);
 			order.setIndentCommodityNum(Integer.parseInt(goods_total_num));
 			order.setIndentAddress(addr_name);
-			order.setUserId(oppen_id);
+			order.setUserId(userId);
+			order.setOpenId(oppen_id);
 			order.setIndentTime(add_time);
 			order.setIndentState("1");
 			Map<String, Object> map = new HashMap<>();

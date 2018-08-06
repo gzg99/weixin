@@ -50,6 +50,8 @@ public class JdbIndent extends Page {
 	
 	private String lately;
 	
+	private String openId;
+	
 	private String image;//商品图片
 
 	public String getId() {
@@ -235,6 +237,14 @@ public class JdbIndent extends Page {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getOpenId() {
+		return openId;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 	
 	

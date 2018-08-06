@@ -80,6 +80,7 @@ $(function(){
 <%-- 	     <input type="hidden" value="${list.goods_img}" name='goods_img'> --%>
 	     <input type="hidden" value="${list.goods_num}" name='goods_num'>
 	     <input type="hidden" value="${list.goods_price}" name='goods_price'>
+	     <input type="hidden" value="${list.userId}" name='userId'>
     
 	     <div class="drdd-info3">
 <!-- 	    	<div class="drdd-if3tu f-l"> -->
