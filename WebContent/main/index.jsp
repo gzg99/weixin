@@ -243,8 +243,7 @@
 <script type="text/javascript">
 	var username ='${username}';
 	$(function() {
-		var name = $("#userName").val();
-		if(name=="admin") {
+		if(username=="admin") {
 			$("#menu1").show();
 			$("#menu2").hide();
 		}else{
