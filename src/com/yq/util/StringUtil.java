@@ -1,8 +1,10 @@
 package com.yq.util;
 
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
-import com.yq.entity.Admin;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class StringUtil
 {
@@ -22,5 +24,12 @@ public class StringUtil
 
   public void setPagesize_1(Integer pagesize_1) {
     this.pagesize_1 = pagesize_1;
+  }
+  
+  public Map<String,Object> getSeeion (HttpServletRequest request) {
+	  HttpSession session = request.getSession(true);
+	  Map<String,Object> mapSession = new HashMap<String,Object>();
+	  mapSession.put("id", session.getAttribute("id"));
+	  return mapSession;
   }
 }

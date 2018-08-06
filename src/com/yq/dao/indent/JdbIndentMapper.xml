@@ -24,6 +24,7 @@
 		<result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
 		<result column="indent_commodity" property="indentCommodity" jdbcType="VARCHAR" />
 		<result column="lately" property="lately" jdbcType="VARCHAR" />
+		<result column="image" property="image" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -37,54 +38,34 @@
 	<sql id="where_list">
 		<where>
 			<if test="indentState != null and indentState != ''">
-				and indent_state = #{indentState}
+				and i.indent_state = #{indentState}
 			</if>
 			<if test="indentNum != null and indentNum != ''">
-				and indent_num = #{indentNum}
+				and i.indent_num = #{indentNum}
 			</if>
 			<if test="indentNickname != null and indentNickname != ''">
-				and indent_nickname = #{indentNickname}
+				and i.indent_nickname = #{indentNickname}
 			</if>
 			<if test="startTime != null and startTime != ''">
-				and indent_time &gt;= #{startTime}
+				and i.indent_time &gt;= #{startTime}
 			</if>
 			<if test="endTime != null and endTime != ''">
-				and indent_time &lt;= #{endTime}
+				and i.indent_time &lt;= #{endTime}
 			</if>
 			<if test="userId != null and userId != ''">
-				and user_id = #{userId}
+				and i.user_id = #{userId}
 			</if>
 			<if test="commodityName != null and commodityName != ''">
-				and commodity_name = #{commodityName}
+				and i.commodity_name = #{commodityName}
 			</if>
 			<if test="lately != null and lately != ''">
-				and date_sub(curdate(), interval #{lately} day) &lt;= date(indent_time)
+				and date_sub(curdate(), interval #{lately} day) &lt;= date(i.indent_time)
 			</if>
 		</where>
 	</sql>
 
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.String">
-		select
-		id, indent_num, indent_price, indent_quantity, indent_money,
-			indent_nickname, 
-			
-			case  indent_state
-				when '1' then '待发货'
-				when '2' then '已发货'
-				when '3' then '维权中'
-				when '4' then '维权完成'
-				when '5' then '交易完成'
-			end as indent_state ,
-			date_format(indent_time,'%Y-%m-%d %H:%m:%s') as indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
-			indent_logistics_number, indent_fee,
-			user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date
-		from jdb_indent
-		where id = #{id,jdbcType=VARCHAR}
-	</select>
-
-	<select id="selectIndentByList" resultMap="BaseResultMap"
-		parameterType="com.yq.entity.indent.JdbIndent">
 		select
 			id, indent_num, indent_price, indent_quantity, indent_money,
 			indent_nickname, 
@@ -95,11 +76,31 @@
 				when '4' then '维权完成'
 				when '5' then '交易完成'
 			end as indent_state ,
-			indent_time, indent_address, indent_phone, indent_logistics, indent_is_logistics,
-			indent_logistics_number, indent_fee,
-			user_id,indent_commodity_num,commodity_name,indent_commodity,indent_date
+				
+			date_format(indent_time,'%Y-%m-%d %H:%m:%s') as indent_time, 
+			indent_address, indent_phone, indent_logistics, indent_is_logistics, indent_logistics_number, 
+			indent_fee, user_id,indent_commodity_num,commodity_name,indent_commodity,
+			indent_date
+		from jdb_indent
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectIndentByList" resultMap="BaseResultMap"
+		parameterType="com.yq.entity.indent.JdbIndent">
+		select
+			i.id, i.indent_num, i.indent_price, i.indent_quantity, i.indent_money,
+			case  i.indent_state
+				when '1' then '待发货'
+				when '2' then '已发货'
+				when '3' then '维权中'
+				when '4' then '维权完成'
+				when '5' then '交易完成'
+			end as indent_state ,
+			i.indent_time, i.indent_address, i.indent_phone, i.indent_logistics, i.indent_is_logistics,
+			i.indent_logistics_number, i.indent_fee, i.user_id,indent_commodity_num,i.commodity_name,
+			i.indent_nickname, i.indent_commodity,i.indent_date ,b.goods_img as image
 		from 
-		    jdb_indent
+		    jdb_indent i left join jdb_goods_build b on i.indent_commodity = b.id
 
 		<include refid="where_list" />
 		limit #{currentNum}, #{pageSize}
@@ -132,7 +133,7 @@
 	<select id="total" resultType="Integer" parameterType="com.yq.entity.indent.JdbIndent">
 		select
 		count(1)
-		from jdb_indent
+		from jdb_indent i
 		<include refid="where_list" />
 	</select>
 

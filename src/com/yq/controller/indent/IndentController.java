@@ -75,6 +75,8 @@ public class IndentController extends StringUtil{
 	@RequestMapping(value = "/indentList.html")
 	public ModelAndView indentList(HttpServletRequest request, JdbIndent jdbIndent) {
 
+		Map<String,Object> idMap = this.getSeeion(request);
+		jdbIndent.setUserId(idMap.get("id").toString());
 		Map<String, Object> indentList = indentService.selectIndentByList(jdbIndent);
 		PageUtil.pager(jdbIndent.getCurrentPage(), 10, Integer.parseInt(indentList.get("total").toString()), request);
 		ModelAndView view = new ModelAndView("main/indent/indentList");

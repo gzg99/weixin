@@ -49,6 +49,8 @@ public class JdbIndent extends Page {
 	private Date indentDate;
 	
 	private String lately;
+	
+	private String image;//商品图片
 
 	public String getId() {
 		return id;
@@ -225,6 +227,14 @@ public class JdbIndent extends Page {
 
 	public void setLately(String lately) {
 		this.lately = lately;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	

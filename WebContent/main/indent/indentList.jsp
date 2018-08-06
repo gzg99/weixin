@@ -253,7 +253,7 @@
 									</div>
 									<div class="sj w100">${indent.indentTime}</div>
 									<div class="sp w100">
-										<img src="images/u148.png" />
+										<img src="${indent.image}" />
 										<p>${indent.commodityName }</p>
 									</div>
 								</td>
