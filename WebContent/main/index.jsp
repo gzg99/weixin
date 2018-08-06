@@ -162,6 +162,16 @@
 		</dl>
 		
 		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i> 商户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="sellerAreaList.html?currentPage=1" href="javascript:;">商圈管理</a></li>
+					<li><a _href="" href="javascript:void(0)">商家管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		
+		<dl id="menu-comments">
 			<dt><i class="Hui-iconfont">&#xe622;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
