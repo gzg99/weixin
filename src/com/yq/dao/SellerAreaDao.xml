@@ -9,8 +9,73 @@
 			second_link as secondLink,
 			seller_img as sellerImg, 
 			seller_detail as sellerDetail, 
-			add_time as addTime 
-		from jdb_seller_area;
+			add_time as addTime  
+		from jdb_seller_area
 	</select>
 	
+	<select id="getSellerAreaById" resultType="com.yq.entity.SellerArea">
+		select 
+			id as id, 
+			seller_area as sellerArea, 
+			first_link as firstLink, 
+			second_link as secondLink,
+			seller_img as sellerImg, 
+			seller_detail as sellerDetail, 
+			add_time as addTime  
+		from jdb_seller_area 
+		where 
+		id=#{id}
+	</select>
+	
+	<insert id="insert" parameterType="java.util.HashMap">
+		insert jdb_seller_area(
+			seller_area,
+			first_link,
+			second_link,
+			seller_img,
+			seller_detail,
+			add_time
+		)values(
+			#{sellerArea},
+			#{firstLink},
+			#{secondLink},
+			#{sellerImg},
+			#{sellerDetail},
+			#{addTime}
+		)
+	</insert>
+	
+	<update id="update" parameterType="java.util.Map">
+    	update 
+    		jdb_seller_area 
+    	set 
+    		seller_area=#{sellerArea},
+    		first_link=#{firstLink},
+    		second_links_spe=#{secondLink},
+    		seller_img=#{sellerImg},
+    		seller_detail=#{sellerDetail},
+    		add_time=#{addTime} 
+     	where 
+     		id=#{id}
+    </update>
+    
+    <select id="count" resultType="int">
+	    select count(1) from jdb_seller_area where 1=1
+   </select>
+	
+    <select id="list" resultType="com.yq.entity.SellerArea">
+	   	select 
+			id as id, 
+			seller_area as sellerArea, 
+			first_link as firstLink, 
+			second_link as secondLink,
+			seller_img as sellerImg, 
+			seller_detail as sellerDetail, 
+			add_time as addTime  
+		 from jdb_seller_area
+	   	order by add_time desc 
+	   	<if test="pageSize!=null and pageSize!=0">
+	    	limit #{currentNum},#{pageSize}
+	   	</if>
+   </select>
 </mapper>

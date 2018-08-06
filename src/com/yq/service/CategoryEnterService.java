@@ -37,4 +37,16 @@ public class CategoryEnterService {
 	public int updateCategoryEnterById(CategoryEnter record) {
 		return categoryEnterDao.updateByPrimaryKey(record);
 	}
+	
+	public List<String> getSecondCategoryByFirst(String firstCategory) {
+		return categoryEnterDao.getSecondCategoryByFirst(firstCategory);
+	}
+	
+	public List<CategoryEnter> categoryEnterList(Long sellerId) {
+		return categoryEnterDao.categoryFirstBySellerId(sellerId);
+	}
+	
+	public List<CategoryEnter> getCategoryByRecord(CategoryEnter record) {
+		return categoryEnterDao.getCategoryByRecord(record);
+	}
 }

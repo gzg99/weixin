@@ -268,7 +268,7 @@
 	    	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodDetail 
 	  	from 
 	  		jdb_goods_build 
-	  	where 1=1 
+	  	where type = 1 
 	  	<if test="sellerId != null and sellerId!=0" >
 	        and seller_id = #{sellerId,jdbcType=BIGINT} 
 		</if>
@@ -303,7 +303,7 @@
 	    	count(*) 
 	  	from 
 	  		jdb_goods_build
-	  	where 1=1 
+	  	where type=1 
 	  	<if test="sellerId != null and sellerId!=0" >
 	        and seller_id = #{sellerId,jdbcType=BIGINT} 
 		</if>

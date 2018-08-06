@@ -34,22 +34,22 @@
 <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
 <script>
-			var editor;
-			KindEditor.ready(function(K) {
-				editor = K.create('textarea[name="content"]', {
-					resizeType : 1,
-					allowPreviewEmoticons : false,
-					allowImageUpload : true,
-					afterBlur : function() {
-						this.sync();
-					},
-					items : [
-						'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-						'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link','fullscreen']
-				});
-			});
-		</script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			afterBlur : function() {
+				this.sync();
+			},
+			items : [
+				'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link','fullscreen']
+		});
+	});
+</script>
 <title>基本设置</title>
 
 </head>
@@ -64,31 +64,15 @@
 	</nav>
 	<br><br>
 	<div class="pd-20" style="width: 80%">
-			<div class="row cl">
+			<div class="row cl">			
 				<label class="form-label col-2">名称：</label>
 				<div class="formControls col-10">
-					<input type="text" id="goodsName"
+					<input type="text" id="sellerArea"
 						placeholder="请填写名称" value="" class="input-text" style="width: 80%">
 				</div>
 			</div><br>
 			<div class="row cl">
-				<label class="form-label col-2">一级分类：</label>
-				<div class="formControls col-10">
-				<select id="firstCategory" class="input-text" style="width: 80%" onchange="secondCategorySel()">
-					<c:forEach items="${category}" var="ctg">
-						<option value="${ctg.firstCategory}">${ctg.firstCategory }</option>
-					</c:forEach>
-				</select>
-				</div>
-			</div><br>
-			<div class="row cl">
-				<label class="form-label col-2">二级分类：</label>
-				<div class="formControls col-10">
-				<select id="secondCategory" class="input-text" style="width: 80%"></select>
-				</div>
-			</div><br>
-			<div class="row cl">
-				<label class="form-label col-2">图片：</label>
+				<label class="form-label col-2">一层平面图：</label>
 				<div class="formControls col-10">
 					<input type="file" id="file" name="file" value="" class="input-text" style="width: 80%" onchange="upload()">
 				</div>
@@ -99,90 +83,56 @@
 				<div class="formControls col-10" id="img"></div>
 			</div><br>
 			<div class="row cl">
-				<label class="form-label col-2">规格：</label>
+				<label class="form-label col-2">二层平面图：</label>
 				<div class="formControls col-10">
-					<input type="text" id="goodsSpe"
-						placeholder="请填写规格" value="" class="input-text" style="width: 80%">
+					<input type="file" id="file1" name="file1" value="" class="input-text" style="width: 80%" onchange="upload1()">
 				</div>
 			</div><br>
-					
 			<div class="row cl">
-				<label class="form-label col-2">材质：</label>
+				<label class="form-label col-2"> </label>
+				<input id="filepath1" type="hidden">
+				<div class="formControls col-10" id="img1"></div>
+			</div><br>
+			<div class="row cl">
+				<label class="form-label col-2">商圈图片：</label>
 				<div class="formControls col-10">
-					<input type="text" id="goodsMaterial"
-						placeholder="请填写材质" value="" class="input-text" style="width: 80%">
+					<input type="file" id="file2" name="file2" value="" class="input-text" style="width: 80%" onchange="upload2()">
 				</div>
 			</div><br>
-			
 			<div class="row cl">
-				<label class="form-label col-2">品牌：</label>
-				<div class="formControls col-10">
-					<input type="text" id="goodsBrand"
-						placeholder="请填写品牌" value="" class="input-text" style="width: 80%">
-				</div>
-			</div><br>
-			
-			<div class="row cl">
-				<label class="form-label col-2">颜色：</label>
-				<div class="formControls col-10">
-					<input type="text" id="goodsColor"
-						placeholder="请填写颜色" value="" class="input-text" style="width: 80%">
-				</div>
-			</div><br>
-			
-			<div class="row cl">
-				<label class="form-label col-2">库存：</label>
-				<div class="formControls col-10">
-					<input type="text" id="goodsNum"
-						placeholder="请填写库存" value="" class="input-text" style="width: 80%">
-				</div>
-			</div><br>
-			
-			<div class="row cl">
-				<label class="form-label col-2">价格：</label>
-				<div class="formControls col-10">
-					<input type="text" id="goodsPrice"
-						placeholder="请填写价格" value="" class="input-text" style="width: 80%">
-				</div>
+				<label class="form-label col-2"> </label>
+				<input id="filepath2" type="hidden">
+				<div class="formControls col-10" id="img2"></div>
 			</div><br>
 			<div class="row cl">
 				<label class="form-label col-2">详情：</label>
 				<div class="formControls col-10">
-					<textarea name="content" id="goodsDetail" style="width: 80%;height: 260px;"></textarea>
+					<textarea name="content" id="sellerDetail" style="width: 80%;height: 260px;"></textarea>
 				</div>
 			</div><br>	
 			<br>
 			<div class="col-10 col-offset-2">
-				<button onClick="add()" id="butt" class="btn btn-primary radius" type="button">
+				<button onClick="add()" id="butt"
+					class="btn btn-primary radius" type="button">
 					<i class="Hui-iconfont">&#xe632;</i> 提交
 				</button>
-				<button onClick="history.go(-1);" class="btn btn-default radius" type="button">
-					&nbsp;&nbsp;返回&nbsp;&nbsp;
-				</button>
-			</div>
+				<button onClick="history.go(-1);" class="btn btn-default radius"
+					type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;</button>
+				</div>
 			</div><br><br>
-			<input type="hidden" id="sellerId">
 	<script type="text/javascript">
 	function add(){
-		var goods = {};
-		goods.goodsName = $('#goodsName').val();
-		goods.sellerId = $('#sellerId').val();
-		goods.goodsSpe = $('#goodsSpe').val();
-		goods.goodsImg = $('#filepath').val();
-		goods.goodsPrice = $('#goodsPrice').val();
-		goods.goodsDetail = $('#goodsDetail').val();
-		goods.firstCategory = $('#firstCategory').val();
-		goods.secondCategory = $('#secondCategory').val();
-		goods.goodsNum = $('#goodsNum').val();
-		goods.goodsBrand = $('#goodsBrand').val();
-		goods.goodsMaterial = $('#goodsMaterial').val();
-		goods.goodsColor = $('#goodsColor').val();
+		var sellerArea = $('#sellerArea').val();
+		var firstLink = $('#filepath').val();
+		var secondLink = $('#filepath1').val();
+		var sellerImg = $('#filepath2').val();
+		var sellerDetail = $('#sellerDetail').val();
 		
 		$.ajax({
-			url:'goodsBuildAdd.html',
+			url:'sellerAreaInsert.html',
 			type:'post',
-			data:goods,
-			dataType:'json',
+			data:'sellerArea='+sellerArea+'&firstLink='+firstLink+'&secondLink='+secondLink
+			+'&sellerImg='+sellerImg+'&sellerDetail='+sellerDetail,
 			success:function(rs){
 				if(rs==1){
 					alert("添加成功！");
@@ -237,22 +187,92 @@
 		});
 	}
 	
-	function secondCategorySel() {
-		var firstCategory = $("#firstCategory").val();
-		$.ajax({
-			url:"getSecondCategoryByFirst.html",
-			type:"POST",
-			data:{"firstCategory":firstCategory},
-			dataType:'json',
-			success:function(result){
-				var str = "";
-				for(var i = 0;i<result.length;i++){
-					str += "<option value='"+result[i]+"'>"+result[i]+"</option>";
+	function upload1() {
+		var fp = document.getElementById("file1").value;
+		//为了避免转义反斜杠出问题，这里将对其进行转换
+		var re = /(\\+)/g;
+		var fn = fp.replace(re, "#");
+		//对路径字符串进行剪切截取
+		var one = fn.split("#");
+		//获取数组中最后一个，即文件名
+		var two = one[one.length - 1];
+		//再对文件名进行截取，以取得后缀名
+		var three = two.split(".");
+		//获取截取的最后一个字符串，即为后缀名
+		var last = three[three.length - 1];
+		last = last.toLowerCase();
+
+		if (last != 'png' && last != 'jpg' && last != 'gif'
+				&& last != 'PNG' && last != 'JPG' && last != 'GIF') {
+			alert("请上传png、jpg或者gif文件！");
+			return;
+		}
+		$.ajaxFileUpload({
+			url : 'upload.html', //需要链接到服务器地址  
+			secureuri : false,
+			fileElementId : "file1", //文件选择框的id属性  
+			dataType : 'text', //服务器返回的格式，可以是json  
+			success : function(rs) //相当于java中try语句块的用法  
+			{	
+				if (rs != "") {
+					$('#img1').html("");
+					$('#img1').append("<img src='"+rs+"' width='100' height='100'>");
+					$('#filepath1').val(rs);
+				} else {
+					alert('失败');
+					//document.getElementById("msg"+m[1]).value="失败"; 
 				}
-				$("#secondCategory").html(str);
+			},
+			error : function(data, status, e) //相当于java中catch语句块的用法  
+			{alert('失败');
+				
 			}
 		});
 	}
+	
+	function upload2() {
+		var fp = document.getElementById("file2").value;
+		//为了避免转义反斜杠出问题，这里将对其进行转换
+		var re = /(\\+)/g;
+		var fn = fp.replace(re, "#");
+		//对路径字符串进行剪切截取
+		var one = fn.split("#");
+		//获取数组中最后一个，即文件名
+		var two = one[one.length - 1];
+		//再对文件名进行截取，以取得后缀名
+		var three = two.split(".");
+		//获取截取的最后一个字符串，即为后缀名
+		var last = three[three.length - 1];
+		last = last.toLowerCase();
+
+		if (last != 'png' && last != 'jpg' && last != 'gif'
+				&& last != 'PNG' && last != 'JPG' && last != 'GIF') {
+			alert("请上传png、jpg或者gif文件！");
+			return;
+		}
+		$.ajaxFileUpload({
+			url : 'upload.html', //需要链接到服务器地址  
+			secureuri : false,
+			fileElementId : "file2", //文件选择框的id属性  
+			dataType : 'text', //服务器返回的格式，可以是json  
+			success : function(rs) //相当于java中try语句块的用法  
+			{	
+				if (rs != "") {
+					$('#img2').html("");
+					$('#img2').append("<img src='"+rs+"' width='100' height='100'>");
+					$('#filepath2').val(rs);
+				} else {
+					alert('失败');
+					//document.getElementById("msg"+m[1]).value="失败"; 
+				}
+			},
+			error : function(data, status, e) //相当于java中catch语句块的用法  
+			{alert('失败');
+				
+			}
+		});
+	}
+
 	</script>	
 	
 </body>

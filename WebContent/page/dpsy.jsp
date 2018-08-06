@@ -32,7 +32,7 @@
 				    </c:forEach>
 			    </table>
 			</c:forEach>
-	    </div>	
+	    </div>
 	</div>
 	<ul class="sq_list sm_list">
 		<c:forEach items="${list}" var="goods">
@@ -49,7 +49,6 @@
 			 	</a>
 			</li>
 		</c:forEach>
-	 	
 	</ul>
 
 <div class="clear"></div>
@@ -57,7 +56,7 @@
 
 <script>
 	$(function(){
-		var shop_menu_nr=$(".shop_menu_nr")
+		var shop_menu_nr=$(".shop_menu_nr");
 		var left_val=shop_menu_nr.css("left");
 		$(".shop_menu_btn").click(function(){
 			var new_val=shop_menu_nr.css("left");

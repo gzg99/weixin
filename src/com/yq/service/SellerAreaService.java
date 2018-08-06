@@ -1,6 +1,7 @@
 package com.yq.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,25 @@ public class SellerAreaService {
 
 	public List<SellerArea> getAllSellerArea(){
 		return sellerAreaDao.getAllSellerArea();
+	}
+	
+	public int insert(Map<String, Object> map) {
+		return sellerAreaDao.insert(map);
+	}
+	
+	public int update(Map<String, Object> map) {
+		return sellerAreaDao.update(map);
+	}
+	
+	public int count() {
+		return sellerAreaDao.count();
+	}
+	
+	public List<SellerArea> list(Map<String, Object> map) {
+		return sellerAreaDao.list(map);
+	}
+	
+	public SellerArea getSellerAreaById(Long id) {
+		return sellerAreaDao.getSellerAreaById(id);
 	}
 }
