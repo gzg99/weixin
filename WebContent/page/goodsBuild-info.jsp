@@ -40,6 +40,7 @@
 	   	<input type="hidden" value="${goods.goodsBrand}" id="goodsBrand">
 	    <input type="hidden" value="${goods.goodsMaterial}" id="goodsMaterial">
 	    <input type="hidden" value="${goods.goodsColor}" id="goodsColor">
+	    <input type="hidden" value="${goods.sellerId}" id="sellerId">
 	    <div class="banner1">
 	        <ul class="sy-ul">
 	            <li><a href="#"><img src="${goods.goodsImg}"></a></li>
@@ -81,11 +82,13 @@
 			var goodsImg = $('#goodsImg').val();
 			var goodsSpe = $('#goodsSpe').val();
 			var goodsPrice = $('#goodsPrice').val();
+			var sellerId = $("#sellerId").val();
 			
 			$.ajax({
 				url:'cartBuildInsert.html',
 				type:'post',
-				data:'goods_id='+id+'&goods_name='+goodsName+'&goods_img='+goodsImg+'&goods_price='+goodsPrice+'&goods_num=1'+'&goods_spe='+goodsSpe,
+				data:'goods_id='+id+'&goods_name='+goodsName+'&goods_img='+goodsImg+'&goods_spe='+goodsSpe+'&goods_price='+goodsPrice+
+					'&goods_num=1'+'&seller_id='+sellerId,
 				success:function(rs){
 					var data = eval('('+rs+')');
 					if(data.rs_code==1){
