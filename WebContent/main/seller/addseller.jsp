@@ -86,17 +86,26 @@
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">商家详情：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<textarea name="sellerDetail" id="sellerDetail" style="width: 80%;height: 100px;"></textarea>
+					<textarea name="sellerDetail" id="sellerDetail" style="width: 80%;height: 100px;">${seller.sellerDetail}</textarea>
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">所属商圈：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
 					<input type="hidden" id="sellerAreaId" name="sellerAreaId">
 					<select id="sellerAreaId1" class="input-text" style="width: 80%" onchange="getSellerArea()"></select>
 				</div>
-				<label class="form-label col-2" style="margin-top:20px;">商家图片：</label>
-				<div class="formControls col-10" style="margin-top:20px;">
-					<input type="file" id="path" name="filePath" placeholder="商家图片" value="${seller.sellerImg}"
-						class="input-text" style="width: 80%">
+				<div class="row cl">
+				<label class="form-label col-2">商家图片：</label>
+				<div class="formControls col-10">
+					<input type="file" id="file" name="file" value="" class="input-text" style="width: 80%" onchange="upload()">
+				</div>
+				</div><br>
+				<div class="row cl">
+				<label class="form-label col-2"> </label>
+				<input id="filepath2" type="hidden" value="${seller.sellerImg }">
+				<div class="formControls col-10" id="img2">
+					<img alt="" src="${seller.sellerImg}" style="width:100px;height:100px">
+				</div>
+			</div><br>
 				</div>
 			</div>
 			<br>
@@ -164,7 +173,50 @@
 	    			var sessionstatus = req.getResponseHeader("sessionstatus");
 	    			if(sessionstatus){return;}// 防止超时闪现弹窗
 	    		}
-			})
+			});
+		}
+		
+		function upload() {
+			var fp = document.getElementById("file").value;
+			//为了避免转义反斜杠出问题，这里将对其进行转换
+			var re = /(\\+)/g;
+			var fn = fp.replace(re, "#");
+			//对路径字符串进行剪切截取
+			var one = fn.split("#");
+			//获取数组中最后一个，即文件名
+			var two = one[one.length - 1];
+			//再对文件名进行截取，以取得后缀名
+			var three = two.split(".");
+			//获取截取的最后一个字符串，即为后缀名
+			var last = three[three.length - 1];
+			last = last.toLowerCase();
+
+			if (last != 'png' && last != 'jpg' && last != 'gif'
+					&& last != 'PNG' && last != 'JPG' && last != 'GIF') {
+				alert("请上传png、jpg或者gif文件！");
+				return;
+			}
+			$.ajaxFileUpload({
+				url : 'upload.html', //需要链接到服务器地址  
+				secureuri : false,
+				fileElementId : "file", //文件选择框的id属性  
+				dataType : 'text', //服务器返回的格式，可以是json  
+				success : function(rs) //相当于java中try语句块的用法  
+				{	
+					if (rs != "") {
+						$('#img').html("");
+						$('#img').append("<img src='"+rs+"' width='100' height='100'>");
+						$('#sellerImg').val(rs);
+					} else {
+						alert('失败');
+						//document.getElementById("msg"+m[1]).value="失败"; 
+					}
+				},
+				error : function(data, status, e) //相当于java中catch语句块的用法  
+				{alert('失败');
+					
+				}
+			});
 		}
 	</script>
 
