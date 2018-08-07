@@ -15,6 +15,10 @@ public class SellerArea {
 	private String sellerDetail;
 	
 	private String addTime;
+	
+	private String longitude;//经度
+	
+	private String latitude;//纬度
 
 	public Long getId() {
 		return id;
@@ -70,6 +74,22 @@ public class SellerArea {
 
 	public void setSellerDetail(String sellerDetail) {
 		this.sellerDetail = sellerDetail;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 	
 }

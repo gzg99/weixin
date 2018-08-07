@@ -10,11 +10,20 @@
 	<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="js/base.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title></title>
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.8&key='9e1d9c358dabbf185022c2c8cddaba94'"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
 </head>
 
 <body style="padding-bottom:1.2rem;">
 	<div class="search"></div>
-	<div class="map"><img src="images/map.jpg" width="100%" height="100%"  alt=""/></div>
+	<div class="map" style="width: 100%;height: 200px;"  id="container"></div>
 	<div class="small_title">-家居商圈-</div>
 	<ul class="sq_list">
 		<c:forEach items="${list}" var="list">
@@ -33,5 +42,14 @@
 	</ul>
 	<div class="clear"></div>
 	<div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
+	
+	<script>
+	    var map = new AMap.Map('container', {
+	        resizeEnable: true,
+	        zoom:11,
+	        center: ["${list[0].longitude}", "${list[0].latitude}"]
+	    });
+	</script>
+
 	</body>
 </html>

@@ -9,7 +9,9 @@
 			second_link as secondLink,
 			seller_img as sellerImg, 
 			seller_detail as sellerDetail, 
-			add_time as addTime  
+			add_time as addTime,
+			longitude,
+			latitude
 		from jdb_seller_area
 	</select>
 	
@@ -21,7 +23,9 @@
 			second_link as secondLink,
 			seller_img as sellerImg, 
 			seller_detail as sellerDetail, 
-			add_time as addTime  
+			add_time as addTime,
+			longitude,
+			latitude
 		from jdb_seller_area 
 		where 
 		id=#{id}
@@ -34,14 +38,18 @@
 			second_link,
 			seller_img,
 			seller_detail,
-			add_time
+			add_time,
+			longitude,
+			latitude
 		)values(
 			#{sellerArea},
 			#{firstLink},
 			#{secondLink},
 			#{sellerImg},
 			#{sellerDetail},
-			#{addTime}
+			#{addTime},
+			#{longitude},
+			#{latitude}
 		)
 	</insert>
 	
@@ -54,7 +62,9 @@
     		second_links_spe=#{secondLink},
     		seller_img=#{sellerImg},
     		seller_detail=#{sellerDetail},
-    		add_time=#{addTime} 
+    		add_time=#{addTime} ,
+    		longitude = #{longitude},
+			latitude = #{latitude}
      	where 
      		id=#{id}
     </update>
@@ -71,7 +81,9 @@
 			second_link as secondLink,
 			seller_img as sellerImg, 
 			seller_detail as sellerDetail, 
-			add_time as addTime  
+			add_time as addTime,
+			longitude,
+			latitude
 		 from jdb_seller_area
 	   	order by add_time desc 
 	   	<if test="pageSize!=null and pageSize!=0">

@@ -53,6 +53,8 @@
 						<th width="20%">一层平面图</th>
 						<th width="20%">二层平面图</th>
 						<th width="20%">商圈图片</th>
+						<th width="20%">经度</th>
+						<th width="20%">纬度</th>
 						<th width="20%">操作</th>
 					</tr>
 				</thead>
@@ -65,6 +67,8 @@
 							<td><img alt="" src="${list.firstLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.secondLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.sellerImg}" width="50" height="50"> </td>
+							<td><img alt="" src="${list.longitude}" width="50" height="50"> </td>
+							<td><img alt="" src="${list.latitude}" width="50" height="50"> </td>
 							<td>
 							<a href="getSellerAreaById.html?id=${list.id}">编辑</a>&nbsp;&nbsp;
 							<a href="javascript:;" onclick="del('${list.id}')">删除</a>

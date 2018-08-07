@@ -195,13 +195,15 @@ public class SellerAreaCtrl extends StringUtil {
 	@ResponseBody
 	@RequestMapping(value = "/main/updateSellerArea.html")
 	public Object updateSellerArea(Long id, String sellerArea, String firstLink, String secondLink,
-			String sellerImg, String sellerDetail) {
+			String sellerImg, String sellerDetail,String longitude,String latitude) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("sellerArea", sellerArea);
 		map.put("firstLink", firstLink);
 		map.put("secondLink", secondLink);
 		map.put("sellerImg", sellerImg);
 		map.put("sellerDetail", sellerDetail);
+		map.put("longitude", longitude);
+		map.put("latitude", latitude);
 		map.put("id", id);
 		return sellerAreaService.update(map) + "";
 

@@ -72,6 +72,20 @@
 						placeholder="请填写名称" value="${sellerArea.sellerArea }" class="input-text" style="width: 80%">
 				</div>
 			</div><br>
+			<div class="row cl">			
+				<label class="form-label col-2">经度：</label>
+				<div class="formControls col-10">
+					<input type="text" id="sellerArea"
+						placeholder="请填写经度" value="${sellerArea.longitude }" class="input-text" style="width: 80%">
+				</div>
+			</div><br>
+			<div class="row cl">			
+				<label class="form-label col-2">纬度：</label>
+				<div class="formControls col-10">
+					<input type="text" id="sellerArea"
+						placeholder="请填写纬度" value="${sellerArea.latitude }" class="input-text" style="width: 80%">
+				</div>
+			</div><br>
 			<div class="row cl">
 				<label class="form-label col-2">一层平面图：</label>
 				<div class="formControls col-10">
@@ -135,12 +149,14 @@
 		var secondLink = $('#filepath1').val();
 		var sellerImg = $('#filepath2').val();
 		var sellerDetail = $('#sellerDetail').val();
+		var longitude = $('#longitude').val();
+		var latitude = $('#latitude').val();
 		
 		$.ajax({
 			url:'updateSellerArea.html',
 			type:'post',
 			data:'id='+id+'&sellerArea='+sellerArea+'&firstLink='+firstLink+'&secondLink='+secondLink
-			+'&sellerImg='+sellerImg+'&sellerDetail='+sellerDetail,
+			+'&sellerImg='+sellerImg+'&sellerDetail='+sellerDetail+'&longitude'+longitude+'&latitude'+latitude,
 			success:function(rs){
 				if(rs==1){
 					alert("更新成功！");
