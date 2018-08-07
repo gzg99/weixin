@@ -39,6 +39,14 @@ public class SellerAreaCtrl extends StringUtil {
 	
 	@Autowired
 	private SellerService sellerService;
+	
+	@RequestMapping(value = "main/sellerAreaAddjsp.html")
+	public ModelAndView sellerAreaAddjsp() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main/sellerArea/add");
+		return mv;
+	}
+	
 
 	@RequestMapping(value = "page/getAllSellerAreaList.html")
 	public ModelAndView getAllSellerAreaList() {
