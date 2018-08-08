@@ -86,7 +86,7 @@
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">商家详情：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
-					<textarea name="sellerDetail" id="sellerDetail" style="width: 80%;height: 100px;"></textarea>
+					<textarea name="sellerDetail" id="sellerDetail" style="width: 80%;height: 100px;">${seller.sellerDetail}</textarea>
 				</div>
 				<label class="form-label col-2" style="margin-top:20px;">所属商圈：</label>
 				<div class="formControls col-10" style="margin-top:20px;">

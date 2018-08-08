@@ -1,6 +1,12 @@
 package com.yq.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
@@ -158,7 +165,7 @@ public class SellerAreaCtrl extends StringUtil {
 			try {
 				// 保存的文件路径(如果用的是Tomcat服务器，文件会上传到\\%TOMCAT_HOME%\\webapps\\YourWebProject\\upload\\文件夹中
 				// )
-				String filePath = request.getSession().getServletContext().getRealPath("/") + "upload"+File.separator;
+				String filePath =  "E:"+File.separator+"upload"+File.separator;
 				
 				
 				String fileName = file.getOriginalFilename();
@@ -248,7 +255,24 @@ public class SellerAreaCtrl extends StringUtil {
 	}
 
 	
-	
+	@RequestMapping("/main/getImage.html")
+	public void getImage(String paths,HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 从硬盘读取
+		Seller seller = sellerService.getSeller(paths);
+		File filePic = new File(seller.getSellerImg());
+		if (filePic.exists()) {
+			FileInputStream is = new FileInputStream(filePic);
+			int i = is.available(); // 得到文件大小
+			byte data[] = new byte[i];
+			is.read(data); // 读数据
+			is.close();
+			response.setContentType("image/*"); // 设置返回的文件类型
+			OutputStream toClient = response.getOutputStream(); // 得到向客户端输出二进制数据的对象
+			toClient.write(data); // 输出数据
+			toClient.close();
+		}
+	}
+
 	
 	
 	
