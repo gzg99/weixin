@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,9 +57,9 @@ public class CategoryEnterCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "/main/categoryEnterAdd.html")
-	public String addCategory(Long sellerId, String firstCategory, String secondCategory) {
+	public String addCategory(String firstCategory, String secondCategory,HttpSession session) {
 		CategoryEnter category = new CategoryEnter();
-		category.setSellerId(sellerId);
+		category.setSellerId((Long)session.getAttribute("id"));
 		category.setFirstCategory(firstCategory);
 		category.setSecondCategory(secondCategory);
 		//查询分类名称是否重复

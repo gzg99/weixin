@@ -101,7 +101,7 @@
 				</div><br>
 				<div class="row cl">
 				<label class="form-label col-2"> </label>
-				<input id="filepath2" type="hidden" value="${seller.sellerImg }">
+				<input id="sellerImg" name="sellerImg" type="hidden" value="${seller.sellerImg }">
 				<div class="formControls col-10" id="img2">
 					<img alt="" src="${seller.sellerImg}" style="width:100px;height:100px">
 				</div>

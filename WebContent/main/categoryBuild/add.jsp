@@ -69,13 +69,12 @@
 	</div>
 	<script type="text/javascript">
 		function add(){
-			var sellerId = 1;
 			var firstCategory = $('#firstCategory').val();
 			var secondCategory = $('#secondCategory').val();
 			$.ajax({
 				url:'categoryEnterAdd.html',
 				type:'post',
-				data:'sellerId='+sellerId+'&firstCategory='+firstCategory+'&secondCategory='+secondCategory,
+				data:'firstCategory='+firstCategory+'&secondCategory='+secondCategory,
 				success:function(rs){
 					if(rs==1){
 						alert("添加成功！");

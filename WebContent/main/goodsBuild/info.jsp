@@ -75,15 +75,21 @@
 			<div class="row cl">
 				<label class="form-label col-2">一级分类：</label>
 				<div class="formControls col-10">
-				<select id="firstCategory" class="input-text" style="width: 80%">
+				<select id="firstCategory" class="input-text" style="width: 80%" onchange="secondCategorySel()">
 					<c:forEach items="${category}" var="ctg">
-						<option value="${ctg.id}">${ctg.ctgName }</option>
+						<c:if test="${ctg.firstCategory==goods.firstCategory }">
+						<option value="${ctg.firstCategory}" selected="selected">${ctg.firstCategory }</option>
+						</c:if>
+						<c:if test="${ctg.firstCategory != goods.firstCategory }">
+						<option value="${ctg.firstCategory}">${ctg.firstCategory }</option>
+						</c:if>
 					</c:forEach>
 				</select>
 				</div>
 			</div><br>
 			<div class="row cl">
 				<label class="form-label col-2">二级分类：</label>
+				<input type="hidden" id="secondCtgName" value="${goods.secondCategory }">
 				<div class="formControls col-10">
 				<select id="secondCategory" class="input-text" style="width: 80%"></select>
 				</div>
@@ -237,6 +243,45 @@
 			error : function(data, status, e) //相当于java中catch语句块的用法  
 			{alert('失败');
 				
+			}
+		});
+	}
+	
+	$(function(){
+		var secondCategory = $("#secondCtgName").val();
+		var firstCategory = $("#firstCategory").val();
+		$.ajax({
+			url:"getSecondCategoryByFirst.html",
+			type:"POST",
+			data:{"firstCategory":firstCategory},
+			dataType:'json',
+			success:function(result){
+				var str = "";
+				for(var i = 0;i<result.length;i++){
+					if(result[i] == secondCategory){
+						str += "<option value='"+result[i]+"' selected='selected'>"+result[i]+"</option>";
+					}else {
+						str += "<option value='"+result[i]+"'>"+result[i]+"</option>";
+					}
+				}
+				$("#secondCategory").html(str);
+			}
+		});
+	});
+	
+	function secondCategorySel() {
+		var firstCategory = $("#firstCategory").val();
+		$.ajax({
+			url:"getSecondCategoryByFirst.html",
+			type:"POST",
+			data:{"firstCategory":firstCategory},
+			dataType:'json',
+			success:function(result){
+				var str = "";
+				for(var i = 0;i<result.length;i++){
+					str += "<option value='"+result[i]+"'>"+result[i]+"</option>";
+				}
+				$("#secondCategory").html(str);
 			}
 		});
 	}

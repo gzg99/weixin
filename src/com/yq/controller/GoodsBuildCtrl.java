@@ -76,8 +76,10 @@ public class GoodsBuildCtrl {
 	 * */
 	@ResponseBody
 	@RequestMapping(value = "/main/goodsBuildAdd.html")
-	public String goodsBuildAdd(String goodsName,String goodsSpe, String goodsImg, float goodsPrice,
-			String goodsDetail, String firstCategory, String secondCategory, Long goodsNum,
+	public String goodsBuildAdd(String goodsName,String goodsSpe, String goodsImg, 
+			@RequestParam(defaultValue="0")float goodsPrice,
+			String goodsDetail, String firstCategory, String secondCategory, 
+			@RequestParam(defaultValue="0")Long goodsNum,
 			String goodsBrand, String goodsMaterial, String goodsColor, HttpSession session) {
 		GoodsBuild goods = new GoodsBuild();
 		goods.setGoodsName(goodsName);
@@ -180,8 +182,10 @@ public class GoodsBuildCtrl {
 	 * */
 	@RequestMapping("main/getGoodsBuildById.html")
 	@ResponseBody
-	public ModelAndView getGoodsBuildById(Long id) {
+	public ModelAndView getGoodsBuildById(Long id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		List<CategoryEnter> list = categoryEnterService.selectFirstBySellerId((Long)session.getAttribute("id"));
+		mv.addObject("category", list);
 		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
 		mv.addObject("goods", goods);
 		mv.setViewName("main/goodsBuild/info");

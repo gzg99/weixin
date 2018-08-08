@@ -239,6 +239,10 @@
 		});
 	}
 	
+	$(function(){
+		secondCategorySel();
+	});
+	
 	function secondCategorySel() {
 		var firstCategory = $("#firstCategory").val();
 		$.ajax({
