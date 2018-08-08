@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.VillageDao">
+
+	<select id="getVillageList" parameterType="java.util.HashMap" resultType="com.yq.entity.Village">
+		select 
+			id as id,
+			village_name as villageName,
+			longitude as longitude,
+			latitude as latitude,
+			add_time as addTime 
+		from jdb_village 
+			order by add_time desc 
+    	<if test="pageSize!=null and pageSize!=0">
+     		limit #{start},#{pageSize}
+    	</if>
+	</select>
+	
+	<select id="count" resultType="int">
+	    select count(1) from jdb_village
+    </select>
+	
+	<select id="getInfoById" parameterType="java.lang.Long" resultType="com.yq.entity.Village">
+		select 
+			id as id,
+			village_name as villageName,
+			longitude as longitude,
+			latitude as latitude,
+			add_time as addTime 
+		from jdb_village 
+		where 
+		id=#{id,jdbcType=BIGINT}
+	</select>
+	
+	<insert id="add" parameterType="com.yq.entity.Village">
+		insert jdb_village(
+			village_name,
+			longitude,
+			latitude,
+			add_time
+		)values(
+			#{villageName},
+			#{longitude},
+			#{latitude},
+			#{addTime}
+		)
+	</insert>
+	
+	<delete id="del" parameterType="java.lang.Long" >
+    	delete from jdb_village 
+    	where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <update id="updateVillageById" parameterType="com.yq.entity.Village" >
+    update jdb_village
+    <set >
+      <if test="villageName != null" >
+        village_name = #{villageName,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=FLOAT},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=FLOAT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+	
+</mapper>
