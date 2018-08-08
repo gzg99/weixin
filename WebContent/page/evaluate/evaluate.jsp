@@ -36,13 +36,16 @@
 				 </ul>
 			 </div>
 			 <textarea id="evaluateContent" name="evaluateContent" placeholder="请填写1~300字的评价"></textarea>
-			 <div class="sc_img">
-<!-- 			 <input type="file" name="path1" id="path1"> -->
-			     <div class="sc_img_btn" onclick="path1.click()"></div>
-<!-- 				 <input type="text" name="upfile1" id="upfile1" style="display:none;"> -->
-				 <input type="file" style="display:none;" id="path1" name="filePath" onchange="showImage();">
-				 <ul><li><img id="preview" src="" alt=""/></li></ul>
-			 </div>
+<!-- 			 <div class="sc_img"> -->
+<!-- 			     <div class="sc_img_btn" onclick="path1.click()"></div> -->
+<!-- 				 <input type="file" style="display:none;" id="file" name="filePath" onchange="upload()"> -->
+<!-- 				 <ul><li><img id="preview" src="" alt=""/></li></ul> -->
+<!-- 			 </div> -->
+<!-- 			<div class="row cl"> -->
+<!-- 				<label class="form-label col-2"> </label> -->
+<!-- 				<input id="pictureFirst" name="pictureFirst" type="hidden"> -->
+<!-- 				<div class="formControls col-10" id="img"></div> -->
+<!-- 			</div><br> -->
 			 <div class="pingjia_nr_sub"><input type="button" onclick="addevalclick();" value="提交"/></div>
 		</li>
 	</form>
@@ -115,14 +118,14 @@ function remove_img(e){
     
     function addevalclick() {
     	var formData = new FormData($("#addevaluate")[0]);
-    	var filename = $("#path1").val();
-    	var fileType = filename.substring(filename.indexOf("."), filename.length);
-    	if (null != filename && filename != "") {
-    		if(".jpg" != fileType && ".jpeg" != fileType && ".bmp" != fileType && ".gif" != fileType && ".png" != fileType  ) {
-    			alertModelPop("请选择jpg,jpeg,bmp,gif,png格式的图片做评价图片！");
-    			return false;
-    		}
-    	}
+    	//var filename = $("#path1").val();
+//     	var fileType = filename.substring(filename.indexOf("."), filename.length);
+//     	if (null != filename && filename != "") {
+//     		if(".jpg" != fileType && ".jpeg" != fileType && ".bmp" != fileType && ".gif" != fileType && ".png" != fileType  ) {
+//     			alertModelPop("请选择jpg,jpeg,bmp,gif,png格式的图片做评价图片！");
+//     			return false;
+//     		}
+//     	}
     	var url = "toevaluate.html"
     	jQuery.ajax({
     		type : "POST",
@@ -150,6 +153,49 @@ function remove_img(e){
     		}
     	});
     }
+    
+    function upload() {
+		var fp = document.getElementById("file").value;
+		//为了避免转义反斜杠出问题，这里将对其进行转换
+		var re = /(\\+)/g;
+		var fn = fp.replace(re, "#");
+		//对路径字符串进行剪切截取
+		var one = fn.split("#");
+		//获取数组中最后一个，即文件名
+		var two = one[one.length - 1];
+		//再对文件名进行截取，以取得后缀名
+		var three = two.split(".");
+		//获取截取的最后一个字符串，即为后缀名
+		var last = three[three.length - 1];
+		last = last.toLowerCase();
+
+		if (last != 'png' && last != 'jpg' && last != 'gif'
+				&& last != 'PNG' && last != 'JPG' && last != 'GIF') {
+			alert("请上传png、jpg或者gif文件！");
+			return;
+		}
+		$.ajaxFileUpload({
+			url : 'upload.html', //需要链接到服务器地址  
+			secureuri : false,
+			fileElementId : "file", //文件选择框的id属性  
+			dataType : 'text', //服务器返回的格式，可以是json  
+			success : function(rs) //相当于java中try语句块的用法  
+			{	
+				if (rs != "") {
+					$('#img').html("");
+					$('#img').append("<img src='"+rs+"' width='100' height='100'>");
+					$('#pictureFirst').val(rs);
+				} else {
+					alert('失败');
+					//document.getElementById("msg"+m[1]).value="失败"; 
+				}
+			},
+			error : function(data, status, e) //相当于java中catch语句块的用法  
+			{alert('失败');
+				
+			}
+		});
+	}
 </script>
 </body>
-</html>+
+</html>

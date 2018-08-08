@@ -64,14 +64,7 @@ public class EvaluateController extends StringUtil{
 	 * @return
 	 */
 	@RequestMapping(value = "page/evaluate/toevaluate.html", method = RequestMethod.POST)
-	public @ResponseBody String evaluate(@RequestParam( value = "filePath", required = false ) MultipartFile files, HttpServletRequest reques,
-			JdbEvaluate jdbEvaluate,HttpSession session) {
-		if (files != null ) {
-			MultipartFile file = files;
-			// 保存文件
-			String path = saveFile(reques, file);
-			jdbEvaluate.setPictureFirst(path);
-		}
+	public @ResponseBody String evaluate(JdbEvaluate jdbEvaluate,HttpSession session) {
 		String suc = "0";
 		jdbEvaluate.setId(UUIDUtils.getUUID());
 		jdbEvaluate.setUserId(this.getOppen_id(session));
@@ -88,31 +81,6 @@ public class EvaluateController extends StringUtil{
 		}
 		return suc;
 
-	}
-
-	private String saveFile(HttpServletRequest request,  MultipartFile file) {
-		// 判断文件是否为空
-		if (!file.isEmpty()) {
-			try {
-				// 保存的文件路径(如果用的是Tomcat服务器，文件会上传到\\%TOMCAT_HOME%\\webapps\\YourWebProject\\upload\\文件夹中
-				// )
-				String filePath = request.getSession().getServletContext().getRealPath("/") + "upload"+File.separator;
-				
-				
-				String fileName = file.getOriginalFilename();
-				String jpg = UUIDUtils.getUUID() +"."+fileName.substring(fileName.lastIndexOf(".")+1);
-				File saveDir = new File(filePath,jpg);
-				if (!saveDir.getParentFile().exists()){
-					saveDir.getParentFile().mkdirs();
-				}
-				// 转存文件
-				file.transferTo(saveDir);
-				return filePath+jpg;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return "";
 	}
 	
 	/**
