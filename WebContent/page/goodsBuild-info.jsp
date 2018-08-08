@@ -27,7 +27,7 @@
     <div>
     	<ul class="spxq-ul2">
         	<li class="current" style="width: 50%;"><a href="JavaScript:;">图文详情</a></li>
-        	<li class="current" style="width: 50%"><a href="JavaScript:;" onclick="window.location.href='evaluate/showEvaluate.html?commodityId=${goods.id}'">评价</a></li>
+        	<li class="current" style="width: 50%"><a href="JavaScript:;" onclick="window.location.href='showEvaluate.html?commodityId=${goods.id}'">评价</a></li>
             <div style="clear:both;"></div>
         </ul>
     </div>

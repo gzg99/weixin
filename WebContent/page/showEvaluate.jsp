@@ -5,8 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>评价</title>
-<link href="../../css/evaluate/jj20180626.css" rel="stylesheet" type="text/css">
-<link href="../../css/evaluate/iconfont.css" rel="stylesheet" type="text/css">
+<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
+<link href="css/iconfont.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 <style type="text/css">
 		body{background: #F5F5F5;}
 	    .sp_top{ font-size: 0.28rem; height:0.8rem; width: 100%; position: fixed;top: 0;left: 0; line-height: 0.8rem; text-align: center;}
@@ -23,7 +24,7 @@
 		.pinglun_sj{ float:right; color: #999; font-size: 0.2rem; }
 		.pinglun_name{float:left; color: #333;font-size: 0.24rem;width: 4.8rem;}
 		.pinglun_xing{float:left; width: 4.8rem; margin-top: 0.1rem;}
-		.pinglun_xing li{float:left;  margin-right: 0.05rem; width:0.2rem; height: 0.2rem; background: url(../images/star2.png) no-repeat; background-size: 100% 100%;}
+		.pinglun_xing li{float:left;  margin-right: 0.05rem; width:0.2rem; height: 0.2rem; background: url(images/star2.png) no-repeat; background-size: 100% 100%;}
 		.pinglun_txt{float:left; width:100%; font-size: 0.24rem; margin-top: 0.2rem;}
 	</style>
 </head>
@@ -31,7 +32,7 @@
 <div class="clear"></div>
 <div class="sp_top">
 	<div class="sp_top_bt">
-        <span class="current" style="width: 50%;"><a href="JavaScript:;" onclick="window.location.href='/weixin/page/goodsBuildListById.html?id=${commodityId}'">图文详情</a></span>
+        <span class="current" style="width: 50%;"><a href="JavaScript:;" onclick="window.location.href='goodsBuildListById.html?id=${commodityId}'">图文详情</a></span>
         <span class="current" style="width: 50%"><a href="JavaScript:;">评价</a></span>
 	</div>
 	<div class="sp_top_tab">
@@ -57,10 +58,11 @@
 			</div>
 		</div>
 	</c:forEach>
+	<button class="my-btn1 f-r" onclick="window.location.href='evaluate/toEvaluatePage.html?id=${commodityId}'">发表评价</button>
 </div>
-<div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
-<script type="text/javascript" src="../../js/evaluate/base.js"></script>
-<script type="text/javascript" src="../js/jquery.js"></script>
+<jsp:include page="footer4.jsp"></jsp:include>
+<script type="text/javascript" src="../js/evaluate/base.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 var commodityId = ${commodityId};
 $(function(){

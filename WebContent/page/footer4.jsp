@@ -6,41 +6,29 @@
 </head>
 <body>
 
-	<ul class="quanbu-ul1">
-    	<li >
-        	<div class="qu-tu1"  align="center">
+	<ul class="quanbu-ul11">
+    	<li>
+        	<div class="qu-tu1" align="center" style="bottom:5px;">
             	<a href="index.html" class="atu1"><img src="images/sjsc-02.gif" style="width: 22px;height: 22px"></a>
             	<a href="index.html" class="atu2"><img src="images/sjsc-15-1.gif" style="width: 22px;height: 22px"></a>
             </div>
             <a href="index.html" class="qu-ul1a">首页</a>
         </li>
-    	<li >
+    	<li>
         	<div class="qu-tu1" align="center">
-            	<a href="category.html" class="atu1"><img src="images/sjsc-16.png" style="width: 22px;height: 22px"></a>
-            	<a href="category.html" class="atu2"><img src="images/sjsc-16-1.png" style="width: 22px;height: 22px"></a>
+            	<a href="category.html" class="atu1"><img src="images/add_message.png" style="width: 22px;height: 22px"></a>
+            	<a href="category.html" class="atu2"><img src="images/add_message.png" style="width: 22px;height: 22px"></a>
             </div>
-            <a href="category.html" class="qu-ul1a">分类</a>
+            <a href="category.html" class="qu-ul1a">发布</a>
         </li>
-    	<li >
-        	<div class="qu-tu1" style="height: 43px;" align="center">
-            	<a href="cartList.html" class="atu1"><img src="images/cart.png" style="width: 40px;height: 40px"></a>
-            	<a href="cartList.html" class="atu2"><img src="images/cart.png" style="width: 40px;height: 40px"></a>
-            	<span style="position:fixed;margin-top: -45px;margin-left:16px;color: #f29133" id="cart_num">${cart_num }</span>
-            </div>
-            <!-- <a href="cartList.html" class="qu-ul1a">购物车</a> -->
-        </li>
-         <li >
+    	
+        
+    	  	<li>
         	<div class="qu-tu1" align="center">
-            	<a href="orderList.html" class="atu1"><img src="images/ord-2.png"  style="width: 22px;height: 22px"></a>
-            	<a href="orderList.html" class="atu2"><img src="images/ord-1.png" style="width: 22px;height: 22px"></a> </div>
-            <a href="orderList.html" class="qu-ul1a">订单</a>
-        </li>
-    	<li class="current" >
-        	<div class="qu-tu1" align="center">
-            	<a href="#" class="atu1"><img src="images/sjsc-18.png" style="width: 22px;height: 22px"></a>
-            	<a href="#" class="atu2"><img src="images/sjsc18-1.png" style="width: 22px;height: 22px"></a>
+            	<a href="center.html" class="atu1"><img src="images/sjsc-18.png" style="width: 22px;height: 22px"></a>
+            	<a href="center.html" class="atu2"><img src="images/sjsc18-1.png" style="width: 22px;height: 22px"></a>
             </div>
-            <a href="#" class="qu-ul1a">我的</a>
+            <a href="center.html" class="qu-ul1a">我的</a>
         </li>
         <div style="clear:both;"></div>
     </ul>

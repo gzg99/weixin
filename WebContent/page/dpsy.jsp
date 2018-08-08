@@ -52,7 +52,7 @@
 	</ul>
 
 <div class="clear"></div>
-<div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
+<jsp:include page="footer4.jsp"></jsp:include>
 
 <script>
 	$(function(){

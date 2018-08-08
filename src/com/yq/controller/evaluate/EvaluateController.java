@@ -1,6 +1,7 @@
 package com.yq.controller.evaluate;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ import net.sf.json.JSONArray;
  *
  */
 @Controller
-@RequestMapping(value = "page/evaluate")
+@RequestMapping
 public class EvaluateController extends StringUtil{
 
 	@Autowired
@@ -47,7 +48,7 @@ public class EvaluateController extends StringUtil{
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/toEvaluatePage.html")
+	@RequestMapping(value = "page/evaluate/toEvaluatePage.html")
 	public ModelAndView toEvaluatePage(Long id) {
 		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
 		ModelAndView view = new ModelAndView("page/evaluate/evaluate");
@@ -62,7 +63,7 @@ public class EvaluateController extends StringUtil{
 	 * @param jdbEvaluate
 	 * @return
 	 */
-	@RequestMapping(value = "/toevaluate.html", method = RequestMethod.POST)
+	@RequestMapping(value = "page/evaluate/toevaluate.html", method = RequestMethod.POST)
 	public @ResponseBody String evaluate(@RequestParam( value = "filePath", required = false ) MultipartFile files, HttpServletRequest reques,
 			JdbEvaluate jdbEvaluate,HttpSession session) {
 		if (files != null ) {
@@ -74,6 +75,12 @@ public class EvaluateController extends StringUtil{
 		String suc = "0";
 		jdbEvaluate.setId(UUIDUtils.getUUID());
 		jdbEvaluate.setUserId(this.getOppen_id(session));
+		try {
+			jdbEvaluate.setEvaluateContent(new String (jdbEvaluate.getEvaluateContent().getBytes("iso8859-1"),"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int i = evaluateService.insertSelective(jdbEvaluate);
 
 		if (i > 0) {
@@ -113,9 +120,9 @@ public class EvaluateController extends StringUtil{
 	 * @param commodityId
 	 * @return
 	 */
-	@RequestMapping(value="/showEvaluate.html")
+	@RequestMapping(value="page/showEvaluate.html")
 	public ModelAndView showEvaluate(String commodityId) {
-		ModelAndView view = new ModelAndView("page/evaluate/showEvaluate");
+		ModelAndView view = new ModelAndView("page/showEvaluate");
 		Map<String,Object> map = evaluateService.showEvaluate(commodityId);
 		view.addObject("showEvaluate", map);
 		view.addObject("commodityId", commodityId);
@@ -128,7 +135,7 @@ public class EvaluateController extends StringUtil{
 	 * @param commodityId
 	 * @return
 	 */
-	@RequestMapping(value="/showEvaluateAj.html")
+	@RequestMapping(value="page/evaluate/showEvaluateAj.html")
 	public @ResponseBody String showEvaluateAj(String commodityId,String grade) {
 		Map<String,Object> mapData = new HashMap<String,Object>();
 		mapData.put("commodityId", commodityId);

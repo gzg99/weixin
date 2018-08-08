@@ -8,6 +8,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 	<title>家居首页</title>
 	<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 	<script type="text/javascript" src="js/base.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	
@@ -41,7 +42,7 @@
 		</c:forEach>
 	</ul>
 	<div class="clear"></div>
-	<div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
+	<jsp:include page="footer4.jsp"></jsp:include>
 	
 	<script>
 	    var map = new AMap.Map('container', {

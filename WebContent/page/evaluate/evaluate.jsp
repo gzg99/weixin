@@ -142,8 +142,7 @@ function remove_img(e){
     			
     			if (msg == "1") {
     				alert('感谢您的评价');
-    				//window.location.href='goodsBuildListById.html';
-    				//layer.msg('玩命提示中');
+    				window.location.href='/weixin/page/goodsBuildListById.html?id='+$("#commodityId").val();
     			} else {
 
     				layer.msg("操作失败");
@@ -153,4 +152,4 @@ function remove_img(e){
     }
 </script>
 </body>
-</html>
+</html>+
