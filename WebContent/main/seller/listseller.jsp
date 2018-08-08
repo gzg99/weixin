@@ -71,7 +71,7 @@
 							<td>${list.sellerArea}</td>
 							<td>${list.address}</td>
 							<td>${list.sellerName}</td>
-							<td><img alt="" src="getImage.html?paths=${list.id}" width="50" height="50"> </td>
+							<td><img alt="" src="${list.sellerImg}" width="50" height="50"> </td>
 							<td>${list.addTime}</td>
 							<td>
 							<a href="toAddSeller.html?id=${list.id}">编辑</a>&nbsp;&nbsp;
