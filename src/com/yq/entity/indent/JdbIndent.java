@@ -40,7 +40,7 @@ public class JdbIndent extends Page {
 
 	private String userId;
 
-	private int indentCommodityNum;
+	private String indentCommodityNum;
 	
 	private String commodityName;
 	
@@ -191,11 +191,11 @@ public class JdbIndent extends Page {
 		this.userId = userId;
 	}
 
-	public int getIndentCommodityNum() {
+	public String getIndentCommodityNum() {
 		return indentCommodityNum;
 	}
 
-	public void setIndentCommodityNum(int indentCommodityNum) {
+	public void setIndentCommodityNum(String indentCommodityNum) {
 		this.indentCommodityNum = indentCommodityNum;
 	}
 

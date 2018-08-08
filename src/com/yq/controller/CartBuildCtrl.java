@@ -34,31 +34,38 @@ public class CartBuildCtrl extends StringUtil{
 	
 	@ResponseBody
 	@RequestMapping(value = "/page/cartBuildInsert.html")
-	public void insert(Integer goods_id,String goods_name,String goods_img,String goods_spe,Float goods_price,Float goods_total,
-			@RequestParam(defaultValue="1")Integer goods_num,String oppen_id,HttpServletResponse response,HttpSession session) {
+	public void insert(Integer goods_id,String goods_name,String goods_img,String goods_spe,Float goods_price,
+			@RequestParam(defaultValue="1")Integer goods_num,Integer seller_id,HttpServletResponse response,HttpSession session) {
 		try {
 			map.put("goods_id", goods_id);
 			map.put("goods_name", goods_name);
 			map.put("goods_img", goods_img);
 			map.put("goods_spe", goods_spe);
 			map.put("goods_price", goods_price);
-			oppen_id=getOppen_id(session);
+			String oppen_id=getOppen_id(session);
 			map.put("oppen_id",oppen_id);
+			map.put("sellerId", seller_id);
 			cart.setGoods_id(goods_id);
+			cart.setSeller_id(seller_id);
 			cart.setOppen_id(oppen_id);
 			int total = cartService.count(cart);
-			int cart_num =Integer.parseInt(session.getAttribute("cart_num").toString())+1;
+			int cart_num = 0;
+			if(session.getAttribute("cart_num") != null) {
+				cart_num = Integer.parseInt(session.getAttribute("cart_num").toString())+1;
+			} else {
+				cart_num = 1;
+			}
 			session.setAttribute("cart_num", cart_num);
 			Map<String, Object> map2 = new HashMap<String, Object>();
 			int rs = 0 ;
 			if(total>0){
 				goods_num=cartService.goodsnum(cart)+1;
-				goods_total = goods_price*goods_num ;
+				float goods_total = goods_price*goods_num ;
 				map.put("goods_total", goods_total);
 				map.put("goods_num", goods_num);
 				rs = cartService.update(map);
 			}else{
-				goods_total = goods_price*goods_num ;
+				float goods_total = goods_price*goods_num ;
 				map.put("goods_total", goods_total);
 				map.put("goods_num", goods_num);
 				rs  = cartService.insert(map);

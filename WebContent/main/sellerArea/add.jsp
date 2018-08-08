@@ -208,7 +208,7 @@
 			return;
 		}
 		$.ajaxFileUpload({
-			url : 'upload.html', //需要链接到服务器地址  
+			url : 'upload1.html', //需要链接到服务器地址  
 			secureuri : false,
 			fileElementId : "file1", //文件选择框的id属性  
 			dataType : 'text', //服务器返回的格式，可以是json  
@@ -251,7 +251,7 @@
 			return;
 		}
 		$.ajaxFileUpload({
-			url : 'upload.html', //需要链接到服务器地址  
+			url : 'upload2.html', //需要链接到服务器地址  
 			secureuri : false,
 			fileElementId : "file2", //文件选择框的id属性  
 			dataType : 'text', //服务器返回的格式，可以是json  

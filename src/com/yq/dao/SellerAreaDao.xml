@@ -59,7 +59,7 @@
     	set 
     		seller_area=#{sellerArea},
     		first_link=#{firstLink},
-    		second_links_spe=#{secondLink},
+    		second_link=#{secondLink},
     		seller_img=#{sellerImg},
     		seller_detail=#{sellerDetail},
     		add_time=#{addTime} ,

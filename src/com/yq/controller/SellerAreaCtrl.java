@@ -46,6 +46,14 @@ public class SellerAreaCtrl extends StringUtil {
 	
 	@Autowired
 	private SellerService sellerService;
+	
+	@RequestMapping(value = "main/sellerAreaAddjsp.html")
+	public ModelAndView sellerAreaAddjsp() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main/sellerArea/add");
+		return mv;
+	}
+	
 
 	@RequestMapping(value = "page/getAllSellerAreaList.html")
 	public ModelAndView getAllSellerAreaList() {
@@ -128,15 +136,9 @@ public class SellerAreaCtrl extends StringUtil {
 	 */
 	
 	@RequestMapping(value = "/main/insertSeller.html", method = RequestMethod.POST)
-	public @ResponseBody String insert(@RequestParam(value = "filePath", required = false) MultipartFile files, Seller seller,
+	public @ResponseBody String insert(Seller seller,
 			HttpServletRequest reques) {
-		if (files != null ) {
-			MultipartFile file = files;
-			// 保存文件
-			String path = saveFile(reques, file);
-			seller.setSellerImg(path);
-		}
-		//默认出事密码为123456
+		//默认初始密码为123456
 		seller.setPassword(MD5Util.MD5Encode("123456",""));
 		try {
 			//seller.setAddress(URLDecoder.decode(seller.getAddress(), "utf-8"));

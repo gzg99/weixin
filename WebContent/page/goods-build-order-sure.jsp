@@ -31,18 +31,6 @@ $(function(){
         <a href="" class="sjsc-t2r"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
      </div>
      
-<!--      <dl class="drdd-info6"> -->
-<!-- 		<ul class="xzdz-ul1"> -->
-<!-- 	    	<li style="float:left;"> -->
-<!-- 	            <input type="text" class="xzdz-ipt1 f-l" id="addr_user1" value="刘诗诗"/> -->
-<!--           	</li> -->
-<!-- 	    	<li style="margin-left:30%;"> -->
-<!-- 	            <input type="text" class="xzdz-ipt1 f-l" id="addr_tel1" value="15090989098"/> -->
-<!-- 	            <input type="text" class="xzdz-ipt1 f-l" id="area1" value="北京市昌平区昌平西山口"/>          -->
-<!-- 	        </li> -->
-<!--     	</ul> -->
-<!--     </dl> -->
-     
     <dl class="drdd-info6">
 		<ul class="xzdz-ul1">
 	    	<li>
@@ -69,7 +57,7 @@ $(function(){
     </dl>
      
      <input type="hidden" value="${addr_id}" id='addr_id'>
-     <input type="hidden" value="${goods_num}" id='tnum'>
+     <input type="hidden" value="${tnum}" id='tnum'>
      <input type="hidden" value="${tprice}" id='tprice'>
      <div style="font-size: 12px;padding-left:5px; margin-top:13px;color: #A09E9E">
   	   	商品信息
@@ -124,30 +112,8 @@ $(function(){
     </div>
     <button class="drdd-btn" onclick="add()">确认付款</button>
     <script type="text/javascript">
-    function fgt(){
-    	var wuliu ='${fgt_price}';
-    	var tprice= '${tprice}';
-    	var fgt_price= $('#fgt_price').val();
-    	if(fgt_price!=-2&&fgt_price!=-1){ //选择自提点
-    		$('#zitidian-str').show();
-    		$('#zitidian-choose').show();
-    		wuliu=0;
-    	}
-    	else{
-    		$('#zitidian-str').hide();
-    		$('#zitidian-choose').hide();
-    		fgt_price=0;
-    	}
-    
-    	$('#wuliu').text('￥'+wuliu);
-    	tprice = tprice - fgt_price;
-   		$('#tpriceStr').text('￥'+tprice);
-   		$('#tprice').val(tprice);
-   		
-    }
     function choose_area(){
     	var area =$('#area_area').val();
-    	
     	$.ajax({
     		url:'areaJson.html',
     		type:'post',
@@ -171,7 +137,6 @@ $(function(){
     	var goods_img="";
     	var goods_price="";
     	var goods_num="";
-    	var fgt_price= $('#fgt_price').val();
     	var goods_ids=$("input[name='goods_id']");
     	for (var i = 0; i < goods_ids.length; i++) {
 			if (i == 0) {
@@ -205,14 +170,7 @@ $(function(){
 				goods_price += ",-=" + goods_prices[i].value;
 			}
 		}
-    	var goods_nums =$("input[name='goods_num']");
-    	for (var i = 0; i < goods_nums.length; i++) {
-			if (i == 0) {
-				goods_num += goods_nums[i].value;
-			} else {
-				goods_num += ",-=" + goods_nums[i].value;
-			}
-		}
+    	var goods_num = $('#tnum').val();
     	var goods_total= $('#tprice').val();
     	var goods_total_num= $('#tnum').val();
     	
@@ -227,22 +185,6 @@ $(function(){
     	}
     	if(typeof(addr_name)=='undefined'){
     		addr_name='';
-    	}
-    	
-    	
-    	if(fgt_price!=-1){
-    		var area_area = $('#area_area').val();
-    		var area_addr = $('#area_addr').val();
-    		if(area_area==-2){
-    			showTip('请选择区域');
-        		return ;
-    		}
-			if(area_addr==-2){
-				showTip('请选择自提点');
-	    		return ;
-    		}
-    		receive=$('#area_area').find("option:selected").text()+area_addr;
-    		
     	}
 		
     	if(addr_user==''||addr_tel==''||addr_name==''){
@@ -261,24 +203,22 @@ $(function(){
 		if(area==''){
 			showTip("收货地址填写有误，请重新编辑！");return;
 		}
-
+		var sellerId = $("#userId").val();
     	var addr_name=addr_user+' '+addr_tel+' '+province+' '+city+' '+ area+' '+addr_name;
     	$.ajax({
 			url:'indentInsert.html',
 			type:'post',
 			data:'goods_id='+goods_id
 			+'&goods_name='+goods_name
-			+'&goods_img='+goods_img
 			+'&goods_price='+goods_price
-			+'&goods_num='+goods_total_num
+			+'&goods_num='+goods_num
 			+'&goods_total='+goods_total
 			+'&goods_total_num='+goods_total_num
-			+'&addr_name='+addr_name,
+			+'&addr_name='+addr_name
+			+'&userId='+sellerId,
 			success:function(rs){
-				var re = /^[0-9]+.?[0-9]*$/;    
-				if(re.test(rs)&&rs!=0){
-					
-					window.location.href='payOrder.html?id='+rs;
+				if(rs!= null && rs!=0){
+					window.location.href='payOrderBuild.html?id='+rs;
 				}else{
 					alert("失败！");
 				}

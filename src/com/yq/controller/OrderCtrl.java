@@ -492,8 +492,8 @@ public class OrderCtrl extends StringUtil {
 			@RequestParam(defaultValue = "0") Integer addr_id, String cps_name,
 			@RequestParam(defaultValue = "0") Float cps_price, String oppen_id, HttpSession session) {
 		ModelAndView ml = new ModelAndView();
-		//oppen_id = getOppen_id(session);
-		oppen_id = "otwhkwERAfrnEXpO7Yh79vC6SX2A";
+		oppen_id = getOppen_id(session);
+		//oppen_id = "otwhkwERAfrnEXpO7Yh79vC6SX2A";
 		cart.setOppen_id(oppen_id);
 		List<Cart> list = cartService.list(cart); // 获取订单信息
 		Float tprice = cartService.goodstotalprice(cart);// 总价
