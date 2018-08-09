@@ -67,13 +67,12 @@
 	<script type="text/javascript">
 		function add(){
 			var id = $('#id').val();
-			var sellerId = 1;
 			var firstCategory = $('#firstCategory').val();
 			var secondCategory = $('#secondCategory').val();
 			$.ajax({
 				url:'updateCategoryEnter.html',
 				type:'post',
-				data:{'id':id,'sellerId':sellerId,'firstCategory':firstCategory,'secondCategory':secondCategory},
+				data:{'id':id,'firstCategory':firstCategory,'secondCategory':secondCategory},
 				success:function(rs){
 					if(rs==1){
 						alert("提交成功！");

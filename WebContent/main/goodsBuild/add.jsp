@@ -176,14 +176,25 @@
 		var goodsBrand = $('#goodsBrand').val();
 		var goodsMaterial = $('#goodsMaterial').val();
 		var goodsColor = $('#goodsColor').val();
+		var r =  /^[0-9]*$/;
+		if(!r.test(goodsPrice)) {
+			alert("价格请填写数字");
+			return false;
+		}
+		
+		if(!r.test(goodsNum)) {
+			alert("库存请填写数字");
+			return false;
+		}
 		
 		$.ajax({
 			url:'goodsBuildAdd.html',
-			type:'post',
+			type:'POST',
 		    data: 'goodsName='+goodsName+'&goodsSpe='+goodsSpe+'&goodsImg='+goodsImg+'&goodsPrice='+goodsPrice
 			+'&goodsDetail='+goodsDetail+'&firstCategory='+firstCategory+'&secondCategory='+secondCategory
 			+'&goodsNum='+goodsNum+'&goodsBrand='+goodsBrand+'&goodsMaterial='+goodsMaterial
-			+'&goodsColor='+goodsColor,
+			+'&goodsColor='+goodsColor, 
+			//data:{"goodsName":goodsName},
 			dataType:'json',
 			success:function(rs){
 				if(rs==1){

@@ -20,16 +20,16 @@
 			password="estate123" />
 			
 		<!-- 所生成的bean的位置默认资源包src -->
-		<javaModelGenerator targetPackage="com.yq.entity.evaluate"
+		<javaModelGenerator targetPackage="com.yq.entity.community"
 			targetProject="weixin" />
 		<!-- 所生成的xml的影射文件的位置,默认资源包src -->
-		<sqlMapGenerator targetPackage="com.yq.entity.evaluate"
+		<sqlMapGenerator targetPackage="com.yq.dao.community"
 			targetProject="weixin" />
 		<!-- 生成Dao类存放位置 -->
-		<!-- <javaClientGenerator type="XMLMAPPER" targetPackage="com.yq.dao.evaluate"
-			targetProject="weixin" /> -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.yq.dao.community"
+			targetProject="weixin" />
 		<!-- 为哪些表生成代码 tableName:表名 schema:不用填写,其余属性是禁用例子查询的生成 -->
-			<table schema="" tableName="jdb_seller" enableCountByExample="false"
+			<table schema="" tableName="jdb_user_village" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"
 		>

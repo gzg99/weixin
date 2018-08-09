@@ -35,7 +35,7 @@ public class CategoryEnterService {
 	}
 	
 	public int updateCategoryEnterById(CategoryEnter record) {
-		return categoryEnterDao.updateByPrimaryKey(record);
+		return categoryEnterDao.updateByPrimaryKeySelective(record);
 	}
 	
 	public List<String> getSecondCategoryByFirst(String firstCategory) {

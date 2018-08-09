@@ -123,6 +123,7 @@
 					alert("成功！");
 					location.reload();
 				}else{
+					alert(rs);
 					alert("失败！");
 				}
 			}

@@ -78,10 +78,9 @@ public class CategoryEnterCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "/main/updateCategoryEnter.html")
-	public String updateCategoryEnter(Long id, Long sellerId, String firstCategory, String secondCategory) {
+	public String updateCategoryEnter(Long id, String firstCategory, String secondCategory) {
 		//查询分类名称是否重复
 		CategoryEnter category1 = new CategoryEnter();
-		category1.setSellerId(sellerId);
 		category1.setFirstCategory(firstCategory);
 		category1.setSecondCategory(secondCategory);
 		List<CategoryEnter> list = categoryEnterService.getCategoryByRecord(category1);
@@ -91,11 +90,9 @@ public class CategoryEnterCtrl {
 		//更新sellerId下的所有一级分类
 		CategoryEnter category = new CategoryEnter();
 		category.setFirstCategory(firstCategory); 
-		category.setSellerId(sellerId);
 		categoryEnterService.updateCategoryEnter(category);
 		CategoryEnter ctg = new CategoryEnter();
 		ctg.setFirstCategory(firstCategory); 
-		ctg.setSellerId(sellerId);
 		ctg.setSecondCategory(secondCategory);
 		ctg.setId(id);
 		return categoryEnterService.updateCategoryEnterById(ctg) + "";

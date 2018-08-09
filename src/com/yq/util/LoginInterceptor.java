@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
   {
-    HttpSession session = request.getSession();
+    /*HttpSession session = request.getSession();
     boolean flag = false;
 
     flag = session.getAttribute("oppen_id") != null;
@@ -47,9 +47,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
           url + 
           "&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect");
       }
-    }
-    return flag;
-	//  return true;
+    }*/
+ // return flag;
+    return true;
  }
 
   public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
