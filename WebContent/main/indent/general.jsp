@@ -32,20 +32,20 @@
 	  </div>
 	  <div class="content">
 	        <div class="row">
-		         <a href="v4订单管理.html" class="lk_dd" target="_self">待发货订单<span>${generalSituation.shipments}</span></a>
-				<a href="v4订单管理.html" class="lk_dd" target="_self">待处理维权<span>${generalSituation.safeguard}</span></a>
+		        <a href="indentList.html?indentState=1" class="lk_dd" target="_self">待发货订单<span>${generalSituation.shipments}</span></a>
+				<a href="indentList.html?indentState=3" class="lk_dd" target="_self">待处理维权<span>${generalSituation.safeguard}</span></a>
 		    </div>
 		   <div class="row">
 		        <div class="gjzb">
 			          <div class="gjzb_bt">昨日关键指标</div>
 					  <ul class="gjzb_nr w100">
-					    <li><a href="v4订单管理.html" target="_self"><p>订单数</p><p class="num">${generalSituation.ds}</p></a></li>
-						  <li><a href="v4订单管理.html" target="_self"><p>成交商品数</p><p class="num">${generalSituation.num}</p></a></li>
-						  <li><a href="v4订单管理.html" target="_self"><p>成交额</p><p class="num">¥${generalSituation.money}</p></a></li>
+					    <li><a href="indentList.html" target="_self"><p>订单数</p><p class="num">${generalSituation.ds}</p></a></li>
+						  <li><a href="indentList.html?indentState=2" target="_self"><p>成交商品数</p><p class="num">${generalSituation.num}</p></a></li>
+						  <li><a href="indentList.html" target="_self"><p>成交额</p><p class="num">¥${generalSituation.money}</p></a></li>
 					  </ul>
 			   </div>
 		  </div>
-		  <div class="row">
+		  <!-- <div class="row">
 		       <div class="dmtp">
 			          <div class="dmtp_bt">店铺图片</div>
 				      <div class="dmtp_nr">
@@ -79,7 +79,7 @@
 				     </div>
 				     <a class="dmtp_nr_bj">编辑</a>
 			   </div>
-		  </div>
+		  </div> -->
 	  </div>
   </body>
 </html>

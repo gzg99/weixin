@@ -27,10 +27,7 @@ import com.weixin.pay.action.TopayServlet;
 import com.weixin.pay.util.GetWxOrderno;
 import com.yq.entity.Address;
 import com.yq.entity.Area;
-import com.yq.entity.Cart;
-import com.yq.entity.CartBuild;
 import com.yq.entity.GoodsBuild;
-import com.yq.entity.Order;
 import com.yq.entity.User;
 import com.yq.entity.indent.JdbIndent;
 import com.yq.service.AddressService;
@@ -130,9 +127,11 @@ public class IndentController extends StringUtil{
 	 * @return
 	 */
 	@RequestMapping(value = "main/indent/general.html")
-	public ModelAndView general() {
+	public ModelAndView general(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView("main/indent/general");
-		Map<String, Object> generalSituation = indentService.generalSituation();
+		Map<String,Object> idMap = this.getSeeion(request);
+		String userId = idMap.get("id").toString();
+		Map<String, Object> generalSituation = indentService.generalSituation(userId);
 		view.addObject("generalSituation", generalSituation);
 		return view;
 	}

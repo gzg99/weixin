@@ -46,8 +46,7 @@ public class IndentServiceImpl implements IndentService {
 	 * 概况
 	 */
 	@Override
-	public Map<String, Object> generalSituation() {
-		String userId = "";
+	public Map<String, Object> generalSituation(String userId) {
 		JdbIndent record = new JdbIndent();
 		record.setUserId(userId);
 		record.setIndentState("1");

@@ -313,7 +313,7 @@
 			} else if(indentState == 3) {
 				
 				$("#selwei").addClass("active");
-			}else if(indentState == 4) {
+			} else if(indentState == 4) {
 				$("#selwan").addClass("active");
 			} else {
 				$("#selAll").addClass("active");

@@ -11,7 +11,7 @@ public interface IndentService {
 
 	int updateByPrimaryKeySelective(JdbIndent record);
 
-	Map<String, Object> generalSituation();
+	Map<String, Object> generalSituation(String userId);
 	
 	JdbIndent selectByPrimaryKey(String id);
 	
