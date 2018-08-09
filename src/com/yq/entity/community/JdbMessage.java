@@ -10,6 +10,8 @@ public class JdbMessage {
     private Date publishTime;
 
     private String type;
+    
+    private String title;
 
     private String messageContent;
 
@@ -52,4 +54,12 @@ public class JdbMessage {
     public void setMessageContent(String messageContent) {
         this.messageContent = messageContent;
     }
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 }
