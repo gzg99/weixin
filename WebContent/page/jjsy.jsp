@@ -18,7 +18,7 @@
     <title></title>
     <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
     <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
-    <script src="https://webapi.amap.com/maps?v=1.4.8&key='9e1d9c358dabbf185022c2c8cddaba94'"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.8&key="></script>
     <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
 </head>
 
@@ -45,10 +45,19 @@
 	<jsp:include page="footer4.jsp"></jsp:include>
 	
 	<script>
+	    var longitude = "${list[0].longitude}";
+	    var latitude = "${list[0].latitude}";
+	    if(longitude == null || longitude == "") {
+	    	longitude = "117.123191";
+	    }
+	    if(latitude == null || latitude == "") {
+	    	latitude = "36.649182";
+	    }
 	    var map = new AMap.Map('container', {
+	    	
 	        resizeEnable: true,
 	        zoom:11,
-	        center: ["${list[0].longitude}", "${list[0].latitude}"]
+	        center: [longitude, latitude]
 	    });
 	</script>
 
