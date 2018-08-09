@@ -16,7 +16,7 @@
   </sql>
   <sql id="Blob_Column_List" >
     message_content
-  </sql>
+  </sql> 
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
