@@ -44,4 +44,8 @@ public class GoodsBuildService {
 		map.put("secondCategory", secondCategory);
 		return goodsBuildDao.getGoodsBuildListBySellerId(map);
 	}
+	
+	public int deleteGoodsBySellerId(Long sellerId) {
+		return goodsBuildDao.deleteGoodsBySellerId(sellerId);
+	}
 }

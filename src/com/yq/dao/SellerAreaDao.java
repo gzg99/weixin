@@ -19,4 +19,6 @@ public interface SellerAreaDao {
 	
 	public SellerArea getSellerAreaById(Long id);
 	
+	public int sellerAreaDel(Long id);
+	
 }

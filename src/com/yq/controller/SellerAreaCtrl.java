@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.Seller;
 import com.yq.entity.SellerArea;
+import com.yq.service.GoodsBuildService;
 import com.yq.service.SellerAreaService;
 import com.yq.service.SellerService;
 import com.yq.util.MD5Util;
@@ -43,6 +44,9 @@ public class SellerAreaCtrl extends StringUtil {
 	
 	@Autowired
 	private SellerService sellerService;
+	
+	@Autowired
+	private GoodsBuildService goodsBuildService;
 	
 	@RequestMapping(value = "main/sellerAreaAddjsp.html")
 	public ModelAndView sellerAreaAddjsp() {
@@ -196,6 +200,20 @@ public class SellerAreaCtrl extends StringUtil {
 		map.put("sellerDetail", sellerDetail);
 		map.put("addTime", addTime);
 		return sellerAreaService.insert(map) + "";
+	}
+	
+	@RequestMapping(value = "/main/sellerAreaDel.html")
+	@ResponseBody
+	public String sellerAreaDel(Long id) {
+		//根据商圈id查询所有商家
+		List<Seller> list = sellerService.getSellerListBySellerAreaId(id);
+		//删除商家下所有的商品及商家
+		for(Seller seller: list) {
+			goodsBuildService.deleteGoodsBySellerId(seller.getId());
+			sellerService.deleteByPrimaryKey(seller.getId());
+		}
+		//删除商圈
+		return sellerAreaService.delSellerArea(id) + "";
 	}
 	
 	@ResponseBody

@@ -26,4 +26,6 @@ public interface GoodsBuildDao {
     List<GoodsBuild> getGoodsBuildByCondition(GoodsBuildSearchVo search);
     
     List<GoodsBuild> getGoodsBuildListBySellerId(Map<String, Object> map);
+    
+    int deleteGoodsBySellerId(Long sellerId);
  }

@@ -109,21 +109,20 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	function del(goods_id){
+	function del(id){
 		var  b = confirm('确定删除？');
 		if(!b){
 		return ;
 		}
 		$.ajax({
-			url:'goodsUpstatus.html',
+			url:'sellerAreaDel.html',
 			type:'post',
-			data:'goods_id='+goods_id+'&status=0',
+			data:'id='+id,
 			success:function(rs){
 				if(rs==1){
 					alert("成功！");
 					location.reload();
 				}else{
-					alert(rs);
 					alert("失败！");
 				}
 			}

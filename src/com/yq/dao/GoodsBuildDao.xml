@@ -356,4 +356,9 @@
 	 and second_category=#{secondCategory,jdbcType=VARCHAR}
   </select>
   
+  
+  <delete id="deleteGoodsBySellerId" parameterType="java.lang.Long">
+  	delete * from jdb_goods_build where seller_id=#{sellerId,jdbcType=BIGINT}
+  </delete>
+  
 </mapper>

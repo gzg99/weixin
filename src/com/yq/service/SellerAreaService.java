@@ -38,4 +38,8 @@ public class SellerAreaService {
 	public SellerArea getSellerAreaById(Long id) {
 		return sellerAreaDao.getSellerAreaById(id);
 	}
+	
+	public int delSellerArea(Long id) {
+		return sellerAreaDao.sellerAreaDel(id);
+	}
 }
