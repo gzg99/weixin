@@ -57,9 +57,9 @@ public class SellerAreaCtrl extends StringUtil {
 	
 
 	@RequestMapping(value = "page/getAllSellerAreaList.html")
-	public ModelAndView getAllSellerAreaList() {
+	public ModelAndView getAllSellerAreaList(String type) {
 		ModelAndView mv = new ModelAndView();
-		List<SellerArea> list = sellerAreaService.getAllSellerArea();
+		List<SellerArea> list = sellerAreaService.getAllSellerArea(type);
 		mv.addObject("list", list);
 		mv.setViewName("page/jjsy");
 		return mv;
@@ -67,13 +67,13 @@ public class SellerAreaCtrl extends StringUtil {
 	
 	@RequestMapping(value="main/getAllSellerArea.html")
 	@ResponseBody
-	public String getAllSellerArea() {
-		List<SellerArea> list = sellerAreaService.getAllSellerArea();
+	public String getAllSellerArea(String type) {
+		List<SellerArea> list = sellerAreaService.getAllSellerArea(type);
 		return JSONObject.valueToString(list);
 	}
 	
 	@RequestMapping(value = "page/getSellerListBySellerAreaId.html")
-	public ModelAndView getSellerListBySellerAreaId(Long sellerAreaId, String firstLink, String secondLink) {
+	public ModelAndView getSellerListBySellerAreaId(Long sellerAreaId, String firstLink, String secondLink, String type) {
 		ModelAndView mv = new ModelAndView();
 		List<Seller> list = sellerService.getSellerListBySellerAreaId(sellerAreaId);
 		mv.addObject("list", list);
@@ -94,6 +94,10 @@ public class SellerAreaCtrl extends StringUtil {
 		if(StringUtils.isNotBlank(id)){
 			Seller seller = sellerService.getSeller(id);
 			view.addObject("seller",seller);
+			//获取商圈名称
+			SellerArea sellerArea = sellerAreaService.getSellerAreaById(seller.getSellerAreaId());
+			view.addObject("sellerAreaName", sellerArea.getSellerArea());
+			view.addObject("type", sellerArea.getType());
 		}
 		
 		return view;
@@ -189,7 +193,7 @@ public class SellerAreaCtrl extends StringUtil {
 	@ResponseBody
 	@RequestMapping(value = "/main/sellerAreaInsert.html")
 	public String sellerAreaInsert(String sellerArea, String firstLink, String secondLink,
-			String sellerImg, String sellerDetail ) {
+			String sellerImg, String sellerDetail, String type) {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String addTime =sf.format(new Date());
 		Map<String, Object> map = new HashMap<>();
@@ -199,6 +203,7 @@ public class SellerAreaCtrl extends StringUtil {
 		map.put("sellerImg", sellerImg);
 		map.put("sellerDetail", sellerDetail);
 		map.put("addTime", addTime);
+		map.put("type", type);
 		return sellerAreaService.insert(map) + "";
 	}
 	
@@ -219,7 +224,7 @@ public class SellerAreaCtrl extends StringUtil {
 	@ResponseBody
 	@RequestMapping(value = "/main/updateSellerArea.html")
 	public Object updateSellerArea(Long id, String sellerArea, String firstLink, String secondLink,
-			String sellerImg, String sellerDetail,String longitude,String latitude) {
+			String sellerImg, String sellerDetail,String longitude,String latitude,String type) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("sellerArea", sellerArea);
 		map.put("firstLink", firstLink);
@@ -229,6 +234,7 @@ public class SellerAreaCtrl extends StringUtil {
 		map.put("longitude", longitude);
 		map.put("latitude", latitude);
 		map.put("id", id);
+		map.put("type", type);
 		return sellerAreaService.update(map) + "";
 
 	}

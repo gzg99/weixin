@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yq.dao.SellerAreaDao">
-	<select id="getAllSellerArea" resultType="com.yq.entity.SellerArea">
+	<select id="getAllSellerArea" parameterType="java.lang.String" resultType="com.yq.entity.SellerArea">
 		select 
 			id as id, 
 			seller_area as sellerArea, 
@@ -10,9 +10,11 @@
 			seller_img as sellerImg, 
 			seller_detail as sellerDetail, 
 			add_time as addTime,
-			longitude,
-			latitude
+			longitude as longitude,
+			latitude as latitude,
+			type as type 
 		from jdb_seller_area
+		 where type=#{type}
 	</select>
 	
 	<select id="getSellerAreaById" resultType="com.yq.entity.SellerArea">
@@ -24,8 +26,9 @@
 			seller_img as sellerImg, 
 			seller_detail as sellerDetail, 
 			add_time as addTime,
-			longitude,
-			latitude
+			longitude as longitude,
+			latitude as latitude,
+			type as type 
 		from jdb_seller_area 
 		where 
 		id=#{id}
@@ -40,7 +43,8 @@
 			seller_detail,
 			add_time,
 			longitude,
-			latitude
+			latitude,
+			type
 		)values(
 			#{sellerArea},
 			#{firstLink},
@@ -49,7 +53,8 @@
 			#{sellerDetail},
 			#{addTime},
 			#{longitude},
-			#{latitude}
+			#{latitude},
+			#{type}
 		)
 	</insert>
 	
@@ -64,7 +69,8 @@
     		seller_detail=#{sellerDetail},
     		add_time=#{addTime} ,
     		longitude = #{longitude},
-			latitude = #{latitude}
+			latitude = #{latitude},
+			type = #{type} 
      	where 
      		id=#{id}
     </update>
@@ -82,8 +88,9 @@
 			seller_img as sellerImg, 
 			seller_detail as sellerDetail, 
 			add_time as addTime,
-			longitude,
-			latitude
+			longitude as longitude,
+			latitude as latitude,
+			type as type 
 		 from jdb_seller_area
 	   	order by add_time desc 
 	   	<if test="pageSize!=null and pageSize!=0">

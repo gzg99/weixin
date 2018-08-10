@@ -71,6 +71,16 @@
 						placeholder="请填写名称" value="" class="input-text" style="width: 80%">
 				</div>
 			</div><br>
+			<div class="row cl">			
+				<label class="form-label col-2">类别：</label>
+				<div class="formControls col-10">
+					<select id="type" class="input-text" style="width: 80%">
+						<option value="建材">建材</option>
+						<option value="家居">家居</option>
+						<option value="花卉">花卉</option>
+					</select>
+				</div>
+			</div><br>
 			<div class="row cl">
 				<label class="form-label col-2">一层平面图：</label>
 				<div class="formControls col-10">
@@ -127,12 +137,13 @@
 		var secondLink = $('#filepath1').val();
 		var sellerImg = $('#filepath2').val();
 		var sellerDetail = $('#sellerDetail').val();
+		var type=$("#type").val();
 		
 		$.ajax({
 			url:'sellerAreaInsert.html',
 			type:'post',
 			data:'sellerArea='+sellerArea+'&firstLink='+firstLink+'&secondLink='+secondLink
-			+'&sellerImg='+sellerImg+'&sellerDetail='+sellerDetail,
+			+'&sellerImg='+sellerImg+'&sellerDetail='+sellerDetail+'&type='+type,
 			success:function(rs){
 				if(rs==1){
 					alert("添加成功！");

@@ -19,6 +19,8 @@ public class SellerArea {
 	private String longitude;//经度
 	
 	private String latitude;//纬度
+	
+	private String type;
 
 	public Long getId() {
 		return id;
@@ -90,6 +92,14 @@ public class SellerArea {
 
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

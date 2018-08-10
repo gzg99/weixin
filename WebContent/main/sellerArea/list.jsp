@@ -50,12 +50,13 @@
 						<th width="25px"><input type="checkbox" name="" value=""></th>
 						<th width="30px">ID</th>
 						<th width="15%">名称</th>
-						<th width="20%">一层平面图</th>
-						<th width="20%">二层平面图</th>
-						<th width="20%">商圈图片</th>
-						<th width="20%">经度</th>
-						<th width="20%">纬度</th>
-						<th width="20%">操作</th>
+						<th width="4">类型</th>
+						<th width="15%">一层平面图</th>
+						<th width="15%">二层平面图</th>
+						<th width="15%">商圈图片</th>
+						<th width="10%">经度</th>
+						<th width="10%">纬度</th>
+						<th width="15%">操作</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +65,7 @@
 							<td><input type="checkbox" value="1" name=""></td>
 							<td>${s.count}</td>
 							<td>${list.sellerArea}</td>
+							<td>${list.type}</td>
 							<td><img alt="" src="${list.firstLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.secondLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.sellerImg}" width="50" height="50"> </td>

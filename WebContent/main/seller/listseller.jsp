@@ -53,12 +53,12 @@
 						<th width="25px"><input type="checkbox" name="" value=""></th>
 						<th width="30px">序号</th>
 						<th width="15%">用户名</th>
-						<th width="20%">商家所属商圈</th>
-						<th width="20%">商家地址</th>
-						<th width="20%">商家名称</th>
-						<th width="20%">商家图片</th>
-						<th width="20%">增加时间</th>
-						<th width="20%">操作</th>
+						<th width="10%">商家所属商圈</th>
+						<th width="15%">商家地址</th>
+						<th width="10%">商家名称</th>
+						<th width="15%">商家图片</th>
+						<th width="15%">增加时间</th>
+						<th width="15%">操作</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -67,7 +67,6 @@
 							<td><input type="checkbox" value="1" name=""></td>
 							<td>${s.count}</td>
 							<td>${list.userName}</td>
-							
 							<td>${list.sellerArea}</td>
 							<td>${list.address}</td>
 							<td>${list.sellerName}</td>

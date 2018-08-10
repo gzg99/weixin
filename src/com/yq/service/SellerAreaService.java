@@ -15,8 +15,8 @@ public class SellerAreaService {
 	@Autowired
 	private SellerAreaDao sellerAreaDao;
 
-	public List<SellerArea> getAllSellerArea(){
-		return sellerAreaDao.getAllSellerArea();
+	public List<SellerArea> getAllSellerArea(String type){
+		return sellerAreaDao.getAllSellerArea(type);
 	}
 	
 	public int insert(Map<String, Object> map) {

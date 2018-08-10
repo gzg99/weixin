@@ -30,7 +30,7 @@
 		<c:forEach items="${list}" var="list">
 			<li>
 				<a href="getSellerListBySellerAreaId.html?sellerAreaId=${list.id }&firstLink=${list.firstLink}&
-				secondLink=${list.secondLink}">
+				secondLink=${list.secondLink}&type=${list.type}">
 					<img src="${list.sellerImg }" alt="" />
 					<div class="sq_list_bt">
 						<h1>${list.sellerArea }</h1>

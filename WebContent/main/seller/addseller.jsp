@@ -72,6 +72,28 @@
 					<input type="text" id="userName" name="userName" placeholder="请填写名称" value="${seller.userName}"
 						class="input-text" style="width: 80%">
 				</div>
+							
+				<label class="form-label col-2">类别：</label>
+				<div class="formControls col-10">
+					<select id="type" name="type" class="input-text" style="width: 80%" onchange="sellerAreaList()">
+						<c:if test="${type == '建材' }">
+							<option value="建材" selected="selected">建材</option>
+							<option value="家居">家居</option>
+							<option value="花卉">花卉</option>
+						</c:if>
+						<c:if test="${type == '家居' }">
+							<option value="建材">建材</option>
+							<option value="家居" selected="selected">家居</option>
+							<option value="花卉">花卉</option>
+						</c:if>
+						<c:if test="${type == '花卉' }">
+							<option value="建材">建材</option>
+							<option value="家居">家居</option>
+							<option value="花卉" selected="selected">花卉</option>
+						</c:if>
+						
+					</select> 
+				</div>
 				
 				<label class="form-label col-2" style="margin-top:20px;">商家昵称：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
@@ -126,9 +148,37 @@
 	
 	<script type="text/javascript">
 		$(function(){
+			var type=$("#type").val();
 			$.ajax({
 				url:"getAllSellerArea.html",
 				type:"POST",
+				data:{"type":type},
+				dataType:'json',
+				success:function(result){
+					var str = "";
+					for(var i = 0;i<result.length;i++){
+						if(result[i].sellerArea == sellerAreaName){
+							$("#sellerAreaId").val(result[i].id);
+							str += "<option value='"+result[i].id+"' selected="selected">"+result[i].sellerArea+"</option>";
+						} else {
+							str += "<option value='"+result[i].id+"'>"+result[i].sellerArea+"</option>";
+						}
+					}
+					$("#sellerAreaId1").html(str);
+				}
+			});
+		});
+	
+		function sellerAreaList() {
+			var type=$("#type").val();
+			if(type == "" || type == undefined) {
+				alert("请先选择类型");
+				return;
+			}
+			$.ajax({
+				url:"getAllSellerArea.html",
+				type:"POST",
+				data:{"type":type},
 				dataType:'json',
 				success:function(result){
 					var str = "";
@@ -141,7 +191,7 @@
 					$("#sellerAreaId1").html(str);
 				}
 			});
-		});
+		}
 		
 		function getSellerArea(){
 			$("#sellerAreaId").val($("#sellerAreaId1").val());

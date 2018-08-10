@@ -21,6 +21,7 @@ public class Seller {
 	private String addTime;
 	
 	private String sellerArea;
+	
 
 	public Long getId() {
 		return id;

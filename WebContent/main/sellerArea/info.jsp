@@ -73,16 +73,38 @@
 				</div>
 			</div><br>
 			<div class="row cl">			
+				<label class="form-label col-2">类别：</label>
+				<div class="formControls col-10">
+					<select id="type" class="input-text" style="width: 80%">
+						<c:if test="${sellerArea.type == '建材' }">
+							<option value="建材" selected="selected">建材</option>
+							<option value="家居">家居</option>
+							<option value="花卉">花卉</option>
+						</c:if>
+						<c:if test="${sellerArea.type == '家居' }">
+							<option value="建材">建材</option>
+							<option value="家居" selected="selected">家居</option>
+							<option value="花卉">花卉</option>
+						</c:if>
+						<c:if test="${sellerArea.type == '花卉' }">
+							<option value="建材">建材</option>
+							<option value="家居">家居</option>
+							<option value="花卉" selected="selected">花卉</option>
+						</c:if>
+					</select>
+				</div>
+			</div><br>
+			<div class="row cl">			
 				<label class="form-label col-2">经度：</label>
 				<div class="formControls col-10">
-					<input type="text" id="sellerArea"
+					<input type="text" id="longitude"
 						placeholder="请填写经度" value="${sellerArea.longitude }" class="input-text" style="width: 80%">
 				</div>
 			</div><br>
 			<div class="row cl">			
 				<label class="form-label col-2">纬度：</label>
 				<div class="formControls col-10">
-					<input type="text" id="sellerArea"
+					<input type="text" id="latitude"
 						placeholder="请填写纬度" value="${sellerArea.latitude }" class="input-text" style="width: 80%">
 				</div>
 			</div><br>
@@ -151,12 +173,14 @@
 		var sellerDetail = $('#sellerDetail').val();
 		var longitude = $('#longitude').val();
 		var latitude = $('#latitude').val();
+		var type=$("#type").val();
 		
 		$.ajax({
 			url:'updateSellerArea.html',
 			type:'post',
 			data:'id='+id+'&sellerArea='+sellerArea+'&firstLink='+firstLink+'&secondLink='+secondLink
-			+'&sellerImg='+sellerImg+'&sellerDetail='+sellerDetail+'&longitude'+longitude+'&latitude'+latitude,
+			+'&sellerImg='+sellerImg+'&sellerDetail='+sellerDetail+'&longitude='+longitude+'&latitude='+latitude
+			+'&type='+type,
 			success:function(rs){
 				if(rs==1){
 					alert("更新成功！");
