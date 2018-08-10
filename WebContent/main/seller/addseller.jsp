@@ -127,6 +127,7 @@
 				<div class="formControls col-10" id="img2">
 					<img alt="" src="${seller.sellerImg}" style="width:100px;height:100px">
 				</div>
+				<input type="hidden" id="sellerAreaName" value="${sellerAreaName }">
 			</div><br>
 				</div>
 			</div>
@@ -149,6 +150,7 @@
 	<script type="text/javascript">
 		$(function(){
 			var type=$("#type").val();
+			var sellerAreaName = $("#sellerAreaName").val();
 			$.ajax({
 				url:"getAllSellerArea.html",
 				type:"POST",
@@ -159,7 +161,7 @@
 					for(var i = 0;i<result.length;i++){
 						if(result[i].sellerArea == sellerAreaName){
 							$("#sellerAreaId").val(result[i].id);
-							str += "<option value='"+result[i].id+"' selected="selected">"+result[i].sellerArea+"</option>";
+							str += "<option value='"+result[i].id+"' selected='selected'>"+result[i].sellerArea+"</option>";
 						} else {
 							str += "<option value='"+result[i].id+"'>"+result[i].sellerArea+"</option>";
 						}
