@@ -99,7 +99,7 @@ public class EvaluateController extends StringUtil{
 	 * @param commodityId
 	 * @return
 	 */
-	@RequestMapping(value="page/evaluate/showEvaluateAj.html")
+	@RequestMapping(value="page/showEvaluateAj.html")
 	public @ResponseBody String showEvaluateAj(String commodityId,String grade) {
 		Map<String,Object> mapData = new HashMap<String,Object>();
 		mapData.put("commodityId", commodityId);
