@@ -252,9 +252,9 @@
 .quanbu-title1 .current a{ color:#f60;}
 
 .quanbu-ul1{ width:100%; padding:6px 0; background-color:#f9f8f2; position:fixed; left:0; bottom:0;}
-.quanbu-ul11{ width:100%; padding:6px 0; background-color:#f9f8f2; position:fixed; left:0; bottom:0;}
+.quanbu-ul11{ width:100%; padding:0.1rem 0; background-color:#f9f8f2; position:fixed; left:0; bottom:0;}
 .quanbu-ul1 li{ float:left; width:20%; text-align:center;}
-.quanbu-ul11 li{ float:left; width:33%; text-align:center;}
+.quanbu-ul11 li{ float:left; width:33%; text-align:center; height: 0.8rem;}
 .quanbu-ul1 li .qu-tu1{ width:100%; height:100%; margin:0 auto;}
 .quanbu-ul11 li .qu-tu1{ width:100%; height:100%; margin:0 auto;}
 .qu-tu1 .atu1{}
@@ -265,7 +265,7 @@
 .quanbu-ul1 .current .atu1{ display:none;}
 .quanbu-ul1 .current .atu2{ display:block;}
 
-.quanbu-ul11 li .qu-ul1a{ font-size:13px; color:#353535;}
+.quanbu-ul11 li .qu-ul1a{ font-size:0.13rem; color:#353535;margin-top: -0.25rem;display: }
 .quanbu-ul11 .current a{ color:#f29133;}
 .quanbu-ul11 .current .atu1{ display:none;}
 .quanbu-ul11 .current .atu2{ display:block;}
