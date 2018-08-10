@@ -25,8 +25,8 @@
         
     	  	<li>
         	<div class="qu-tu1" align="center">
-            	<a href="center.html" class="atu1"><img src="images/sjsc-18.png" style="width: 22px;height: 22px"></a>
-            	<a href="center.html" class="atu2"><img src="images/sjsc18-1.png" style="width: 22px;height: 22px"></a>
+            	<a href="center.html" class="atu1"><img src="images/sjsc-18.png" style="width: 0.5rem;height: 0.5rem"></a>
+            	<a href="center.html" class="atu2"><img src="images/sjsc18-1.png" style="width: 0.5rem;height: 0.5rem"></a>
             </div>
             <a href="center.html" class="qu-ul1a">我的</a>
         </li>
