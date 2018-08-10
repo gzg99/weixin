@@ -17,7 +17,7 @@ a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webki
 .menu{ position: fixed; bottom: 0; left: 0; width:7.5rem; height: 1.16rem;}
 .map{ height:20px; width: 100%; }
 .small_title{ height:0.5rem; line-height: 0.5rem; text-align: center;font-size:0.25rem; color: #b5b4b4; }
-.sq_list{width: 7.5rem;float: left;padding-bottom: 1.0rem;padding-top:200px;}
+.sq_list{width: 7.5rem;float: left;padding-bottom: 1.0rem;padding-top:3.0rem;}
 .sq_list li{ width:7.1rem; border-top: #CDCDCD solid 0.01rem;  padding: 0.6rem 0.2rem; float: left;}
 .sq_list li img{ height:1.15rem; width: 1.6rem; float: left; margin-right:0.2rem;}
 .sq_list li h1{ font-size: 0.28rem; line-height: 0.28rem; margin-top: 0.04rem;}
