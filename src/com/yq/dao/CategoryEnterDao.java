@@ -1,6 +1,7 @@
 package com.yq.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yq.entity.CategoryEnter;
 
@@ -21,7 +22,7 @@ public interface CategoryEnterDao {
     
     List<CategoryEnter> categoryFirstBySellerId(Long sellerId);
     
-    List<String> getSecondCategoryByFirst(String firstCategory);
+    List<String> getSecondCategoryByFirst(Map<String, Object> map);
     
     List<CategoryEnter> getCategoryByRecord(CategoryEnter record);
 }

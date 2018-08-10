@@ -1,6 +1,8 @@
 package com.yq.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,8 +40,11 @@ public class CategoryEnterService {
 		return categoryEnterDao.updateByPrimaryKeySelective(record);
 	}
 	
-	public List<String> getSecondCategoryByFirst(String firstCategory) {
-		return categoryEnterDao.getSecondCategoryByFirst(firstCategory);
+	public List<String> getSecondCategoryByFirst(String firstCategory, Long sellerId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("firstCategory", firstCategory);
+		map.put("sellerId", sellerId);
+		return categoryEnterDao.getSecondCategoryByFirst(map);
 	}
 	
 	public List<CategoryEnter> categoryEnterList(Long sellerId) {

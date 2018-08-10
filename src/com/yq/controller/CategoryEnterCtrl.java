@@ -35,8 +35,8 @@ public class CategoryEnterCtrl {
 	
 	@RequestMapping(value = "/main/getSecondCategoryByFirst.html")
 	@ResponseBody
-	public void getSecondCategoryByFirst(String firstCategory, HttpServletResponse response) {
-		List<String> list = categoryEnterService.getSecondCategoryByFirst(firstCategory);
+	public void getSecondCategoryByFirst(String firstCategory, HttpServletResponse response,HttpSession session) {
+		List<String> list = categoryEnterService.getSecondCategoryByFirst(firstCategory,(Long)session.getAttribute("id"));
 		JSONArray jsonStrs = JSONArray.fromObject(list);
 		 
 		response.setContentType("text/html;charset=UTF-8");
