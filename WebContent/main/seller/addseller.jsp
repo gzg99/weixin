@@ -76,20 +76,20 @@
 				<label class="form-label col-2">类别：</label>
 				<div class="formControls col-10">
 					<select id="type" name="type" class="input-text" style="width: 80%" onchange="sellerAreaList()">
-						<c:if test="${type == '建材' }">
-							<option value="建材" selected="selected">建材</option>
-							<option value="家居">家居</option>
-							<option value="花卉">花卉</option>
+						<c:if test="${type == 1 }">
+							<option value="1" selected="selected">建材</option>
+							<option value="2">家居</option>
+							<option value="3">花卉</option>
 						</c:if>
-						<c:if test="${type == '家居' }">
-							<option value="建材">建材</option>
-							<option value="家居" selected="selected">家居</option>
-							<option value="花卉">花卉</option>
+						<c:if test="${type == 2 }">
+							<option value="1">建材</option>
+							<option value="2" selected="selected">家居</option>
+							<option value="3">花卉</option>
 						</c:if>
-						<c:if test="${type == '花卉' }">
-							<option value="建材">建材</option>
-							<option value="家居">家居</option>
-							<option value="花卉" selected="selected">花卉</option>
+						<c:if test="${type == 3 }">
+							<option value="1">建材</option>
+							<option value="2">家居</option>
+							<option value="3" selected="selected">花卉</option>
 						</c:if>
 						
 					</select> 

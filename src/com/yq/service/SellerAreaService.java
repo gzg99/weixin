@@ -15,7 +15,7 @@ public class SellerAreaService {
 	@Autowired
 	private SellerAreaDao sellerAreaDao;
 
-	public List<SellerArea> getAllSellerArea(String type){
+	public List<SellerArea> getAllSellerArea(Integer type){
 		return sellerAreaDao.getAllSellerArea(type);
 	}
 	

@@ -65,7 +65,15 @@
 							<td><input type="checkbox" value="1" name=""></td>
 							<td>${s.count}</td>
 							<td>${list.sellerArea}</td>
-							<td>${list.type}</td>
+							<c:if test="${list.type == 1}">
+							<td>建材</td>
+							</c:if>
+							<c:if test="${list.type == 2}">
+							<td>家居</td>
+							</c:if>
+							<c:if test="${list.type == 3}">
+							<td>花卉</td>
+							</c:if>
 							<td><img alt="" src="${list.firstLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.secondLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.sellerImg}" width="50" height="50"> </td>

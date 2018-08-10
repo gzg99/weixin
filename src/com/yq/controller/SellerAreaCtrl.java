@@ -57,7 +57,7 @@ public class SellerAreaCtrl extends StringUtil {
 	
 
 	@RequestMapping(value = "page/getAllSellerAreaList.html")
-	public ModelAndView getAllSellerAreaList(String type) {
+	public ModelAndView getAllSellerAreaList(Integer type) {
 		ModelAndView mv = new ModelAndView();
 		List<SellerArea> list = sellerAreaService.getAllSellerArea(type);
 		mv.addObject("list", list);
@@ -67,13 +67,13 @@ public class SellerAreaCtrl extends StringUtil {
 	
 	@RequestMapping(value="main/getAllSellerArea.html")
 	@ResponseBody
-	public String getAllSellerArea(String type) {
+	public String getAllSellerArea(Integer type) {
 		List<SellerArea> list = sellerAreaService.getAllSellerArea(type);
 		return JSONObject.valueToString(list);
 	}
 	
 	@RequestMapping(value = "page/getSellerListBySellerAreaId.html")
-	public ModelAndView getSellerListBySellerAreaId(Long sellerAreaId, String firstLink, String secondLink, String type) {
+	public ModelAndView getSellerListBySellerAreaId(Long sellerAreaId, String firstLink, String secondLink) {
 		ModelAndView mv = new ModelAndView();
 		List<Seller> list = sellerService.getSellerListBySellerAreaId(sellerAreaId);
 		mv.addObject("list", list);
@@ -193,7 +193,7 @@ public class SellerAreaCtrl extends StringUtil {
 	@ResponseBody
 	@RequestMapping(value = "/main/sellerAreaInsert.html")
 	public String sellerAreaInsert(String sellerArea, String firstLink, String secondLink,
-			String sellerImg, String sellerDetail, String type) {
+			String sellerImg, String sellerDetail, Integer type) {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String addTime =sf.format(new Date());
 		Map<String, Object> map = new HashMap<>();
@@ -224,7 +224,7 @@ public class SellerAreaCtrl extends StringUtil {
 	@ResponseBody
 	@RequestMapping(value = "/main/updateSellerArea.html")
 	public Object updateSellerArea(Long id, String sellerArea, String firstLink, String secondLink,
-			String sellerImg, String sellerDetail,String longitude,String latitude,String type) {
+			String sellerImg, String sellerDetail,String longitude,String latitude,Integer type) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("sellerArea", sellerArea);
 		map.put("firstLink", firstLink);

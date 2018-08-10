@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yq.dao.SellerAreaDao">
-	<select id="getAllSellerArea" parameterType="java.lang.String" resultType="com.yq.entity.SellerArea">
+	<select id="getAllSellerArea" parameterType="java.lang.Integer" resultType="com.yq.entity.SellerArea">
 		select 
 			id as id, 
 			seller_area as sellerArea, 

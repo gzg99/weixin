@@ -7,7 +7,7 @@ import com.yq.entity.SellerArea;
 
 public interface SellerAreaDao {
 
-	public List<SellerArea> getAllSellerArea(String type); 
+	public List<SellerArea> getAllSellerArea(Integer type); 
 	
 	public int insert(Map<String, Object> map);
 	

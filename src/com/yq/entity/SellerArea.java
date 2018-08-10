@@ -20,7 +20,7 @@ public class SellerArea {
 	
 	private String latitude;//纬度
 	
-	private String type;
+	private Integer type;
 
 	public Long getId() {
 		return id;
@@ -94,11 +94,11 @@ public class SellerArea {
 		this.latitude = latitude;
 	}
 
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	

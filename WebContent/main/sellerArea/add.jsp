@@ -75,9 +75,9 @@
 				<label class="form-label col-2">类别：</label>
 				<div class="formControls col-10">
 					<select id="type" class="input-text" style="width: 80%">
-						<option value="建材">建材</option>
-						<option value="家居">家居</option>
-						<option value="花卉">花卉</option>
+						<option value="1">建材</option>
+						<option value="2">家居</option>
+						<option value="3">花卉</option>
 					</select>
 				</div>
 			</div><br>
