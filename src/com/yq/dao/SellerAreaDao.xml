@@ -99,6 +99,6 @@
    </select>
    
    <delete id="sellerAreaDel" parameterType="java.lang.Long">
-   	delete * from jdb_seller_area where id=#{id}
+   	delete  from jdb_seller_area where id=#{id}
    </delete>
 </mapper>

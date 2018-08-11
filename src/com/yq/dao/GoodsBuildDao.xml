@@ -358,7 +358,7 @@
   
   
   <delete id="deleteGoodsBySellerId" parameterType="java.lang.Long">
-  	delete * from jdb_goods_build where seller_id=#{sellerId,jdbcType=BIGINT}
+  	delete from jdb_goods_build where seller_id=#{sellerId,jdbcType=BIGINT}
   </delete>
   
 </mapper>
