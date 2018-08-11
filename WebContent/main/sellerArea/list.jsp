@@ -38,10 +38,12 @@
 	<br>
 	<div class="pd-20">
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
-			<span class="l"> <a href="sellerAreaAddjsp.html"
-				class="btn btn-primary radius"> <i class="Hui-iconfont">&#xe600;</i>
+			<span class="l"> 
+				<a href="sellerAreaAddjsp.html" class="btn btn-primary radius"> 
+				<i class="Hui-iconfont">&#xe600;</i>
 					添加记录
-			</a></span>
+				</a>
+			</span>
 		</div>
 		<div class="mt-20">
 			<table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -77,8 +79,8 @@
 							<td><img alt="" src="${list.firstLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.secondLink}" width="50" height="50"> </td>
 							<td><img alt="" src="${list.sellerImg}" width="50" height="50"> </td>
-							<td><img alt="" src="${list.longitude}" width="50" height="50"> </td>
-							<td><img alt="" src="${list.latitude}" width="50" height="50"> </td>
+							<td>${list.longitude}</td>
+							<td>${list.latitude}</td>
 							<td>
 							<a href="getSellerAreaById.html?id=${list.id}">编辑</a>&nbsp;&nbsp;
 							<a href="javascript:;" onclick="del('${list.id}')">删除</a>

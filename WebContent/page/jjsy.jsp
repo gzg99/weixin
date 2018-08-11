@@ -18,7 +18,7 @@
     <title></title>
     <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
     <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
-    <script src="https://webapi.amap.com/maps?v=1.4.8&key="></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.8&key=9e1d9c358dabbf185022c2c8cddaba94"></script>
     <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
 </head>
 
@@ -27,16 +27,18 @@
 	<div class="map" style="width: 100%;height: 3rem;"  id="container"></div>
 	<div class="small_title">-家居商圈-</div>
 	<ul class="sq_list">
-		<c:forEach items="${list}" var="list">
+		<c:forEach items="${list}" var="listSellerAread" varStatus="seller">
 			<li>
-				<a href="getSellerListBySellerAreaId.html?sellerAreaId=${list.id }&firstLink=${list.firstLink}&
-				secondLink=${list.secondLink}">
-					<img src="${list.sellerImg }" alt="" />
+				<a href="getSellerListBySellerAreaId.html?sellerAreaId=${listSellerAread.id }&firstLink=${listSellerAread.firstLink}&
+				secondLink=${listSellerAread.secondLink}">
+					<img src="${listSellerAread.sellerImg }" alt="" />
 					<div class="sq_list_bt">
-						<h1>${list.sellerArea }</h1>
-						<p>${list.sellerDetail }</p>
+						<h1>${listSellerAread.sellerArea }</h1>
+						<p>${listSellerAread.sellerDetail }</p>
 					</div>
-					<div class="sq_list_jl">1600km</div>
+					<div class="sq_list_jl">
+					 <a href="javascript:"></a><span class="sp" onclick="thisMap('${listSellerAread.longitude}','${listSellerAread.latitude}','${seller.index}'+'serllerAreas');" id="${seller.index}serllerAreas" ></span>
+					</div>
 				</a>
 			</li>
 		</c:forEach>
@@ -45,20 +47,63 @@
 	<jsp:include page="footer4.jsp"></jsp:include>
 	
 	<script>
-	    var longitude = "${list[0].longitude}";
-	    var latitude = "${list[0].latitude}";
-	    if(longitude == null || longitude == "") {
-	    	longitude = "117.123191";
-	    }
-	    if(latitude == null || latitude == "") {
-	    	latitude = "36.649182";
-	    }
-	    var map = new AMap.Map('container', {
-	    	
-	        resizeEnable: true,
-	        zoom:11,
-	        center: [longitude, latitude]
+	    
+	    var map, geolocation;
+	    var longitude = "";
+	    var latitude = "";
+	    
+	    //加载地图，调用浏览器定位服务
+	    map = new AMap.Map('container', {
+	        resizeEnable: true
 	    });
+	    map.plugin('AMap.Geolocation', function() {
+	        geolocation = new AMap.Geolocation({
+	            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+	            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+	            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+	            zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+	            buttonPosition:'RB'
+	        });
+	        map.addControl(geolocation);
+	        geolocation.getCurrentPosition();
+	        AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+	        AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+	    });
+	    //解析定位结果
+	    function onComplete(data) {
+	        var str=['定位成功'];
+	        str.push('经度：' + data.position.getLng());
+	        str.push('纬度：' + data.position.getLat());
+	        longitude = data.position.getLng();
+	        latitude = data.position.getLat();
+	        $(".sp").trigger("click");
+	        if(data.accuracy){
+	             str.push('精度：' + data.accuracy + ' 米');
+	        }//如为IP精确定位结果则没有精度信息
+	        str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+	    }
+	    //解析定位错误信息
+	    function onError(data) {
+	        alert('定位失败');
+	    }
+	    
+	    
+	    
+	    function thisMap(thislongitude,thislatitude ,ids) {
+	    	var p1 = [longitude, latitude];
+		    var p2 = [thislongitude, thislatitude];
+		    // 返回 p1 到 p2 间的地面距离，单位：米
+		    var dis = "";
+		    if(longitude != "" && latitude !="") {
+		    	dis = AMap.GeometryUtil.distance(p1, p2);
+		    }
+		    $("#"+ids).html(dis);
+	    }
+	     $(function(){ 
+	    	$(".sp").trigger("click");
+	     
+	    }); 
+	    
 	</script>
 
 	</body>
