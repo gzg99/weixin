@@ -143,23 +143,23 @@ public class SellerAreaCtrl extends StringUtil {
 	@RequestMapping(value = "/main/insertSeller.html", method = RequestMethod.POST)
 	public @ResponseBody String insert(Seller seller,
 			HttpServletRequest reques) {
-		//默认初始密码为123456
-		seller.setPassword(MD5Util.MD5Encode("123456",""));
+		
+		
 		try {
-			//seller.setAddress(URLDecoder.decode(seller.getAddress(), "utf-8"));
 			seller.setAddress(new String (seller.getAddress().getBytes("iso8859-1"),"UTF-8"));
 			seller.setSellerName(new String (seller.getSellerName().getBytes("iso8859-1"),"UTF-8"));
 			seller.setSellerDetail(new String (seller.getSellerDetail().getBytes("iso8859-1"),"UTF-8"));
 			seller.setUserName(new String (seller.getUserName().getBytes("iso8859-1"),"UTF-8"));
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		int i = 0;
 		if(seller.getId() != null) {
 			i = sellerService.updateSeller(seller);
 		} else {
+			//默认初始密码为123456
+			seller.setPassword(MD5Util.MD5Encode("123456",""));
 			i = sellerService.insertSeller(seller);
 		}
 		

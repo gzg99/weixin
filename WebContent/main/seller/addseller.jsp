@@ -71,17 +71,17 @@
 				<div class="formControls col-10">
 					<input type="text" id="userName" name="userName" placeholder="请填写名称" value="${seller.userName}"
 						class="input-text" style="width: 80%">
-				</div>
+				</div><br><br>
 							
 				<label class="form-label col-2">类别：</label>
 				<div class="formControls col-10">
 					<select id="type" name="type" class="input-text" style="width: 80%" onchange="sellerAreaList()">
-						<c:if test="${type == 1 }">
-							<option value="1" selected="selected">建材</option>
-							<option value="2">家居</option>
-							<option value="3">花卉</option>
-						</c:if>
-						<c:if test="${type == 2 }">
+<%-- 						<c:if test="${type == 1 }"> --%>
+							<option value="1" ${type == 1 ? 'selected="selected"' : ''}>建材</option>
+							<option value="2" ${type == 2 ? 'selected="selected"' : ''}>家居</option>
+							<option value="3" ${type == 3 ? 'selected="selected"' : ''}>花卉</option>
+<%-- 						</c:if> --%>
+						<%-- <c:if test="${type == 2 }">
 							<option value="1">建材</option>
 							<option value="2" selected="selected">家居</option>
 							<option value="3">花卉</option>
@@ -90,7 +90,7 @@
 							<option value="1">建材</option>
 							<option value="2">家居</option>
 							<option value="3" selected="selected">花卉</option>
-						</c:if>
+						</c:if> --%>
 						
 					</select> 
 				</div>
@@ -113,7 +113,7 @@
 				<label class="form-label col-2" style="margin-top:20px;">所属商圈：</label>
 				<div class="formControls col-10" style="margin-top:20px;">
 					<input type="hidden" id="sellerAreaId" name="sellerAreaId">
-					<select id="sellerAreaId1" class="input-text" style="width: 80%" onchange="getSellerArea()"></select>
+					<select id="sellerAreaId1" class="input-text"  style="width: 80%" onchange="getSellerArea()"></select>
 				</div>
 				<div class="row cl">
 				<label class="form-label col-2">商家图片：</label>
@@ -157,6 +157,7 @@
 				data:{"type":type},
 				dataType:'json',
 				success:function(result){
+					$("#sellerAreaId").val(result[0].id);
 					var str = "";
 					for(var i = 0;i<result.length;i++){
 						if(result[i].sellerArea == sellerAreaName){
@@ -193,6 +194,7 @@
 					$("#sellerAreaId1").html(str);
 				}
 			});
+			
 		}
 		
 		function getSellerArea(){
