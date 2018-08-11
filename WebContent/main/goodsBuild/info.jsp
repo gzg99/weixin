@@ -187,7 +187,17 @@
 		goods.goodsBrand = $('#goodsBrand').val();
 		goods.goodsMaterial = $('#goodsMaterial').val();
 		goods.goodsColor = $('#goodsColor').val();
+		var r =  /^[0-9]*$/;
+		var doub = /^([0-9]{1,}[.][0-9]*)$/;
+		if(!doub.test(goodsPrice)) {
+			alert("价格请填写数字");
+			return false;
+		}
 		
+		if(!r.test(goodsNum)) {
+			alert("库存请填写数字");
+			return false;
+		}
 		$.ajax({
 			url:'goodsBuildUpdate.html',
 			type:'post',

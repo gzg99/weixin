@@ -177,7 +177,8 @@
 		var goodsMaterial = $('#goodsMaterial').val();
 		var goodsColor = $('#goodsColor').val();
 		var r =  /^[0-9]*$/;
-		if(!r.test(goodsPrice)) {
+		var doub = /^([1-9]\d*|0)(\.\d{1,2})?$/;
+		if(!doub.test(goodsPrice)) {
 			alert("价格请填写数字");
 			return false;
 		}

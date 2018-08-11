@@ -97,7 +97,7 @@ public class GoodsBuildCtrl {
 		if(goods.getSellerId() == null) {
 			return 0+"";
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		goods.setAddTime(sdf.format(new Date()));
 		goods.setType(1);
 		goods.setGoodsSales(0L);
