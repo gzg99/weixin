@@ -188,13 +188,13 @@
 		goods.goodsMaterial = $('#goodsMaterial').val();
 		goods.goodsColor = $('#goodsColor').val();
 		var r =  /^[0-9]*$/;
-		var doub = /^([0-9]{1,}[.][0-9]*)$/;
-		if(!doub.test(goodsPrice)) {
+		var doub = /^([1-9]\d*|0)(\.\d{1,2})?$/;
+		if(!doub.test(goods.goodsPrice)) {
 			alert("价格请填写数字");
 			return false;
 		}
 		
-		if(!r.test(goodsNum)) {
+		if(!r.test(goods.goodsNum)) {
 			alert("库存请填写数字");
 			return false;
 		}
