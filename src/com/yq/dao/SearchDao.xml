@@ -15,7 +15,7 @@
 
 	<update id="update" parameterType="java.util.Map">
 		update jdb_search set
-		sec_name=#{sec_name}
+		sec_name=#{sec_name},sort=#{sort} 
 		where
 		sec_id=#{sec_id}
 	</update>

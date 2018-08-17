@@ -39,22 +39,23 @@ public class SearchCtrl {
 	@RequestMapping(value = "main/secInsert.html")
 	public String insert(String sec_name, Integer sort, Integer status) {
 			map.put("sec_name",sec_name);
+			map.put("sort", sort);
 			map.put("status",1);
-			map.put("sort", 0);
 			return searchService.insert(map)+"";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "main/secUpdate.html")
-	public Object update(Integer sec_id,String sec_name) {
+	public Object update(Integer sec_id,String sec_name, Integer sort) {
 		map.put("sec_name", sec_name);
 		map.put("sec_id", sec_id);
+		map.put("sort", sort);
 		return searchService.update(map)+"";
 		
 	}
 	
 	@ResponseBody
-	/*@RequestMapping(value = "main/secUpstatus.html")*/
+	@RequestMapping(value = "main/secUpstatus.html")
 	public Object upstatus(Integer sec_id,Integer status) {
 		map.put("status", status);
 		map.put("sec_id", sec_id);

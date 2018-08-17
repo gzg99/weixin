@@ -200,17 +200,11 @@ public class GoodsCtrl extends StringUtil {
 	public ModelAndView secGoodsList(String goods_name,
 			@RequestParam(defaultValue = "0") Integer is_recommend,
 			@RequestParam(defaultValue = "1") Integer status,
-			@RequestParam(defaultValue = "0") Integer ctg_id,
 			@RequestParam(defaultValue = "1") Integer currentPage,
 			HttpServletRequest request) {
 		try {
-			if (StringUtils.isNotEmpty(goods_name)) {
-				goods_name = new String(goods_name.getBytes("iso8859-1"),
-						"utf-8");
-			}
 			goods.setType(1);
 			goods.setStatus(status);
-			goods.setCtg_id(ctg_id);
 			goods.setGoods_name(goods_name);
 			goods.setIs_recommend(is_recommend);
 			List<Goods> list = goodsService.list(goods);
@@ -218,7 +212,7 @@ public class GoodsCtrl extends StringUtil {
 			ml.addObject("goods", list);
 			ml.setViewName("page/goods-list");
 			return ml;
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;

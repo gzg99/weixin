@@ -27,7 +27,7 @@
                 <a href="areaList.html" class="qb-tleft f-l"></a>
                 <div class="qb-tright f-r">
                     <a href="secList.html"> <img src="images/sjsc-13.png"> </a>
-                    <a href=""> <img src="images/message.png"> </a>
+<!--                     <a href=""> <img src="images/message.png"> </a> -->
                 </div>
                 
                 <div style="clear:both;"></div>
