@@ -43,22 +43,22 @@ public class AdCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "/main/adInsert.html") 
-	public String insert(String name, String content, String startTime, String endTime) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	public String insert(String name, String content, Date startTime, Date endTime) {
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Ad ad = new Ad();
 		ad.setName(name);
 		ad.setContent(content);
 		ad.setStatus(1);
-		if(StringUtils.isEmpty(startTime) || StringUtils.isEmpty(endTime)) {
+		/*if(StringUtils.isEmpty(startTime) || StringUtils.isEmpty(endTime)) {
 			return "false";
-		}
-		try {
-			ad.setStartTime(sdf.parse(startTime));
-			ad.setEndTime(sdf.parse(endTime));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "false";
-		}
+		}*/
+//		try {
+		ad.setStartTime(startTime);
+		ad.setEndTime(endTime);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return "false";
+//		}
 		return adService.insert(ad) + "";
 	}
 	

@@ -16,12 +16,14 @@
 <script type="text/javascript" src="lib/PIE_IE678.js"></script>
 <![endif]-->
 <link href="css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="css/H-ui.admin.css" rel="stylesheet"
-	type="text/css" />
-<link href="lib/icheck/icheck.css" rel="stylesheet"
-	type="text/css" />
-<link href="lib/Hui-iconfont/1.0.1/iconfont.css"
-	rel="stylesheet" type="text/css" />
+<link href="css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+	
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -29,6 +31,12 @@
 <script src="js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="/chihaodian/main/js/ajaxfileupload.js"></script>
 <script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script> 
+
+<script src="bootstrap/js/bootstrap-datepicker.min.js"></script>
+<script src="bootstrap/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="bootstrap/js/bootstrap-datepicker.ja.min.js"></script>
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <title>基本设置</title>
 
 </head>
@@ -60,7 +68,7 @@
 		</div>	
 		<br>
 						
-		<div class="row cl">
+		<%-- <div class="row cl">
 			<label class="form-label col-2">开始时间：</label>
 			<div class="formControls col-10">
 				<input  id="startTime" value="${ad.startTimeStr}" class="input-text" style="width: 80%">
@@ -73,7 +81,15 @@
 			<div class="formControls col-10">
 				<input  id="endTime" value="${ad.endTimeStr}" class="input-text" style="width: 80%">
 			</div>
-		</div>	
+		</div>	 --%>
+		<div class="row cl ">
+			<label class="form-label col-2">开始、结束时间：</label>
+			<div class="input-daterange formControls col-10">
+				<input id="startTime" value="${ad.startTimeStr}" readonly="readonly" class="input-text" style="width: 30%">
+				<span class="input-group-addon">－</span>
+				<input  id="endTime" value="${ad.endTimeStr}" readonly="readonly" class="input-text" style="width:30%">
+			</div>
+		</div>    
 		<br>
 		
 		<br><br>
@@ -88,6 +104,19 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
+		$(function () {
+		       
+	        $('.input-daterange').datepicker({
+	        	timePicker: true,
+	            timePickerIncrement: 1,
+	            locale: {
+	                format: 'YYYY/MM/DD'
+	            },
+	        });
+	        
+	    });
+    
 		function add(){
 			var obj = {};
 			obj.id= $('#id').val();

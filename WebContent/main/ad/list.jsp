@@ -55,6 +55,7 @@
 						<th width="20%">内容</th>
 						<th width="20%">开始时间</th>
 						<th width="20%">结束时间</th>
+						<th width="20%">操作</th>
 					</tr>
 				</thead>
 				<tbody>

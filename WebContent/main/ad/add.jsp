@@ -15,19 +15,17 @@
 <script type="text/javascript" src="lib/PIE_IE678.js"></script>
 <![endif]-->
 <link href="css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="css/H-ui.admin.css" rel="stylesheet"
-	type="text/css" />
-<link href="lib/icheck/icheck.css" rel="stylesheet"
-	type="text/css" />
-<link href="lib/Hui-iconfont/1.0.1/iconfont.css"
-	rel="stylesheet" type="text/css" />
+<link href="css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<script src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="/chihaodian/main/js/ajaxfileupload.js"></script>
-<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script> 
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <title>基本设置</title>
 
 </head>
@@ -57,23 +55,15 @@
 			</div>
 		</div>	
 		<br>
-						
-		<div class="row cl">
-			<label class="form-label col-2">开始时间：</label>
-			<div class="formControls col-10">
-				<input  id="startTime" value="${ad.startTimeStr}" class="input-text" style="width: 80%">
-			</div>
-		</div>	
-		<br>
 		
-		<div class="row cl">
-			<label class="form-label col-2">结束时间：</label>
-			<div class="formControls col-10">
-				<input  id="endTime" value="${ad.endTimeStr}" class="input-text" style="width: 80%">
+		<div class="row cl ">
+			<label class="form-label col-2">开始、结束时间：</label>
+			<div class="input-daterange formControls col-10">
+				<input id="startTime" value="${ad.startTimeStr}" readonly="readonly" class="input-text" style="width: 30%">
+				<span class="input-group-addon">－</span>
+				<input  id="endTime" value="${ad.endTimeStr}" readonly="readonly" class="input-text" style="width:30%">
 			</div>
-		</div>	
-		<br>
-		
+		</div>       
 		<br><br>
 		<div class="col-10 col-offset-2">
 		
@@ -85,7 +75,42 @@
 				type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;</button>
 		</div>
 	</div>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="/chihaodian/main/js/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script> 
+	<script src="bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <script src="bootstrap/js/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="bootstrap/js/bootstrap-datepicker.ja.min.js"></script>
+   
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
+		$(function () {
+	       
+	        $('.input-daterange').datepicker({
+	        	timePicker: true,
+                timePickerIncrement: 1,
+                locale: {
+                    format: 'YYYY/MM/DD'
+                },
+	        });
+	        
+	        /* $('.input-daterange').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 1,
+                locale: {
+                    format: 'YYYY/MM/DD hh:mm:ss'
+                },
+                startDate: $("#startTime").html(),
+                endDate: $("#endTime").html()
+            }, function (start, end, label) {
+                $("#startTime").html(start.format('YYYY/MM/DD hh:mm:ss'));
+                $("#endTime").html(end.format('YYYY/MM/DD hh:mm:ss'));
+            });
+            //对中文的支持
+            $('.input-daterange').data('daterangepicker').updateMomentLocale('zh-cn'); */
+	    });
+		
 		function add(){
 			var obj = {};
 			obj.name = $('#name').val();

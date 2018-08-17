@@ -192,6 +192,16 @@
 				</ul>
 			</dd>
 		</dl>
+		<!-- 公益 start -->
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i>公益<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="categoryEnterList.html?sellerId=${id }" href="javascript:;">内容管理</a></li>
+					<li><a _href="goodsBuildList.html?sellerId=${id }&pageNo=1&pageSize=10" href="javascript:;">敬老卡申请消息</a></li>
+				</ul>
+			</dd>
+		</dl>
 	</div>
 </aside>
 <div class="dislpayArrow"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

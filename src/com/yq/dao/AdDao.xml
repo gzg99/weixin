@@ -6,12 +6,14 @@
 			content,
 			name,
 			start_time,
-			end_time
+			end_time,
+			status
 		)values(
 			#{content},
 			#{name},
 			#{startTime},
-			#{endTime}
+			#{endTime},
+			#{status}
 		) 
     </insert>
     
