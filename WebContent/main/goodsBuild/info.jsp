@@ -189,6 +189,12 @@
 		goods.goodsColor = $('#goodsColor').val();
 		var r =  /^[0-9]*$/;
 		var doub = /^([1-9]\d*|0)(\.\d{1,2})?$/;
+		
+		if(goods.goodsName == null || goods.goodsName == "") {
+			alert("名称不能为空");
+			return false;
+		}
+		
 		if(!doub.test(goods.goodsPrice)) {
 			alert("价格请填写数字");
 			return false;
