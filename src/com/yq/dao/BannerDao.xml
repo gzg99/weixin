@@ -18,7 +18,7 @@
     </insert>
     
     <update id="update" parameterType="java.util.Map">
-    	update jdb_banner set ban_img=#{ban_img} ,url=#{url} where ban_id=#{ban_id}
+    	update jdb_banner set ban_img=#{ban_img} ,url=#{url},type=#{type},sort=#{sort} where ban_id=#{ban_id}
     </update>
     
     <update id="upstatus" parameterType="java.util.Map">
@@ -34,11 +34,11 @@
     	<if test="type!=0 and type!=null">
     		and type=#{type}  
     	</if>
-    	order by type , sort
+    	order by type,sort
     </select>
     
     <select id="listById" resultType="com.yq.entity.Banner">
-    	select * from jdb_banner where  ban_id=#{ban_id}
+    	select * from jdb_banner where ban_id=#{ban_id}
     </select>
     
     

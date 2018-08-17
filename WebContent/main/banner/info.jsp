@@ -27,7 +27,7 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <script src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="/chihaodian/main/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
 <script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script> 
 <title>基本设置</title>
 
@@ -80,6 +80,12 @@
 							<img alt="" src="${list.ban_img}" width="100" height="100">
 						</div>
 				</div>
+				<div class="row cl">
+					<label class="form-label col-2">排序：</label>
+					<div class="formControls col-10">
+						<input type="text" id="sort" value="${list.sort}" class="input-text" style="width: 80%">
+					</div>
+				</div>
 				</c:forEach>	
 					<br><br>
 				<div class="col-10 col-offset-2">
@@ -98,10 +104,11 @@
 		var type = $('#type').val();
 		var ban_id = $('#ban_id').val();
 		var ban_img = $('#filepath').val();
+		var sort = $('#sort').val();
 		$.ajax({
 			url:'banUpdate.html',
 			type:'post',
-			data:'ban_img='+ban_img+'&ban_id='+ban_id+'&url='+url+'&type='+type,
+			data:'ban_img='+ban_img+'&ban_id='+ban_id+'&url='+url+'&type='+type+'&sort='+sort,
 			success:function(rs){
 				if(rs==1){
 					alert("提交成功！");

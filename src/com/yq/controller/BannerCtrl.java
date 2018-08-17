@@ -30,21 +30,23 @@ public class BannerCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "/main/banInsert.html")
-	public String insert(String ban_img,String url,Integer status,
-			Integer sort,Integer type) {
+	public String insert(String ban_img,String url,
+			Integer type,Integer sort) {
 			map.put("url", url);
 			map.put("type", type);
 			map.put("ban_img", ban_img);
 			map.put("status", 1);
-			map.put("sort", 0);
+			map.put("sort", sort);
 			return bannerService.insert(map)+"";
 	}
 	@ResponseBody
 	@RequestMapping(value = "/main/banUpdate.html")
-	public Object update(Integer ban_id,String ban_img,String url) {
+	public Object update(String ban_img,Integer ban_id,String url,Integer type,Integer sort) {
 		map.put("url", url);
 		map.put("ban_img", ban_img);
 		map.put("ban_id", ban_id);
+		map.put("type", type);
+		map.put("sort", sort);
 		return bannerService.update(map)+"";
 		
 	}

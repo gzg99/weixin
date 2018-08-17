@@ -26,7 +26,7 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <script src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="/chihaodian/main/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
 <script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script> 
 <title>基本设置</title>
 
@@ -42,57 +42,65 @@
 	</nav>
 	<br><br><br><br>
 	<div class="pd-20" style="width: 80%">
-			<div class="row cl">
-						<label class="form-label col-2">链接地址：</label>
-						<div class="formControls col-10">
-							<input type="text" id="url"  value="" class="input-text" style="width: 80%">
-						</div>
-					</div>
-					<br>
 		<div class="row cl">
-						<label class="form-label col-2">类型：</label>
-						<div class="formControls col-10">
-						<select id="type" class="input-text" style="width: 80%">
-						<option value="1">轮动</option>
-						<option value="2">广告</option>
-						</select>
-						</div>
-					</div>
-					<br>	
-			<div class="row cl">
-						<label class="form-label col-2">图片：</label>
-						<div class="formControls col-10">
-							<input type="file" id="file" name="file" value="" class="input-text" style="width: 80%" onchange="upload()">
-						</div>
-					</div>
-					<br>
-				<div class="row cl">
-						<label class="form-label col-2"> </label>
-						<input id="filepath" type="hidden">
-						<div class="formControls col-10" id="img">
-							
-						</div>
-					</div>	
-					<br><br>
-				<div class="col-10 col-offset-2">
-				
-						<button onClick="add()" id="butt"
-						class="btn btn-primary radius" type="button">
-						<i class="Hui-iconfont">&#xe632;</i> 提交
-					</button>
-					<button onClick="history.go(-1);" class="btn btn-default radius"
-						type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;</button>
-				</div>
+			<label class="form-label col-2">链接地址：</label>
+			<div class="formControls col-10">
+				<input type="text" id="url" class="input-text" style="width: 80%">
 			</div>
+		</div>
+		<br>
+		<div class="row cl">
+			<label class="form-label col-2">类型：</label>
+			<div class="formControls col-10">
+			<select id="type" class="input-text" style="width: 80%">
+			<option value="1">轮动</option>
+			<option value="2">广告</option>
+			</select>
+			</div>
+		</div>
+		<br>	
+		<div class="row cl">
+			<label class="form-label col-2">图片：</label>
+			<div class="formControls col-10">
+				<input type="file" id="file" name="file" class="input-text" style="width: 80%" onchange="upload()">
+			</div>
+		</div>
+		<br>
+		<div class="row cl">
+			<label class="form-label col-2"> </label>
+			<input id="filepath" type="hidden">
+			<div class="formControls col-10" id="img">
+				
+			</div>
+		</div>	
+		<br>
+		<div class="row cl">
+			<label class="form-label col-2">排序：</label>
+			<div class="formControls col-10">
+				<input type="text" id="sort" class="input-text" style="width: 80%">
+			</div>
+		</div>
+		<br>
+		<div class="col-10 col-offset-2">
+		
+				<button onClick="add()" id="butt"
+				class="btn btn-primary radius" type="button">
+				<i class="Hui-iconfont">&#xe632;</i> 提交
+			</button>
+			<button onClick="history.go(-1);" class="btn btn-default radius"
+				type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;</button>
+		</div>
+		</div>
 	<script type="text/javascript">
 	function add(){
 		var url = $('#url').val();
 		var type = $('#type').val();
 		var ban_img = $('#filepath').val();
+		var sort = $('#sort').val();
 		$.ajax({
 			url:'banInsert.html',
 			type:'post',
-			data:'ban_img='+ban_img+'&url='+url+'&type='+type,
+			data:'ban_img='+ban_img+'&url='+url+'&type='+type+'&sort='+sort,
 			success:function(rs){
 				if(rs==1){
 					
