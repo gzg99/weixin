@@ -354,6 +354,7 @@
 	 where seller_id=#{sellerId,jdbcType=BIGINT} 
 	 and first_category=#{firstCategory,jdbcType=VARCHAR} 
 	 and second_category=#{secondCategory,jdbcType=VARCHAR}
+	 and type=1
   </select>
   
   
