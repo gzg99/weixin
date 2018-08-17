@@ -29,7 +29,7 @@
 </head>
 <body>
 	<nav class="breadcrumb">
-		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
+		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>广告管理 <span class="c-gray en">&gt;</span>
 		广告查看 <a class="btn btn-success radius r mr-20"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
