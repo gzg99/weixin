@@ -29,12 +29,17 @@
     </select>
     
     <update id="update" parameterType="java.util.Map">
-    	update jdb_ad set content = #{content} where id=#{id}
+    	update jdb_ad set content = #{content}, name = #{name} where id=#{id}
     </update>
     
     <select id="selectById" resultType="com.yq.entity.Ad">
     	select id as id, content as content,name as name, start_time as startTime,end_time as endTime,status as status 
     		from jdb_ad where id=#{id} and status=1
+    </select>
+    
+    <select id="list" resultType="com.yq.entity.Ad">
+    	select id as id, content as content,name as name, start_time as startTime,end_time as endTime,status as status 
+    		from jdb_ad where status=1
     </select>
     
 </mapper>

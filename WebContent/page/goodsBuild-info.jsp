@@ -13,9 +13,15 @@
 <script type="text/javascript" src="js/woxiangyao.js"></script>
 <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
 <script type="text/javascript" src="js/foot.js"></script>
-
+<link href="css/iconfont20180818.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/showTip.css">
 <script type="text/javascript" src="js/showTip.js"></script>
+<style type="text/css">
+.shop_index_pj{ width:100%; border-top:#fafafa solid 5px;  border-bottom:#fafafa solid 5px;  height:50px; line-height:50px; background: #fff; float: left;margin-top:5px; font-size:18px;}
+.shop_index_pj_bt{float:left; padding-left:10px;}
+.shop_index_pj_right{float: right; display: block;margin-right:10px;}
+.shop_index_pj_right i{ font-size:18px; float: right; color: #999;}
+</style>
 </head>
 
 <body id="wrap">
@@ -27,7 +33,6 @@
     <div>
     	<ul class="spxq-ul2">
         	<li class="current" style="width: 50%;"><a href="JavaScript:;">图文详情</a></li>
-        	<li class="current" style="width: 50%"><a href="JavaScript:;" onclick="window.location.href='showEvaluate.html?commodityId=${goods.id}'">评价</a></li>
             <div style="clear:both;"></div>
         </ul>
     </div>
@@ -60,6 +65,10 @@
 	            </li>
 	        </ul>
 	    </div>
+	    <div class="shop_index_pj" onclick="window.location.href='showEvaluate.html?commodityId=${goods.id}'">
+	 <div class="shop_index_pj_bt">商品评价</div>
+	 <a href="###" class="shop_index_pj_right"><i class="iconfont icon-you"></i></a>
+</div>
 	    <div class="spxq-info2">
 	        <div class="spxq-box">
 	        	<div class="spxq-k spxq-k1">

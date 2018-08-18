@@ -21,10 +21,24 @@ public class AdCtrl {
 	@Autowired
 	private AdService adService;
 	
-	@RequestMapping("/main/adList.html")
+	@RequestMapping("/page/adList.html")
 	public ModelAndView adList(Integer status) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		List<Ad> list = adService.seleteByTime(new Date(), status);
+		for(Ad ad: list) {
+			ad.setStartTimeStr(sdf.format(ad.getStartTime()));
+			ad.setEndTimeStr(sdf.format(ad.getEndTime()));
+		}
+		ModelAndView m1 = new ModelAndView();
+		m1.addObject("list", list);
+		m1.setViewName("main/ad/list");
+		return m1;
+	}
+	
+	@RequestMapping("/main/adList.html")
+	public ModelAndView getList() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		List<Ad> list = adService.list();
 		for(Ad ad: list) {
 			ad.setStartTimeStr(sdf.format(ad.getStartTime()));
 			ad.setEndTimeStr(sdf.format(ad.getEndTime()));
@@ -70,8 +84,8 @@ public class AdCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "/main/updateAd.html")
-	public String updateAd(String content, Long id) {
-		return adService.update(content, id) + "";
+	public String updateAd(String name, String content, Long id) {
+		return adService.update(name, content, id) + "";
 	}
 	
 	@RequestMapping(value = "/main/findAdById.html")

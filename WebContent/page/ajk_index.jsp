@@ -30,10 +30,10 @@
 		<div style="position:relative;margin-top:3%;width:100%;text-align:center">
 			<a href="ajkDetail.html?id=${card.cardId}">
 			<c:if test="${card.type=='1'}">
-			<img src="./images/ajk01.png" style="width:80%;margin:auto;"/></a>
+			<img src="./images/ajk01.png" style="width:80%;height:170px;margin:auto;"/></a>
 			</c:if>
 			<c:if test="${card.type=='2'}">
-			<img src="./images/ajk03.png" style="width:80%;margin:auto;"/></a>
+			<img src="./images/ajk03.png" style="width:80%;height:170px;margin:auto;"/></a>
 			</c:if>
 		</div>
 	</c:forEach>

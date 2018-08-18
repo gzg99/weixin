@@ -26,6 +26,10 @@ public class AdService {
 		return adDao.delete(id);
 	}
 	
+	public List<Ad> list() {
+		return adDao.list();
+	}
+	
 	public List<Ad> seleteByTime(Date currentTime,Integer status) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -34,8 +38,9 @@ public class AdService {
 		return adDao.seleteByTime(map);
 	}
 	
-	public boolean update(String content, Long id) {
+	public boolean update(String name, String content, Long id) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("name", name);
 		map.put("content", content);
 		map.put("id", id);
 		return adDao.update(map);

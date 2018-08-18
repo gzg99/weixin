@@ -13,6 +13,8 @@ public interface AdDao {
 	
 	public List<Ad> seleteByTime(Map<String, Object> map);
 	
+	public List<Ad> list();
+	
 	public boolean update(Map<String, Object> map);
 	
 	Ad selectById(Long id);

@@ -265,7 +265,7 @@
 .quanbu-ul1 .current .atu1{ display:none;}
 .quanbu-ul1 .current .atu2{ display:block;}
 
-.quanbu-ul11 li .qu-ul1a{ font-size:0.13rem; color:#353535;margin-top: -0.25rem;display: }
+.quanbu-ul11 li .qu-ul1a{ font-size:0.13rem; color:#353535;margin-top: -0.25rem;display:block; }
 .quanbu-ul11 .current a{ color:#f29133;}
 .quanbu-ul11 .current .atu1{ display:none;}
 .quanbu-ul11 .current .atu2{ display:block;}

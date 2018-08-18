@@ -51,7 +51,7 @@
 		<div class="row cl">
 			<label class="form-label col-2">公司名称：</label>
 			<div class="formControls col-10">
-				<input  id="name" value="${ad.name}" class="input-text" style="width: 80%">
+				<input id="name" value="${ad.name}" class="input-text" style="width: 80%">
 			</div>
 		</div>
 		<br>
@@ -118,8 +118,6 @@
 			obj.id= $('#id').val();
 			obj.name = $('#name').val();
 			obj.content = $('#content').val();
-			obj.startTime = $('#startTime').val();
-			obj.endTime = $('#endTime').val();
 			$.ajax({
 				url:'updateAd.html',
 				type:'post',

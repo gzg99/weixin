@@ -31,6 +31,7 @@
 <div class="clear"></div>
 <div class="sp_top">
 	<div class="sp_top_bt">
+	    <i class="iconfont icon-zuo"></i>
         <span class="current" style="width: 50%;"><a href="JavaScript:;" onclick="window.location.href='/weixin/page/goodsBuildListById.html?id=${commodityId}'">图文详情</a></span>
         <span class="current" style="width: 50%"><a href="JavaScript:;">评价</a></span>
 	</div>

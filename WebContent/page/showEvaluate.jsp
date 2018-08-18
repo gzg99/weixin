@@ -14,8 +14,8 @@
 		.sp_top i{color: #999; font-size: 0.36rem; cursor: pointer; position: absolute; left: 0.2rem; top:0;}
 		.sp_top_bt{ width: 100%; float: left;background-color:#fff; border-bottom: #ddd solid 0.02rem;}
 		.sp_top_tab{ width: 100%; height: 0.65rem; float: left;background-color:#fff; height: 0.75rem; border-bottom: #ddd solid 0.01rem; padding-top: 0.1rem;}
-		.sp_top_btn{ float: left; font-size: 0.24rem; line-height:0.36rem; width: 1.2rem; margin-left: 0.5rem; cursor: pointer;}
-		.sp_top_btn span{font-size: 0.20rem;}
+		.sp_top_btn{ float: left; font-size: 0.28rem; line-height:0.36rem; width: 1.2rem; margin-left: 0.5rem; cursor: pointer;}
+		.sp_top_btn span{font-size: 0.24rem;}
 		.sp_top .active{ border-bottom:#F4772A solid 0.03rem; color: #F4772A;}
 		.pinglun{ width: 100%; margin-top:1.8rem;}
 		.pinglun_nr{ width:7.1rem; float: left; padding: 0.2rem; background-color:#fff; margin-top: 0.02rem; }
@@ -32,6 +32,7 @@
 <div class="clear"></div>
 <div class="sp_top">
 	<div class="sp_top_bt">
+	    <i class="iconfont icon-zuo"></i>
         <span class="current" style="width: 50%;"><a href="JavaScript:;" onclick="window.location.href='goodsBuildListById.html?id=${commodityId}'">图文详情</a></span>
         <span class="current" style="width: 50%"><a href="JavaScript:;">评价</a></span>
 	</div>
