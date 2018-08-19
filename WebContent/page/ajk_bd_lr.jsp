@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>安居卡申请</title>
+<title>卡片申请</title>
  <link rel="stylesheet" type="text/css" href="css/showTip.css">
             <link rel="stylesheet" href="css/search.css">
             <link rel="stylesheet" type="text/css" href="css/swiper.css">
@@ -86,6 +86,12 @@ function add() {
 		alert("手机不许为空");
 		return;
 	}
+	if(userPhone != "") {
+		if(!isPoneAvailable(userPhone)) {
+			alert("手机号不正确");
+			return;
+		}
+	}
 	if(userAddr==""){
 		alert("地址不许为空");
 		return;
@@ -105,7 +111,12 @@ function add() {
 		alert("老人电话不许为空");
 		return;
 	}
-	
+	if(lrPhone != "") {
+		if(!isPoneAvailable(lrPhone)) {
+			alert("手机号不正确");
+			return;
+		}
+	}
 	if(lrRelatetion==""){
 		alert("与申请人关系不许为空");
 		return;
@@ -127,6 +138,15 @@ function add() {
 		}
 	});
 	
+}
+
+function isPoneAvailable(phone) {
+    var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+    if (!myreg.test(phone)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 </script>
 </html>

@@ -3,28 +3,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>卡券申请</title>
- <link rel="stylesheet" type="text/css" href="css/showTip.css">
-            <link rel="stylesheet" href="css/search.css">
-            <link rel="stylesheet" type="text/css" href="css/swiper.css">
-            <link rel="stylesheet" type="text/css" href="css/style.css">
-            <link rel="stylesheet" href="css/search.css">
-            <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
-            <link rel="stylesheet" type="text/css" href="css/ajkbd.css">
-            <script type="text/javascript" src="js/jquery.js"></script>
-            <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
-            <script type="text/javascript" src="js/showTip.js"></script>
-            <script type="text/javascript" src="js/woxiangyao.js"></script>
-            <script type="text/javascript" src="js/swiper.js"></script>
-            <script type="text/javascript" src="js/foot.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>卡券申请</title>
+	<link rel="stylesheet" type="text/css" href="css/showTip.css">
+	<link rel="stylesheet" href="css/search.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/search.css">
+	<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
+	<link rel="stylesheet" type="text/css" href="css/ajkbd.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+	<script type="text/javascript" src="js/showTip.js"></script>
+	<script type="text/javascript" src="js/woxiangyao.js"></script>
+	<script type="text/javascript" src="js/swiper.js"></script>
+	<script type="text/javascript" src="js/foot.js"></script>
 </head>
 <style>
-select{
-width:100%;
-height:30px;
-}
+	select{
+		width:100%;
+		height:30px;
+	}
 </style>
 <body id="wrap">
 	
@@ -74,8 +74,8 @@ $(function(){
 			$("#cardName").html(html);
 		}
 		
-	})
-})
+	});
+});
 
 function add() {
 	var userPhone=$("#userPhone").val();
@@ -86,6 +86,13 @@ function add() {
 		alert("手机不许为空");
 		return;
 	}
+	if(userPhone != "") {
+		if(!isPoneAvailable(userPhone)) {
+			alert("手机号不正确");
+			return;
+		}
+	}
+	
 	if(userAddr==""){
 		alert("地址不许为空");
 		return;
@@ -107,6 +114,13 @@ function add() {
 	
 }
 
-
+function isPoneAvailable(phone) {
+    var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+    if (!myreg.test(phone)) {
+        return false;
+    } else {
+        return true;
+    }
+}
 </script>
 </html>

@@ -172,9 +172,7 @@
 	    	select 
 	    		count(*) 
 			from 
-				jdb_card_order 
-			where 
-				user_name=#{userName}
+				jdb_card_order
 	    </select>
 	    
 	    <select id="findAll" resultType="com.yq.entity.CardOrder">

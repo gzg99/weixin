@@ -47,11 +47,15 @@ public class CardOrderCtrl {
 	private CardService cardService;
 	
 	@RequestMapping(value = "main/getCardOrderList.html")
-	public ModelAndView getCardOrderList(int pageNo, int pageSize, ModelAndView mv, HttpServletRequest request) {
+	@ResponseBody
+	public ModelAndView getCardOrderList(int pageNo, ModelAndView mv, HttpServletRequest request) {
+		int pageSize = 10;
 		int total = service.count();
 		PageUtil.pager(pageNo, pageSize, total, request);
-		int start = PageUtil.currentNum(pageNo, pageSize);
-		List<CardOrder> list = service.findAll(start, pageSize);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", PageUtil.currentNum(pageNo, pageSize));
+		map.put("pageSize", pageSize);
+		List<CardOrder> list = service.findAll(map);
 		mv.addObject("cards", list);
 		mv.setViewName("main/card/cardOrderList");
 		return mv;
@@ -139,7 +143,10 @@ public class CardOrderCtrl {
 	@RequestMapping(value = "/page/cardOrderList.html")
 	public ModelAndView list(@RequestParam(defaultValue = "1") Integer currentPage, HttpServletRequest request) throws UnsupportedEncodingException {
 		try {
-			List<CardOrder> list = service.findAll(currentPage, 10);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("start", PageUtil.currentNum(currentPage, 10));
+			map.put("pageSize", 10);
+			List<CardOrder> list = service.findAll(map);
 			ModelAndView ml = new ModelAndView();
 			ml.addObject("CardOrder", list);
 			ml.setViewName("page/ajk_index");

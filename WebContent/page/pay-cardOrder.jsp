@@ -42,7 +42,7 @@
 			    </div>
                 <div class="my-p2">
                 	<span class="my-sp3 f-l">共1件商品</span>
-                   <p class="my-sp3 f-r">总计：￥${card.cardPrice}</p>
+                   <p class="my-sp3 f-r" style="margin-right:10px;">总计：￥${card.cardPrice}</p>
                     <div style="clear:both;"></div>
                 </div>
             </div>  

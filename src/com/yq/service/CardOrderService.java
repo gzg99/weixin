@@ -40,10 +40,7 @@ public class CardOrderService {
 		return cardOrderDao.count();
 	}
 	
-	public List<CardOrder> findAll(Integer start, Integer pageSize) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("start", start);
-		map.put("pageSize", pageSize);
+	public List<CardOrder> findAll(Map<String, Object> map) {
 		return cardOrderDao.findAll(map);
 	}
 	

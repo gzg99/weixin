@@ -101,24 +101,24 @@
 		var totalPage = '${totalPage}';
 		function upPage() {
 			if (currentPage > 1) {
-				window.location.href = 'cardList.html?currentPage='
+				window.location.href = 'getCardOrderList.html?pageNo='
 						+ (parseInt(currentPage) - 1);
 				return;
 			}
 		}
 		function downPage() {
 			if (parseInt(currentPage) < parseInt(totalPage)) {
-				window.location.href = 'cardList.html?currentPage='
+				window.location.href = 'getCardOrderList.html?pageNo='
 						+ (parseInt(currentPage) + 1);
 				return;
 			}
 		}
 		function fpage() {
-			window.location.href = 'cardList.html?currentPage=1';
+			window.location.href = 'cgetCardOrderList.html?pageNo=1';
 			return;
 		}
 		function epage() {
-			window.location.href = 'cardList.html?currentPage=' + totalPage;
+			window.location.href = 'getCardOrderList.html?pageNo=' + totalPage;
 			return;
 		}
 	</script>
