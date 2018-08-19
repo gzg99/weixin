@@ -168,6 +168,15 @@
 				user_name=#{userName}
 	    </select>
 	    
+	    <select id="count" resultType="java.lang.Integer">
+	    	select 
+	    		count(*) 
+			from 
+				jdb_card_order 
+			where 
+				user_name=#{userName}
+	    </select>
+	    
 	    <select id="findAll" resultType="com.yq.entity.CardOrder">
 	    	select 
 	    		id as id,
@@ -182,7 +191,7 @@
 				status as status,
 				comment as comment 
 			from 
-				jdb_card_order
+				jdb_card_order limit #{start}, #{pageSize}
 	    </select>
 	    
 	    <update id="upstatus" >

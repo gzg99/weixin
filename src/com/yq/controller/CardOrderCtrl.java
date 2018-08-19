@@ -31,6 +31,7 @@ import com.yq.entity.Card;
 import com.yq.entity.CardOrder;
 import com.yq.service.CardOrderService;
 import com.yq.service.CardService;
+import com.yq.util.PageUtil;
 
 /**
  * 家居卡管理
@@ -44,6 +45,17 @@ public class CardOrderCtrl {
 	
 	@Autowired
 	private CardService cardService;
+	
+	@RequestMapping(value = "main/getCardOrderList.html")
+	public ModelAndView getCardOrderList(int pageNo, int pageSize, ModelAndView mv, HttpServletRequest request) {
+		int total = service.count();
+		PageUtil.pager(pageNo, pageSize, total, request);
+		int start = PageUtil.currentNum(pageNo, pageSize);
+		List<CardOrder> list = service.findAll(start, pageSize);
+		mv.addObject("cards", list);
+		mv.setViewName("main/card/cardOrderList");
+		return mv;
+	}
 	
 	@ResponseBody
 	@RequestMapping(value = "main/addCardOrderjsp.html")
@@ -127,7 +139,7 @@ public class CardOrderCtrl {
 	@RequestMapping(value = "/page/cardOrderList.html")
 	public ModelAndView list(@RequestParam(defaultValue = "1") Integer currentPage, HttpServletRequest request) throws UnsupportedEncodingException {
 		try {
-			List<CardOrder> list = service.findAll();
+			List<CardOrder> list = service.findAll(currentPage, 10);
 			ModelAndView ml = new ModelAndView();
 			ml.addObject("CardOrder", list);
 			ml.setViewName("page/ajk_index");

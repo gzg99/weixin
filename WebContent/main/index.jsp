@@ -76,7 +76,7 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 安居卡管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a _href="cardList.html" href="javascript:void(0)">安居卡查看</a></li>
+					<li><a _href="getCardOrderList?pageNo=1&pageSize=10" href="javascript:void(0)">安居卡查看</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -85,7 +85,7 @@
 			<dd>
 				<ul>
 					<li><a _href="banList.html?status=1" href="javascript:void(0)"> 轮图查看</a></li>
-					<li><a _href="adList.html?status=1" href="javascript:void(0)"> 广告查看</a></li>
+					<li><a _href="adList.html" href="javascript:void(0)"> 广告查看</a></li>
 				</ul>
 			</dd>
 		</dl>

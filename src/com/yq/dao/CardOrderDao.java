@@ -17,7 +17,9 @@ public interface CardOrderDao {
 	
 	public List<CardOrder> findByUserName(String userName);
 	
-	public List<CardOrder> findAll();
+	public List<CardOrder> findAll(Map<String, Object> map);
+	
+	public int count();
 	
 	public void upstatus(Map<String, Object> map);
 	

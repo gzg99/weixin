@@ -1,5 +1,6 @@
 package com.yq.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,8 +36,15 @@ public class CardOrderService {
 		return cardOrderDao.findByUserName(userName);
 	}
 	
-	public List<CardOrder> findAll() {
-		return cardOrderDao.findAll();
+	public Integer count() {
+		return cardOrderDao.count();
+	}
+	
+	public List<CardOrder> findAll(Integer start, Integer pageSize) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("pageSize", pageSize);
+		return cardOrderDao.findAll(map);
 	}
 	
 	/**

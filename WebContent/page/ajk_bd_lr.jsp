@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>安居卡线下绑定</title>
+<title>安居卡申请</title>
  <link rel="stylesheet" type="text/css" href="css/showTip.css">
             <link rel="stylesheet" href="css/search.css">
             <link rel="stylesheet" type="text/css" href="css/swiper.css">
@@ -119,6 +119,7 @@ function add() {
 		success:function(rs){
 			var re = /^[0-9]+.?[0-9]*$/;
 			if(re.test(rs)&&rs!=0){
+				alert("添加成功！");
 				window.location.href='./cardAll.html';
 			}else{
 				alert("失败！");
