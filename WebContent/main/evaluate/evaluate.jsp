@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>商圈内容</title>
+<title>发表评论</title>
 <link href="../../css/evaluate/jj20180626.css" rel="stylesheet" type="text/css">
 </head>
 

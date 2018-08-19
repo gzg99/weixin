@@ -31,7 +31,7 @@
             </div>
             <a href="javascript:;" onclick="plus('${list.goods_id}','${list.goods_price}','${s.count}')" class="gwc-del f-r"><img src="images/11.png" style="width: 25px;height: 25px"></a>
             <a href="#" class="gwc-del f-r" id="goods_num${s.count}" style="padding-top:4px;width: 16px"> ${list.goods_num}</a>
-            <a href="javascript:;" onclick="min('${list.goods_id}','${list.goods_price}','${s.count}')" class="gwc-del f-r"><img src="images/22.png" style="width: 25px;height: 25px"></a>
+            <a href="javascript:;" onclick="min('${list.cart_id}','${list.goods_id}','${list.goods_price}','${s.count}')" class="gwc-del f-r"><img src="images/22.png" style="width: 25px;height: 25px"></a>
             <div style="clear:both;"></div>
         </li>
        </c:forEach> 
@@ -80,14 +80,18 @@
 	    	});
 	    }
 	    
-	    function min(goods_id,goods_price,sort){
+	    function min(cart_id, goods_id,goods_price,sort){
 	    	var goods_num1=$('#goods_num'+sort).text();
-	    	if(goods_num1==1||goods_num1<1){
-	    		var  b = confirm('确定删除此商品吗？');
+			if(goods_num1<1) {
+	    		return;
+	    	}
+	    	if(goods_num1==1){
+	    		var b = confirm('确定删除此商品吗？');
 	    		if(!b){
-	    		return ;
+	    			return;
 	    		}
 	    	}
+	    	
 	    	var goods_num=parseInt(goods_num1)-1;
 	    	var goods_total  = goods_num*goods_price;
 	    	var tnum1 = $('#tnum1').val();
