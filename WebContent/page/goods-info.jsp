@@ -24,13 +24,6 @@
     	<h3 class="sjsc-t1l f-l"><a href="JavaScript:history.go(-1)"><span class="le"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></span></a></h3>
         <div style="clear:both;"></div>
     </div>
-    <div>
-    	<ul class="spxq-ul2">
-        	<li class="current" style="width: 50%; background: blue;"><a href="JavaScript:;" onclick="show('detailDiv')">图文详情</a></li>
-        	<li class="current" style="width: 50%"><a href="JavaScript:;" onclick="show('evalDiv')">评价</a></li>
-            <div style="clear:both;"></div>
-        </ul>
-    </div>
     <div class="detailDiv">
 	    <c:forEach items="${list}" var="list">
 	    <input type="hidden" value="${list.goods_id}" id="goods_id">
