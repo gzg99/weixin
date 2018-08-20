@@ -213,11 +213,13 @@ public class GoodsBuildCtrl {
 		}
 		mv.addObject("map", map);
 		//默认查询第一个分类
-		String firstCategory = list.get(0).getFirstCategory();
-		String secondCategory = list.get(0).getSecondCategory();
-		List<GoodsBuild> goodsList = goodsBuildService.getGoodsBuildListBySellerId(sellerId, firstCategory, secondCategory);
-		mv.addObject("list", goodsList);
-		mv.addObject("secondCategory", secondCategory);
+		if(list.size()>0) {
+			String firstCategory = list.get(0).getFirstCategory();
+			String secondCategory = list.get(0).getSecondCategory();
+			List<GoodsBuild> goodsList = goodsBuildService.getGoodsBuildListBySellerId(sellerId, firstCategory, secondCategory);
+			mv.addObject("list", goodsList);
+			mv.addObject("secondCategory", secondCategory);
+		}
 		mv.addObject("sellerId", sellerId);
 		mv.setViewName("page/dpsy");
 		return mv;
