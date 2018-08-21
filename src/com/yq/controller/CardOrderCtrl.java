@@ -33,6 +33,8 @@ import com.yq.service.CardOrderService;
 import com.yq.service.CardService;
 import com.yq.util.PageUtil;
 
+import net.sf.json.JSONArray;
+
 /**
  * 家居卡管理
  * */
@@ -61,6 +63,21 @@ public class CardOrderCtrl {
 		return mv;
 	}
 	
+	@RequestMapping(value = "page/getCardOrderByPhone.html")
+	public void getCardOrderByPhone(Long userPhone, HttpServletResponse response) {
+		List<CardOrder> list = service.findByUserPhone(userPhone);
+		JSONArray json = JSONArray.fromObject(list);
+//		return gson.toJson(map);
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().write(json.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "main/addCardOrderjsp.html")
 	public ModelAndView addCardOrderjsp() {
@@ -85,7 +102,8 @@ public class CardOrderCtrl {
 		card.setType(type);
 		
 		card.setComment(comment);
-		return service.insert(card) + "";
+		service.insert(card);
+		return card.getId() + "";
 	}
 	
 	@ResponseBody

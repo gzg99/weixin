@@ -13,9 +13,16 @@
 <script type="text/javascript" src="js/woxiangyao.js"></script>
 <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
 <script type="text/javascript" src="js/foot.js"></script>
-
+<link href="css/iconfont20180818.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/showTip.css">
 <script type="text/javascript" src="js/showTip.js"></script>
+
+<style type="text/css">
+	.shop_index_pj_bt{float:left; padding-left:10px;}
+	.shop_index_pj_right{float: right; display: block;margin-right:10px;}
+	.shop_index_pj_right i{ font-size:18px; float: right; color: #999;}
+</style>
+
 </head>
 
 <body id="wrap">
@@ -52,6 +59,10 @@
 	            </li>
 	        </ul>
 	    </div>
+	    <div class="shop_index_pj" onclick="window.location.href='getEvalListByGoodIdOpenId?goodId=${list.goods_id}'">
+			 <div class="shop_index_pj_bt">商品评价</div>
+			 <a href="###" class="shop_index_pj_right"><i class="iconfont icon-you"></i></a>
+		</div>
 	    <div class="spxq-info2">
 	        <div class="spxq-box">
 	        	<div class="spxq-k spxq-k1">
@@ -60,15 +71,6 @@
 	        </div>
 	    </div>
 	    </c:forEach>
-    </div>
-    <div class="evalDiv" style="display:none;">
-    	<ul class="spxq-ul2">
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">全部评价(${allEvalCount})</a></li>
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">好评(${goodEvalCount})</a></li>
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">中评(${neutralEvalCount})</a></li>
-        	<li class="current" style="width: 25%;"><a href="JavaScript:;">差评(${badEvalCount})</a></li>
-            <div style="clear:both;"></div>
-        </ul>
     </div>
     <div class="spxq-info3">
     	<a href="" class="if3-aa f-l"><img src="images/notCol.png"></a>
@@ -123,16 +125,6 @@
 			})
 		}
 		
-		function show(cls) {
-			if(cls == "detailDiv") {
-				$(".detailDiv").show();
-				$(".evalDiv").hide();
-			} else {
-				$(".detailDiv").hide();
-				$(".evalDiv").show();
-			}
-			
-		}
 	</script>
 	
 </body>

@@ -1,10 +1,13 @@
 package com.yq.controller;
 
+import com.yq.entity.OrderEval;
 import com.yq.entity.RepairOrder;
 import com.yq.service.RepairOrderService;
 import com.yq.util.PageUtil;
 import com.yq.util.StringUtil;
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,16 +23,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping({"/"})
-public class RepairOrderCtrl extends StringUtil
-{
+public class RepairOrderCtrl extends StringUtil {
   Logger logger = LoggerFactory.getLogger(RepairOrderCtrl.class);
 
   @Autowired
   private RepairOrderService repairOrderService;
 
   @RequestMapping({"main/repairOrderList.html"})
-  public ModelAndView repairOrderList(@RequestParam(defaultValue="1") Integer currentPage, @RequestParam(defaultValue="") String start_time, @RequestParam(defaultValue="") String end_time, @RequestParam(defaultValue="") String status, HttpServletRequest request)
-  {
+  public ModelAndView repairOrderList(@RequestParam(defaultValue="1") Integer currentPage, 
+		  @RequestParam(defaultValue="") String start_time, @RequestParam(defaultValue="") String end_time, 
+		  @RequestParam(defaultValue="") String status, HttpServletRequest request) {
     try {
       start_time = URLDecoder.decode(start_time, "utf-8");
       end_time = URLDecoder.decode(end_time, "utf-8");
@@ -52,34 +55,26 @@ public class RepairOrderCtrl extends StringUtil
     }return null;
   }
 
-  @RequestMapping({"page/insert.html"})
+  @RequestMapping({"page/repairOrderInsert.html"})
   @ResponseBody
   public String insert(RepairOrder repairOrder) {
+	  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	  repairOrder.setCreateTime(format.format(new Date()));
+	  repairOrder.setOrderTime(format.format(new Date()));
+	  repairOrder.setStart_time(format.format(new Date()));
     try {
-      if ((repairOrder.getOrderTime() == null) || ("".equals(repairOrder.getOrderTime()))) {
-        return "请输入时间";
-      }
-      if ((repairOrder.getUserAddr() == null) || ("".equals(repairOrder.getUserAddr()))) {
-        return "请输入地址";
-      }
-      if ((repairOrder.getUserHouseNum() == null) || ("".equals(repairOrder.getUserHouseNum()))) {
-        return "请输入门牌号";
-      }
-      if ((repairOrder.getUserName() == null) || ("".equals(repairOrder.getUserName()))) {
-        return "请输入姓名";
-      }
-      if ((repairOrder.getUserTel() == null) || ("".equals(repairOrder.getUserTel()))) {
-        return "请输入手机号";
-      }
-      repairOrder.setStatus("未完成");
-      int i = this.repairOrderService.insert(repairOrder);
-      if (i == 1) {
-        return "成功";
-      }
-      return "提交失败，请联系客服或稍后重试"; } catch (Exception e) {
+    	repairOrder.setStatus("未完成");
+    	int i = this.repairOrderService.insert(repairOrder);
+    	if (i == 1) {
+    		return "成功";
+    	}
+    	return "提交失败，请联系客服或稍后重试"; 
+    } catch (Exception e) {
+    	e.printStackTrace();
     }
     return "提交异常，请联系客服或稍后重试";
   }
+  
   @ResponseBody
   @RequestMapping({"/main/repairOrderUpstatus.html"})
   public String upstatus(Integer id, String status) {

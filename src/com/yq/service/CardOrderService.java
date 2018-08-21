@@ -36,6 +36,10 @@ public class CardOrderService {
 		return cardOrderDao.findByUserName(userName);
 	}
 	
+	public List<CardOrder> findByUserPhone(Long userPhone) {
+		return cardOrderDao.findByUserPhone(userPhone);
+	}
+	
 	public Integer count() {
 		return cardOrderDao.count();
 	}

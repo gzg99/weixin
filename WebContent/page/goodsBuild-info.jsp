@@ -60,9 +60,9 @@
 	        </ul>
 	    </div>
 	    <div class="shop_index_pj" onclick="window.location.href='showEvaluate.html?commodityId=${goods.id}'">
-	 <div class="shop_index_pj_bt">商品评价</div>
-	 <a href="###" class="shop_index_pj_right"><i class="iconfont icon-you"></i></a>
-</div>
+			 <div class="shop_index_pj_bt">商品评价</div>
+			 <a href="###" class="shop_index_pj_right"><i class="iconfont icon-you"></i></a>
+		</div>
 	    <div class="spxq-info2">
 	        <div class="spxq-box">
 	        	<div class="spxq-k spxq-k1">

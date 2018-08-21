@@ -1,7 +1,6 @@
 package com.yq.entity;
 
-public class RepairOrder extends Page
-{
+public class RepairOrder extends Page {
   private Long id;
   private String goodsName;
   private float goodsPrice;

@@ -573,66 +573,99 @@ public class OrderCtrl extends StringUtil {
 		Float goods_total = goods_num * list.get(0).getGoods_price();// 总价
 		Float tprice = goods_num * list.get(0).getGoods_price();// 总价
 		ml.addObject("price", tprice); //
-		int tnum = cartService.goodstotalnum(cart);// 总数量
+		if(tprice != 0) {
+			int tnum = cartService.goodstotalnum(cart);// 总数量
 
-		// int tnum = goods_num;// 总数量
-		if (cps_id != null) {
-			System.out.println(cps_id);
-			if (cps_id != 0) {
-				coupons.setCps_id(cps_id);
-				List<Coupons> cps = couponsService.listById(coupons);// 优惠券
+			// int tnum = goods_num;// 总数量
+			if (cps_id != null) {
+				System.out.println(cps_id);
+				if (cps_id != 0) {
+					coupons.setCps_id(cps_id);
+					List<Coupons> cps = couponsService.listById(coupons);// 优惠券
 
-				if (cps.size() > 0) {
-					cps_price = cps.get(0).getCps_price(); // 如果优惠券大于0，统计出此优惠券价格
+					if (cps.size() > 0) {
+						cps_price = cps.get(0).getCps_price(); // 如果优惠券大于0，统计出此优惠券价格
+					}
+					ml.addObject("cps", cps);
 				}
-				ml.addObject("cps", cps);
 			}
-		}
-		List<Address> addr = new ArrayList<Address>();
-		if (addr_id == 0) {
-			address.setOppen_id(oppen_id);
-			addr = addressService.list(address);
-		} else {
-			address.setAddr_id(addr_id);
-			addr = addressService.listById(address);
-		}
-		tprice = tprice - cps_price; // 使用优惠券的总价
-		List<Freight> fgt = freightService.list(freight);
-		if (fgt.size() > 0) {
-			if (tprice < fgt.get(0).getFree_price()) {
-				tprice = tprice + fgt.get(0).getFgt_price(); // 如果总价小于免邮价，则加上运费
-				ml.addObject("fgt_price", fgt.get(0).getFgt_price());
+			List<Address> addr = new ArrayList<Address>();
+			if (addr_id == 0) {
+				address.setOppen_id(oppen_id);
+				addr = addressService.list(address);
 			} else {
-				ml.addObject("fgt_price", 0);// 免运费
+				address.setAddr_id(addr_id);
+				addr = addressService.listById(address);
 			}
-		}
-		String add_time = sf.format(new Date());
-		coupons.setOppen_id(oppen_id);
-		coupons.setCps_level(-1);
-		coupons.setCps_time(add_time);
-		coupons.setStatus(1);
-		List<Coupons> cps = couponsService.list(coupons); // 获取用户优惠券
-		user.setOppen_id(oppen_id);
-		List<User> userList = userService.listById(user);
-		area.setStatus(1);
-		area.setLevel(0);
-		List<Area> areaList = areaService.list(area);
-		ml.addObject("goods", list);
-		ml.addObject("tprice", tprice);
-		ml.addObject("addr", addr);
-		ml.addObject("tnum", goods_num);
-		ml.addObject("cps_id", cps_id);
-		ml.addObject("addr_id", addr_id);
-		ml.addObject("userList", userList);
-		ml.addObject("goods_id", goods_id);
-		ml.addObject("goods_num", goods_num);
-		ml.addObject("goods_total", goods_total);
+			tprice = tprice - cps_price; // 使用优惠券的总价
+			List<Freight> fgt = freightService.list(freight);
+			if (fgt.size() > 0) {
+				if (tprice < fgt.get(0).getFree_price()) {
+					tprice = tprice + fgt.get(0).getFgt_price(); // 如果总价小于免邮价，则加上运费
+					ml.addObject("fgt_price", fgt.get(0).getFgt_price());
+				} else {
+					ml.addObject("fgt_price", 0);// 免运费
+				}
+			}
+			String add_time = sf.format(new Date());
+			coupons.setOppen_id(oppen_id);
+			coupons.setCps_level(-1);
+			coupons.setCps_time(add_time);
+			coupons.setStatus(1);
+			List<Coupons> cps = couponsService.list(coupons); // 获取用户优惠券
+			user.setOppen_id(oppen_id);
+			List<User> userList = userService.listById(user);
+			area.setStatus(1);
+			area.setLevel(0);
+			List<Area> areaList = areaService.list(area);
+			ml.addObject("goods", list);
+			ml.addObject("tprice", tprice);
+			ml.addObject("addr", addr);
+			ml.addObject("tnum", goods_num);
+			ml.addObject("cps_id", cps_id);
+			ml.addObject("addr_id", addr_id);
+			ml.addObject("userList", userList);
+			ml.addObject("goods_id", goods_id);
+			ml.addObject("goods_num", goods_num);
+			ml.addObject("goods_total", goods_total);
 
-		ml.addObject("tnum", tnum);
-		ml.addObject("cpsCount", cps.size());
-		// ml.addObject("userList", userList);
-		ml.addObject("areaList", areaList);
-		ml.setViewName("page/goods-order-sure");
+			ml.addObject("tnum", tnum);
+			ml.addObject("cpsCount", cps.size());
+			// ml.addObject("userList", userList);
+			ml.addObject("areaList", areaList);
+			ml.setViewName("page/goods-order-sure");
+		} else {
+			int tnum = cartService.goodstotalnum(cart);// 总数量
+
+			List<Address> addr = new ArrayList<Address>();
+			if (addr_id == 0) {
+				address.setOppen_id(oppen_id);
+				addr = addressService.list(address);
+			} else {
+				address.setAddr_id(addr_id);
+				addr = addressService.listById(address);
+			}
+			String add_time = sf.format(new Date());
+			user.setOppen_id(oppen_id);
+			List<User> userList = userService.listById(user);
+			area.setStatus(1);
+			area.setLevel(0);
+			List<Area> areaList = areaService.list(area);
+			ml.addObject("goods", list);
+			ml.addObject("tprice", tprice);
+			ml.addObject("addr", addr);
+			ml.addObject("tnum", goods_num);
+			ml.addObject("cps_id", cps_id);
+			ml.addObject("addr_id", addr_id);
+			ml.addObject("userList", userList);
+			ml.addObject("goods_id", goods_id);
+			ml.addObject("goods_num", goods_num);
+			ml.addObject("goods_total", goods_total);
+
+			ml.addObject("tnum", tnum);
+			ml.addObject("areaList", areaList);
+			ml.setViewName("page/goodsRepair-order-sure");
+		}
 		return ml;
 	}
 

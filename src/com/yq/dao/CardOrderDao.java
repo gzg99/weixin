@@ -17,6 +17,8 @@ public interface CardOrderDao {
 	
 	public List<CardOrder> findByUserName(String userName);
 	
+	public List<CardOrder> findByUserPhone(Long userPhone);
+	
 	public List<CardOrder> findAll(Map<String, Object> map);
 	
 	public int count();
