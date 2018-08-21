@@ -29,7 +29,7 @@
 					<h1>${seller.sellerName }</h1>
 					<p>${seller.address }<br/>${seller.sellerDetail }</p>
 				</div>
-			    <div class="sq_list_jl">1600km</div>
+			    <div class="sq_list_jl"></div>
 		 	</a>
 		</li>
 	</c:forEach>
