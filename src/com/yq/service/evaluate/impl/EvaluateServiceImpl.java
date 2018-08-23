@@ -47,6 +47,21 @@ public class EvaluateServiceImpl implements EvaluateService{
 		map.put("showEvaluateBylist", showEvaluateBylist);
 		return map;
 	}
+	
+	/**
+	 * 评价列表(家滴帮)
+	 */
+	@Override
+	public Map<String, Object> showjdbEvaluate(String commodityId) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		Map<String,Object> showEvaluate = jdbEvaluateMapper.showjdbEvaluate(commodityId);//总评价、好评百分比
+		map.put("commodityId", commodityId);
+		List<Map<String,Object>> showEvaluateBylist = jdbEvaluateMapper.showjdbEvaluateBylist(map);//评价详情
+		map.clear();
+		map.put("showEvaluate", showEvaluate);
+		map.put("showEvaluateBylist", showEvaluateBylist);
+		return map;
+	}
 
 	/**
 	 * ajax提取评价列表
@@ -57,6 +72,10 @@ public class EvaluateServiceImpl implements EvaluateService{
 		return showEvaluateBylist;
 	}
 
-	
+	@Override
+	public List<Map<String,Object>> showjdbEvaluateAj(Map<String,Object> mapData) {
+		List<Map<String,Object>> showEvaluateBylist = jdbEvaluateMapper.showjdbEvaluateBylist(mapData);//评价详情
+		return showEvaluateBylist;
+	}
 	
 }

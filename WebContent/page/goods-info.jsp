@@ -59,7 +59,7 @@
 	            </li>
 	        </ul>
 	    </div>
-	    <div class="shop_index_pj" onclick="window.location.href='getEvalListByGoodIdOpenId?goodId=${list.goods_id}'">
+	    <div class="shop_index_pj" onclick="window.location.href='showjdbEvaluate.html?commodityId=${list.goods_id}'">
 			 <div class="shop_index_pj_bt">商品评价</div>
 			 <a href="###" class="shop_index_pj_right"><i class="iconfont icon-you"></i></a>
 		</div>

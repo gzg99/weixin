@@ -14,11 +14,14 @@ public interface JdbEvaluateMapper {
 
     JdbEvaluate selectByPrimaryKey(String id);
     
-    List<Map<String,Object>> showEvaluateBylist(Map<String,Object>mapData);
+    List<Map<String,Object>> showEvaluateBylist(Map<String,Object> mapData);
 
     int updateByPrimaryKeySelective(JdbEvaluate record);
 
     int updateByPrimaryKey(JdbEvaluate record);
     
     Map<String,Object> showEvaluate(String commodityId);
+    
+    Map<String,Object> showjdbEvaluate(String commodityId);
+    List<Map<String,Object>> showjdbEvaluateBylist(Map<String,Object> mapData);
 }

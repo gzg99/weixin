@@ -52,6 +52,20 @@ public class EvaluateController extends StringUtil{
 		view.addObject("goods_id", id);
 		return view;
 	}
+	
+	/**
+	 * 进入评价页面(家滴帮)
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "page/evaluate/tojdbEvaluatePage.html")
+	public ModelAndView tojdbEvaluatePage(Long id) {
+		GoodsBuild goods = goodsBuildService.getGoodsBuildById(id);
+		ModelAndView view = new ModelAndView("page/pingjia");
+		view.addObject("goods", goods);
+		view.addObject("goods_id", id);
+		return view;
+	}
 
 	/**
 	 * 评价
@@ -64,6 +78,9 @@ public class EvaluateController extends StringUtil{
 		String suc = "0";
 		jdbEvaluate.setId(UUIDUtils.getUUID());
 		jdbEvaluate.setUserId(this.getOppen_id(session));
+		if(jdbEvaluate.getSellerId() == null) {
+			jdbEvaluate.setSellerId("家滴帮");
+		}
 		try {
 			jdbEvaluate.setEvaluateContent(new String (jdbEvaluate.getEvaluateContent().getBytes("iso8859-1"),"UTF-8"));
 		} catch (UnsupportedEncodingException e) {
@@ -80,7 +97,7 @@ public class EvaluateController extends StringUtil{
 	}
 	
 	/**
-	 * 评价列表
+	 * 评价列表（非家滴帮）
 	 * @param commodityId
 	 * @return
 	 */
@@ -93,6 +110,19 @@ public class EvaluateController extends StringUtil{
 		return view;
 	}
 	
+	/**
+	 * 评价列表(家滴帮)
+	 * @param commodityId
+	 * @return
+	 */
+	@RequestMapping(value="page/showjdbEvaluate.html")
+	public ModelAndView showjdbEvaluate(String commodityId) {
+		ModelAndView view = new ModelAndView("page/order-eval");
+		Map<String,Object> map = evaluateService.showEvaluate(commodityId);
+		view.addObject("showEvaluate", map);
+		view.addObject("commodityId", commodityId);
+		return view;
+	}
 	
 	/**
 	 * 评价列表
@@ -106,6 +136,24 @@ public class EvaluateController extends StringUtil{
 		mapData.put("grade", grade);
 		
 		List<Map<String,Object>> map = evaluateService.showEvaluateAj(mapData);
+		
+		JSONArray jsonStrs = JSONArray.fromObject(map);
+		return jsonStrs.toString();
+		
+	}
+	
+	/**
+	 * 评价列表
+	 * @param commodityId
+	 * @return
+	 */
+	@RequestMapping(value="page/showjdbEvaluateAj.html")
+	public @ResponseBody String showjdbEvaluateAj(String commodityId,String grade) {
+		Map<String,Object> mapData = new HashMap<String,Object>();
+		mapData.put("commodityId", commodityId);
+		mapData.put("grade", grade);
+		
+		List<Map<String,Object>> map = evaluateService.showjdbEvaluateAj(mapData);
 		
 		JSONArray jsonStrs = JSONArray.fromObject(map);
 		return jsonStrs.toString();
