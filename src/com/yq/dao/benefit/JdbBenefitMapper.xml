@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.benefit.JdbBenefitMapper">
+	<resultMap id="BaseResultMap" type="com.yq.entity.benefit.JdbBenefit">
+		<id column="benefitId" property="benefitid" jdbcType="VARCHAR" />
+		<result column="picture" property="picture" jdbcType="VARCHAR" />
+		<result column="headline" property="headline" jdbcType="VARCHAR" />
+		<result column="particulars" property="particulars" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		benefitId, picture, headline, particulars
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from jdb_benefit
+		where benefitId = #{benefitid,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByPrimary" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from jdb_benefit
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from jdb_benefit
+		where benefitId = #{benefitid,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insert" parameterType="com.yq.entity.benefit.JdbBenefit">
+		insert into jdb_benefit (benefitId, picture, headline,
+		particulars)
+		values (#{benefitid,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR},
+		#{headline,jdbcType=VARCHAR},
+		#{particulars,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.yq.entity.benefit.JdbBenefit">
+		insert into jdb_benefit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="benefitid != null">
+				benefitId,
+			</if>
+			<if test="picture != null">
+				picture,
+			</if>
+			<if test="headline != null">
+				headline,
+			</if>
+			<if test="particulars != null">
+				particulars,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="benefitid != null">
+				#{benefitid,jdbcType=VARCHAR},
+			</if>
+			<if test="picture != null">
+				#{picture,jdbcType=VARCHAR},
+			</if>
+			<if test="headline != null">
+				#{headline,jdbcType=VARCHAR},
+			</if>
+			<if test="particulars != null">
+				#{particulars,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.benefit.JdbBenefit">
+		update jdb_benefit
+		<set>
+			<if test="picture != null">
+				picture = #{picture,jdbcType=VARCHAR},
+			</if>
+			<if test="headline != null">
+				headline = #{headline,jdbcType=VARCHAR},
+			</if>
+			<if test="particulars != null">
+				particulars = #{particulars,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where benefitId = #{benefitid,jdbcType=VARCHAR}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.yq.entity.benefit.JdbBenefit">
+		update jdb_benefit
+		set picture = #{picture,jdbcType=VARCHAR},
+		headline = #{headline,jdbcType=VARCHAR},
+		particulars = #{particulars,jdbcType=VARCHAR}
+		where benefitId = #{benefitid,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

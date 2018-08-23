@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.benefit.JdvLoveoldplanMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.benefit.JdvLoveoldplan" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="plantitle" property="plantitle" jdbcType="VARCHAR" />
+    <result column="planshow" property="planshow" jdbcType="VARCHAR" />
+    <result column="oldpicture" property="oldpicture" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, plantitle, planshow,oldpicture
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdv_loveoldplan
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPrimary" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdv_loveoldplan
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jdv_loveoldplan
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.benefit.JdvLoveoldplan" >
+    insert into jdv_loveoldplan (id, plantitle, planshow
+      )
+    values (#{id,jdbcType=VARCHAR}, #{plantitle,jdbcType=VARCHAR}, #{planshow,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.benefit.JdvLoveoldplan" >
+    insert into jdv_loveoldplan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="plantitle != null" >
+        plantitle,
+      </if>
+      <if test="planshow != null" >
+        planshow,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="plantitle != null" >
+        #{plantitle,jdbcType=VARCHAR},
+      </if>
+      <if test="planshow != null" >
+        #{planshow,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.benefit.JdvLoveoldplan" >
+    update jdv_loveoldplan
+    <set >
+      <if test="plantitle != null" >
+        plantitle = #{plantitle,jdbcType=VARCHAR},
+      </if>
+      <if test="planshow != null" >
+        planshow = #{planshow,jdbcType=VARCHAR},
+      </if>
+      <if test="oldpicture != null" >
+        oldpicture = #{oldpicture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.benefit.JdvLoveoldplan" >
+    update jdv_loveoldplan
+    set plantitle = #{plantitle,jdbcType=VARCHAR},
+      planshow = #{planshow,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

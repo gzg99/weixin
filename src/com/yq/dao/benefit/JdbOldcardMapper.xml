@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.benefit.JdbOldcardMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.benefit.JdbOldcard" >
+    <id column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="Apply_name" property="applyName" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="VARCHAR" />
+    <result column="Old_nane" property="oldNane" jdbcType="VARCHAR" />
+    <result column="relation" property="relation" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    card_id, Apply_name, Phone, Old_nane, relation, description, remark
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_oldcard
+    where card_id = #{cardId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPrimary" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_oldcard
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jdb_oldcard
+    where card_id = #{cardId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.benefit.JdbOldcard" >
+    insert into jdb_oldcard (card_id, Apply_name, Phone, 
+      Old_nane, relation, description, 
+      remark)
+    values (#{cardId,jdbcType=VARCHAR}, #{applyName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{oldNane,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.benefit.JdbOldcard" >
+    insert into jdb_oldcard
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cardId != null" >
+        card_id,
+      </if>
+      <if test="applyName != null" >
+        Apply_name,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="oldNane != null" >
+        Old_nane,
+      </if>
+      <if test="relation != null" >
+        relation,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyName != null" >
+        #{applyName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="oldNane != null" >
+        #{oldNane,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.benefit.JdbOldcard" >
+    update jdb_oldcard
+    <set >
+      <if test="applyName != null" >
+        Apply_name = #{applyName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="oldNane != null" >
+        Old_nane = #{oldNane,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        relation = #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where card_id = #{cardId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.benefit.JdbOldcard" >
+    update jdb_oldcard
+    set Apply_name = #{applyName,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Old_nane = #{oldNane,jdbcType=VARCHAR},
+      relation = #{relation,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where card_id = #{cardId,jdbcType=VARCHAR}
+  </update>
+</mapper>

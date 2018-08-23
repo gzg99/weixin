@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.benefit.JdbLoveRelayMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.benefit.JdbLoveRelay" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+    <result column="organization_name" property="organizationName" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="picture_note" property="pictureNote" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, organization_id, organization_name, picture, picture_note
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_love_relay
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPrimaryList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_love_relay
+    <if test="id != '' and id != null" >
+        where id = #{id,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jdb_love_relay
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.benefit.JdbLoveRelay" >
+    insert into jdb_love_relay (id, organization_id, organization_name, 
+      picture, picture_note)
+    values (#{id,jdbcType=VARCHAR}, #{organizationId,jdbcType=INTEGER}, #{organizationName,jdbcType=VARCHAR}, 
+      #{picture,jdbcType=VARCHAR}, #{pictureNote,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.benefit.JdbLoveRelay" >
+    insert into jdb_love_relay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="organizationName != null" >
+        organization_name,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="pictureNote != null" >
+        picture_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="organizationName != null" >
+        #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureNote != null" >
+        #{pictureNote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.benefit.JdbLoveRelay" >
+    update jdb_love_relay
+    <set >
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="organizationName != null" >
+        organization_name = #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureNote != null" >
+        picture_note = #{pictureNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.benefit.JdbLoveRelay" >
+    update jdb_love_relay
+    set organization_id = #{organizationId,jdbcType=INTEGER},
+      organization_name = #{organizationName,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      picture_note = #{pictureNote,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

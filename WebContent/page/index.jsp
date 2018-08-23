@@ -60,8 +60,8 @@
                         <a href="category.html?ctg_id=23" class="img-txt">家庭直购</a>
                     </li>
                     <li>
-                        <a href="" class="img-1"><img  src="images/b5.png" style="width:42px;height: 42px"></a>
-                        <a href="" class="img-txt">爱心公益</a>
+                        <a href="benfitlist.html" class="img-1"><img  src="images/b5.png" style="width:42px;height: 42px"></a>
+                        <a href="benfitlist.html" class="img-txt">爱心公益</a>
                     </li>
                 </ul>
                 <ul class="info-img">
