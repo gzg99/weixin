@@ -179,6 +179,15 @@
 				</ul>
 			</dd>
 		</dl>
+		<!-- 工人 start -->
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i>工人管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="getAllWorkerList.html?pageNo=1&pageSize=10" href="javascript:;">工人管理</a></li>
+				</ul>
+			</dd>
+		</dl>
 	</div>
 	
 	<div class="menu_dropdown bk_2" id="menu2">

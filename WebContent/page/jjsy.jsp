@@ -11,11 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 	<script type="text/javascript" src="js/base.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
-	
-	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title></title>
     <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
     <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
     <script src="https://webapi.amap.com/maps?v=1.4.8&key=9e1d9c358dabbf185022c2c8cddaba94"></script>

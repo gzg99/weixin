@@ -52,8 +52,8 @@
                         <a href="cardAll.html" class="img-txt">安居卡</a>
                     </li>
                     <li>
-                        <a href="category.html?ctg_id=21" class="img-1" style=""><img  src="images/b3.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=21" class="img-txt">附近工匠</a>
+                        <a href="workersShowjsp.html" class="img-1" style=""><img  src="images/b3.png" style="width:42px;height: 42px"></a>
+                        <a href="workersShowjsp.html" class="img-txt">附近工匠</a>
                     </li>
                     <li>
                         <a href="category.html?ctg_id=23" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
