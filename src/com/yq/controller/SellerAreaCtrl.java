@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.Seller;
@@ -33,7 +32,6 @@ import com.yq.service.SellerService;
 import com.yq.util.MD5Util;
 import com.yq.util.PageUtil;
 import com.yq.util.StringUtil;
-import com.yq.util.UUIDUtils;
 
 @Controller
 @RequestMapping("/")
@@ -166,30 +164,6 @@ public class SellerAreaCtrl extends StringUtil {
 		return i+"";
 	}
 	
-	private String saveFile(HttpServletRequest request,  MultipartFile file) {
-		// 判断文件是否为空
-		if (!file.isEmpty()) {
-			try {
-				// 保存的文件路径(如果用的是Tomcat服务器，文件会上传到\\%TOMCAT_HOME%\\webapps\\YourWebProject\\upload\\文件夹中
-				// )
-				String filePath =  "E:"+File.separator+"upload"+File.separator;
-				
-				
-				String fileName = file.getOriginalFilename();
-				String jpg = UUIDUtils.getUUID() +"."+fileName.substring(fileName.lastIndexOf(".")+1);
-				File saveDir = new File(filePath,jpg);
-				if (!saveDir.getParentFile().exists()){
-					saveDir.getParentFile().mkdirs();
-				}
-				// 转存文件
-				file.transferTo(saveDir);
-				return filePath+jpg;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return "";
-	}
 	@ResponseBody
 	@RequestMapping(value = "/main/sellerAreaInsert.html")
 	public String sellerAreaInsert(String sellerArea, String firstLink, String secondLink,

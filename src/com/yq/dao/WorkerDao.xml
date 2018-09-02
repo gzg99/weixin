@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.WorkerDao">
+	<insert id="add" parameterType="com.yq.entity.Worker">
+		insert jdb_worker(
+			name,
+			age,
+			longitude,
+			latitude,
+			open_id,
+			tel_phone,
+			credentials,
+			credentials_img,
+			worker_id,
+			worker_img,
+			worker_intro,
+			is_vip,
+			add_time,
+			update_time
+		)values(
+			#{name},
+			#{age},
+			#{longitude},
+			#{latitude},
+			#{openId},
+			#{telPhone},
+			#{credentials},
+			#{credentialsImg},
+			#{workerId},
+			#{workerImg},
+			#{workerIntro},
+			#{isVip},
+			#{addTime},
+			#{updateTime}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.yq.entity.Worker">
+		update jdb_worker
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="telPhone != null" >
+        tel_phone = #{telPhone,jdbcType=BIGINT},
+      </if>
+      <if test="credentials != null" >
+        credentials = #{credentials,jdbcType=VARCHAR},
+      </if>
+      <if test="credentialsImg != null" >
+        credentials_img = #{credentialsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="workerId != null" >
+        worker_id = #{workerId,jdbcType=VARCHAR},
+      </if>
+      <if test="workerImg != null" >
+        worker_img = #{workerImg,jdbcType=VARCHAR},
+      </if>
+      <if test="workerIntro != null" >
+        worker_intro = #{workerIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from jdb_worker where id = #{id,jdbcType=BIGINT}
+	</delete>
+	
+	<select id="getWorkerPage" parameterType="map" resultType="com.yq.entity.Worker">
+		select 
+			id as id,
+			name as name,
+			age as age,
+			longitude as longitude,
+			latitude as latitude,
+			open_id as openId,
+			tel_phone as telPhone,
+			credentials as credentials,
+			credentials_img as credentialsImg,
+			worker_id as workerId,
+			worker_img as workerImg,
+			worker_intro as workerIntro,
+			is_vip as isVip,
+			add_time as addTime,
+			update_time as updateTime 
+		from jdb_worker limit #{currentNum},#{pageSize}
+	</select>
+	
+	<select id="count" resultType="java.lang.Integer">
+		select 
+			count(*) 
+		from jdb_worker
+	</select>
+	
+	<select id="getWorkerByOpenId" parameterType="java.lang.String" resultType="com.yq.entity.Worker">
+		select 
+			id as id,
+			name as name,
+			age as age,
+			longitude as longitude,
+			latitude as latitude,
+			open_id as openId,
+			tel_phone as telPhone,
+			credentials as credentials,
+			credentials_img as credentialsImg,
+			worker_id as workerId,
+			worker_img as workerImg,
+			worker_intro as workerIntro,
+			is_vip as isVip,
+			add_time as addTime,
+			update_time as updateTime 
+		from jdb_worker 
+		where open_id=#{opendId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getWorkerById" parameterType="java.lang.Long" resultType="com.yq.entity.Worker">
+		select 
+			id as id,
+			name as name,
+			age as age,
+			longitude as longitude,
+			latitude as latitude,
+			open_id as openId,
+			tel_phone as telPhone,
+			credentials as credentials,
+			credentials_img as credentialsImg,
+			worker_id as workerId,
+			worker_img as workerImg,
+			worker_intro as workerIntro,
+			is_vip as isVip,
+			add_time as addTime,
+			update_time as updateTime 
+		from jdb_worker 
+		where id=#{id,jdbcType=BIGINT}
+	</select>
+	
+	<select id="getAllWorkerRangeCurDay" resultType="com.yq.entity.Worker" parameterType="map">
+		select 
+			id as id,
+			name as name,
+			age as age,
+			longitude as longitude,
+			latitude as latitude,
+			open_id as openId,
+			tel_phone as telPhone,
+			credentials as credentials,
+			credentials_img as credentialsImg,
+			worker_id as workerId,
+			worker_img as workerImg,
+			worker_intro as workerIntro,
+			is_vip as isVip,
+			add_time as addTime,
+			update_time as updateTime 
+		from jdb_worker 
+		where 
+			<![CDATA[update_time > #{startTime,jdbcType=VARCHAR} and update_time < #{endTime,jdbcType=VARCHAR}]]>
+	</select>
+
+</mapper>

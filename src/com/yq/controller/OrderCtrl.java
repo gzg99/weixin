@@ -645,7 +645,6 @@ public class OrderCtrl extends StringUtil {
 				address.setAddr_id(addr_id);
 				addr = addressService.listById(address);
 			}
-			String add_time = sf.format(new Date());
 			user.setOppen_id(oppen_id);
 			List<User> userList = userService.listById(user);
 			area.setStatus(1);
