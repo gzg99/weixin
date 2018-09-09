@@ -15,10 +15,10 @@
         </li>
     	<li style="height:40px;">
         	<div class="qu-tu1" align="center" style="height:28px;">
-            	<a href="category.html" class="atu1"><img src="images/add_message.png" style="width: 22px;height: 22px"></a>
-            	<a href="category.html" class="atu2"><img src="images/add_message.png" style="width: 22px;height: 22px"></a>
+            	<a href="insertView.html" class="atu1"><img src="images/add_message.png" style="width: 22px;height: 22px"></a>
+            	<a href="insertView.html" class="atu2"><img src="images/add_message.png" style="width: 22px;height: 22px"></a>
             </div>
-            <a href="category.html" class="qu-ul1a">发布</a>
+            <a href="insertView.html" class="qu-ul1a">发布</a>
         </li>
     	
         

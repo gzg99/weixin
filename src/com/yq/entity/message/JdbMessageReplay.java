@@ -1,4 +1,4 @@
-package com.yq.entity.community;
+package com.yq.entity.message;
 
 import java.util.Date;
 

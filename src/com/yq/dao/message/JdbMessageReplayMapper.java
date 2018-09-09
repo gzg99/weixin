@@ -1,6 +1,9 @@
-package com.yq.dao.community;
+package com.yq.dao.message;
 
-import com.yq.entity.community.JdbMessageReplay;
+import java.util.List;
+import java.util.Map;
+
+import com.yq.entity.message.JdbMessageReplay;
 
 public interface JdbMessageReplayMapper {
     int deleteByPrimaryKey(Long id);
@@ -10,6 +13,8 @@ public interface JdbMessageReplayMapper {
     int insertSelective(JdbMessageReplay record);
 
     JdbMessageReplay selectByPrimaryKey(Long id);
+    
+    List<Map<String,Object>> selectByMapList(Long messageId);
 
     int updateByPrimaryKeySelective(JdbMessageReplay record);
 

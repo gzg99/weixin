@@ -1,4 +1,4 @@
-package com.yq.entity.community;
+package com.yq.entity.message;
 
 import java.util.Date;
 
@@ -7,11 +7,11 @@ public class JdbMessage {
 
     private String openId;
 
+    private String title;
+
     private Date publishTime;
 
     private String type;
-    
-    private String title;
 
     private String messageContent;
 
@@ -29,6 +29,14 @@ public class JdbMessage {
 
     public void setOpenId(String openId) {
         this.openId = openId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getPublishTime() {
@@ -54,12 +62,4 @@ public class JdbMessage {
     public void setMessageContent(String messageContent) {
         this.messageContent = messageContent;
     }
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 }

@@ -44,8 +44,8 @@
             <div class="sy-info1" style="border-bottom:4px solid #E6E6E6;">
                 <ul class="info-img">
                     <li>
-                        <a href="secGoodsList.html?is_recommend=1" class="img-1"><img src="images/b1.png" style="width:42px;height: 42px"> </a>
-                        <a href="secGoodsList.html?is_recommend=1" class="img-txt">社区服务</a>
+                        <a href="listMessage.html" class="img-1"><img src="images/b1.png" style="width:42px;height: 42px"> </a>
+                        <a href="listMessage.html" class="img-txt">社区服务</a>
                     </li>
                     <li>
                         <a href="cardAll.html" class="img-1"> <img  src="images/b2.png" style="width:42px;height: 42px"></a>
