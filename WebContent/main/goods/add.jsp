@@ -34,22 +34,22 @@
 <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
 <script>
-			var editor;
-			KindEditor.ready(function(K) {
-				editor = K.create('textarea[name="content"]', {
-					resizeType : 1,
-					allowPreviewEmoticons : false,
-					allowImageUpload : true,
-					afterBlur : function() {
-						this.sync();
-					},
-					items : [
-						'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-						'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link','fullscreen']
-				});
-			});
-		</script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			afterBlur : function() {
+				this.sync();
+			},
+			items : [
+				'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link','fullscreen']
+		});
+	});
+</script>
 <title>基本设置</title>
 
 </head>

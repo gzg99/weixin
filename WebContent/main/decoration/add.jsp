@@ -56,7 +56,7 @@
 <body>
 	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
-		工人管理 <span class="c-gray en">&gt;</span>  <a
+		装修样板管理 <span class="c-gray en">&gt;</span>  <a
 			class="btn btn-success radius r mr-20"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
@@ -65,49 +65,15 @@
 	<br><br>
 	<div class="pd-20" style="width: 80%">
 		<div class="row cl">
-			<label class="form-label col-2">名称：</label>
+			<label class="form-label col-2">公司名称：</label>
 			<div class="formControls col-10">
-				<input type="text" id="name"
-					placeholder="请填写工人姓名" class="input-text" style="width: 80%">
+				<input type="text" id="companyName"
+					placeholder="请填写公司名称" class="input-text" style="width: 80%">
 			</div>
 		</div><br>
 		
 		<div class="row cl">
-			<label class="form-label col-2">年龄：</label>
-			<div class="formControls col-10">
-				<input type="text" id="age"
-					placeholder="请填写工人年龄" class="input-text" style="width: 80%">
-			</div>
-		</div><br>
-		
-		<div class="row cl">
-			<label class="form-label col-2">性别：</label>
-			<div class="formControls col-10">
-				<select id="sex">
-					<option value="男">男</option>
-					<option value="女">女</option>
-				</select>
-			</div>
-		</div><br>
-		
-		<div class="row cl">
-			<label class="form-label col-2">手机号：</label>
-			<div class="formControls col-10">
-				<input type="text" id="telPhone"
-					placeholder="请填写工人手机号" class="input-text" style="width: 80%">
-			</div>
-		</div><br>
-		
-		<div class="row cl">
-			<label class="form-label col-2">证书名称：</label>
-			<div class="formControls col-10">
-				<input type="text" id="credentials"
-					placeholder="请填写证书名称" class="input-text" style="width: 80%">
-			</div>
-		</div><br>
-		
-		<div class="row cl">
-			<label class="form-label col-2">证书图片：</label>
+			<label class="form-label col-2">公司图片：</label>
 			<div class="formControls col-10">
 				<input type="file" id="file" name="file" class="input-text" style="width: 80%" onchange="upload()">
 			</div>
@@ -119,39 +85,18 @@
 		</div><br>
 		
 		<div class="row cl">
-			<label class="form-label col-2">身份证：</label>
+			<label class="form-label col-2">公司简介：</label>
 			<div class="formControls col-10">
-				<input type="text" id="workerId"
-					placeholder="请填写工人身份证号" class="input-text" style="width: 80%">
+				<div class="formControls col-10">
+					<textarea name="content1" id="companyIntrl" style="width: 80%;height: 260px;"></textarea>
+				</div>
 			</div>
 		</div><br>
 		
 		<div class="row cl">
-			<label class="form-label col-2">工人照片：</label>
+			<label class="form-label col-2">公司详情：</label>
 			<div class="formControls col-10">
-				<input type="file" id="file1" name="file1" class="input-text" style="width: 80%" onchange="upload1()">
-			</div>
-		</div><br>
-		<div class="row cl">
-			<label class="form-label col-2"> </label>
-			<input id="filepath1" type="hidden">
-			<div class="formControls col-10" id="img1"></div>
-		</div><br>
-		
-		<div class="row cl">
-			<label class="form-label col-2">工人介绍：</label>
-			<div class="formControls col-10">
-				<textarea name="content" id="workerIntro" style="width: 80%;height: 260px;"></textarea>
-			</div>
-		</div><br>
-		
-		<div class="row cl">
-			<label class="form-label col-2">是否会员：</label>
-			<div class="formControls col-10">
-				<select id="isVip">
-					<option value="1">是</option>
-					<option value="0">否</option>
-				</select>
+				<textarea name="content" id="companyDetail" style="width: 80%;height: 260px;"></textarea>
 			</div>
 		</div><br>
 		
@@ -159,47 +104,47 @@
 			<label class="form-label col-2">类型：</label>
 			<div class="formControls col-10">
 				<select id="type">
-					<option value="水暖工">水暖工</option>
-					<option value="木工">木工</option>
-					<option value="电工">电工</option>
-					<option value="泥瓦工">泥瓦工</option>
-					<option value="保洁工">保洁工</option>
-					<option value="杂务工">杂务工</option>
+					<option value="工匠">工匠</option>
+					<option value="工装">工装</option>
+					<option value="家装">家装</option>
 				</select>
 			</div>
 		</div><br>
 		
-		<br>
-		<div class="col-10 col-offset-2">
+		<div class="row cl">
+			<label class="form-label col-2">是否精品：</label>
+			<div class="formControls col-10">
+				<select id="isFineQuality">
+					<option value="是">是</option>
+					<option value="否">否</option>
+				</select>
+			</div>
+		</div><br><br>
 		
-				<button onClick="add()" id="butt"
+		<div class="col-10 col-offset-2">
+			<button onClick="add()" id="butt"
 				class="btn btn-primary radius" type="button">
 				<i class="Hui-iconfont">&#xe632;</i> 提交
 			</button>
 			<button onClick="history.go(-1);" class="btn btn-default radius"
-				type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;</button>
+				type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;
+			</button>
 		</div>
 	</div><br><br>
 	<script type="text/javascript">
 		function add(){
-			var name = $('#name').val();
-			var age = $('#age').val();
-			var sex = $('#sex').val();
-			var telPhone = $('#telPhone').val();
-			var credentials = $('#credentials').val();
-			var credentialsImg = $('#filepath').val();
-			var workerId = $('#workerId').val();
-			var workerImg = $('#workerImg').val();
-			var workerIntro = $('#workerIntro').val();
-			var isVip = $('#isVip').val();
-			var type = $("#type").val();
+			var companyName = $('#companyName').val();
+			var companyImg = $('#filepath').val();
+			var companyIntrl = $('#companyIntrl').val();
+			var companyDetail = $('#companyDetail').val();
+			var type = $('#type').val();
+			var isFineQuality = $('#isFineQuality').val();
 			
 			$.ajax({
-				url:'addWorker.html',
+				url:'addDecoration.html',
 				type:'post',
-				data:'name='+name+'&age='+age+'&sex='+sex+'&telPhone='+telPhone+'&credentials='+credentials+'&credentialsImg='+
-				credentialsImg+'&workerId='+workerId+'&workerImg='+workerImg+'&workerIntro='+workerIntro+
-				'&isVip='+isVip+'&type='+type,
+				data:'companyName='+companyName+'&companyImg='+companyImg+'&companyIntrl='+companyIntrl+
+				'&companyDetail='+companyDetail+'&type='+type+'&isFineQuality='+isFineQuality,
 				success:function(rs){
 					if(rs==1){
 						alert("添加成功！");
@@ -254,48 +199,6 @@
 			});
 		}
 		
-		function upload1() {
-			var fp = document.getElementById("file1").value;
-			//为了避免转义反斜杠出问题，这里将对其进行转换
-			var re = /(\\+)/g;
-			var fn = fp.replace(re, "#");
-			//对路径字符串进行剪切截取
-			var one = fn.split("#");
-			//获取数组中最后一个，即文件名
-			var two = one[one.length - 1];
-			//再对文件名进行截取，以取得后缀名
-			var three = two.split(".");
-			//获取截取的最后一个字符串，即为后缀名
-			var last = three[three.length - 1];
-			last = last.toLowerCase();
-	
-			if (last != 'png' && last != 'jpg' && last != 'gif'
-					&& last != 'PNG' && last != 'JPG' && last != 'GIF') {
-				alert("请上传png、jpg或者gif文件！");
-				return;
-			}
-			$.ajaxFileUpload({
-				url : 'upload1.html', //需要链接到服务器地址  
-				secureuri : false,
-				fileElementId : "file1", //文件选择框的id属性  
-				dataType : 'text', //服务器返回的格式，可以是json  
-				success : function(rs) //相当于java中try语句块的用法  
-				{	
-					if (rs != "") {
-						$('#img1').html("");
-						$('#img1').append("<img src='"+rs+"' width='100' height='100'>");
-						$('#filepath1').val(rs);
-					} else {
-						alert('失败');
-						//document.getElementById("msg"+m[1]).value="失败"; 
-					}
-				},
-				error : function(data, status, e) //相当于java中catch语句块的用法  
-				{alert('失败');
-					
-				}
-			});
-		}
 	</script>	
 	
 </body>

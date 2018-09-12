@@ -15,13 +15,12 @@ a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webki
 
 .search{ height: 0.9rem; width: 100%; background:#fff; box-shadow: 0 0 0.03rem rgba(0,0,0,0.2);}
 .menu{ position: fixed; bottom: 0; left: 0; width:7.5rem; height: 1.16rem;}
-.map{ height:20px; width: 100%; }
+.map{ height:5rem; width: 100%; }
 .small_title{ height:0.5rem; line-height: 0.5rem; text-align: center;font-size:0.25rem; color: #b5b4b4; }
-.sq_list{width: 7.5rem;float: left;/*padding-bottom: 1.0rem;padding-top:2.0rem;*/}
 .sq_list li{ width:7.1rem; border-top: #CDCDCD solid 0.01rem;  padding: 0.25rem 0.2rem; float: left;}
 .sq_list li img{ height:1.15rem; width: 1.6rem; float: left; margin-right:0.2rem;}
-.sq_list li h1{ font-size: 0.28rem; line-height: 0.28rem; margin-top: 0.04rem;}
-.sq_list li p{font-size: 0.25rem; line-height: 0.35rem; height: 0.7rem; overflow: hidden; margin-top:0.18rem; color: #bbb6b6;}
+.sq_list li h1,.sq_list_bt h1{ font-size: 0.28rem; line-height: 0.28rem; margin-top: 0.04rem;}
+.sq_list li p,.sq_list_bt p{font-size: 0.25rem; line-height: 0.35rem; height: 0.7rem; overflow: hidden; margin-top:0.18rem; color: #bbb6b6;}
 .sq_list_bt{ float: left; width:4.2rem;}
 .sq_list_jl{font-size: 0.25rem;  float:right; width:1.1rem; text-align: right; color: #676363; margin-top: 0.46rem;}
 
@@ -31,10 +30,10 @@ a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webki
 .shop_index_img img,.shop_img img{ width: 100%; height: auto; float: left;}
 
 .shop_menu{width: 100%; float: left; position: relative; padding-top: 0.3rem;}
-.shop_menu_btn{ width: 0.42rem; height: 0.42rem; background: url(../images/shop_menu_ico20180629.png) no-repeat; cursor: pointer;position: absolute; left:0.2rem; top:0.3rem; background-size: 100% 100%;}
-.shop_menu_nr{display:none; position: absolute; left:-0.5rem; width: 2.2rem; background-color: rgba(255,255,255,0.9); box-shadow: 0 0 0.03rem rgba(0,0,0,0.3); padding-bottom: 0.25rem;}
-.shop_menu_se{ float: left; padding-left: 0.8rem; width: 1.8rem; font-size: 0.28rem; line-height: 0.6rem; margin-top: 0.2rem; background: url(shop_menu_cir20180629.png) no-repeat 0.2rem 0.26rem; background-size: 0.12rem 0.12rem;cursor: pointer;}
-.shop_menu_op{ float: left; padding-left: 0.8rem; width: 100%; font-size: 0.25rem; line-height: 0.5rem;}
+.shop_menu_btn{ width: 0.42rem; height: 0.42rem; background: url(shop_menu_ico20180629.png) no-repeat; cursor: pointer;position: absolute; left:0.2rem; top:0.3rem; background-size: 100% 100%;}
+.shop_menu_nr{ position: absolute; left:-2.2rem; width: 2.2rem; background-color: rgba(255,255,255,0.9); box-shadow: 0 0 0.03rem rgba(0,0,0,0.3); padding-bottom: 0.25rem;}
+.shop_menu_se{ float: left; padding-left: 0.4rem; width: 1.8rem; font-size: 0.28rem; line-height: 0.6rem; margin-top: 0.2rem; background: url(shop_menu_cir20180629.png) no-repeat 0.2rem 0.26rem; background-size: 0.12rem 0.12rem;cursor: pointer;}
+.shop_menu_op{ float: left; width: 100%; font-size: 0.25rem; line-height: 0.5rem;}
 .shop_menu_op li{ padding-left: 0.45rem; width: 1.75rem; float: left; cursor: pointer;}
 .sm_list li img{height:1.86rem; width:2.1rem; margin-right:0.4rem }
 .sm_list .sq_list_bt{ width:4.6rem;}
@@ -55,11 +54,11 @@ a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webki
 .pingfen{ width: 100%; float: left; padding:0.25rem 0;}
 .pingfen_txt{float: left;font-size: 0.28rem; line-height: 0.28rem; margin: 0.11rem 0.3rem 0 0;}
 .pingfen ul{ float: left;}
-.pingfen ul li{ float: left; width:0.5rem; height: 0.5rem; background:url(../images/star1.png) no-repeat center center; background-size: 100% 100%; margin-right: 0.12rem; cursor: pointer;}
-.pingfen ul .active{ background-image: url(../images/star2.png);}
+.pingfen ul li{ float: left; width:0.5rem; height: 0.5rem; background:url(star1.png) no-repeat center center; background-size: 100% 100%; margin-right: 0.12rem; cursor: pointer;}
+.pingfen ul .active{ background-image: url(star2.png);}
 .pingjia_nr textarea{ width: 100%; border: none; resize: none; float: left; color: #bbb6b6;font-size: 0.28rem;line-height: 0.36rem;font-family: "微软雅黑"; height: 1.08rem;}
 .sc_img{ width: 100%; float: left; border-bottom: #ddd solid 0.01rem; padding: 0.2rem 0;}
-.sc_img_btn{float: left;width: 0.9rem; height: 0.9rem; background: url(../images/picadd.png) no-repeat center center;background-size: 100% 100%; cursor: pointer;}
+.sc_img_btn{float: left;width: 0.9rem; height: 0.9rem; background: url(picadd.png) no-repeat center center;background-size: 100% 100%; cursor: pointer;}
 .sc_img ul{ float: left;}
 .sc_img ul li{ float: left;width: 0.9rem; height: 0.9rem; position: relative; margin-left: 0.2rem; cursor: pointer;}
 .sc_img ul li img{width: 100%; height: 100%; float: left;}

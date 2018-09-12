@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.WorkerEvalDao">
+	<insert id="insertEval" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.yq.entity.WorkerEval">
+		insert jdb_worker_eval(
+			worker_id,
+			open_id,
+			content,
+			add_time,
+			score
+		)values(
+			#{worker_id},
+			#{open_id},
+			#{content},
+			#{add_time},
+			#{score}
+		)
+	</insert>
+
+	<delete id="delete" parameterType="java.util.Map">
+		delete from jdb_worker_eval where order_id=#{order_id}
+	</delete>
+
+	<select id="getAllEvalByWorkerId" resultType="com.yq.entity.WorkerEval">
+		select 
+			id as id,
+	        worker_id as workerId,
+	        open_id as openId,
+	        content as content,
+	        add_time as addTime,
+	        score as score 
+	     from 
+	     	jdb_worker_eval 
+	     where 
+	     	worker_id=#{workerId}
+	</select>
+	
+	<select id="getAllEvalByGoodIdOpenId" resultType="com.yq.entity.WorkerEval">
+		select 
+			id as id,
+	        worker_id as workerId,
+	        open_id as openId,
+	        content as content,
+	        add_time as addTime,
+	        score as score  
+	     from 
+	     	jdb_worker_eval 
+	     where 
+	     	worker_id=#{workerId} and open_id=#{open_id}
+	</select>
+
+	<select id="getCountByWorkerId" resultType="int">
+		select count(1) from jdb_worker_eval where worker_id=#{workerId}
+	</select>
+	
+	<select id="getGoodCountByWorkerId" resultType="int">
+		<![CDATA[ select count(1) from jdb_worker_eval where worker_id=#{workerId} and score>5 ]]>
+	</select>
+	
+	<select id="getBadCountByWorkerId" resultType="int">
+		<![CDATA[ select count(1) from jdb_worker_eval where worker_id=#{workerId} and score<5 ]]>
+	</select>
+	
+	<select id="getEvalByWorkerAndScore" resultType="java.util.Map" parameterType="java.util.Map" >
+	    select 
+	        id as id,
+	        worker_id as workerId,
+	        open_id as openId,
+	        content as content,
+	        add_time as addTime,
+	        score as score 
+	    from 
+	        jdb_worker_eval 
+        worker_id = #{workerId,jdbcType=BIGINT} 
+        <if test="grade != null and grade != ''">
+            <if test="grade == 4">
+                and score &gt;='4' 
+            </if>
+            <if test="grade == 3">
+                and grade ='3' 
+            </if>
+            <if test="grade == 2">
+                and grade &lt;='2' 
+            </if>
+        </if>
+  </select>
+
+</mapper>

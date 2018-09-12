@@ -33,6 +33,23 @@
 <link rel="stylesheet" href="kindeditor/themes/default/default.css" />
 <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			afterBlur : function() {
+				this.sync();
+			},
+			items : [
+				'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link','fullscreen']
+		});
+	});
+</script>
 <title>基本设置</title>
 
 </head>
@@ -47,6 +64,7 @@
 	</nav>
 	<br><br>
 	<div class="pd-20" style="width: 80%">
+		<input type="hidden" id="id" value="${worker.id }">
 		<div class="row cl">
 			<label class="form-label col-2">名称：</label>
 			<div class="formControls col-10">
@@ -60,6 +78,16 @@
 			<div class="formControls col-10">
 				<input type="text" id="age"
 					placeholder="请填写工人年龄" value="${worker.age }" class="input-text" style="width: 80%">
+			</div>
+		</div><br>
+		
+		<div class="row cl">
+			<label class="form-label col-2">性别：</label>
+			<div class="formControls col-10">
+				<select id="sex">
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
 			</div>
 		</div><br>
 		
@@ -138,6 +166,62 @@
 			</div>
 		</div><br>
 		
+		<div class="row cl">
+			<label class="form-label col-2">类型：</label>
+			<div class="formControls col-10">
+				<select id="type">
+					<c:if test="${worker.type=='水暖工' }">
+						<option value="水暖工" selected="selected">水暖工</option>
+						<option value="木工">木工</option>
+						<option value="电工">电工</option>
+						<option value="泥瓦工">泥瓦工</option>
+						<option value="保洁工">保洁工</option>
+						<option value="杂务工">杂务工</option>
+					</c:if>
+					<c:if test="${worker.type=='木工' }">
+						<option value="水暖工">水暖工</option>
+						<option value="木工" selected="selected">木工</option>
+						<option value="电工">电工</option>
+						<option value="泥瓦工">泥瓦工</option>
+						<option value="保洁工">保洁工</option>
+						<option value="杂务工">杂务工</option>
+					</c:if>
+					<c:if test="${worker.type=='电工' }">
+						<option value="水暖工">水暖工</option>
+						<option value="木工">木工</option>
+						<option value="电工" selected="selected">电工</option>
+						<option value="泥瓦工">泥瓦工</option>
+						<option value="保洁工">保洁工</option>
+						<option value="杂务工">杂务工</option>
+					</c:if>
+					<c:if test="${worker.type=='泥瓦工' }">
+						<option value="水暖工">水暖工</option>
+						<option value="木工">木工</option>
+						<option value="电工">电工</option>
+						<option value="泥瓦工" selected="selected">泥瓦工</option>
+						<option value="保洁工">保洁工</option>
+						<option value="杂务工">杂务工</option>
+					</c:if>
+					<c:if test="${worker.type=='保洁工' }">
+						<option value="水暖工">水暖工</option>
+						<option value="木工">木工</option>
+						<option value="电工">电工</option>
+						<option value="泥瓦工">泥瓦工</option>
+						<option value="保洁工" selected="selected">保洁工</option>
+						<option value="杂务工">杂务工</option>
+					</c:if>
+					<c:if test="${worker.type=='杂务工' }">
+						<option value="水暖工">水暖工</option>
+						<option value="木工">木工</option>
+						<option value="电工">电工</option>
+						<option value="泥瓦工">泥瓦工</option>
+						<option value="保洁工">保洁工</option>
+						<option value="杂务工" selected="selected">杂务工</option>
+					</c:if>
+				</select>
+			</div>
+		</div><br>
+		
 		<br>
 		<div class="col-10 col-offset-2">
 		
@@ -151,8 +235,10 @@
 	</div><br><br>
 	<script type="text/javascript">
 		function add(){
+			var id = $('#id').val();
 			var name = $('#name').val();
 			var age = $('#age').val();
+			var sex = $("#sex").val();
 			var telPhone = $('#telPhone').val();
 			var credentials = $('#credentials').val();
 			var credentialsImg = $('#filepath').val();
@@ -160,13 +246,14 @@
 			var workerImg = $('#workerImg').val();
 			var workerIntro = $('#workerIntro').val();
 			var isVip = $('#isVip').val();
+			var type = $("#type").val();
 			
 			$.ajax({
-				url:'addWorker.html',
+				url:'updateWorker.html',
 				type:'post',
-				data:'name='+name+'&age='+age+'&telPhone='+telPhone+'&credentials='+credentials+'&credentialsImg='+
-				credentialsImg+'&workerId='+workerId+'&workerImg='+workerImg+'&workerIntro='+workerIntro+
-				'&isVip='+isVip,
+				data:'id='+id+'&name='+name+'&age='+age+'&sex='+sex+'&telPhone='+telPhone+'&credentials='+
+				credentials+'&credentialsImg='+credentialsImg+'&workerId='+workerId+'&workerImg='+workerImg+
+				'&workerIntro='+workerIntro+'&isVip='+isVip+'&type='+type,
 				success:function(rs){
 					if(rs==1){
 						alert("添加成功！");

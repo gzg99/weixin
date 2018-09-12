@@ -49,4 +49,14 @@ public class UserService{
 	public int isMember(User user){
 		return userDao.isMember(user);
 	}
+	
+	public User getUserByOpenId(String openId) {
+		User user = new User();
+		user.setOppen_id(openId);
+		List<User> list = userDao.list(user);
+		if(list != null && list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
 }

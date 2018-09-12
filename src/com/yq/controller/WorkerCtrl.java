@@ -33,7 +33,7 @@ public class WorkerCtrl extends StringUtil {
 		ModelAndView mv = new ModelAndView();
 		Worker worker = workerService.getWorkerByOpenId(getOppen_id(session));
 		mv.addObject("worker", worker);
-		mv.setViewName("page/showWorksLocation");
+		mv.setViewName("page/showWorkersLocation");
 		return mv;
 	}
 	
@@ -48,9 +48,24 @@ public class WorkerCtrl extends StringUtil {
 	
 	@RequestMapping(value = "main/updateWorker.html")
 	@ResponseBody
-	public String updateWorker(Worker worker) {
+	public String updateWorker(Long id, String name, int age, String sex, Long telPhone,String credentials, 
+			String credentialsImg, String workerId, String workerImg, String workerIntro, int isVip, String type, 
+			HttpSession session) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Worker worker = new Worker();
 		worker.setUpdateTime(format.format(new Date()));
+		worker.setId(id);
+		worker.setName(name);
+		worker.setAge(age);
+		worker.setSex(sex);
+		worker.setTelPhone(telPhone);
+		worker.setCredentials(credentials);
+		worker.setCredentialsImg(credentialsImg);
+		worker.setWorkerId(workerId);
+		worker.setWorkerImg(workerImg);
+		worker.setWorkerIntro(workerIntro);
+		worker.setIsVip(isVip);
+		worker.setType(type);
 		return workerService.update(worker) + "";
 	}
 	
@@ -98,12 +113,13 @@ public class WorkerCtrl extends StringUtil {
 	
 	@RequestMapping(value = "main/addWorker.html")
 	@ResponseBody
-	public String addVillage(String name, int age, Long telPhone,String credentials, String credentialsImg,
-			String workerId, String workerImg, String workerIntro, int isVip, HttpSession session) {
+	public String addWorker(String name, int age, String sex, Long telPhone,String credentials, String credentialsImg,
+			String workerId, String workerImg, String workerIntro, int isVip, String type, HttpSession session) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Worker worker = new Worker();
 		worker.setName(name);
 		worker.setAge(age);
+		worker.setSex(sex);
 		worker.setTelPhone(telPhone);
 		worker.setCredentials(credentials);
 		worker.setCredentialsImg(credentialsImg);
@@ -114,6 +130,8 @@ public class WorkerCtrl extends StringUtil {
 		worker.setAddTime(format.format(new Date()));
 		worker.setUpdateTime(format.format(new Date()));
 		worker.setOpenId(getOppen_id(session));
+		worker.setServiceCount(0);
+		worker.setType(type);
 		int i = workerService.add(worker);
 		return i + "";
 	}
@@ -132,6 +150,16 @@ public class WorkerCtrl extends StringUtil {
 		map.put("endTime", endTime);
 		List<Worker> list = workerService.getAllWorkerRangeCurDay(map);
 		return JSONObject.valueToString(list);
+	}
+	
+	@RequestMapping(value = "page/getWorkerInfoById.html")
+	@ResponseBody
+	public ModelAndView getWorkerInfoById(Long id) {
+		Worker worker = workerService.getWorkerById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("worker", worker);
+		mv.setViewName("page/workerInfo");
+		return mv;
 	}
 	
 }

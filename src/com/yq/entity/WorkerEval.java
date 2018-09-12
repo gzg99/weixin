@@ -1,10 +1,13 @@
 package com.yq.entity;
 
-public class OrderEval {
+/**
+ * 工人评价
+ * */
+public class WorkerEval {
 	
 	private Long id;
 	
-	private Long good_id;
+	private Long worker_id;
 	
 	private String open_id;
 	
@@ -12,7 +15,9 @@ public class OrderEval {
 	
 	private String add_time;
 	
-	private int score;
+	private String score;
+	
+	private String headImgStr;
 
 	public Long getId() {
 		return id;
@@ -22,12 +27,12 @@ public class OrderEval {
 		this.id = id;
 	}
 
-	public Long getGood_id() {
-		return good_id;
+	public Long getWorker_id() {
+		return worker_id;
 	}
 
-	public void setGood_id(Long good_id) {
-		this.good_id = good_id;
+	public void setWorker_id(Long worker_id) {
+		this.worker_id = worker_id;
 	}
 
 	public String getOpen_id() {
@@ -54,12 +59,20 @@ public class OrderEval {
 		this.add_time = add_time;
 	}
 
-	public int getScore() {
+	public String getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(String score) {
 		this.score = score;
+	}
+
+	public String getHeadImgStr() {
+		return headImgStr;
+	}
+
+	public void setHeadImgStr(String headImgStr) {
+		this.headImgStr = headImgStr;
 	}
 	
 }

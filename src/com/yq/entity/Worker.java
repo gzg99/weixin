@@ -8,6 +8,8 @@ public class Worker {
 	
 	private int age;
 	
+	private String sex;
+	
 	private String longitude;
 	
 	private String latitude;
@@ -31,6 +33,10 @@ public class Worker {
 	private String addTime;
 	
 	private String updateTime;
+	
+	private String type;
+	
+	private int serviceCount;
 
 	public Long getId() {
 		return id;
@@ -150,6 +156,30 @@ public class Worker {
 
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getServiceCount() {
+		return serviceCount;
+	}
+
+	public void setServiceCount(int serviceCount) {
+		this.serviceCount = serviceCount;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	
 }

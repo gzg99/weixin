@@ -6,6 +6,7 @@
 		insert jdb_worker(
 			name,
 			age,
+			sex,
 			longitude,
 			latitude,
 			open_id,
@@ -21,6 +22,7 @@
 		)values(
 			#{name},
 			#{age},
+			#{sex},
 			#{longitude},
 			#{latitude},
 			#{openId},
@@ -44,6 +46,9 @@
       </if>
       <if test="age != null" >
         age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
       </if>
       <if test="longitude != null" >
         longitude = #{longitude,jdbcType=VARCHAR},
@@ -94,6 +99,7 @@
 			id as id,
 			name as name,
 			age as age,
+			sex as sex,
 			longitude as longitude,
 			latitude as latitude,
 			open_id as openId,
@@ -105,6 +111,7 @@
 			worker_intro as workerIntro,
 			is_vip as isVip,
 			add_time as addTime,
+			type as type,
 			update_time as updateTime 
 		from jdb_worker limit #{currentNum},#{pageSize}
 	</select>
@@ -120,6 +127,7 @@
 			id as id,
 			name as name,
 			age as age,
+			sex as sex,
 			longitude as longitude,
 			latitude as latitude,
 			open_id as openId,
@@ -131,6 +139,7 @@
 			worker_intro as workerIntro,
 			is_vip as isVip,
 			add_time as addTime,
+			type as type,
 			update_time as updateTime 
 		from jdb_worker 
 		where open_id=#{opendId,jdbcType=VARCHAR}
@@ -141,6 +150,7 @@
 			id as id,
 			name as name,
 			age as age,
+			sex as sex,
 			longitude as longitude,
 			latitude as latitude,
 			open_id as openId,
@@ -152,6 +162,7 @@
 			worker_intro as workerIntro,
 			is_vip as isVip,
 			add_time as addTime,
+			type as type,
 			update_time as updateTime 
 		from jdb_worker 
 		where id=#{id,jdbcType=BIGINT}
@@ -162,6 +173,7 @@
 			id as id,
 			name as name,
 			age as age,
+			sex as sex,
 			longitude as longitude,
 			latitude as latitude,
 			open_id as openId,
@@ -173,6 +185,7 @@
 			worker_intro as workerIntro,
 			is_vip as isVip,
 			add_time as addTime,
+			type as type,
 			update_time as updateTime 
 		from jdb_worker 
 		where 

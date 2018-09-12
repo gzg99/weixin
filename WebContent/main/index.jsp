@@ -188,6 +188,14 @@
 				</ul>
 			</dd>
 		</dl>
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i>装修管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="decorationList.html?pageNo=1&pageSize=10" href="javascript:;">装修管理</a></li>
+				</ul>
+			</dd>
+		</dl>
 	</div>
 	
 	<div class="menu_dropdown bk_2" id="menu2">

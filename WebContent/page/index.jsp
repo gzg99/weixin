@@ -78,8 +78,8 @@
                         <a href="getAllSellerAreaList.html?type=3" class="img-txt">花卉</a>
                     </li>
                     <li>
-                        <a href="" class="img-1"><img  src="images/b9.png" style="width:42px;height: 42px"></a>
-                        <a href="" class="img-txt">装修样板</a>
+                        <a href="decorationIndex.html" class="img-1"><img  src="images/b9.png" style="width:42px;height: 42px"></a>
+                        <a href="decorationIndex.html" class="img-txt">装修样板</a>
                     </li>
                 </ul>
             </div>

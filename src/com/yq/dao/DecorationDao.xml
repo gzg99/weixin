@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.DecorationDao">
+	
+	<select id="getListByType" parameterType="java.lang.String" resultType="com.yq.entity.DecorationEntity">
+		select 
+			id as id,
+			company_name as companyName,
+			company_img as companyImg,
+			company_intrl as companyIntrl,
+			company_detail as companyDetail,
+			add_time as addTime,
+			type as type,
+			is_fine_quality as isFineQuality 
+		from 
+			jdb_decoration 
+		where
+			type=#{type,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getInfoById" parameterType="java.lang.Long" resultType="com.yq.entity.DecorationEntity">
+		select 
+			id as id,
+			company_name as companyName,
+			company_img as companyImg,
+			company_intrl as companyIntrl,
+			company_detail as companyDetail,
+			add_time as addTime,
+			type as type,
+			is_fine_quality as isFineQuality 
+		from 
+			jdb_decoration 
+		where
+			id=#{id,jdbcType=BIGINT}
+	</select>
+	
+	<insert id="insert" parameterType="com.yq.entity.DecorationEntity">
+		insert jdb_decoration(
+			company_name,
+			company_img,
+			company_intrl,
+			company_detail,
+			add_time,
+			type,
+			is_fine_quality
+		)values(
+			#{companyName,jdbcType=VARCHAR},
+			#{companyImg,jdbcType=VARCHAR},
+			#{companyIntrl,jdbcType=VARCHAR},
+			#{companyDetail,jdbcType=VARCHAR},
+			#{addTime,jdbcType=VARCHAR},
+			#{type,jdbcType=VARCHAR},
+			#{isFineQuality,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.yq.entity.DecorationEntity">
+		update jdb_decoration
+		<set>
+			<if test="companyName != null" >
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyImg != null" >
+				company_img = #{companyImg,jdbcType=VARCHAR},
+			</if>
+			<if test="companyIntrl != null" >
+				company_intrl = #{companyIntrl,jdbcType=VARCHAR},
+			</if>
+			<if test="companyDetail != null" >
+				company_detail = #{companyDetail,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null" >
+				add_time = #{addTime,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null" >
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="isFineQuality != null" >
+				is_fine_quality = #{isFineQuality,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<delete id="deleteById" parameterType="java.lang.Long">
+		delete from jdb_decoration where id=#{id,jdbcType=BIGINT}
+	</delete>
+	
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) from jdb_decoration
+	</select>
+	
+	<select id="getDecorationListByPage" parameterType="map" resultType="com.yq.entity.DecorationEntity">
+		select 
+			id as id,
+			company_name as companyName,
+			company_img as companyImg,
+			company_intrl as companyIntrl,
+			company_detail as companyDetail,
+			add_time as addTime,
+			type as type,
+			is_fine_quality as isFineQuality 
+		from 
+			jdb_decoration 
+		limit #{currentNum},#{pageSize}
+	</select>
+</mapper>
