@@ -9,6 +9,12 @@
 	</head>
 
 	<body style="padding-bottom:1.2rem; background: #E6E6E6;">
+		<div>
+	    	<a href="javascript:history.go(-1)" class="qb-tleft f-l">
+	    		<img src="images/back.png" alt="" style="width:20px;height: 20px;"/>
+	    	</a>
+	        <div style="clear:both;"></div>
+	    </div>
 		<ul class="pingjia">
 			<form action="" method="post" id="addevaluate" enctype="multipart/form-data">
 				<input type="hidden" name="score" id="score">
@@ -35,6 +41,7 @@
 			</form>
 		</ul>
 		<div class="clear"></div>
+		<jsp:include page="footer4.jsp"></jsp:include>
 	</body>
 	
 	<script src="js/base.js"></script>

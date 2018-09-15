@@ -28,6 +28,13 @@
 	</style>
 </head>
 <body style="padding-bottom:1.2rem;">
+	<div>
+    	<a href="javascript:history.go(-1)" class="qb-tleft f-l">
+    		<img src="images/back.png" alt="" style="width:20px;height: 20px;"/>
+    	</a>
+        <div style="clear:both;"></div>
+    </div>
+
 	<div class="hgj_tab">
 		<ul>
 			<li class="active">水暖工</li>
@@ -42,7 +49,7 @@
 	<input type="hidden" id="id" value="${worker.id }">
 	<div id="iCenter" style="width:100%; height:100%;"></div>
 	<div class="clear"></div>
-	<div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
+	<jsp:include page="footer4.jsp"></jsp:include>
 	<script type="text/javascript">
 		var hgj_w=$(".hgj_tab ul li").length*1.4+"rem";
 		$(".hgj_tab ul").css("width",hgj_w)

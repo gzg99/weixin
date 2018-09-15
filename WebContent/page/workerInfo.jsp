@@ -21,6 +21,12 @@
 	</head>
 
 	<body>
+		<div>
+	    	<a href="javascript:history.go(-1)" class="qb-tleft f-l">
+	    		<img src="images/back.png" alt="" style="width:20px;height: 20px;"/>
+	    	</a>
+	        <div style="clear:both;"></div>
+	    </div>
 		<div class="hgj_top">
 			<img src="${worker.workerImg }"/>
 			<div class="hgj_top_cont">
@@ -50,6 +56,7 @@
 	    </div>
 	
 		<div class="clear"></div>
+		<jsp:include page="footer4.jsp"></jsp:include>
 		<script src="js/base.js"></script>
 	</body>
 </html>
