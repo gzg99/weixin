@@ -141,11 +141,12 @@ public class WorkerCtrl extends StringUtil {
 	 * */
 	@RequestMapping(value = "page/getAllWorkerRangeCurDay.html")
 	@ResponseBody
-	public String getAllWorkerRangeCurDay() {
+	public String getAllWorkerRangeCurDay(String type) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String startTime = format.format(new Date()) + " 00:00:00";
 		String endTime = format.format(new Date()) + " 23:59:59";
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
 		map.put("startTime", startTime);
 		map.put("endTime", endTime);
 		List<Worker> list = workerService.getAllWorkerRangeCurDay(map);

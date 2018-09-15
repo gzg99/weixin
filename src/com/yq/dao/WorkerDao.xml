@@ -188,7 +188,7 @@
 			type as type,
 			update_time as updateTime 
 		from jdb_worker 
-		where 
+		where type = #{type,jdbcType=VARCHAR} and 
 			<![CDATA[update_time > #{startTime,jdbcType=VARCHAR} and update_time < #{endTime,jdbcType=VARCHAR}]]>
 	</select>
 

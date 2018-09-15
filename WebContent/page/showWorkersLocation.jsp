@@ -29,36 +29,40 @@
 </head>
 <body style="padding-bottom:1.2rem;">
 	<div class="hgj_tab">
-		<ul><li class="active">水暖工</li><li>木工</li><li>电工</li><li>泥瓦工</li><li>XX工</li><li>杂务工</li></ul>
+		<ul>
+			<li class="active">水暖工</li>
+			<li>木工</li>
+			<li>电工</li>
+			<li>泥瓦工</li>
+			<li>保洁工</li>
+			<li>杂务工</li>
+		</ul>
 	</div>
+	<input type="hidden" id="type" value="水暖工">
 	<input type="hidden" id="id" value="${worker.id }">
 	<div id="iCenter" style="width:100%; height:100%;"></div>
-<!-- 	<ul class="hgj_list"> -->
-<!-- 		<li> -->
-<!--      		<img src="images/gy_tx01.jpg"/> -->
-<!-- 			<h1>水暖工</h1> -->
-<!-- 			<a href="####">更多详情</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!--      		<img src="images/gy_tx01.jpg"/> -->
-<!-- 			<h1>水暖工</h1> -->
-<!-- 			<a href="####">更多详情</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!--      		<img src="images/gy_tx01.jpg"/> -->
-<!-- 			<h1>水暖工</h1> -->
-<!-- 			<a href="####">更多详情</a> -->
-<!-- 		</li> -->
-<!-- 	</ul> -->
 	<div class="clear"></div>
 	<div class="menu"><img src="images/menu.png" width="100%" height="100%" alt=""/></div>
 	<script type="text/javascript">
 		var hgj_w=$(".hgj_tab ul li").length*1.4+"rem";
 		$(".hgj_tab ul").css("width",hgj_w)
 	
-		var mapObj = new AMap.Map('iCenter');
-		$(function(){ 
-		    mapObj.plugin('AMap.Geolocation', function () {
+		var mapObj;
+		$(function(){
+			$(".hgj_tab ul li").click(function(){
+				$(this).addClass("active").siblings().removeClass("active");
+				$("#type").val($(this).text());
+				mapObj.destroy();
+				mapObj = null;
+				loadMap();
+			});
+			
+			loadMap();
+		});
+		
+		function loadMap() {
+			mapObj = new AMap.Map('iCenter');
+			mapObj.plugin('AMap.Geolocation', function () {
 		        geolocation = new AMap.Geolocation({
 		            enableHighAccuracy: true, // 是否使用高精度定位，默认:true
 		            timeout: 50000,           // 超过50秒后停止定位，默认：无穷大
@@ -74,39 +78,41 @@
 		        AMap.event.addListener(geolocation, 'complete', onComplete); // 返回定位信息
 		        AMap.event.addListener(geolocation, 'error', onError);       // 返回定位出错信息
 		    });
+		}
 		
-		    function onComplete(obj){
-		        var str=['定位成功'];
-		        str.push('经度：' + obj.position.getLng());
-		        str.push('纬度：' + obj.position.getLat());
-		        //修改数据库中经度与纬度的值
-		        var longitude = obj.position.getLng();
-		        var latitude = obj.position.getLat();
-		        //var id = $("#id").val();
-		        var id = 1;
-		        $.ajax({
-		        	url:"updateWorkerLocation.html",
-		        	type : "POST",
-		        	data:'id='+id+'&longitude='+longitude+'&latitude='+latitude,
-		        	success:function(rs){
-		        		getAllWorkerInfo();
-					},
-					error:function() {
-						alert("手机定位失败");
-					}
-		        });
-		    }
-		
-		    function onError(obj) {
-		        alert(obj.info + '--' + obj.message);
-		        console.log(obj);
-		    }
-		});
+		function onComplete(obj){
+	        var str=['定位成功'];
+	        str.push('经度：' + obj.position.getLng());
+	        str.push('纬度：' + obj.position.getLat());
+	        //修改数据库中经度与纬度的值
+	        var longitude = obj.position.getLng();
+	        var latitude = obj.position.getLat();
+	        //var id = $("#id").val();
+	        var id = 1;
+	        $.ajax({
+	        	url:"updateWorkerLocation.html",
+	        	type : "POST",
+	        	data:'id='+id+'&longitude='+longitude+'&latitude='+latitude,
+	        	success:function(rs){
+	        		getAllWorkerInfo();
+				},
+				error:function() {
+					alert("手机定位失败");
+				}
+	        });
+	    }
+	
+	    function onError(obj) {
+	        alert(obj.info + '--' + obj.message);
+	        console.log(obj);
+	    }
 		
 		function getAllWorkerInfo() {
+			var type = $("#type").val();
 			$.ajax({
 				url:"getAllWorkerRangeCurDay.html",
 				type : "POST",
+				data:{"type":type},
 				dataType:"json",
 				success:function(result) {
 					getView(result);
@@ -121,9 +127,12 @@
 			var lnglats = [];
 			$.each(result, function(index, row){
 				var lnglats3 = [];
-				lnglats3[0] = row.longitude;
-				lnglats3[1] = row.latitude;
-				lnglats.push(lnglats3);
+				if(row.longitude != undefined && row.longitude != null && row.longitude != ""
+						&& row.latitude != undefined && row.latitude != null && row.latitude != "") {
+					lnglats3[0] = row.longitude;
+					lnglats3[1] = row.latitude;
+					lnglats.push(lnglats3);
+				}
 			});
 
 			for(var i = 0; i < lnglats.length; i++) {
@@ -134,8 +143,7 @@
 					extData:id
 				});
 				(function(x){
-					marker.on("click", function(event){  
-						alert(this.getExtData());
+					marker.on("click", function(event){
 						window.location.href="getWorkerInfoById.html?id="+this.getExtData();
 					});
 				})(i);
