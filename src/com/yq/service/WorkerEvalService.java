@@ -15,34 +15,31 @@ public class WorkerEvalService {
 	@Autowired
 	private WorkerEvalDao workerEvalDao;
 	
-	public boolean insertEval(WorkerEval orderEval) {
-		Long i = workerEvalDao.insertEval(orderEval);
-		if(i > 0) {
-			return true;
-		}
-		return false;
+	public int insertEval(WorkerEval workerEval) {
+		int i = workerEvalDao.insertEval(workerEval);
+		return i;
 	}
 	
 	public List<WorkerEval> getAllEvalByWorkerId(Long workerId) {
 		return workerEvalDao.getAllEvalByWorkerId(workerId);
 	}
 	
-	public List<WorkerEval> getAllEvalByGoodIdOpenId(Map<String, Object> map) {
-		return workerEvalDao.getAllEvalByGoodIdOpenId(map);
+	public List<WorkerEval> getAllEvalByWorkerIdOpenId(Map<String, Object> map) {
+		return workerEvalDao.getAllEvalByWorkerIdOpenId(map);
 	}
 	
-	public int getCountByGoodId(Integer workerId) {
-		return workerEvalDao.getCountByGoodId(workerId);
+	public int getCountByWorkerId(Long workerId) {
+		return workerEvalDao.getCountByWorkerId(workerId);
 	}
 	
 	//查找好评的个数
-	public int getGoodCountByGoodId(Integer workerId) {
-		return workerEvalDao.getGoodCountByGoodId(workerId);
+	public int getGoodCountByWorkerId(Long workerId) {
+		return workerEvalDao.getGoodCountByWorkerId(workerId);
 	}
 	
 	//查找差评的个数
-	public int getBadCountByGoodId(Integer workerId) {
-		return workerEvalDao.getBadCountByGoodId(workerId);
+	public int getBadCountByWorkerId(Long workerId) {
+		return workerEvalDao.getBadCountByWorkerId(workerId);
 	}
 	
 	public List<WorkerEval> getEvalByWorkerAndScore(Map<String, Object> map) {

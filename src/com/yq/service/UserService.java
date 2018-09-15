@@ -53,7 +53,7 @@ public class UserService{
 	public User getUserByOpenId(String openId) {
 		User user = new User();
 		user.setOppen_id(openId);
-		List<User> list = userDao.list(user);
+		List<User> list = userDao.listById(user);
 		if(list != null && list.size() > 0) {
 			return list.get(0);
 		}

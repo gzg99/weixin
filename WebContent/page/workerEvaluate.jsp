@@ -3,12 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>评价</title>
-<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
-<link href="css/iconfont.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
-<style type="text/css">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>评价</title>
+	<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
+	<link href="css/iconfont.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
+	<style type="text/css">
 		body{background: #F5F5F5;}
 	    .sp_top{ font-size: 0.28rem; height:0.8rem; width: 100%; position: fixed;top: 0;left: 0; line-height: 0.8rem; text-align: center;}
 		.sp_top i{color: #999; font-size: 0.36rem; cursor: pointer; position: absolute; left: 0.2rem; top:0;}
@@ -37,14 +38,13 @@
         <span class="current" style="width: 50%"><a href="JavaScript:;"></a></span>
 	</div>
 	<div class="sp_top_tab">
-	    <div class="sp_top_btn active" onclick="chickEvals('')">全部<br/><span>${showEvaluate.showEvaluate.sumEvaluate}</span></div>
-		<div class="sp_top_btn" onclick="chickEvals('4')">好评<br/><span>${showEvaluate.showEvaluate.goodev}</span></div>
-		<div class="sp_top_btn" onclick="chickEvals('3')">中评<br/><span>${showEvaluate.showEvaluate.centreev}</span></div>
-		<div class="sp_top_btn" onclick="chickEvals('2')">差评<br/><span>${showEvaluate.showEvaluate.differenceev}</span></div>
+	    <div class="sp_top_btn active" onclick="chickEvals('0')">全部<br/><span>${allEval }</span></div>
+		<div class="sp_top_btn" onclick="chickEvals('4')">好评<br/><span>${goodEval }</span></div>
+		<div class="sp_top_btn" onclick="chickEvals('3')">中评<br/><span>${neutralEval }</span></div>
+		<div class="sp_top_btn" onclick="chickEvals('2')">差评<br/><span>${badEval}</span></div>
 	</div>
 </div>
 <div class="pinglun">
-	
 	<c:forEach items="${showEvaluate}" var="list" varStatus="s">
 		<div class="pinglun_nr">
 			<img src="${list.headImgStr }" alt="">
@@ -59,10 +59,10 @@
 			</div>
 		</div>
 	</c:forEach>
-	<button class="my-btn1 f-r" onclick="window.location.href='evaluate/toEvaluatePage.html?id=${commodityId}'">发表评价</button>
+	<button class="my-btn1 f-r" onclick="window.location.href='publishWorkerEval.html?id=${workerId}'">发表评价</button>
 </div>
 <jsp:include page="footer4.jsp"></jsp:include>
-<script type="text/javascript" src="../js/evaluate/base.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 var workerId = ${workerId};
@@ -73,12 +73,11 @@ $(function(){
 	});
 });
 
-
 function chickEvals(score) {
-	var url = "showWorkerEvaluate.html"
+	var url = "showWorkerEvaluate.html";
 	$.ajax({
 		type : "POST",
-		url : encodeURI(url),
+		url : url,
 		data : {"workerId":workerId,"score":score},
 		
 		error : function(req, textStatus, errThrow){

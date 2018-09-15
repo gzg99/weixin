@@ -7,13 +7,13 @@ public class WorkerEval {
 	
 	private Long id;
 	
-	private Long worker_id;
+	private Long workerId;
 	
-	private String open_id;
+	private String openId;
 	
 	private String content;
 	
-	private String add_time;
+	private String addTime;
 	
 	private String score;
 	
@@ -27,20 +27,20 @@ public class WorkerEval {
 		this.id = id;
 	}
 
-	public Long getWorker_id() {
-		return worker_id;
+	public Long getWorkerId() {
+		return workerId;
 	}
 
-	public void setWorker_id(Long worker_id) {
-		this.worker_id = worker_id;
+	public void setWorkerId(Long workerId) {
+		this.workerId = workerId;
 	}
 
-	public String getOpen_id() {
-		return open_id;
+	public String getOpenId() {
+		return openId;
 	}
 
-	public void setOpen_id(String open_id) {
-		this.open_id = open_id;
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 
 	public String getContent() {
@@ -51,12 +51,12 @@ public class WorkerEval {
 		this.content = content;
 	}
 
-	public String getAdd_time() {
-		return add_time;
+	public String getAddTime() {
+		return addTime;
 	}
 
-	public void setAdd_time(String add_time) {
-		this.add_time = add_time;
+	public void setAdd_time(String addTime) {
+		this.addTime = addTime;
 	}
 
 	public String getScore() {

@@ -10,10 +10,10 @@
 			add_time,
 			score
 		)values(
-			#{worker_id},
-			#{open_id},
+			#{workerId},
+			#{openId},
 			#{content},
-			#{add_time},
+			#{addTime},
 			#{score}
 		)
 	</insert>
@@ -36,7 +36,7 @@
 	     	worker_id=#{workerId}
 	</select>
 	
-	<select id="getAllEvalByGoodIdOpenId" resultType="com.yq.entity.WorkerEval">
+	<select id="getAllEvalByWorkerIdOpenId" resultType="com.yq.entity.WorkerEval">
 		select 
 			id as id,
 	        worker_id as workerId,
@@ -55,11 +55,11 @@
 	</select>
 	
 	<select id="getGoodCountByWorkerId" resultType="int">
-		<![CDATA[ select count(1) from jdb_worker_eval where worker_id=#{workerId} and score>5 ]]>
+		<![CDATA[ select count(1) from jdb_worker_eval where worker_id=#{workerId} and score>=4 ]]>
 	</select>
 	
 	<select id="getBadCountByWorkerId" resultType="int">
-		<![CDATA[ select count(1) from jdb_worker_eval where worker_id=#{workerId} and score<5 ]]>
+		<![CDATA[ select count(1) from jdb_worker_eval where worker_id=#{workerId} and score<=2 ]]>
 	</select>
 	
 	<select id="getEvalByWorkerAndScore" resultType="java.util.Map" parameterType="java.util.Map" >
@@ -72,16 +72,17 @@
 	        score as score 
 	    from 
 	        jdb_worker_eval 
-        worker_id = #{workerId,jdbcType=BIGINT} 
-        <if test="grade != null and grade != ''">
-            <if test="grade == 4">
+	    where 
+        	worker_id = #{workerId,jdbcType=BIGINT} 
+        <if test="score != null and score != 0">
+            <if test="score == 4">
                 and score &gt;='4' 
             </if>
-            <if test="grade == 3">
-                and grade ='3' 
+            <if test="score == 3">
+                and score ='3' 
             </if>
-            <if test="grade == 2">
-                and grade &lt;='2' 
+            <if test="score == 2">
+                and score &lt;='2' 
             </if>
         </if>
   </select>

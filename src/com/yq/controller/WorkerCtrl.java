@@ -162,4 +162,17 @@ public class WorkerCtrl extends StringUtil {
 		return mv;
 	}
 	
+	/**
+	 * 发表评价
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "page/publishWorkerEval.html")
+	public ModelAndView toEvaluatePage(Long id) {
+		Worker worker = workerService.getWorkerById(id);
+		ModelAndView view = new ModelAndView("page/publishWorkerEval");
+		view.addObject("worker", worker);
+		return view;
+	}
+	
 }

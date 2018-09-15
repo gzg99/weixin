@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.yq.dao.CardDao;
 import com.yq.entity.Card;
-import com.yq.entity.Goods;
 
 @Service
 public class CardService {
