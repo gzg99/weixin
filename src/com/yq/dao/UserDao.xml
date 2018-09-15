@@ -66,4 +66,5 @@
     <select id="isMember" resultType="int">
     	select count(1) from jdb_user where oppen_id=#{oppen_id} and member_time>#{member_time}
     </select>
+   
 </mapper>
