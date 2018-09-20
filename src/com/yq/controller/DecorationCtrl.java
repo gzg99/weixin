@@ -103,6 +103,16 @@ public class DecorationCtrl {
 		return mv;
 	}
 	
+	@RequestMapping(value = "page/getAllDecorationFineQuality.html")
+	@ResponseBody
+	public ModelAndView getAllDecorationFineQuality() {
+		ModelAndView mv = new ModelAndView();
+		List<DecorationEntity> list = decorationService.getListFineQuality();
+		mv.addObject("list", list);
+		mv.setViewName("page/decorationList");
+		return mv;
+	}
+	
 	@RequestMapping(value = "/page/getDecorationById.html")
 	@ResponseBody
 	public ModelAndView getDecorationById(Long id) {

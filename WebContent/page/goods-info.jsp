@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
@@ -21,16 +21,35 @@
 	.shop_index_pj_bt{float:left; padding-left:10px;}
 	.shop_index_pj_right{float: right; display: block;margin-right:10px;}
 	.shop_index_pj_right i{ font-size:18px; float: right; color: #999;}
+	.title {
+    padding: 0 2%;
+    height: 44px;
+    line-height: 44px;
+    background: #ffffff;
+    font-size: 16px;
+    color: #f29133;
+}
+.title-left {
+    float: left;
+    padding-top: 11px;
+}
+.title-right {
+    float: right;
+    padding-top: 11px;
+}
 </style>
 
 </head>
 
 <body id="wrap">
-	
-    <div class="sjsc-title1">
+	<div class="title" style="border-bottom:1px solid rgba(204, 204, 204, 0.15);text-align:center;">
+        <div class="title-left"><a href="index.html"><img src="images/back.png" alt=""></a></div>
+        <div class="title-right"><a href="secList.html"><img src="images/sjsc-13.png" alt=""></a></div>
+    </div>
+    <!--<div class="sjsc-title1">
     	<h3 class="sjsc-t1l f-l"><a href="JavaScript:history.go(-1)"><span class="le"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></span></a></h3>
         <div style="clear:both;"></div>
-    </div>
+    </div>-->
     <div class="detailDiv">
 	    <c:forEach items="${list}" var="list">
 	    <input type="hidden" value="${list.goods_id}" id="goods_id">

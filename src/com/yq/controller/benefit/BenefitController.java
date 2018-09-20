@@ -1,6 +1,5 @@
 package com.yq.controller.benefit;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -33,7 +32,7 @@ public class BenefitController {
 	 * 
 	 * @return 超
 	 */
-	@RequestMapping(value = "/main/listBenfit")
+	@RequestMapping(value = "/main/listBenfit.html")
 	public ModelAndView listBenefit() {
 		ModelAndView view = new ModelAndView("main/benefit/list");
 		Map<String, Object> mapList = benefitService.selectBenefitByList();
@@ -46,7 +45,7 @@ public class BenefitController {
 	 * 
 	 * @return 超
 	 */
-	@RequestMapping(value = "/page/benfitlist")
+	@RequestMapping(value = "/page/benfitlist.html")
 	public ModelAndView benfitlist() {
 		ModelAndView view = new ModelAndView("page/benefit/benefitlist");
 		Map<String, Object> mapList = benefitService.selectBenefitByList();
@@ -99,7 +98,7 @@ public class BenefitController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/main/toUpdateLoveoldplan")
+	@RequestMapping(value = "/main/toUpdateLoveoldplan.html")
 	public ModelAndView toUpdateLoveoldplan() {
 //		JdvLoveoldplan jdvLoveoldplan = benefitService.selectLoveoldplanKey("1");
 		ModelAndView view = new ModelAndView("/main/benefit/addLoveoldplan");
@@ -112,7 +111,7 @@ public class BenefitController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/page/toUpdateLoveoldplan")
+	@RequestMapping(value = "/page/toUpdateLoveoldplan.html")
 	public ModelAndView toLoveoldplan() {
 		JdvLoveoldplan jdvLoveoldplan =  benefitService.selectLoveoldplanKey("1");
 		ModelAndView view = new ModelAndView("/page/benefit/loveoldplanList");
@@ -173,7 +172,7 @@ public class BenefitController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/main/loveRelay")
+	@RequestMapping(value = "/main/loveRelay.html")
 	@ResponseBody
 	public String loveRelay(JdbLoveRelay record) {
 		int i = benefitService.updateLoveRelayKey(record);
@@ -222,7 +221,7 @@ public class BenefitController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/main/updateRelation")
+	@RequestMapping(value = "/main/updateRelation.html")
 	@ResponseBody
 	public String updateRelation(JdbRelation record) {
 		record.setId("1");

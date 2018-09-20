@@ -11,37 +11,27 @@
 </head>
 
 <body style="padding-bottom:1.2rem;">
-<!-- <div class="sqfw">
-   <a href="####"><img src="images/sq_ico1.png"><p>安 装</p></a>
-   <a href="####"><img src="images/sq_ico2.png"><p>维 修</p></a>
-   <a href="####"><img src="images/sq_ico3.png"><p>保 洁</p></a>
-   <a href="####" style="margin:0; float:right;"><img src="images/sq_ico4.png"><p>洗 衣</p></a>
-   <div class="clear"></div>
-</div> -->
-
-<c:forEach items="${messageList}" var="messageList" varStatus="seller">
-	<div class="sq_list">
-	    <div class="gy_list_zz">
-	        <img src="images/gy_tx01.jpg"/>
-	        <p class="gy_list_zz_mz">${messageList.realname}</p>
-	        <p class="gy_list_zz_sj"><fmt:formatDate value="${messageList.publish_time}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
-	        <div class="clear"></div>
-	    </div>
-	    <div class="gy_list_txt">${messageList.message_content}</div>
-
-	</div>
-</c:forEach>
-<form action="" method="post" id="addmessageReplay" enctype="multipart/form-data">
-<input type="hidden" name="messageId" value="${messageId }">
-	<textarea id="replay_content" name="replayContent" placeholder="写评论"></textarea>
-	<div class="pingjia_nr_sub"><input type="button" onclick="insertReplay();" value="提交"/></div>
-</form>
-<div class="clear"></div>
-<script src="js/base.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>	
-
-
-<script type="text/javascript">
+	<c:forEach items="${messageList}" var="messageList" varStatus="seller">
+		<div class="sq_list">
+		    <div class="gy_list_zz">
+		        <img src="images/gy_tx01.jpg"/>
+		        <p class="gy_list_zz_mz">${messageList.realname}</p>
+		        <p class="gy_list_zz_sj"><fmt:formatDate value="${messageList.publish_time}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+		        <div class="clear"></div>
+		    </div>
+		    <div class="gy_list_txt">${messageList.message_content}</div>
+	
+		</div>
+	</c:forEach>
+	<form action="" method="post" id="addmessageReplay" enctype="multipart/form-data">
+		<input type="hidden" name="messageId" value="${messageId }">
+		<textarea id="replay_content" name="replayContent" placeholder="写评论"></textarea>
+		<div class="pingjia_nr_sub"><input type="button" onclick="insertReplay();" value="提交"/></div>
+	</form>
+	<div class="clear"></div>
+	<script src="../js/base.js"></script>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript">
     /* 
 function addevalclick() {
 	 

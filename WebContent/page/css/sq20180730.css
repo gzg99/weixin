@@ -18,7 +18,7 @@ a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webki
 .sqfw a{ display:block; width:1.86rem; margin-right:0.02rem; background:#fff; text-align:center; font-size:0.24rem; float:left; padding:0.2rem 0; line-height:0.4rem;}
 .sqfw a img{ width:0.64rem; height:0.64rem;}
 .sqxxs{width:7.5rem; border-top:#ECE4DC solid 0.12rem; height:0.85rem; line-height:0.85rem; border-bottom:#BCAFA0 solid 0.03rem;}
-.sqxxs_txt{font-size:0.3rem; float:left; background:url(sq_ico5.png) no-repeat 0.21rem 0.21rem; padding-left:0.8rem; background-size:0.43rem 0.43rem;}
+.sqxxs_txt{font-size:0.3rem; float:left; background:url(images/sq_ico5.png) no-repeat 0.21rem 0.21rem; padding-left:0.8rem; background-size:0.43rem 0.43rem;}
 .sqxxs_xq{float:right; background:url(sq_ico6.png) no-repeat left center; background-size:0.32rem 0.32rem; padding-left:0.5rem; color:#b7b5b3;font-size:0.24rem; margin-right:0.4rem; cursor:pointer;}
 .sq_list{padding:0.3rem; width: 6.9rem;border-bottom:#BCAFA0 solid 0.03rem;}
 .gy_list_zz{width:100%;}

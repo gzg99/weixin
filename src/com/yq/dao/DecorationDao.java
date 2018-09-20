@@ -20,4 +20,6 @@ public interface DecorationDao {
 	int count();
 	
 	List<DecorationEntity> getDecorationListByPage(Map<String, Object> map);
+	
+	List<DecorationEntity> getListFineQuality();
 }

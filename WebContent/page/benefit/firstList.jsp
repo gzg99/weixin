@@ -8,7 +8,7 @@
 </head>
 <body>
 <img src="${jdbBenefit.picture }">
-<div>${jdbBenefit.headline }</div>
-<div>${jdbBenefit.particulars }</div>
+<div style="font-size:70px;">${jdbBenefit.headline }</div>
+<div style="font-size:70px;">${jdbBenefit.particulars }</div>
 </body>
 </html>

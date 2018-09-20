@@ -8,8 +8,8 @@
 </head>
 <body>
 <img alt="" src="${jdbLoveRelay.picture }">
-<div> ${jdbLoveRelay.organizationId }</div>
-<div> ${jdbLoveRelay.organizationName }</div>
-<div> ${jdbLoveRelay.pictureNote }</div>
+<div style="font-size:70px;">${jdbLoveRelay.organizationId }</div>
+<div style="font-size:70px;">${jdbLoveRelay.organizationName }</div>
+<div style="font-size:70px;">${jdbLoveRelay.pictureNote }</div>
 </body>
 </html>

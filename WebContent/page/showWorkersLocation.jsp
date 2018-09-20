@@ -25,13 +25,33 @@
 		.hgj_list li img{ width: 0.64rem; height: 0.64rem; border-radius: 50%; margin-right:0.3rem; float: left; }
 		.hgj_list li h1{float: left;font-size: 0.28rem;}
 		.hgj_list li a{float: right; font-size: 0.28rem;}
+			.title {
+    padding: 0 2%;
+    height: 44px;
+    line-height: 44px;
+    background: #ffffff;
+    font-size: 16px;
+    color: #f29133;
+}
+.title-left {
+    float: left;
+    padding-top: 11px;
+}
+.title-right {
+    float: right;
+    padding-top: 11px;
+}
 	</style>
 </head>
 <body style="padding-bottom:1.2rem;">
-	<div>
+<div class="title" style="border-bottom:1px solid rgba(204, 204, 204, 0.15);text-align:center;">
+        <div class="title-left"><a href="index.html"><img src="images/back.png" alt=""></a></div>
+        <div class="title-right"><a href="secList.html"><img src="images/sjsc-13.png" alt=""></a></div>
+    </div>
+	<!--<div>
     	<a href="javascript:history.go(-1)" class="qb-tleft f-l">
     		<img src="images/back.png" alt="" style="width:20px;height: 20px;"/>
-    	</a>
+    	</a>-->
         <div style="clear:both;"></div>
     </div>
 

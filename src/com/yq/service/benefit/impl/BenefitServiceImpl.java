@@ -60,7 +60,7 @@ public class BenefitServiceImpl implements BenefitService {
 	 */
 	@Override
 	public int updateByPrimaryKey(JdbBenefit record) {
-		int i = jdbBenefitMapper.updateByPrimaryKey(record);
+		int i = jdbBenefitMapper.updateByPrimaryKeySelective(record);
 		return i;
 	}
 

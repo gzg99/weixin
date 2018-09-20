@@ -30,9 +30,9 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.yq.entity.benefit.JdvLoveoldplan" >
-    insert into jdv_loveoldplan (id, plantitle, planshow
+    insert into jdv_loveoldplan (id, plantitle, planshow, oldpicture
       )
-    values (#{id,jdbcType=VARCHAR}, #{plantitle,jdbcType=VARCHAR}, #{planshow,jdbcType=VARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{plantitle,jdbcType=VARCHAR}, #{planshow,jdbcType=VARCHAR}, #{oldpicture,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.yq.entity.benefit.JdvLoveoldplan" >
@@ -76,9 +76,9 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yq.entity.benefit.JdvLoveoldplan" >
-    update jdv_loveoldplan
+    update jdv_loveoldplan 
     set plantitle = #{plantitle,jdbcType=VARCHAR},
-      planshow = #{planshow,jdbcType=VARCHAR}
+      planshow = #{planshow,jdbcType=VARCHAR} 
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

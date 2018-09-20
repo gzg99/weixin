@@ -8,7 +8,7 @@
 </head>
 <body>
 <img alt="" src="${jdvLoveoldplan.oldpicture }">
-<div>${jdvLoveoldplan.plantitle }</div>
-<div>${jdvLoveoldplan.planshow }</div>
+<div style="font-size:70px;">${jdvLoveoldplan.plantitle }</div>
+<div style="font-size:70px;">${jdvLoveoldplan.planshow }</div>
 </body>
 </html>

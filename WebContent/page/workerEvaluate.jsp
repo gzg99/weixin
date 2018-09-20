@@ -39,7 +39,7 @@
 	<div class="clear"></div>
 	<div class="sp_top">
 		<div class="sp_top_bt">
-		    <i class="iconfont icon-zuo" onclick="window.location.href='getWorkerInfoById?id=${workerId}'"></i>
+		    <i class="iconfont icon-zuo" onclick="window.location.href='getWorkerInfoById.html?id=${workerId}'"></i>
 	        <span class="current" style="width: 50%;"><a href="JavaScript:;">评价</a></span>
 	        <span class="current" style="width: 50%"><a href="JavaScript:;"></a></span>
 		</div>

@@ -33,8 +33,8 @@ a {-webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webki
 .gy_list_zz_sj{ color: #8d8c86;font-size: 0.2rem; line-height: 0.2rem; margin-top: 0.16rem;}
 .gy_list_zy{ font-size: 0.24rem;line-height: 0.36rem;padding: 0.5rem; width: 6.5rem; color: #7d7a77;}
 .gy_list_zfdz{border-bottom: #E8DE9C solid 0.05rem;padding: 0 0.5rem; width: 6.5rem; padding-bottom: 0.2rem;}
-.gy_list_zf{ height: 0.32rem; line-height: 0.32rem; padding-left: 0.46rem; background: url(gy_ico7.png) no-repeat left center;background-size: 0.32rem 0.32rem; font-size: 0.32rem; color: #666; cursor: pointer; float: left; margin-left: 1rem;}
-.gy_list_dz{ height: 0.32rem; line-height: 0.32rem; padding-left: 0.46rem; background: url(gy_ico8.png) no-repeat left center;background-size: 0.32rem 0.32rem; font-size: 0.32rem; color: #666; cursor: pointer; float:right; margin-right:1rem;}
+.gy_list_zf{ height: 0.32rem; line-height: 0.32rem; padding-left: 0.46rem; background: url(images/gy_ico7.png) no-repeat left center;background-size: 0.32rem 0.32rem; font-size: 0.32rem; color: #666; cursor: pointer; float: left; margin-left: 1rem;}
+.gy_list_dz{ height: 0.32rem; line-height: 0.32rem; padding-left: 0.46rem; background: url(images/gy_ico8.png) no-repeat left center;background-size: 0.32rem 0.32rem; font-size: 0.32rem; color: #666; cursor: pointer; float:right; margin-right:1rem;}
 .gy_list_mzsj{float: left; width:4rem;}
 .gy_list_zz .gy_list_dz{ margin-right: 0; margin-top: 0.16rem;}
 .gy_list{ padding: 0.3rem 0; border-bottom: #E8DE9C solid 1px;}

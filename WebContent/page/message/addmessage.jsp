@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>社区</title>
-<link href="../../css/evaluate/jj20180626.css" rel="stylesheet" type="text/css">
+<link href="../css/evaluate/jj20180626.css" rel="stylesheet" type="text/css">
 </head>
 
 <body style="padding-bottom:1.2rem; background: #E6E6E6;">
@@ -16,22 +16,6 @@
 		<input type="hidden" name="commodityId" id="commodityId" value="${goods.id}">
 		<input type="hidden" name="sellerId" id="sellerId" value="${goods.sellerId}"> --%>
 		<li class="pingjia_nr">
-		     <%--  <div class="pingjia_nr_top">
-			      <a href="#"><img src="${goods.goodsImg }" alt=""/></a>
-				  <div class="pingjia_nr_bt"><h2>${goods.goodsName }</h2>
-				  
-				  </div>
-			 </div>
-			 <div class="pingfen">
-			     <div class="pingfen_txt">评分</div>
-				 <ul>
-					 <li class="active"></li>
-					 <li class="active"></li>
-					 <li class="active"></li>
-					 <li class="active"></li>
-					 <li class="active"></li>
-				 </ul>
-			 </div> --%>
 			 <input id="title" name="title" placeholder="标题"></input><br/>
 			 <textarea id="messageContent" name="messageContent" placeholder="说说你的现在想法"></textarea>
 			 <div class="pingjia_nr_sub"><input type="button" onclick="addevalclick();" value="提交"/></div>
@@ -40,9 +24,9 @@
 </ul>
 
 <div class="clear"></div>
-<script type="text/javascript" src="../../js/evaluate/base.js"></script>
+<script type="text/javascript" src="../js/evaluate/base.js"></script>
 <script type="text/javascript" src="../../main/lib/layer/1.9.3/layer.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>	
+<script type="text/javascript" src="../js/jquery.js"></script>	
 <script>
 /* $(function(){
 	$("#grade").val("5");

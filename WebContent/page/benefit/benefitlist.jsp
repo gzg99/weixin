@@ -6,9 +6,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 <title>商圈内容</title>
-<link href="../css/gy20180729.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/base.js"></script>
+<link href="css/gy20180729.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
 </head>
 
 <body style="padding-bottom:1.2rem;">
@@ -25,10 +25,6 @@
 <div class="gy_title ico3">加入我们</div>	
 <div class="gy_nr gy_jrwm">
 <div class="gy_nr"><a href="torelationList.html"><img src="${mapList.jdbRelation.picture }"></a></div>	
-	<!-- <div class="gy_jrwm_left"></div>
-	<div class="gy_jrwm_nr ico4">jiadibang@126.com</div>
-	<div class="gy_jrwm_nr ico5">0531-82423697</div>
-	<div class="gy_jrwm_nr ico6">济南市市中区经一路96号铁路文化宫活动楼4层</div> -->
 </div>
 <div class="clear"></div>
 

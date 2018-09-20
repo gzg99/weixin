@@ -42,4 +42,8 @@ public class DecorationService {
 	public List<DecorationEntity> getDecorationListByPage(Map<String, Object> map) {
 		return decorationDao.getDecorationListByPage(map);
 	}
+	
+	public List<DecorationEntity> getListFineQuality() {
+		return decorationDao.getListFineQuality();
+	}
 }

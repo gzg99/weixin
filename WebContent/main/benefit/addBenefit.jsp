@@ -99,11 +99,9 @@
 				processData : false,
 				success : function(rs) {
 					if (rs == 1) {
-
 						alert("操作成功！");
 						window.location.href = 'listBenfit.html'
 					} else {
-
 						alert("操作失败！");
 					}
 				},

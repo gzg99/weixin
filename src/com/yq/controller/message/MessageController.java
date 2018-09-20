@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yq.entity.message.JdbMessage;
 import com.yq.entity.message.JdbMessageReplay;
+import com.yq.service.UserService;
 import com.yq.service.message.MessageService;
 import com.yq.util.StringUtil;
 
@@ -28,6 +29,9 @@ public class MessageController extends StringUtil {
 
 	@Autowired
 	MessageService messageService;
+	
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * 跳转增加社区内容页面
@@ -64,10 +68,17 @@ public class MessageController extends StringUtil {
 	/**
 	 * 列表查询社区信息
 	 */
-	@RequestMapping(value = "/page/listMessage")
+	@RequestMapping(value = "/page/listMessage.html")
 	public ModelAndView listMessage() {
 		ModelAndView view = new ModelAndView("page/message/listmessage");
 		List<Map<String,Object>> messageList = messageService.listMessage();
+		if(messageList != null) {
+			for(Map<String, Object> map: messageList) {
+				if(map.containsKey("messageList") && map.get("messageList") != null) {
+					map.put("headImg", userService.getUserByOpenId(map.get("userService").toString()).getHead_img());
+				}
+			}
+		}
 		view.addObject("messageList", messageList);
 		return view;
 	}
@@ -78,7 +89,7 @@ public class MessageController extends StringUtil {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/page/ilikeIs")
+	@RequestMapping(value = "/page/ilikeIs.html")
 	@ResponseBody
 	public String ilikeIs(long id, HttpSession session) {
 		JdbMessageReplay jdbMessageReplay = new JdbMessageReplay();
@@ -96,7 +107,7 @@ public class MessageController extends StringUtil {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/page/review")
+	@RequestMapping(value = "/page/review.html")
 	@ResponseBody
 	public String review(long id, HttpSession session) {
 		JdbMessageReplay jdbMessageReplay = new JdbMessageReplay();
@@ -113,7 +124,7 @@ public class MessageController extends StringUtil {
 	 * @param record
 	 * @return
 	 */
-	@RequestMapping(value = "/page/insertReplay")
+	@RequestMapping(value = "/page/insertReplay.html")
 	@ResponseBody
 	public String selectByMapList(JdbMessageReplay record, HttpSession session) {
 		record.setOpenId(getOppen_id(session));
@@ -127,7 +138,7 @@ public class MessageController extends StringUtil {
 	 * @param messageId
 	 * @return
 	 */
-	@RequestMapping(value = "/page/replatView")
+	@RequestMapping(value = "/page/replatView.html")
 	public ModelAndView replatView(Long messageId) {
 		ModelAndView view = new ModelAndView("/page/message/replayList");
 		List<Map<String,Object>> messageList= messageService.selectByMapList(messageId);

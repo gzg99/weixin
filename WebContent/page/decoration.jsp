@@ -29,7 +29,7 @@
      		<img src="images/zx_img03.jpg"/>
 			<p>家装 - 家庭装修</p>
 		</a>
-		<a href="">
+		<a href="getAllDecorationFineQuality.html">
      		<img src="images/zx_img04.jpg"/>
 			<p>精品公司</p>
 		</a>

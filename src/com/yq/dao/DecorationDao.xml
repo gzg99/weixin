@@ -104,4 +104,20 @@
 			jdb_decoration 
 		limit #{currentNum},#{pageSize}
 	</select>
+	
+	<select id="getListFineQuality" resultType="com.yq.entity.DecorationEntity">
+		select 
+			id as id,
+			company_name as companyName,
+			company_img as companyImg,
+			company_intrl as companyIntrl,
+			company_detail as companyDetail,
+			add_time as addTime,
+			type as type,
+			is_fine_quality as isFineQuality 
+		from 
+			jdb_decoration 
+		where 
+			is_fine_quality='是'
+	</select>
 </mapper>
