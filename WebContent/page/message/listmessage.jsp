@@ -26,6 +26,10 @@
 	</head>
 
 	<body style="padding-bottom:1.2rem;">
+		<div class="sjsc-title1">
+	    	<h3 class="sjsc-t1l f-l"><a href="JavaScript:history.go(-1)"><span class="le"><img src="images/back.png" alt="" style="width:30px;height: 30px;padding-top: 11px;padding-bottom:6px;padding-left: 5px"/></span></a></h3>
+	        <div style="clear:both;"></div>
+	    </div>
 		<div class="sqxxs">
 			<div class="sqxxs_txt">社区新鲜事</div>
 		    <div class="clear"></div>

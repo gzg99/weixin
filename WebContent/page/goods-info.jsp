@@ -46,10 +46,6 @@
         <div class="title-left"><a href="index.html"><img src="images/back.png" alt=""></a></div>
         <div class="title-right"><a href="secList.html"><img src="images/sjsc-13.png" alt=""></a></div>
     </div>
-    <!--<div class="sjsc-title1">
-    	<h3 class="sjsc-t1l f-l"><a href="JavaScript:history.go(-1)"><span class="le"><img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></span></a></h3>
-        <div style="clear:both;"></div>
-    </div>-->
     <div class="detailDiv">
 	    <c:forEach items="${list}" var="list">
 	    <input type="hidden" value="${list.goods_id}" id="goods_id">

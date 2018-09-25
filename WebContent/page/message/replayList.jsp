@@ -11,6 +11,10 @@
 </head>
 
 <body style="padding-bottom:1.2rem;">
+	<div class="sjsc-title1">
+    	<h3 class="sjsc-t1l f-l"><a href="JavaScript:history.go(-1)"><span class="le"><img src="images/back.png" alt="" style="width:30px;height: 30px;padding-left: 5px"/></span></a></h3>
+        <div style="clear:both;"></div>
+    </div>
 	<c:forEach items="${messageList}" var="messageList" varStatus="seller">
 		<div class="sq_list">
 		    <div class="gy_list_zz">
