@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-		<title>商圈内容</title>
+		<title>社区新鲜事</title>
 		<link href="css/sq20180730.css" rel="stylesheet" type="text/css">
 		<style type="text/css">
 		   	.gy_list_zz{width:100%;}
@@ -39,20 +39,16 @@
 			    <div class="gy_list_zz">
 			        <img src="${messageList.headImg }"/>
 			        <p class="gy_list_zz_mz">${messageList.realname}</p>
-			        <p class="gy_list_zz_sj"><fmt:formatDate value="${messageList.publish_time}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+			        <p class="gy_list_zz_sj"><fmt:formatDate value="${messageList.publishTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 			        <div class="clear"></div>
 			    </div>
-			    <div class="gy_list_txt">${messageList.message_content}</div>
+			    <div class="gy_list_txt">${messageList.messageContent}</div>
 			    <div class="gy_list_zfdz">
-					<div class="gy_list_zf">13</div>
+<!-- 					<div class="gy_list_zf">13</div> -->
 				    <div class="gy_list_pl"><a href="replatView.html?messageId=${messageList.id}" >评论${messageList.messagemsg}</a></div>
 					<div class="gy_list_dz"><a href="javascript:toiLike(${messageList.id});" >赞<sped  id=${messageList.id}>${messageList.messagecount}</sped></a></div>
 					<div class="clear"></div>
 				</div>
-			    <!--<div>
-			        <div><a href="replatView.html?messageId=${messageList.id}" >评论${messageList.messagemsg}</a></div>
-			        <div><a href="javascript:toiLike(${messageList.id});" >赞<sped  id=${messageList.id}>${messageList.messagecount}</sped></a></div>
-			    </div>-->
 			</div>
 		</c:forEach>
 		<div class="clear"></div>

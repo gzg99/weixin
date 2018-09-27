@@ -34,13 +34,11 @@
 
 
 	<select id="selectByMapList" resultType="java.util.Map" parameterType="Long">
-		select 
-    
-	    r.id, r.open_id, r.to_open_id, r.message_id, r.publish_time, r.is_praise,replay_content,u.head_img,u.realname
-	    
+		select  
+	    r.id, r.open_id as openId, r.to_open_id as toOpenId, r.message_id as messageId, r.publish_time as publishTime,
+	    	r.is_praise as isPraise,r.replay_content as replayContent,u.head_img as headImg,u.realname as realname     
 	    from jdb_message_replay r left join jdb_user u on r.open_id=u.oppen_id 
-	    where r.message_id=#{messageId}
-
+	    where r.message_id=#{messageId} and r.replay_content is not null
 	</select>
 
 

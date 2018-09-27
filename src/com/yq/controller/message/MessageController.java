@@ -1,5 +1,7 @@
 package com.yq.controller.message;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -74,8 +76,8 @@ public class MessageController extends StringUtil {
 		List<Map<String,Object>> messageList = messageService.listMessage();
 		if(messageList != null) {
 			for(Map<String, Object> map: messageList) {
-				if(map.containsKey("messageList") && map.get("messageList") != null) {
-					map.put("headImg", userService.getUserByOpenId(map.get("userService").toString()).getHead_img());
+				if(map.containsKey("openId") && map.get("openId") != null) {
+					map.put("headImg", userService.getUserByOpenId(map.get("openId").toString()).getHead_img());
 				}
 			}
 		}
@@ -128,7 +130,15 @@ public class MessageController extends StringUtil {
 	@ResponseBody
 	public String selectByMapList(JdbMessageReplay record, HttpSession session) {
 		record.setOpenId(getOppen_id(session));
-//		List<Map<String,Object>> messageList= messageService.selectByMapList(messageId);
+		try {
+			record.setReplayContent(new String(record.getReplayContent().getBytes("iso8859-1"),"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte ispraise = 0;
+		record.setIsPraise(ispraise);
+		record.setPublishTime(new Date());
 		int i = messageService.insertSelectiveReplay(record);
 		return i + "";
 	}

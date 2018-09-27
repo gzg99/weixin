@@ -31,16 +31,12 @@
 	</select>
 	
 	<select id="listMessage" resultType="java.util.Map" >
-		
-		select m.id, m.open_id, m.title, m.publish_time, m.type, m.message_content,
-		u.head_img,
-		u.realname,
+		select m.id, m.open_id as openId, m.title as title, m.publish_time as publishTime, m.type as type, 
+		m.message_content as messageContent, u.head_img as headImg, u.realname as realname,
 		(select count(1) from jdb_message_replay r where m.id = r.message_id and r.is_praise ='1') as messagecount,
 		(select count(1) from jdb_message_replay r where m.id = r.message_id and r.replay_content is not null) as messagemsg
 		from jdb_message m 
-		left join jdb_user u on m.open_id=u.oppen_id 
-		
-		
+		left join jdb_user u on m.open_id=u.oppen_id
 	</select>
 	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
