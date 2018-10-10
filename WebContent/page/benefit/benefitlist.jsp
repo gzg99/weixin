@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-		<title>商圈内容</title>
+		<title>爱心公益</title>
 		<link href="css/gy20180729.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/base.js"></script>

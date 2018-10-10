@@ -95,7 +95,6 @@
 	<script type="text/javascript">
 	
 		function add() {
-			
 			var formData = new FormData($("#updateLoveoldplans")[0]);
 			var url = 'updateLoveoldplan.html';
 			$.ajax({

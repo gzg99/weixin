@@ -1,5 +1,6 @@
 package com.yq.controller.benefit;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -74,6 +75,13 @@ public class BenefitController {
 	@RequestMapping(value = "/main/updateView.html")
 	@ResponseBody
 	public String updateView(JdbBenefit record) {
+		try {
+			record.setHeadline(new String (record.getHeadline().getBytes("iso8859-1"),"UTF-8"));
+			record.setParticulars(new String(record.getParticulars().getBytes("iso8859-1"),"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		record.setBenefitid("1");
 		int i = benefitService.updateByPrimaryKey(record);
 		return i + "";
@@ -127,6 +135,13 @@ public class BenefitController {
 	@RequestMapping(value = "/main/updateLoveoldplan.html")
 	@ResponseBody
 	public String updateLoveoldplan(JdvLoveoldplan record) {
+		try {
+			record.setPlanshow(new String (record.getPlanshow().getBytes("iso8859-1"),"UTF-8"));
+			record.setPlantitle(new String(record.getPlantitle().getBytes("iso8859-1"),"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		record.setId("1");
 		int i = benefitService.updateLoveoldplanKey(record);
 		return i + "";
@@ -146,7 +161,6 @@ public class BenefitController {
 			JdbLoveRelay jdbLoveRelay= benefitService.selectLoveRelayKey(id);
 			view.addObject("jdbLoveRelay",jdbLoveRelay);
 		}
-		
 		return view;
 	}
 	
@@ -175,6 +189,13 @@ public class BenefitController {
 	@RequestMapping(value = "/main/loveRelay.html")
 	@ResponseBody
 	public String loveRelay(JdbLoveRelay record) {
+		try {
+			record.setOrganizationName(new String (record.getOrganizationName().getBytes("iso8859-1"),"UTF-8"));
+			record.setPictureNote(new String(record.getPictureNote().getBytes("iso8859-1"),"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int i = benefitService.updateLoveRelayKey(record);
 		return i + "";
 	}
