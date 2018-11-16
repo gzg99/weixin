@@ -7,7 +7,7 @@
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
 <title>装修</title>
 <link href="images/jj20180626.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
+<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 <style type="text/css">
 	.zx_list{width:7.1rem; padding: 0.2rem;}
 	.zx_list a{width: 100%; float: left; background: #F8F8F8; display: block; height:2.4rem; font-size: 0.5rem; font-weight: bold; margin-bottom: 0.2rem;}
@@ -30,10 +30,6 @@
      		<img src="images/zx_img03.jpg"/>
 			<p>家装 - 家庭装修</p>
 		</a>
-		<%--<a href="getAllDecorationFineQuality.html">
-     		<img src="images/zx_img04.jpg"/>
-			<p>精品公司</p>
-		</a> --%>
 		<div class="clear"></div>
 	</div>
 	<jsp:include page="footer5.jsp"></jsp:include>
