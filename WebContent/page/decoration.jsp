@@ -33,7 +33,7 @@
 		<%--<a href="getAllDecorationFineQuality.html">
      		<img src="images/zx_img04.jpg"/>
 			<p>精品公司</p>
-		</a>--%>
+		</a> --%>
 		<div class="clear"></div>
 	</div>
 	<jsp:include page="footer5.jsp"></jsp:include>
