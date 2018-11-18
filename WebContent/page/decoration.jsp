@@ -26,10 +26,10 @@
      		<img src="images/zx_img02.jpg"/>
 			<p>工装 - 工地建筑装修展示</p>
 		</a>
-		<a href="getAllDecorationByType.html?type=家装">
+		<%--<a href="getAllDecorationByType.html?type=家装">
      		<img src="images/zx_img03.jpg"/>
 			<p>家装 - 家庭装修</p>
-		</a>
+		</a>--%>
 		<div class="clear"></div>
 	</div>
 	<jsp:include page="footer5.jsp"></jsp:include>
