@@ -16,21 +16,36 @@ import java.util.List;
  */
 @Controller
 @RequestMapping
-public class ForemanController  extends StringUtil {
+public class ForemanController extends StringUtil {
 
     @Autowired
     ForemanService foremanService;
+
     /**
-    * @Description: 进入工匠列表页面
-    * @Author: jkx
-    * @Date: 2018/11/19 16:33
-    */
+     * @Description: 进入工匠列表页面
+     * @Author: jkx
+     * @Date: 2018/11/19 16:33
+     */
     @RequestMapping(value = "/page/foreman/toForemanPage.html")
     @ResponseBody
     public ModelAndView toForemanPage() {
         ModelAndView view = new ModelAndView("page/foreman/foremanList");
         List<JdbForeman> jdbForemenList = foremanService.selForemanList();
         view.addObject("jdbForemenList", jdbForemenList);
+        return view;
+    }
+
+    /**
+     * @Description: 查询工长信息跳转工长详情页面
+     * @Author: jkx
+     * @Date: 2018/11/20 11:22
+     */
+    @RequestMapping(value = "/page/foreman/selForeman.html")
+    @ResponseBody
+    public ModelAndView selForeman(String id) {
+        ModelAndView view = new ModelAndView("page/foreman/foreman");
+        JdbForeman jdbForeman = foremanService.selForeman(id);
+        view.addObject("jdbForeman", jdbForeman);
         return view;
     }
 }

@@ -27,4 +27,15 @@ public class ForemanServiceImpl implements ForemanService{
         List<JdbForeman> jdbForemenList = jdbForemanMapper.selForemanList();
         return jdbForemenList;
     }
+
+    /**
+    * @Description: 查询工长信息
+    * @Author: jkx
+    * @Date: 2018/11/20 11:24
+    */
+    @Override
+    public JdbForeman selForeman(String id) {
+        JdbForeman jdbForeman = jdbForemanMapper.selForeman(id);
+        return jdbForeman;
+    }
 }

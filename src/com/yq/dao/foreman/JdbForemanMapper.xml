@@ -251,4 +251,12 @@
     <include refid="Base_Column_List" />
     from jdb_foreman
   </select>
+
+  <!-- 查询工长信息 -->
+  <select id="selForeman" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jdb_foreman
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface ForemanService {
     List<JdbForeman> selForemanList();
+
+    JdbForeman selForeman(String id);
 }

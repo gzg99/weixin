@@ -14,12 +14,10 @@
     <div class="sjsc-title2">
         <a href="../index.html" class="sjsc-t2r"><img src="../images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
-    <c:forEach items="${jdbForemenList}" var="list">
-        <div>
-            <a href="../foreman/selForeman.html?id=${list.id}">${list.name }</a>
-            <input name="name" value="${list.phone   }">
-        </div>
-    </c:forEach>
+    <div>
+        姓名：<input name="name" value="${jdbForeman.name   }"><br/>
+        电话：<input name="name" value="${jdbForeman.phone   }">
+    </div>
 </div>
 <jsp:include page="../footer6.jsp"></jsp:include>
 

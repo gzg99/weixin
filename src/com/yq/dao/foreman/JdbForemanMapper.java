@@ -18,4 +18,6 @@ public interface JdbForemanMapper {
     int updateByPrimaryKey(JdbForeman record);
 
     List<JdbForeman> selForemanList();
+
+    JdbForeman selForeman(String id);
 }
