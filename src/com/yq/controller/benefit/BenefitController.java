@@ -174,9 +174,8 @@ public class BenefitController {
 	public ModelAndView toloveList(String id) {
 
 		ModelAndView view = new ModelAndView("/page/benefit/loveList");
-		JdbLoveRelay jdbLoveRelay = benefitService.selectByPrimaryList(id);
-		view.addObject("jdbLoveRelay", jdbLoveRelay);
-
+		Map<String, Object> mapList = benefitService.selectByPrimaryList(id);
+		view.addObject("mapList", mapList);
 		return view;
 	}
 	

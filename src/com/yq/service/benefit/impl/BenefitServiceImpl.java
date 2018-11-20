@@ -1,9 +1,9 @@
 package com.yq.service.benefit.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
+import com.yq.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,6 +80,17 @@ public class BenefitServiceImpl implements BenefitService {
 	@Override
 	public int updateLoveRelayKey(JdbLoveRelay record) {
 		int i = 0;
+		String pictureNoteStr = record.getPictureNote();
+		if(StringUtils.isNotBlank(pictureNoteStr)){
+			String[] split = pictureNoteStr.split("<img");
+			String pictureNote = split[0];
+			record.setPictureNote(pictureNote);
+			String pictureHelp = pictureNoteStr.replace(pictureNote, "");
+			record.setPictureHelp(pictureHelp);
+		}
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+		String date =formatter.format(new Date());
+		record.setCreateTime(date);
 		if (StringUtils.isNotBlank(record.getId())) {// 有ID就修改
 			i = jdbLoveRelayMapper.updateByPrimaryKey(record);
 		} else {// 没ID就增加
@@ -124,9 +135,26 @@ public class BenefitServiceImpl implements BenefitService {
 	 * 公益组织——爱心接力
 	 */
 	@Override
-	public JdbLoveRelay selectByPrimaryList(String id) {
+	public Map<String, Object> selectByPrimaryList(String id) {
+		List<String> pictureHelpList = new ArrayList<>();
 		JdbLoveRelay jdbLove = jdbLoveRelayMapper.selectByPrimaryKey(id);// 公益组织——爱心接力
-		return jdbLove;
+		String createTimeData = jdbLove.getCreateTime();
+		if(StringUtils.isNotBlank(createTimeData)){
+			String createTime = createTimeData.substring(5, 10);
+			jdbLove.setCreateTime(createTime);
+		}
+		// 公益活动简图
+		String pictureHelp = jdbLove.getPictureHelp();
+		if(StringUtils.isNotBlank(pictureHelp)){
+			String[] split = pictureHelp.split("<img");
+			for (int i = 1; i < split.length; i++) {
+				pictureHelpList.add("<img"+split[i]);
+			}
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("jdbLove", jdbLove);
+		map.put("pictureHelpList", pictureHelpList);
+		return map;
 	}
 
 	/**

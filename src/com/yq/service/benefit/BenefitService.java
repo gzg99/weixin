@@ -27,8 +27,8 @@ public interface BenefitService {
 	int deleteByPrimaryKey(String id);
 	
 	JdvLoveoldplan selectLoveoldplanKey(String id);
-	
-	JdbLoveRelay selectByPrimaryList(String id);// 公益组织——爱心接力
+
+	Map<String, Object> selectByPrimaryList(String id);// 公益组织——爱心接力
 	
 	JdbRelation selectByPrimary();
 }
