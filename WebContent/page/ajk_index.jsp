@@ -29,29 +29,33 @@
 	<c:forEach items="${cards}" var="card">
 		<div style="position:relative;margin-top:3%;width:100%;text-align:center">
 			<a href="ajkDetail.html?id=${card.cardId}">
-			<c:if test="${card.type=='1'}">
-			<img src="./images/ajk01.png" style="width:80%;height:170px;margin:auto;"/></a>
-			</c:if>
-			<c:if test="${card.type=='2'}">
-			<img src="./images/ajk03.png" style="width:80%;height:170px;margin:auto;"/></a>
+				<c:if test="${card.type=='1'}">
+				<img src="./images/ajk01.png" style="width:80%;height:170px;margin:auto;"/>
+				</c:if>
+				<c:if test="${card.type=='2'}">
+				<img src="./images/ajk03.png" style="width:80%;height:170px;margin:auto;"/>
+				</c:if>
+			</a>
+			<c:if test="${card.type=='3'}">
+			<img src="./images/ajk08.png" style="width:80%;height:170px;margin:auto;"/></a>
 			</c:if>
 		</div>
 	</c:forEach>
 	<div style="width:100%; height:200px;position: relative;margin-top:3%;">
-	<c:forEach items="${cards}" var="v">
-		<a href="ajkDetail.html?id=${v.cardId}">
-			<div class="left" style="margin-bottom:3%;">
-				<p><span class="title">${v.cardName}</span><img src="./images/ajk04.png" /></p>
-				<p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
-				<p style="clear:both;padding:5px">保洁每周一次</p>
-			</div>
+		<%--<c:forEach items="${cards}" var="v">
+			<a href="ajkDetail.html?id=${v.cardId}">
+				<div class="left" style="margin-bottom:3%;">
+					<p><span class="title">${v.cardName}</span><img src="./images/ajk04.png"/></p>
+					<p style="clear:both;padding:5px">享受<span class="spt">一年免费</span></p>
+					<p style="clear:both;padding:5px">保洁每周一次</p>
+				</div>
 			</a>
-			</c:forEach>
+		</c:forEach>--%>
 		<a href="ajk_bd.jsp">
-		<p class="bdbtn">
-		  	线下卡片绑定
-		</p>
-		</a>  
+			<p class="bdbtn">
+				线下卡片绑定
+			</p>
+		</a>
 	</div>
 
 </div>
