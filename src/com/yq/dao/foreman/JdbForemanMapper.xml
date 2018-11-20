@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.foreman.JdbForemanMapper">
+  <resultMap id="BaseResultMap" type="com.yq.entity.foreman.JdbForeman">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="id_code" jdbcType="VARCHAR" property="idCode" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="skill" jdbcType="VARCHAR" property="skill" />
+    <result column="service" jdbcType="VARCHAR" property="service" />
+    <result column="service_area" jdbcType="VARCHAR" property="serviceArea" />
+    <result column="service_content" jdbcType="VARCHAR" property="serviceContent" />
+    <result column="details" jdbcType="VARCHAR" property="details" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="head" jdbcType="VARCHAR" property="head" />
+    <result column="praise" jdbcType="VARCHAR" property="praise" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, phone, id_code, sex, skill, service, service_area, service_content, details, 
+    photo, company, company_address, company_phone, head, praise, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_foreman
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from jdb_foreman
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.foreman.JdbForeman">
+    insert into jdb_foreman (id, name, phone, 
+      id_code, sex, skill, 
+      service, service_area, service_content, 
+      details, photo, company, 
+      company_address, company_phone, head, 
+      praise, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{idCode,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{skill,jdbcType=VARCHAR}, 
+      #{service,jdbcType=VARCHAR}, #{serviceArea,jdbcType=VARCHAR}, #{serviceContent,jdbcType=VARCHAR}, 
+      #{details,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{companyAddress,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR}, 
+      #{praise,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.foreman.JdbForeman">
+    insert into jdb_foreman
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="idCode != null">
+        id_code,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="skill != null">
+        skill,
+      </if>
+      <if test="service != null">
+        service,
+      </if>
+      <if test="serviceArea != null">
+        service_area,
+      </if>
+      <if test="serviceContent != null">
+        service_content,
+      </if>
+      <if test="details != null">
+        details,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="companyPhone != null">
+        company_phone,
+      </if>
+      <if test="head != null">
+        head,
+      </if>
+      <if test="praise != null">
+        praise,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null">
+        #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="service != null">
+        #{service,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceArea != null">
+        #{serviceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceContent != null">
+        #{serviceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="head != null">
+        #{head,jdbcType=VARCHAR},
+      </if>
+      <if test="praise != null">
+        #{praise,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.foreman.JdbForeman">
+    update jdb_foreman
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        id_code = #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null">
+        skill = #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="service != null">
+        service = #{service,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceArea != null">
+        service_area = #{serviceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceContent != null">
+        service_content = #{serviceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="head != null">
+        head = #{head,jdbcType=VARCHAR},
+      </if>
+      <if test="praise != null">
+        praise = #{praise,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.foreman.JdbForeman">
+    update jdb_foreman
+    set name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      id_code = #{idCode,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      skill = #{skill,jdbcType=VARCHAR},
+      service = #{service,jdbcType=VARCHAR},
+      service_area = #{serviceArea,jdbcType=VARCHAR},
+      service_content = #{serviceContent,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      head = #{head,jdbcType=VARCHAR},
+      praise = #{praise,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询工长列表信息 -->
+  <select id="selForemanList" parameterType="java.util.Map" resultType="com.yq.entity.foreman.JdbForeman">
+    select
+    <include refid="Base_Column_List" />
+    from jdb_foreman
+  </select>
+</mapper>
