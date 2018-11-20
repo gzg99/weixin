@@ -7,36 +7,40 @@
     <result column="organization_name" property="organizationName" jdbcType="VARCHAR" />
     <result column="picture" property="picture" jdbcType="VARCHAR" />
     <result column="picture_note" property="pictureNote" jdbcType="VARCHAR" />
+
+    <result column="picture_help" property="pictureHelp" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, organization_id, organization_name, picture, picture_note
+    id, organization_id, organization_name, picture, picture_note,
+    picture_help, create_time
   </sql>
-  
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from jdb_love_relay
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  
+
   <select id="selectByPrimaryList" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from jdb_love_relay
     <if test="id != '' and id != null" >
         where id = #{id,jdbcType=VARCHAR}
     </if>
   </select>
-  
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from jdb_love_relay
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.yq.entity.benefit.JdbLoveRelay" >
-    insert into jdb_love_relay (id, organization_id, organization_name, 
-      picture, picture_note)
-    values (#{id,jdbcType=VARCHAR}, #{organizationId,jdbcType=INTEGER}, #{organizationName,jdbcType=VARCHAR}, 
-      #{picture,jdbcType=VARCHAR}, #{pictureNote,jdbcType=VARCHAR})
+    insert into jdb_love_relay (id, organization_id, organization_name,
+      picture, picture_note, picture_help, create_time)
+    values (#{id,jdbcType=VARCHAR}, #{organizationId,jdbcType=INTEGER}, #{organizationName,jdbcType=VARCHAR},
+      #{picture,jdbcType=VARCHAR}, #{pictureNote,jdbcType=VARCHAR}, #{pictureHelp,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yq.entity.benefit.JdbLoveRelay" >
     insert into jdb_love_relay
@@ -56,6 +60,12 @@
       <if test="pictureNote != null" >
         picture_note,
       </if>
+      <if test="pictureHelp != null" >
+        picture_help,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -72,6 +82,12 @@
       </if>
       <if test="pictureNote != null" >
         #{pictureNote,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureHelp != null" >
+        #{pictureHelp,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -90,6 +106,12 @@
       <if test="pictureNote != null" >
         picture_note = #{pictureNote,jdbcType=VARCHAR},
       </if>
+      <if test="pictureHelp != null" >
+        picture_help = #{pictureHelp,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -98,7 +120,9 @@
     set organization_id = #{organizationId,jdbcType=INTEGER},
       organization_name = #{organizationName,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
-      picture_note = #{pictureNote,jdbcType=VARCHAR}
+      picture_note = #{pictureNote,jdbcType=VARCHAR},
+      picture_help = #{pictureHelp,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -61,7 +61,7 @@
 </head>
 <body>
 	<div>
-		<div class="leftFolt">首页</div>
+		<div class="leftFolt">首图</div>
 		<hr />
 		<br />
 		<div class="pageImg">
@@ -84,7 +84,7 @@
 	<br />
 	<br />
 	<div>
-		<div class="leftFolt">家滴帮-爱老计划</div>
+		<div class="leftFolt">家滴爱老计划</div>
 		<hr />
 		<br />
 		<img alt="" class="leftFolt imges" src="${mapList.JdvLoveoldplan.oldpicture }">
@@ -92,7 +92,7 @@
 	</div>
 	<br />
 	<br />
-	<div class="leftFolt">公益组织-爱心接力</div>
+	<div class="leftFolt">家滴爱心接力</div>
 	<hr />
 	<div class="pd-20">
 		<div class="mt-20">
@@ -100,10 +100,15 @@
 				class="table table-border table-bordered table-hover table-bg table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="15%">组织ID</th>
+						<%--<th width="15%">组织ID</th>
 						<th width="10%">组织名称</th>
 						<th width="15%">公益首页宣传图</th>
-						<th width="15%">操作</th>
+						<th width="15%">操作</th>--%>
+						<th width="5%">文章ID</th>
+						<th width="20%">标题</th>
+						<th width="15%">首图</th>
+						<th width="20%">图文消息</th>
+						<th width="10%">操作</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -112,6 +117,7 @@
 							<td>${list.organizationId}</td>
 							<td>${list.organizationName}</td>
 							<td>${list.picture}</td>
+							<td>${list.pictureNote}</td>
 							<td>
 							    <a href="toLoveRelay.html?id=${list.id}">编辑</a>&nbsp;&nbsp;
 								<a href="javascript:;" onclick="del('${list.id}')">删除</a>
@@ -182,7 +188,6 @@
 				},
 				error : function(data, status, e) //相当于java中catch语句块的用法  
 				{
-					alert(3);
 					alert('失败');
 
 				}

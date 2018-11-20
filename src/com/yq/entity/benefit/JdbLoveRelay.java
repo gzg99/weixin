@@ -11,6 +11,10 @@ public class JdbLoveRelay {
 
     private String pictureNote;
 
+    private String pictureHelp;
+
+    private String createTime;
+
     public String getId() {
         return id;
     }
@@ -49,5 +53,21 @@ public class JdbLoveRelay {
 
     public void setPictureNote(String pictureNote) {
         this.pictureNote = pictureNote;
+    }
+
+    public String getPictureHelp() {
+        return pictureHelp;
+    }
+
+    public void setPictureHelp(String pictureHelp) {
+        this.pictureHelp = pictureHelp;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }
