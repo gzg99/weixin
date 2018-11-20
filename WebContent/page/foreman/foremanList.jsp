@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>工长</title>
+    <title>工长列表</title>
     <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 </head>
 
@@ -17,9 +17,10 @@
     <c:forEach items="${jdbForemenList}" var="list">
         <div>
             <a href="../foreman/selForeman.html?id=${list.id}">${list.name }</a>
-            <input name="name" value="${list.phone   }">
+            <input name="name" value="${list.phone  }"><br/>
         </div>
     </c:forEach>
+    <a href="../foreman/toForemanSignUp.html">工长注册</a>
 </div>
 <jsp:include page="../footer6.jsp"></jsp:include>
 

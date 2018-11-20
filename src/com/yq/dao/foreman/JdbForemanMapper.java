@@ -20,4 +20,6 @@ public interface JdbForemanMapper {
     List<JdbForeman> selForemanList();
 
     JdbForeman selForeman(String id);
+
+    int insertForeman(JdbForeman jdbForeman);
 }

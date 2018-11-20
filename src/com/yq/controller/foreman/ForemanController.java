@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -48,4 +49,29 @@ public class ForemanController extends StringUtil {
         view.addObject("jdbForeman", jdbForeman);
         return view;
     }
+
+    /**
+    * @Description: 跳转工长注册页面
+    * @Author: jkx
+    * @Date: 2018/11/20 12:04
+    */
+    @RequestMapping(value = "/page/foreman/toForemanSignUp.html")
+    @ResponseBody
+    public ModelAndView toForemanSignUp(){
+        ModelAndView view = new ModelAndView("page/foreman/foreman_sign_up");
+        return view;
+    }
+
+    /**
+    * @Description: 工长注册信息
+    * @Author: jkx
+    * @Date: 2018/11/20 13:11
+    */
+    @RequestMapping(value = "/page/foreman/foremanSignUp.html")
+    @ResponseBody
+    public String foremanSignUp(JdbForeman jdbForeman) {
+        int i = foremanService.insertForeman(jdbForeman);
+        return i + "";
+    }
+
 }

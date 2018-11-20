@@ -259,4 +259,22 @@
     from jdb_foreman
     where id = #{id,jdbcType=VARCHAR}
   </select>
+
+  <!-- 工长注册 -->
+  <insert id="insertForeman" parameterType="com.yq.entity.foreman.JdbForeman">
+    insert into jdb_foreman (id, name, phone,
+    id_code, sex, skill,
+    service, service_area, service_content,
+    details, photo, company,
+    company_address, company_phone, head,
+    praise, create_time, update_time
+    )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+    #{idCode,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{skill,jdbcType=VARCHAR},
+    #{service,jdbcType=VARCHAR}, #{serviceArea,jdbcType=VARCHAR}, #{serviceContent,jdbcType=VARCHAR},
+    #{details,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR},
+    #{companyAddress,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR},
+    #{praise,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+    )
+  </insert>
 </mapper>

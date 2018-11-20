@@ -3,9 +3,12 @@ package com.yq.service.foreman.impl;
 import com.yq.dao.foreman.JdbForemanMapper;
 import com.yq.entity.foreman.JdbForeman;
 import com.yq.service.foreman.ForemanService;
+import com.yq.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,5 +40,19 @@ public class ForemanServiceImpl implements ForemanService{
     public JdbForeman selForeman(String id) {
         JdbForeman jdbForeman = jdbForemanMapper.selForeman(id);
         return jdbForeman;
+    }
+
+    /**
+    * @Description: 工长注册
+    * @Author: jkx
+    * @Date: 2018/11/20 13:44
+    */
+    @Override
+    public int insertForeman(JdbForeman jdbForeman) {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        jdbForeman.setId(UUIDUtils.getUUID());
+        jdbForeman.setCreateTime(sf.format(new Date()));
+        int i = jdbForemanMapper.insertForeman(jdbForeman);
+        return i;
     }
 }
