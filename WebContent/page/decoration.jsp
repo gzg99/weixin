@@ -18,7 +18,7 @@
 
 <body style="padding-bottom:1.2rem;">
 	<div class="zx_list">
-		<a href="getAllDecorationByType.html?type=工匠">
+		<a href="foreman/toForemanPage.html">
      		<img src="images/zx_img01.jpg"/>
 			<p>附近工匠 - 工长</p>
 		</a>
@@ -26,10 +26,10 @@
      		<img src="images/zx_img02.jpg"/>
 			<p>工装 - 工地建筑装修展示</p>
 		</a>
-		<%--<a href="getAllDecorationByType.html?type=家装">
+		<a href="getAllDecorationByType.html?type=家装">
      		<img src="images/zx_img03.jpg"/>
 			<p>家装 - 家庭装修</p>
-		</a> --%>
+		</a>
 		<div class="clear"></div>
 	</div>
 	<jsp:include page="footer5.jsp"></jsp:include>
