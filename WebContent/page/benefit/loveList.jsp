@@ -15,6 +15,7 @@
 		<div style="font-size:70px;text-align:center;">${mapList.jdbLove.organizationName }</div>
 		<div style="font-size:70px;text-align:center;">${mapList.jdbLove.pictureNote }</div>
 		<div style="font-size:70px;text-align:center;">${mapList.jdbLove.createTime }</div>
+
 		<%-- 公益活动更多图片 --%>
 		${mapList.pictureHelpList}
 

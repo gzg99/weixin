@@ -31,4 +31,5 @@ public interface BenefitService {
 	Map<String, Object> selectByPrimaryList(String id);// 公益组织——爱心接力
 	
 	JdbRelation selectByPrimary();
+
 }

@@ -172,7 +172,6 @@ public class BenefitController {
 	 */
 	@RequestMapping(value = "/page/toloveList.html")
 	public ModelAndView toloveList(String id) {
-
 		ModelAndView view = new ModelAndView("/page/benefit/loveList");
 		Map<String, Object> mapList = benefitService.selectByPrimaryList(id);
 		view.addObject("mapList", mapList);

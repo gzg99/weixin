@@ -143,6 +143,7 @@ public class BenefitServiceImpl implements BenefitService {
 			String createTime = createTimeData.substring(5, 10);
 			jdbLove.setCreateTime(createTime);
 		}
+		
 		// 公益活动简图
 		String pictureHelp = jdbLove.getPictureHelp();
 		if(StringUtils.isNotBlank(pictureHelp)){
