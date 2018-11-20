@@ -1,4 +1,4 @@
-﻿package com.weixin.controller;
+package com.weixin.controller;
 
 import com.weixin.entity.ClickText;
 import com.weixin.entity.Item;

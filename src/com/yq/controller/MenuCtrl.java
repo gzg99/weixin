@@ -1,4 +1,4 @@
-﻿package com.yq.controller;
+package com.yq.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

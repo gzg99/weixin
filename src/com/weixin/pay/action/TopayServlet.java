@@ -1,4 +1,4 @@
-﻿package com.weixin.pay.action;
+package com.weixin.pay.action;
 
 import com.weixin.pay.util.GetWxOrderno;
 import com.weixin.pay.util.RequestHandler;
