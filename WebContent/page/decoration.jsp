@@ -32,6 +32,7 @@
 		</a>
 		<div class="clear"></div>
 	</div>
+
 	<jsp:include page="footer5.jsp"></jsp:include>
 	<script type="text/javascript" src="js/base.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
