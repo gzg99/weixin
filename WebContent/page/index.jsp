@@ -44,8 +44,8 @@
             <div class="sy-info1" style="border-bottom:4px solid #E6E6E6;">
                 <ul class="info-img">
                     <li>
-                        <a href="listMessage.html" class="img-1"><img src="images/b1.png" style="width:42px;height: 42px"> </a>
-                        <a href="listMessage.html" class="img-txt">社区服务</a>
+                        <a href="communityService.html" class="img-1"><img src="images/b1.png" style="width:42px;height: 42px"> </a>
+                        <a href="communityService.html" class="img-txt">社区服务</a>
                     </li>
                     <li>
                         <a href="cardAll.html" class="img-1"> <img  src="images/b2.png" style="width:42px;height: 42px"></a>
@@ -80,6 +80,10 @@
                     <li>
                         <a href="decorationIndex.html" class="img-1"><img  src="images/b9.png" style="width:42px;height: 42px"></a>
                         <a href="decorationIndex.html" class="img-txt">装修样板</a>
+                    </li>
+                    <li>
+                        <a href="listMessage.html" class="img-1"><img  src="images/b10.png" style="width:42px;height: 42px"></a>
+                        <a href="listMessage.html" class="img-txt">社区论坛</a>
                     </li>
                 </ul>
             </div>
