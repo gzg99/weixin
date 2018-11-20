@@ -83,7 +83,7 @@
 			type 
 		from 
 			jdb_card
-			order by add_time desc 
+			order by add_time
     	<if test="pageSize!=null and pageSize!=0">
      		limit #{currentNum},#{pageSize}
     	</if>
