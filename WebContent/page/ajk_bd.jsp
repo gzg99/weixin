@@ -47,7 +47,7 @@ height:30px;
     </div>
     <div class="drdd-info2" id="zitidian-choose">
 	    <select id="cardName">
-	    
+
 	    </select>
     </div>
     <!-- <input type="text" id="cardName" value="${card.cardName }"> -->
@@ -68,6 +68,11 @@ height:30px;
     <div class="drdd-info4">
     	<p>持卡人手机：</p>
         <input type="text" id="userPhone" style="width:75%;border:0px">
+        <div style="clear:both;"></div>
+    </div>
+    <div class="drdd-info4">
+        <p>填写验证码：</p>
+        <input type="text" id="code" style="width:75%;border:0px">
         <div style="clear:both;"></div>
     </div>
     

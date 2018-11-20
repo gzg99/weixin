@@ -38,6 +38,10 @@
 				<p>手机号&nbsp;&nbsp;&nbsp;</p>
 				<input type="text" id="userPhone" />
 			</div>
+			<div style="padding-top:10px;">
+				<p>填写验证码</p>
+				<input type="text" id="code" />
+			</div>
 			
 			<div class="c"></div>
 			
