@@ -42,7 +42,7 @@
 
 </head>
 <body>
-	<form action="" method="post" id="loveRelay" enctype="multipart/form-data">
+	<%--<form action="" method="post" id="loveRelay" enctype="multipart/form-data">
 		<div class="pd-20" style="width: 80%">
 	
 	        <input type="hidden" value="${jdbLoveRelay.id }" name="id">
@@ -105,11 +105,75 @@
 			    </button>
 			</div>
 		</div>
+	</form>--%>
+	<form action="" method="post" id="loveRelay" enctype="multipart/form-data">
+		<div class="pd-20" style="width: 80%">
+			<input type="hidden" value="${jdbLoveRelay.id }" name="id">
+				<div class="formControls col-10">
+					<input type="hidden"
+						   id="organizationId"
+						   name="organizationId"
+						   placeholder="请填写组织ID"
+						   value="${jdbLoveRelay.organizationId }"
+						   class="headline"
+						   style="width: 80%">
+				</div>
+			<br>
+			<div class="row cl">
+				<label class="form-label col-2">标题：</label>
+				<div class="formControls col-10">
+					<input type="text"
+						   id="organizationName"
+						   name="organizationName"
+						   placeholder="标题"
+						   value="${jdbLoveRelay.organizationName }"
+						   class="headline"
+						   style="width: 80%">
+				</div>
+			</div>
+			<br>
+			<div class="row cl">
+				<label class="form-label col-2">首图：</label>
+				<div id="pictureImg">
+					<img src="${jdbLoveRelay.picture }"  width='100' height='100'>
+				</div>
+				<div id="img" class="formControls col-10">
+					<input type="file" id="file" name="file" value=""  style="width: 80%" onchange="upload()">
+				</div>
+				<input type="hidden" id="picture" name="picture">
+				<input type="hidden" id="pictureOld" value="${jdbLoveRelay.picture }">
+			</div>
+			<br> <br>
+			<div class="row cl">
+				<label class="form-label col-2">图文消息：</label>
+				<div class="formControls col-10">
+					<textarea name="pictureNote"
+							  id="pictureNote"
+							  style="width: 80%;
+						      height: 260px;">${jdbLoveRelay.pictureNote }${jdbLoveRelay.pictureHelp }</textarea>
+				</div>
+			</div>
+			<br> <br>
+			<div class="col-10 col-offset-2">
+				<button onClick="add()"
+						id="butt"
+						class="btn btn-primary radius"
+						type="button">
+					<i class="Hui-iconfont">&#xe632;</i> 提交
+				</button>
+				<button onClick="history.go(-1);"
+						class="btn btn-default radius"
+						type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;
+				</button>
+			</div>
+		</div>
 	</form>
 	<script type="text/javascript">
 	
 		function add() {
-			
+			if(null == $("#picture").val() || "" == $("#picture").val()){
+				$("#picture").val($("#pictureOld").val());
+ 			}
 			var formData = new FormData($("#loveRelay")[0]);
 			var url = 'loveRelay.html';
 			$.ajax({
@@ -140,10 +204,8 @@
 		}
 		
 		function upload() {
-
 			var fp = document.getElementById("file").value;
 			//为了避免转义反斜杠出问题，这里将对其进行转换
-
 			var re = /(\\+)/g;
 			var fn = fp.replace(re, "#");
 			//对路径字符串进行剪切截取
@@ -164,14 +226,13 @@
 			$.ajaxFileUpload({
 				url : 'upload.html', //需要链接到服务器地址  
 				secureuri : false,
-				fileElementId : "file", //文件选择框的id属性  
+				fileElementId : "file", //文件选择框的id属性
 				dataType : 'text', //服务器返回的格式，可以是json  
 				success : function(rs) //相当于java中try语句块的用法  
 				{
 					if (rs != "") {
-						
-						
 						$('#img').html("");
+						$('#pictureImg').html(""); //清除索要替换的图片
 						$('#img').append("<img src='"+rs+"' width='100' height='100'>");
 						$("#picture").val(rs);
 					} else {
@@ -181,12 +242,9 @@
 				error : function(data, status, e) //相当于java中catch语句块的用法  
 				{
 					alert('失败');
-
 				}
 			});
 		}
-
-		
 	</script>
 </body>
 </html>
