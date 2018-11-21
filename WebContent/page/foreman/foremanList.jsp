@@ -18,6 +18,9 @@
         <div>
             <a href="../foreman/selForeman.html?id=${list.id}">${list.name }</a>
             <input name="name" value="${list.phone  }"><br/>
+            <a href="tel:${list.phone}" class="sjsc-t2r">
+                <img src="../images/phone.png" alt="" style="width:30px;height: 30px;padding-top: 11px;padding-left: 5px"/>
+            </a>
         </div>
     </c:forEach>
     <a href="../foreman/toForemanSignUp.html">工长注册</a>
