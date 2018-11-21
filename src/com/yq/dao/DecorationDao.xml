@@ -6,6 +6,7 @@
 		select 
 			id as id,
 			company_name as companyName,
+			company_phone as companyPhone,
 			company_img as companyImg,
 			company_intrl as companyIntrl,
 			company_detail as companyDetail,
@@ -26,6 +27,7 @@
 		select 
 			id as id,
 			company_name as companyName,
+			company_phone as companyPhone,
 			company_img as companyImg,
 			company_intrl as companyIntrl,
 			company_detail as companyDetail,
@@ -45,6 +47,7 @@
 	<insert id="insert" parameterType="com.yq.entity.DecorationEntity">
 		insert jdb_decoration(
 			company_name,
+			company_phone,
 			company_img,
 			company_intrl,
 			company_detail,
@@ -57,15 +60,16 @@
 			detail_help
 		)values(
 			#{companyName,jdbcType=VARCHAR},
+			#{companyPhone,jdbcType=VARCHAR},
 			#{companyImg,jdbcType=VARCHAR},
 			#{companyIntrl,jdbcType=VARCHAR},
 			#{companyDetail,jdbcType=VARCHAR},
 			#{addTime,jdbcType=VARCHAR},
 			#{type,jdbcType=VARCHAR},
-			#{isFineQuality,jdbcType=VARCHAR}
-			#{companyAddress,jdbcType=VARCHAR}
-			#{businessLicense,jdbcType=VARCHAR}
-			#{imgHelp,jdbcType=VARCHAR}
+			#{isFineQuality,jdbcType=VARCHAR},
+			#{companyAddress,jdbcType=VARCHAR},
+			#{businessLicense,jdbcType=VARCHAR},
+			#{imgHelp,jdbcType=VARCHAR},
 			#{detailHelp,jdbcType=VARCHAR}
 		)
 	</insert>
@@ -75,6 +79,9 @@
 		<set>
 			<if test="companyName != null" >
 				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyName != null" >
+				company_phone = #{companyPhone,jdbcType=VARCHAR},
 			</if>
 			<if test="companyImg != null" >
 				company_img = #{companyImg,jdbcType=VARCHAR},
@@ -122,6 +129,7 @@
 		select 
 			id as id,
 			company_name as companyName,
+			company_phone as companyPhone,
 			company_img as companyImg,
 			company_intrl as companyIntrl,
 			company_detail as companyDetail,
@@ -141,6 +149,7 @@
 		select 
 			id as id,
 			company_name as companyName,
+			company_phone as companyPhone,
 			company_img as companyImg,
 			company_intrl as companyIntrl,
 			company_detail as companyDetail,

@@ -71,6 +71,14 @@
 					placeholder="请填写公司名称" class="input-text" style="width: 80%">
 			</div>
 		</div><br>
+
+		<div class="row cl">
+			<label class="form-label col-2">联系电话：</label>
+			<div class="formControls col-10">
+				<input type="text" id="companyPhone"
+					   placeholder="请填写联系电话" class="input-text" style="width: 80%">
+			</div>
+		</div><br>
 		
 		<div class="row cl">
 			<label class="form-label col-2">公司图片：</label>
@@ -99,14 +107,35 @@
 				<textarea name="content" id="companyDetail" style="width: 80%;height: 260px;"></textarea>
 			</div>
 		</div><br>
+
+		<div class="row cl">
+			<label class="form-label col-2">公司地址：</label>
+			<div class="formControls col-10">
+				<input type="text" name="companyAddress" id="companyAddress"
+					   placeholder="请填写公司地址" class="input-text" style="width: 80%">
+			</div>
+		</div><br>
+
+		<div class="row cl">
+			<label class="form-label col-2">营业执照：</label>
+			<div class="formControls col-10">
+				<input type="file" id="licenseFile" name="file" class="input-text" style="width: 80%" onchange="licenseUpload()">
+			</div>
+		</div><br>
+
+		<div class="row cl">
+			<label class="form-label col-2"> </label>
+			<input id="licenseFilepath" type="hidden">
+			<div class="formControls col-10" id="licenseImg">
+			</div>
+		</div><br>
 		
 		<div class="row cl">
 			<label class="form-label col-2">类型：</label>
 			<div class="formControls col-10">
 				<select id="type">
-					<option value="工匠">工匠</option>
-					<option value="工装">工装</option>
-					<option value="家装">家装</option>
+					<option value="1">工装</option>
+					<option value="2">家装</option>
 				</select>
 			</div>
 		</div><br>
@@ -115,8 +144,8 @@
 			<label class="form-label col-2">是否精品：</label>
 			<div class="formControls col-10">
 				<select id="isFineQuality">
-					<option value="是">是</option>
-					<option value="否">否</option>
+					<option value="1">是</option>
+					<option value="0">否</option>
 				</select>
 			</div>
 		</div><br><br>
@@ -134,17 +163,21 @@
 	<script type="text/javascript">
 		function add(){
 			var companyName = $('#companyName').val();
+			var companyPhone = $('#companyPhone').val();
 			var companyImg = $('#filepath').val();
 			var companyIntrl = $('#companyIntrl').val();
 			var companyDetail = $('#companyDetail').val();
 			var type = $('#type').val();
 			var isFineQuality = $('#isFineQuality').val();
-			
+			var companyAddress = $('#companyAddress').val();
+			var businessLicense = $('#licenseFilepath').val();
+
 			$.ajax({
 				url:'addDecoration.html',
 				type:'post',
-				data:'companyName='+companyName+'&companyImg='+companyImg+'&companyIntrl='+companyIntrl+
-				'&companyDetail='+companyDetail+'&type='+type+'&isFineQuality='+isFineQuality,
+				data:'companyName='+companyName+'&companyPhone='+companyPhone+'&companyImg='+companyImg+'&companyIntrl='+companyIntrl+
+				'&companyDetail='+companyDetail+'&type='+type+'&isFineQuality='+isFineQuality+'&companyAddress='+companyAddress+
+				'&businessLicense='+businessLicense,
 				success:function(rs){
 					if(rs==1){
 						alert("添加成功！");
@@ -195,6 +228,52 @@
 				error : function(data, status, e) //相当于java中catch语句块的用法  
 				{alert('失败');
 					
+				}
+			});
+		}
+
+		/**
+		 * 营业执照图片上传（新增）
+		 */
+		function licenseUpload() {
+			var fp = document.getElementById("licenseFile").value;
+			//为了避免转义反斜杠出问题，这里将对其进行转换
+			var re = /(\\+)/g;
+			var fn = fp.replace(re, "#");
+			//对路径字符串进行剪切截取
+			var one = fn.split("#");
+			//获取数组中最后一个，即文件名
+			var two = one[one.length - 1];
+			//再对文件名进行截取，以取得后缀名
+			var three = two.split(".");
+			//获取截取的最后一个字符串，即为后缀名
+			var last = three[three.length - 1];
+			last = last.toLowerCase();
+
+			if (last != 'png' && last != 'jpg' && last != 'gif'
+					&& last != 'PNG' && last != 'JPG' && last != 'GIF') {
+				alert("请上传png、jpg或者gif文件！");
+				return;
+			}
+			$.ajaxFileUpload({
+				url : 'upload.html', //需要链接到服务器地址
+				secureuri : false,
+				fileElementId : "licenseFile", //文件选择框的id属性
+				dataType : 'text', //服务器返回的格式，可以是json
+				success : function(rs) //相当于java中try语句块的用法
+				{
+					if (rs != "") {
+						$('#licenseImg').html("");
+						$('#licenseImg').append("<img src='"+rs+"' width='100' height='100'>");
+						$('#licenseFilepath').val(rs);
+					} else {
+						alert('失败');
+						//document.getElementById("msg"+m[1]).value="失败";
+					}
+				},
+				error : function(data, status, e) //相当于java中catch语句块的用法
+				{alert('失败');
+
 				}
 			});
 		}

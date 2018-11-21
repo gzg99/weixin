@@ -72,6 +72,14 @@
 					placeholder="请填写公司名称" value="${decoration.companyName }" class="input-text" style="width: 80%">
 			</div>
 		</div><br>
+
+		<div class="row cl">
+			<label class="form-label col-2">联系电话：</label>
+			<div class="formControls col-10">
+				<input type="text" id="companyPhone"
+					   placeholder="请填写联系电话" value="${decoration.companyPhone }" class="input-text" style="width: 80%">
+			</div>
+		</div><br>
 		
 		<div class="row cl">
 			<label class="form-label col-2">公司图片：</label>
@@ -107,7 +115,7 @@
 			<label class="form-label col-2">公司地址：</label>
 			<div class="formControls col-10">
 				<input type="text" id="companyAddress"
-					   placeholder="请填写公司名称" value="${decoration.companyAddress }" class="input-text" style="width: 80%">
+					   placeholder="请填写公司地址" value="${decoration.companyAddress }" class="input-text" style="width: 80%">
 			</div>
 		</div><br>
 
@@ -130,14 +138,19 @@
 			<label class="form-label col-2">类型：</label>
 			<div class="formControls col-10">
 				<select id="type">
-					<c:if test="${decoration.type == '2' }">
-						<option value="2" selected="selected">工装</option>
-						<option value="1">家装</option>
-					</c:if>
-					<c:if test="${decoration.type == '1' }">
-						<option value="2">工装</option>
-						<option value="1" selected="selected">家装</option>
-					</c:if>
+					<c:choose>
+						<c:when test="${decoration.type == '2' }">
+							<option value="2">工装</option>
+							<option value="1">家装</option>
+						</c:when>
+						<c:when test="${decoration.type == '1' }">
+							<option value="2">工装</option>
+							<option value="1">家装</option>
+						</c:when>
+						<c:otherwise>
+							<option>  </option>
+						</c:otherwise>
+					</c:choose>
 				</select>
 			</div>
 		</div><br>
@@ -146,14 +159,19 @@
 			<label class="form-label col-2">是否精品：</label>
 			<div class="formControls col-10">
 				<select id="isFineQuality">
-					<c:if test="${decoration.isFineQuality == '1'}">
-						<option value="1" selected="selected">是</option>
-						<option value="0">否</option>
-					</c:if>
-					<c:if test="${decoration.isFineQuality == '0'}">
-						<option value="1">是</option>
-						<option value="0" selected="selected">否</option>
-					</c:if>
+					<c:choose>
+						<c:when test="${decoration.isFineQuality == '1'}">
+							<option value="1" selected="selected">是</option>
+							<option value="0">否</option>
+						</c:when>
+						<c:when test="${decoration.isFineQuality == '0'}">
+							<option value="1">是</option>
+							<option value="0" selected="selected">否</option>
+						</c:when>
+						<c:otherwise>
+							<option></option>
+						</c:otherwise>
+					</c:choose>
 				</select>
 			</div>
 		</div><br>
@@ -173,6 +191,7 @@
 		function add(){
 			var id = $('#id').val();
 			var companyName = $('#companyName').val();
+			var companyPhone = $('#companyPhone').val();
 			var companyImg = $('#filepath').val();
 			var companyIntrl = $('#companyIntrl').val();
 			var companyDetail = $('#companyDetail').val();
@@ -184,7 +203,7 @@
 			$.ajax({
 				url:'updateDecoration.html',
 				type:'post',
-				data:'id='+id+'&companyName='+companyName+'&companyImg='+companyImg+'&companyIntrl='+companyIntrl+
+				data:'id='+id+'&companyName='+companyName+'&companyPhone='+companyPhone+'&companyImg='+companyImg+'&companyIntrl='+companyIntrl+
 				'&companyDetail='+companyDetail+'&type='+type+'&isFineQuality='+isFineQuality+'&companyAddress='+companyAddress+
 				'&businessLicense='+businessLicense,
 				success:function(rs){
@@ -243,7 +262,7 @@
 		}
 
 		/**
-		 * 营业执照图片上传
+		 * 营业执照图片上传(修改)
 		 */
 		function licenseUpload() {
 			var fp = document.getElementById("licenseFile").value;

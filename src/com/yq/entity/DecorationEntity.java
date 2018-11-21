@@ -8,6 +8,8 @@ public class DecorationEntity {
 	private Long id;
 	
 	private String companyName;
+
+	private String companyPhone;
 	
 	private String companyImg;
 	
@@ -43,6 +45,14 @@ public class DecorationEntity {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public String getCompanyPhone() {
+		return companyPhone;
+	}
+
+	public void setCompanyPhone(String companyPhone) {
+		this.companyPhone = companyPhone;
 	}
 
 	public String getCompanyImg() {
