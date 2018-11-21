@@ -73,7 +73,7 @@ public class DecorationCtrl {
 	@RequestMapping(value = "/main/updateDecoration.html")
 	@ResponseBody
 	public String updateDecoration(Long id, String companyName, String companyImg, String companyIntrl,
-			String companyDetail, String type, String isFineQuality) {
+			String companyDetail, String type, String isFineQuality, String companyAddress, String businessLicense) {
 		DecorationEntity decoration = new DecorationEntity();
 		decoration.setId(id);
 		decoration.setCompanyName(companyName);
@@ -82,6 +82,8 @@ public class DecorationCtrl {
 		decoration.setCompanyDetail(companyDetail);
 		decoration.setType(type);
 		decoration.setIsFineQuality(isFineQuality);
+		decoration.setCompanyAddress(companyAddress);
+		decoration.setBusinessLicense(businessLicense);
 		return decorationService.update(decoration) + "";
 	}
 	

@@ -104,6 +104,29 @@
 		</div><br>
 
 		<div class="row cl">
+			<label class="form-label col-2">公司地址：</label>
+			<div class="formControls col-10">
+				<input type="text" id="companyAddress"
+					   placeholder="请填写公司名称" value="${decoration.companyAddress }" class="input-text" style="width: 80%">
+			</div>
+		</div><br>
+
+		<div class="row cl">
+			<label class="form-label col-2">营业执照：</label>
+			<div class="formControls col-10">
+				<input type="file" id="licenseFile" name="file" class="input-text" style="width: 80%" onchange="licenseUpload()">
+			</div>
+		</div><br>
+
+		<div class="row cl">
+			<label class="form-label col-2"> </label>
+			<input id="licenseFilepath" type="hidden" value="${decoration.businessLicense }">
+			<div class="formControls col-10" id="licenseImg">
+				<img alt="" src="${decoration.businessLicense }" style="width:100px;height:100px">
+			</div>
+		</div><br>
+
+		<div class="row cl">
 			<label class="form-label col-2">类型：</label>
 			<div class="formControls col-10">
 				<select id="type">
@@ -155,12 +178,15 @@
 			var companyDetail = $('#companyDetail').val();
 			var type = $('#type').val();
 			var isFineQuality = $('#isFineQuality').val();
-			
+			var companyAddress = $('#companyAddress').val();
+			var businessLicense = $('#licenseFilepath').val();
+
 			$.ajax({
 				url:'updateDecoration.html',
 				type:'post',
 				data:'id='+id+'&companyName='+companyName+'&companyImg='+companyImg+'&companyIntrl='+companyIntrl+
-				'&companyDetail='+companyDetail+'&type='+type+'&isFineQuality='+isFineQuality,
+				'&companyDetail='+companyDetail+'&type='+type+'&isFineQuality='+isFineQuality+'&companyAddress='+companyAddress+
+				'&businessLicense='+businessLicense,
 				success:function(rs){
 					if(rs==1){
 						alert("添加成功！");
@@ -198,7 +224,8 @@
 				fileElementId : "file", //文件选择框的id属性  
 				dataType : 'text', //服务器返回的格式，可以是json  
 				success : function(rs) //相当于java中try语句块的用法  
-				{	
+				{
+					alert(rs);
 					if (rs != "") {
 						$('#img').html("");
 						$('#img').append("<img src='"+rs+"' width='100' height='100'>");
@@ -211,6 +238,52 @@
 				error : function(data, status, e) //相当于java中catch语句块的用法  
 				{alert('失败');
 					
+				}
+			});
+		}
+
+		/**
+		 * 营业执照图片上传
+		 */
+		function licenseUpload() {
+			var fp = document.getElementById("licenseFile").value;
+			//为了避免转义反斜杠出问题，这里将对其进行转换
+			var re = /(\\+)/g;
+			var fn = fp.replace(re, "#");
+			//对路径字符串进行剪切截取
+			var one = fn.split("#");
+			//获取数组中最后一个，即文件名
+			var two = one[one.length - 1];
+			//再对文件名进行截取，以取得后缀名
+			var three = two.split(".");
+			//获取截取的最后一个字符串，即为后缀名
+			var last = three[three.length - 1];
+			last = last.toLowerCase();
+
+			if (last != 'png' && last != 'jpg' && last != 'gif'
+					&& last != 'PNG' && last != 'JPG' && last != 'GIF') {
+				alert("请上传png、jpg或者gif文件！");
+				return;
+			}
+			$.ajaxFileUpload({
+				url : 'upload.html', //需要链接到服务器地址
+				secureuri : false,
+				fileElementId : "licenseFile", //文件选择框的id属性
+				dataType : 'text', //服务器返回的格式，可以是json
+				success : function(rs) //相当于java中try语句块的用法
+				{
+					if (rs != "") {
+						$('#licenseImg').html("");
+						$('#licenseImg').append("<img src='"+rs+"' width='100' height='100'>");
+						$('#licenseFilepath').val(rs);
+					} else {
+						alert('失败');
+						//document.getElementById("msg"+m[1]).value="失败";
+					}
+				},
+				error : function(data, status, e) //相当于java中catch语句块的用法
+				{alert('失败');
+
 				}
 			});
 		}
