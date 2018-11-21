@@ -11,7 +11,11 @@
 			company_detail as companyDetail,
 			add_time as addTime,
 			type as type,
-			is_fine_quality as isFineQuality 
+			is_fine_quality as isFineQuality,
+			company_address as companyAddress,
+			business_license as businessLicense,
+			img_help as imgHelp,
+			detail_help as detailHelp
 		from 
 			jdb_decoration 
 		where
@@ -27,7 +31,11 @@
 			company_detail as companyDetail,
 			add_time as addTime,
 			type as type,
-			is_fine_quality as isFineQuality 
+			is_fine_quality as isFineQuality,
+			company_address as companyAddress,
+			business_license as businessLicense,
+			img_help as imgHelp,
+			detail_help as detailHelp
 		from 
 			jdb_decoration 
 		where
@@ -42,7 +50,11 @@
 			company_detail,
 			add_time,
 			type,
-			is_fine_quality
+			is_fine_quality,
+			company_address,
+			business_license,
+			img_help,
+			detail_help
 		)values(
 			#{companyName,jdbcType=VARCHAR},
 			#{companyImg,jdbcType=VARCHAR},
@@ -51,6 +63,10 @@
 			#{addTime,jdbcType=VARCHAR},
 			#{type,jdbcType=VARCHAR},
 			#{isFineQuality,jdbcType=VARCHAR}
+			#{companyAddress,jdbcType=VARCHAR}
+			#{businessLicense,jdbcType=VARCHAR}
+			#{imgHelp,jdbcType=VARCHAR}
+			#{detailHelp,jdbcType=VARCHAR}
 		)
 	</insert>
 	
@@ -76,7 +92,19 @@
 				type = #{type,jdbcType=VARCHAR},
 			</if>
 			<if test="isFineQuality != null" >
-				is_fine_quality = #{isFineQuality,jdbcType=VARCHAR}
+				is_fine_quality = #{isFineQuality,jdbcType=VARCHAR},
+			</if>
+			<if test="isFineQuality != null" >
+				company_address = #{companyAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="isFineQuality != null" >
+				business_license = #{businessLicense,jdbcType=VARCHAR},
+			</if>
+			<if test="isFineQuality != null" >
+				img_help = #{imgHelp,jdbcType=VARCHAR},
+			</if>
+			<if test="isFineQuality != null" >
+				detail_help = #{detailHelp,jdbcType=VARCHAR}
 			</if>
 		</set>
 		where id = #{id,jdbcType=BIGINT}
@@ -99,8 +127,12 @@
 			company_detail as companyDetail,
 			add_time as addTime,
 			type as type,
-			is_fine_quality as isFineQuality 
-		from 
+			is_fine_quality as isFineQuality,
+			company_address as companyAddress,
+			business_license as businessLicense,
+			img_help as imgHelp,
+			detail_help as detailHelp
+		from
 			jdb_decoration 
 		limit #{currentNum},#{pageSize}
 	</select>
@@ -114,10 +146,14 @@
 			company_detail as companyDetail,
 			add_time as addTime,
 			type as type,
-			is_fine_quality as isFineQuality 
+			is_fine_quality as isFineQuality,
+			company_address as companyAddress,
+			business_license as businessLicense,
+			img_help as imgHelp,
+			detail_help as detailHelp
 		from 
 			jdb_decoration 
 		where 
-			is_fine_quality='是'
+			is_fine_quality='1'
 	</select>
 </mapper>

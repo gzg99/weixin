@@ -21,6 +21,14 @@ public class DecorationEntity {
 	
 	private String isFineQuality;
 
+	private String companyAddress;
+
+	private String businessLicense;
+
+	private String imgHelp;
+
+	private String detailHelp;
+
 	public Long getId() {
 		return id;
 	}
@@ -84,5 +92,36 @@ public class DecorationEntity {
 	public void setIsFineQuality(String isFineQuality) {
 		this.isFineQuality = isFineQuality;
 	}
-	
+
+	public String getCompanyAddress() {
+		return companyAddress;
+	}
+
+	public void setCompanyAddress(String companyAddress) {
+		this.companyAddress = companyAddress;
+	}
+
+	public String getBusinessLicense() {
+		return businessLicense;
+	}
+
+	public void setBusinessLicense(String businessLicense) {
+		this.businessLicense = businessLicense;
+	}
+
+	public String getImgHelp() {
+		return imgHelp;
+	}
+
+	public void setImgHelp(String imgHelp) {
+		this.imgHelp = imgHelp;
+	}
+
+	public String getDetailHelp() {
+		return detailHelp;
+	}
+
+	public void setDetailHelp(String detailHelp) {
+		this.detailHelp = detailHelp;
+	}
 }

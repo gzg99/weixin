@@ -22,11 +22,11 @@
      		<img src="images/zx_img01.jpg"/>
 			<p>附近工匠 - 工长</p>
 		</a>
-	    <a href="getAllDecorationByType.html?type=工装">
+	    <a href="getAllDecorationByType.html?type=2">
      		<img src="images/zx_img02.jpg"/>
 			<p>工装 - 工地建筑装修展示</p>
 		</a>
-		<a href="getAllDecorationByType.html?type=家装">
+		<a href="getAllDecorationByType.html?type=1">
      		<img src="images/zx_img03.jpg"/>
 			<p>家装 - 家庭装修</p>
 		</a>
