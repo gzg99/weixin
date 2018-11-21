@@ -60,8 +60,18 @@
 						<tr class="text-c">
 							<td>${decoration.companyName}</td>
 							<td><img alt="" src="${decoration.companyImg}" width="50" height="50"> </td>
-							<td>${decoration.type}</td>
-							<td>${decoration.isFineQuality}</td>
+							<c:if test="${decoration.type == 1}">
+								<td>家装</td>
+							</c:if>
+							<c:if test="${decoration.type == 2}">
+								<td>工装</td>
+							</c:if>
+							<c:if test="${decoration.isFineQuality == 0}">
+								<td>否</td>
+							</c:if>
+							<c:if test="${decoration.isFineQuality == 1}">
+								<td>是</td>
+							</c:if>
 							<td>
 							    <a href="decorationInfoById.html?id=${decoration.id}">编辑</a>&nbsp;&nbsp;
 							    <a href="javascript:;" onclick="del('${decoration.id}')">删除</a>

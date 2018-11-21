@@ -102,41 +102,34 @@
 				<textarea name="content" id="companyDetail" style="width: 80%;height: 260px;">${decoration.companyDetail }</textarea>
 			</div>
 		</div><br>
-		
+
 		<div class="row cl">
 			<label class="form-label col-2">类型：</label>
 			<div class="formControls col-10">
 				<select id="type">
-					<c:if test="${decoration.type == '工匠' }">
-						<option value="工匠" selected="selected">工匠</option>
-						<option value="工装">工装</option>
-						<option value="家装">家装</option>
+					<c:if test="${decoration.type == '2' }">
+						<option value="2" selected="selected">工装</option>
+						<option value="1">家装</option>
 					</c:if>
-					<c:if test="${decoration.type == '工装' }">
-						<option value="工匠">工匠</option>
-						<option value="工装" selected="selected">工装</option>
-						<option value="家装">家装</option>
-					</c:if>
-					<c:if test="${decoration.type == '家装' }">
-						<option value="工匠">工匠</option>
-						<option value="工装">工装</option>
-						<option value="家装" selected="selected">家装</option>
+					<c:if test="${decoration.type == '1' }">
+						<option value="2">工装</option>
+						<option value="1" selected="selected">家装</option>
 					</c:if>
 				</select>
 			</div>
 		</div><br>
-		
+
 		<div class="row cl">
 			<label class="form-label col-2">是否精品：</label>
 			<div class="formControls col-10">
 				<select id="isFineQuality">
-					<c:if test="${decoration.isFineQuality == '是'}">
-						<option value="是" selected="selected">是</option>
-						<option value="否">否</option>
+					<c:if test="${decoration.isFineQuality == '1'}">
+						<option value="1" selected="selected">是</option>
+						<option value="0">否</option>
 					</c:if>
-					<c:if test="${decoration.isFineQuality == '否'}">
-						<option value="是">是</option>
-						<option value="否" selected="selected">否</option>
+					<c:if test="${decoration.isFineQuality == '0'}">
+						<option value="1">是</option>
+						<option value="0" selected="selected">否</option>
 					</c:if>
 				</select>
 			</div>
