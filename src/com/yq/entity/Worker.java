@@ -38,6 +38,14 @@ public class Worker {
 	
 	private int serviceCount;
 
+	private String password;
+
+	private String serviceArea;
+
+	private String serviceDetail;
+
+	private String worderAlbum;
+
 	public Long getId() {
 		return id;
 	}
@@ -181,5 +189,36 @@ public class Worker {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getServiceArea() {
+		return serviceArea;
+	}
+
+	public void setServiceArea(String serviceArea) {
+		this.serviceArea = serviceArea;
+	}
+
+	public String getServiceDetail() {
+		return serviceDetail;
+	}
+
+	public void setServiceDetail(String serviceDetail) {
+		this.serviceDetail = serviceDetail;
+	}
+
+	public String getWorderAlbum() {
+		return worderAlbum;
+	}
+
+	public void setWorderAlbum(String worderAlbum) {
+		this.worderAlbum = worderAlbum;
+	}
 }

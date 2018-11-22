@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.annotation.Repeat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -175,5 +176,46 @@ public class WorkerCtrl extends StringUtil {
 		view.addObject("worker", worker);
 		return view;
 	}
-	
+
+	/**
+	* @Description: 跳转工匠注册页面
+	* @Author: jkx
+	* @Date: 2018/11/22 13:15
+	*/
+	@RequestMapping(value = "page/toWorkerSignUp.html")
+	@ResponseBody
+	public ModelAndView toWorkerSignUp(){
+		ModelAndView mv = new ModelAndView("page/worker_sign_up");
+		return mv;
+	}
+
+	/**
+	* @Description: 工匠注册提交页面
+	* @Author: jkx
+	* @Date: 2018/11/22 13:39
+	*/
+	@RequestMapping(value = "page/workerSignUp.html")
+	@ResponseBody
+	public String workerSignUp(String name, Long telPhone, String workerId, int age, String type,
+							   String serviceArea, String serviceDetail, String workerIntro, String worderAlbum, HttpSession session){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Worker worker = new Worker();
+		worker.setName(name);
+		worker.setTelPhone(telPhone);
+		worker.setWorkerId(workerId);
+		worker.setAge(age);
+		worker.setType(type);
+		worker.setServiceArea(serviceArea);
+		worker.setServiceDetail(serviceDetail);
+		worker.setWorkerIntro(workerIntro);
+		worker.setWorderAlbum(worderAlbum);
+		worker.setIsVip(0);
+		worker.setAddTime(format.format(new Date()));
+		worker.setUpdateTime(format.format(new Date()));
+		worker.setOpenId(getOppen_id(session));
+		worker.setServiceCount(0);
+
+		int i = workerService.add(worker);
+		return i + "";
+	}
 }

@@ -8,6 +8,7 @@
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 		<title>好工匠</title>
 		<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 		<style type="text/css">
 			.hgj_top{width:6.7rem; padding: 0.2rem 0.4rem; float: left;}
 			.hgj_top img{float: left;width:1rem; height: 1rem; border-radius: 50%; border: #fff solid 0.05rem; box-shadow:0 0 0.05rem rgba(0,0,0,.2);}
@@ -41,6 +42,7 @@
 				  </c:if>
 				  </span>
 				  </p>
+				<a href="toWorkerSignUp.html" ><p class="hgj_zy">工匠注册</p></a><br/>
 			</div>
 		</div>
 		<div class="shop_index_pj" onclick="window.location.href='showWorkerEval.html?workerId=${worker.id}'">
