@@ -39,7 +39,7 @@
 				</c:if>
 			</c:forEach>
 
-			<a href="toDecoration.html">商家加入</a>
+			<a href="toDecoration.html?type=${type }">商家加入</a>
 			<div class="clear"></div>
 		</div>
 

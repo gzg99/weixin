@@ -48,13 +48,18 @@
 	<div class="pd-20" style="width: 80%">
 		店铺名称：<input id="companyName" name="companyName"><br/>
 		联系电话：<input id="companyPhone" name="companyPhone"><br/>
-		<input id="filepath" name="companyImg">
-		<input id="companyIntrl" name="companyIntrl">
-		<input id="companyDetail" name="companyDetail">
-		<input id="type" name="type">
-		<input id="isFineQuality" name="isFineQuality">
-		<input id="companyAddress" name="companyAddress">
-		<input id="licenseFilepath" name="businessLicense">
+		<input id="filepath" name="companyImg"><br/>
+		<input id="companyIntrl" name="companyIntrl"><br/>
+		<input id="companyDetail" name="companyDetail"><br/>
+		<c:if test="${type == '1'}">
+			<input id="type" name="type" value="家装"><br/>
+		</c:if>
+		<c:if test="${type == '2'}">
+			<input id="type" name="type" value="工装"><br/>
+		</c:if>
+		<input id="isFineQuality" name="isFineQuality"><br/>
+		<input id="companyAddress" name="companyAddress"><br/>
+		<input id="licenseFilepath" name="businessLicense"><br/>
 	</div>
 	<div class="col-10 col-offset-2">
 		<button onClick="decorationAdd()"

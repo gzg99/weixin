@@ -107,6 +107,7 @@ public class DecorationCtrl {
 		ModelAndView mv = new ModelAndView();
 		List<DecorationEntity> list = decorationService.getListByType(type);
 		mv.addObject("list", list);
+		mv.addObject("type", type);
 		mv.setViewName("page/decorationList");
 		return mv;
 	}
@@ -138,8 +139,9 @@ public class DecorationCtrl {
 	*/
 	@RequestMapping(value = "/page/toDecoration.html")
 	@ResponseBody
-	public ModelAndView toDecoration(){
+	public ModelAndView toDecoration(String type){
 		ModelAndView mv = new ModelAndView("page/decoration_sign_up");
+		mv.addObject("type", type);
 		return mv;
 	}
 
