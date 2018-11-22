@@ -14,4 +14,6 @@ public interface ForemanService {
     JdbForeman selForeman(String id);
 
     int insertForeman(JdbForeman jdbForeman);
+
+    int foremanPraise(String id);
 }

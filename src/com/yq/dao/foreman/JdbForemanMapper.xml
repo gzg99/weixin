@@ -17,7 +17,7 @@
     <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
     <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
     <result column="head" jdbcType="VARCHAR" property="head" />
-    <result column="praise" jdbcType="VARCHAR" property="praise" />
+    <result column="praise" jdbcType="INTEGER" property="praise" />
     <result column="create_time" jdbcType="VARCHAR" property="createTime" />
     <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
   </resultMap>
@@ -48,7 +48,7 @@
       #{service,jdbcType=VARCHAR}, #{serviceArea,jdbcType=VARCHAR}, #{serviceContent,jdbcType=VARCHAR}, 
       #{details,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
       #{companyAddress,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR}, 
-      #{praise,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+      #{praise,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.yq.entity.foreman.JdbForeman">
@@ -99,9 +99,7 @@
       <if test="head != null">
         head,
       </if>
-      <if test="praise != null">
         praise,
-      </if>
       <if test="createTime != null">
         create_time,
       </if>
@@ -155,9 +153,7 @@
       <if test="head != null">
         #{head,jdbcType=VARCHAR},
       </if>
-      <if test="praise != null">
         #{praise,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=VARCHAR},
       </if>
@@ -211,9 +207,7 @@
       <if test="head != null">
         head = #{head,jdbcType=VARCHAR},
       </if>
-      <if test="praise != null">
         praise = #{praise,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=VARCHAR},
       </if>
@@ -239,7 +233,7 @@
       company_address = #{companyAddress,jdbcType=VARCHAR},
       company_phone = #{companyPhone,jdbcType=VARCHAR},
       head = #{head,jdbcType=VARCHAR},
-      praise = #{praise,jdbcType=VARCHAR},
+      praise = #{praise,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
@@ -274,7 +268,14 @@
     #{service,jdbcType=VARCHAR}, #{serviceArea,jdbcType=VARCHAR}, #{serviceContent,jdbcType=VARCHAR},
     #{details,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR},
     #{companyAddress,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR},
-    #{praise,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+    #{praise,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
     )
   </insert>
+
+  <!-- 工长点赞 -->
+  <update id="foremanPraise" parameterType="java.lang.String">
+    update jdb_foreman
+    set praise = praise + 1
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>

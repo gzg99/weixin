@@ -31,7 +31,7 @@ public class JdbForeman {
 
     private String head;
 
-    private String praise;
+    private int praise;
 
     private String createTime;
 
@@ -157,11 +157,11 @@ public class JdbForeman {
         this.head = head;
     }
 
-    public String getPraise() {
+    public int getPraise() {
         return praise;
     }
 
-    public void setPraise(String praise) {
+    public void setPraise(int praise) {
         this.praise = praise;
     }
 

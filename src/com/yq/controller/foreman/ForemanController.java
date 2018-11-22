@@ -74,4 +74,15 @@ public class ForemanController extends StringUtil {
         return i + "";
     }
 
+    /**
+    * @Description: 点赞
+    * @Author: jkx
+    * @Date: 2018/11/22 10:31
+    */
+    @RequestMapping(value = "/page/foreman/foremanPraise.html")
+    @ResponseBody
+    public String foremanPraise(String id) {
+        int i = foremanService.foremanPraise(id);
+        return i + "";
+    }
 }

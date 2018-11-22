@@ -52,7 +52,19 @@ public class ForemanServiceImpl implements ForemanService{
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         jdbForeman.setId(UUIDUtils.getUUID());
         jdbForeman.setCreateTime(sf.format(new Date()));
+        jdbForeman.setPraise(0);
         int i = jdbForemanMapper.insertForeman(jdbForeman);
+        return i;
+    }
+
+    /**
+    * @Description: 工长点赞
+    * @Author: jkx
+    * @Date: 2018/11/22 10:32
+    */
+    @Override
+    public int foremanPraise(String id) {
+        int i = jdbForemanMapper.foremanPraise(id);
         return i;
     }
 }
