@@ -125,8 +125,6 @@
         <img id="y" src="images/notCol.png">
         <img id="n" src="images/orderCar.png"/>
     </a>
-    <a href="cartList.html" class="if3-aa f-l"><img src="images/orderCar.png"/><span
-            style="position:fixed;color: #f29133" id="serveCart_num">${cart_num }</span></a>
     <button class="if3-btnn1 if3-btn1 f-l"
             onclick="window.location.href='toGoodsReserva.html?goodsId=${goods_id}'">预约服务
     </button>
