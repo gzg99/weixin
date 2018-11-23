@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.yq.entity.serviceCart.JdbServiceCart;
 import com.yq.service.AddressService;
+import com.yq.service.serviceCart.ServiceCartService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.record.formula.functions.Mode;
 import org.apache.poi.util.Internal;
@@ -38,6 +40,8 @@ public class GoodsCtrl extends StringUtil {
 	private CategoryService categoryService;
 	@Autowired
 	private AddressService addressService;
+	@Autowired
+	private ServiceCartService serviceCartService;
 
 	private Goods goods = new Goods();
 	private Category category = new Category();
@@ -257,11 +261,18 @@ public class GoodsCtrl extends StringUtil {
 	*/
 	@RequestMapping(value = "/page/goodsReserva.html")
 	@ResponseBody
-	public ModelAndView goodsReserva(String goodsId, String oppendId){
+	public ModelAndView goodsReserva(String goodsId, String oppendId, String reservaTime, String remark ){
 		ModelAndView mv = new ModelAndView("page/goods_reserva");
+		// 返回页面信息
 		Goods goods = new Goods();
 		goods.setGoods_id(Integer.parseInt(goodsId));
 		Goods goodsData = goodsService.selGoodsById(goods);
+
+		// 将预约服务订单添加到购物车
+		JdbServiceCart jdbServiceCart = new JdbServiceCart();
+		jdbServiceCart.setReservaTime(reservaTime);
+		jdbServiceCart.setRemark(remark);
+		serviceCartService.addOrder(goodsData, oppendId, jdbServiceCart);
 		mv.addObject("goodsData", goodsData);
 		return mv;
 	}

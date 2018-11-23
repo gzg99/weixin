@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.dao.serviceCart.JdbServiceCartMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.entity.serviceCart.JdbServiceCart" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="oppen_id" property="oppenId" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_img" property="goodsImg" jdbcType="VARCHAR" />
+    <result column="goods_spe" property="goodsSpe" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="REAL" />
+    <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
+    <result column="goods_total" property="goodsTotal" jdbcType="REAL" />
+    <result column="reserva_time" property="reservaTime" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goods_id, oppen_id, goods_name, goods_img, goods_spe, goods_price, goods_num, 
+    goods_total, reserva_time, remark, type, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdb_service_cart
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jdb_service_cart
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
+    insert into jdb_service_cart (id, goods_id, oppen_id, 
+      goods_name, goods_img, goods_spe, 
+      goods_price, goods_num, goods_total, 
+      reserva_time, remark, type, 
+      create_time, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{goodsId,jdbcType=INTEGER}, #{oppenId,jdbcType=VARCHAR}, 
+      #{goodsName,jdbcType=VARCHAR}, #{goodsImg,jdbcType=VARCHAR}, #{goodsSpe,jdbcType=VARCHAR}, 
+      #{goodsPrice,jdbcType=REAL}, #{goodsNum,jdbcType=INTEGER}, #{goodsTotal,jdbcType=REAL}, 
+      #{reservaTime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
+    insert into jdb_service_cart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="oppenId != null" >
+        oppen_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsImg != null" >
+        goods_img,
+      </if>
+      <if test="goodsSpe != null" >
+        goods_spe,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="goodsTotal != null" >
+        goods_total,
+      </if>
+      <if test="reservaTime != null" >
+        reserva_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="oppenId != null" >
+        #{oppenId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImg != null" >
+        #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpe != null" >
+        #{goodsSpe,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=REAL},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTotal != null" >
+        #{goodsTotal,jdbcType=REAL},
+      </if>
+      <if test="reservaTime != null" >
+        #{reservaTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
+    update jdb_service_cart
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="oppenId != null" >
+        oppen_id = #{oppenId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImg != null" >
+        goods_img = #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpe != null" >
+        goods_spe = #{goodsSpe,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=REAL},
+      </if>
+      <if test="goodsNum != null" >
+        goods_num = #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTotal != null" >
+        goods_total = #{goodsTotal,jdbcType=REAL},
+      </if>
+      <if test="reservaTime != null" >
+        reserva_time = #{reservaTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
+    update jdb_service_cart
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      oppen_id = #{oppenId,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_img = #{goodsImg,jdbcType=VARCHAR},
+      goods_spe = #{goodsSpe,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=REAL},
+      goods_num = #{goodsNum,jdbcType=INTEGER},
+      goods_total = #{goodsTotal,jdbcType=REAL},
+      reserva_time = #{reservaTime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 服务订单添加购物车 -->
+  <insert id="addOrder" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
+    insert into jdb_service_cart (id, goods_id, oppen_id,
+    goods_name, goods_img, goods_spe,
+    goods_price, goods_num, goods_total,
+    reserva_time, remark, type,
+    create_time, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{goodsId,jdbcType=INTEGER}, #{oppenId,jdbcType=VARCHAR},
+    #{goodsName,jdbcType=VARCHAR}, #{goodsImg,jdbcType=VARCHAR}, #{goodsSpe,jdbcType=VARCHAR},
+    #{goodsPrice,jdbcType=REAL}, #{goodsNum,jdbcType=INTEGER}, #{goodsTotal,jdbcType=REAL},
+    #{reservaTime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+    #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+</mapper>
