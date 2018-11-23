@@ -19,5 +19,9 @@ public interface GoodsDao {
 	
 	public int count(Goods goods); 
 	
-	public List<Goods> listById(Goods goods); 
+	public List<Goods> listById(Goods goods);
+
+    int goodsCollection(Map<String,Object> map);
+
+	Goods selGoodsById(Goods goods);
 }

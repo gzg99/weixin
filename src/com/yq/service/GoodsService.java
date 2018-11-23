@@ -40,4 +40,12 @@ public class GoodsService {
 	public List<Goods> listById(Goods goods){
 		return goodsDao.listById(goods);
 	}
+
+    public int goodsCollection(Map<String,Object> map) {
+		return goodsDao.goodsCollection(map);
+    }
+
+	public Goods selGoodsById(Goods goods){
+		return goodsDao.selGoodsById(goods);
+	}
 }

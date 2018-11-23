@@ -13,6 +13,7 @@ public class Goods extends Page{
 	String goods_spe;
 	Integer type;
 	String goods_num;
+	String collection;
 	public Integer getGoods_id() {
 		return goods_id;
 	}
@@ -110,4 +111,11 @@ public class Goods extends Page{
 		this.goods_num = goods_num;
 	}
 
+	public String getCollection() {
+		return collection;
+	}
+
+	public void setCollection(String collection) {
+		this.collection = collection;
+	}
 }

@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.yq.service.AddressService;
+import org.apache.commons.lang.StringUtils;
+import org.apache.poi.hssf.record.formula.functions.Mode;
+import org.apache.poi.util.Internal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +36,8 @@ public class GoodsCtrl extends StringUtil {
 	private GoodsService goodsService;
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private AddressService addressService;
 
 	private Goods goods = new Goods();
 	private Category category = new Category();
@@ -49,8 +58,7 @@ public class GoodsCtrl extends StringUtil {
 	@ResponseBody
 	@RequestMapping(value = "/main/goodsInsert.html")
 	public String insert(String goods_name, String goods_img,String goods_spe,
-			Float goods_price, String goods_detail, Integer ctg_id,
-			Integer status,Integer type) {
+			Float goods_price, String goods_detail, Integer ctg_id) {
 		String add_time =sf.format(new Date());
 		map.put("goods_name", goods_name);
 		map.put("goods_img", goods_img);
@@ -61,6 +69,7 @@ public class GoodsCtrl extends StringUtil {
 		map.put("ctg_id", ctg_id);
 		map.put("status", 1);
 		map.put("type", 1);
+		map.put("collection", "0");
 		return goodsService.insert(map) + "";
 	}
 
@@ -201,4 +210,59 @@ public class GoodsCtrl extends StringUtil {
 		}
 	}
 
+	/**
+	* @Description: 商品收藏
+	* @Author: jkx
+	* @Date: 2018/11/23 11:00
+	*/
+	@RequestMapping(value = "/page/goodsCollection.html")
+	@ResponseBody
+	public String goodsCollection(String goodsId, String collection){
+		if(StringUtils.isNotBlank(collection)){
+			if(StringUtils.equals("1",collection)){
+				map.put("collection", "0");
+			}else{
+				map.put("collection", "1");
+			}
+		}else{
+			map.put("collection", "1");
+		}
+		map.put("goods_id", Integer.parseInt(goodsId));
+		int i = goodsService.goodsCollection(map);
+		return i + "";
+	}
+
+	/**
+	* @Description: 服务预约页面
+	* @Author: jkx
+	* @Date: 2018/11/23 13:30
+	*/
+	@RequestMapping(value = "/page/toGoodsReserva.html")
+	@ResponseBody
+	public ModelAndView toGoodsReserva(String goodsId, HttpSession session){
+		ModelAndView mv = new ModelAndView("page/goods_reserva_edit");
+		Goods goods = new Goods();
+		goods.setGoods_id(Integer.parseInt(goodsId));
+		Goods goodsData = goodsService.selGoodsById(goods);
+		String oppen_id = getOppen_id(session);
+//		addressService.getUserAddressList(oppen_id);
+		mv.addObject("goodsData", goodsData);
+		return mv;
+	}
+
+	/**
+	* @Description: 预约服务提交
+	* @Author: jkx
+	* @Date: 2018/11/23 14:32
+	*/
+	@RequestMapping(value = "/page/goodsReserva.html")
+	@ResponseBody
+	public ModelAndView goodsReserva(String goodsId, String oppendId){
+		ModelAndView mv = new ModelAndView("page/goods_reserva");
+		Goods goods = new Goods();
+		goods.setGoods_id(Integer.parseInt(goodsId));
+		Goods goodsData = goodsService.selGoodsById(goods);
+		mv.addObject("goodsData", goodsData);
+		return mv;
+	}
 }

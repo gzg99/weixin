@@ -56,8 +56,8 @@
                         <a href="workersShowjsp.html" class="img-txt">附近工匠</a>
                     </li>
                     <li>
-                        <a href="category.html?ctg_id=23" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
-                        <a href="category.html?ctg_id=23" class="img-txt">家庭直购</a>
+                        <a href="category.html?ctg_id=42" class="img-1"><img  src="images/b4.png" style="width:42px;height: 42px"></a>
+                        <a href="category.html?ctg_id=42" class="img-txt">家庭直购</a>
                     </li>
                     <li>
                         <a href="benfitlist.html" class="img-1"><img  src="images/b5.png" style="width:42px;height: 42px"></a>

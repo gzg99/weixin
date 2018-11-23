@@ -12,7 +12,8 @@
 			add_time,
 			ctg_id,
 			status,
-			type
+			type,
+			collection
 		)values(
 			#{goods_name},
 			#{goods_img},
@@ -22,7 +23,8 @@
 			#{add_time},
 			#{ctg_id},
 			#{status},
-			#{type}
+			#{type},
+			#{collection}
 		)
     </insert>
     
@@ -36,7 +38,8 @@
     		goods_price=#{goods_price},
     		goods_detail=#{goods_detail},
     		ctg_id=#{ctg_id},
-    		type=#{type}
+    		type=#{type},
+    		collection=#{collection}
      	where 
      		goods_id=#{goods_id}
     </update>
@@ -84,5 +87,18 @@
     <select id="listById" resultType="com.yq.entity.Goods">
     	select * from jdb_goods where goods_id=#{goods_id}
     </select>
-    
+
+	<update id="goodsCollection" parameterType="java.util.Map">
+		update
+		jdb_goods
+		set
+			collection=#{collection}
+		where
+		goods_id=#{goods_id}
+	</update>
+
+	<!-- 服务订单查询相关数据 -->
+	<select id="selGoodsById" resultType="com.yq.entity.Goods">
+		select * from jdb_goods where goods_id=#{goods_id}
+	</select>
 </mapper>
