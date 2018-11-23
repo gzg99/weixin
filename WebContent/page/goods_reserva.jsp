@@ -16,12 +16,13 @@
 </div>
 <form action="" method="post" enctype="multipart/form-data">
     <div class="pd-20" style="width: 80%">
+        订单状态：<input id="type" name="type" value="${serviceCartData.type}"><br/>
         联系人：<input id="user" name="name"><br/>
-        电话：<input id="tel" name="name"><br/>
-        地址：<input id="adderss" name="name"><br/>
-        服务项目：<input id="goodsNameId" name="goods_name" value="${goodsData.goods_name}"><br/>
-        预约时间：<input id="time" name="telPhone"><br/>
-        备注：<input id="remark" name="weixin" value="预约订单确认页面"><br/>
+        电话：<input id="tel" name="tel"><br/>
+        地址：<input id="adderss" name="address"><br/>
+        服务项目：<input id="goodsNameId" name="goodsName" value="${serviceCartData.goodsName}"><br/>
+        预约时间：<input id="time" name="reservaTime" value="${serviceCartData.reservaTime}"><br/>
+        备注：<input id="remark" name="remark" value="${serviceCartData.remark}"><br/>
     </div>
 </form>
 <jsp:include page="footer5.jsp"></jsp:include>

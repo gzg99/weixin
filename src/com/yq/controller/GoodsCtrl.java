@@ -272,8 +272,8 @@ public class GoodsCtrl extends StringUtil {
 		JdbServiceCart jdbServiceCart = new JdbServiceCart();
 		jdbServiceCart.setReservaTime(reservaTime);
 		jdbServiceCart.setRemark(remark);
-		serviceCartService.addOrder(goodsData, oppendId, jdbServiceCart);
-		mv.addObject("goodsData", goodsData);
+		JdbServiceCart serviceCartData = serviceCartService.addOrder(goodsData, oppendId, jdbServiceCart);
+		mv.addObject("serviceCartData", serviceCartData);
 		return mv;
 	}
 }

@@ -27,7 +27,7 @@ public class ServiceCartServiceImpl implements ServiceCartService{
     * @Date: 2018/11/23 15:23
     */
     @Override
-    public void addOrder(Goods goodsData, String oppendId, JdbServiceCart jdbServiceCart) {
+    public JdbServiceCart addOrder(Goods goodsData, String oppendId, JdbServiceCart jdbServiceCart) {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         jdbServiceCart.setId(UUIDUtils.getUUID());
         jdbServiceCart.setGoodsId(goodsData.getGoods_id());
@@ -41,5 +41,6 @@ public class ServiceCartServiceImpl implements ServiceCartService{
         jdbServiceCart.setCreateTime(sf.format(new Date()));
 
         jdbServiceCartMapper.addOrder(jdbServiceCart);
+        return jdbServiceCart;
     }
 }
