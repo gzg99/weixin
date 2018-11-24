@@ -1,6 +1,5 @@
 package com.yq.service.serviceCart.impl;
 
-import com.yq.dao.foreman.JdbForemanMapper;
 import com.yq.dao.serviceCart.JdbServiceCartMapper;
 import com.yq.entity.Goods;
 import com.yq.entity.serviceCart.JdbServiceCart;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/11/23.
@@ -41,6 +40,28 @@ public class ServiceCartServiceImpl implements ServiceCartService{
         jdbServiceCart.setCreateTime(sf.format(new Date()));
 
         jdbServiceCartMapper.addOrder(jdbServiceCart);
+        return jdbServiceCart;
+    }
+
+    /**
+    * @Description:
+    * @Author: 根据用户公众号ID查询服务订单
+    * @Date: 2018/11/24 10:59
+    */
+    @Override
+    public List<JdbServiceCart> selServiceList(String oppen_id) {
+        List<JdbServiceCart> jdbServiceCarts = jdbServiceCartMapper.selServiceList(oppen_id);
+        return jdbServiceCarts;
+    }
+
+    /**
+    * @Description: 服务订单查询
+    * @Author: jkx
+    * @Date: 2018/11/24 13:52
+    */
+    @Override
+    public JdbServiceCart selServiceOrder(String id) {
+        JdbServiceCart jdbServiceCart = jdbServiceCartMapper.selectByPrimaryKey(id);
         return jdbServiceCart;
     }
 }

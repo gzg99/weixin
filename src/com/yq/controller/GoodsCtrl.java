@@ -1,22 +1,15 @@
 package com.yq.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.yq.entity.Category;
+import com.yq.entity.Goods;
 import com.yq.entity.serviceCart.JdbServiceCart;
 import com.yq.service.AddressService;
+import com.yq.service.CategoryService;
+import com.yq.service.GoodsService;
 import com.yq.service.serviceCart.ServiceCartService;
+import com.yq.util.PageUtil;
+import com.yq.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.hssf.record.formula.functions.Mode;
-import org.apache.poi.util.Internal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yq.service.CategoryService;
-import com.yq.service.GoodsService;
-import com.yq.util.StringUtil;
-import com.yq.util.PageUtil;
-import com.yq.entity.Category;
-import com.yq.entity.Goods;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")

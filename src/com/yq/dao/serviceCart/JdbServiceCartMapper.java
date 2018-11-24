@@ -2,6 +2,8 @@ package com.yq.dao.serviceCart;
 
 import com.yq.entity.serviceCart.JdbServiceCart;
 
+import java.util.List;
+
 public interface JdbServiceCartMapper {
     int deleteByPrimaryKey(String id);
 
@@ -16,4 +18,6 @@ public interface JdbServiceCartMapper {
     int updateByPrimaryKey(JdbServiceCart record);
 
     void addOrder(JdbServiceCart jdbServiceCart);
+
+    List<JdbServiceCart> selServiceList(String oppenId);
 }

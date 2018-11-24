@@ -210,4 +210,12 @@
     #{reservaTime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
     #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
   </insert>
+
+  <!-- 根据用户公众号ID查询服务订单 -->
+  <select id="selServiceList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from jdb_service_cart
+    where oppen_id = #{oppenId,jdbcType=VARCHAR}
+  </select>
 </mapper>
