@@ -1,9 +1,9 @@
 package com.yq.dao;
 
+import com.yq.entity.Goods;
+
 import java.util.List;
 import java.util.Map;
-
-import com.yq.entity.Goods;
 
 
 public interface GoodsDao {
@@ -20,8 +20,6 @@ public interface GoodsDao {
 	public int count(Goods goods); 
 	
 	public List<Goods> listById(Goods goods);
-
-    int goodsCollection(Map<String,Object> map);
 
 	Goods selGoodsById(Goods goods);
 }

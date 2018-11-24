@@ -60,7 +60,7 @@
 
 <body id="wrap">
 <div class="title" style="border-bottom:1px solid rgba(204, 204, 204, 0.15);text-align:center;">
-    <div class="title-left"><a href="index.html"><img src="images/back.png" alt=""></a></div>
+    <div class="title-left"><a href="javascript:history.back();"><img src="images/back.png" alt=""></a></div>
     <div class="title-right"><a href="secList.html"><img src="images/sjsc-13.png" alt=""></a></div>
 </div>
 <div class="detailDiv">

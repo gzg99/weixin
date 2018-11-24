@@ -6,6 +6,7 @@ import com.yq.entity.serviceCart.JdbServiceCart;
 import com.yq.service.AddressService;
 import com.yq.service.CategoryService;
 import com.yq.service.GoodsService;
+import com.yq.service.goodsCollection.GoodsCollectionService;
 import com.yq.service.serviceCart.ServiceCartService;
 import com.yq.util.PageUtil;
 import com.yq.util.StringUtil;
@@ -37,6 +38,8 @@ public class GoodsCtrl extends StringUtil {
 	private AddressService addressService;
 	@Autowired
 	private ServiceCartService serviceCartService;
+	@Autowired
+	GoodsCollectionService goodsCollectionService;
 
 	private Goods goods = new Goods();
 	private Category category = new Category();
@@ -216,19 +219,20 @@ public class GoodsCtrl extends StringUtil {
 	*/
 	@RequestMapping(value = "/page/goodsCollection.html")
 	@ResponseBody
-	public String goodsCollection(String goodsId, String collection){
+	public String goodsCollection(String goodsId, String collection, HttpSession session){
 		if(StringUtils.isNotBlank(collection)){
 			if(StringUtils.equals("1",collection)){
-				map.put("collection", "0");
+				collection = "0";
 			}else{
-				map.put("collection", "1");
+				collection = "1";
 			}
 		}else{
-			map.put("collection", "1");
+			collection = "1";
 		}
-		map.put("goods_id", Integer.parseInt(goodsId));
-		int i = goodsService.goodsCollection(map);
-		return i + "";
+		String oppen_id = (String) session.getAttribute("oppen_id");
+
+		int i = goodsCollectionService.insertOrUpdateCollection(goodsId, oppen_id, collection);
+		return i+"";
 	}
 
 	/**

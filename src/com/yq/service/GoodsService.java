@@ -1,13 +1,12 @@
 package com.yq.service;
 
-import java.util.List;
-import java.util.Map;
-
+import com.yq.dao.GoodsDao;
+import com.yq.entity.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yq.dao.GoodsDao;
-import com.yq.entity.Goods;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class GoodsService {
@@ -41,11 +40,8 @@ public class GoodsService {
 		return goodsDao.listById(goods);
 	}
 
-    public int goodsCollection(Map<String,Object> map) {
-		return goodsDao.goodsCollection(map);
-    }
-
 	public Goods selGoodsById(Goods goods){
 		return goodsDao.selGoodsById(goods);
 	}
+
 }
