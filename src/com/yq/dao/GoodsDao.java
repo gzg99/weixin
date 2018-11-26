@@ -22,4 +22,6 @@ public interface GoodsDao {
 	public List<Goods> listById(Goods goods);
 
 	Goods selGoodsById(Goods goods);
+
+	List<Goods> selServiceCollectionList(String oppenId);
 }

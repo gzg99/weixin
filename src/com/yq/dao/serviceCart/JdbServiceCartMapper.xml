@@ -18,9 +18,34 @@
     <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, goods_id, oppen_id, goods_name, goods_img, goods_spe, goods_price, goods_num, 
+    id, goods_id, oppen_id, goods_name, goods_img, goods_spe, goods_price, goods_num,
     goods_total, reserva_time, remark, type, create_time, update_time
   </sql>
+
+  <sql id="selServiceCartToWeb_sql" >
+    1=1
+    <!-- 按日期查询订单 -->
+    <if test="start_time!=null and start_time!='' and end_time!=null and end_time!=''">
+      and reserva_time between #{start_time} and #{end_time}
+    </if>
+    <!-- 按产品名字查询订单 -->
+    <if test="goodsName!=null and goodsName!=''">
+      and goods_name like CONCAT('%',#{goodsName},'%')
+    </if>
+    <if test="oppenId!=null and oppenId!=''">
+      and oppen_id=#{oppenId}
+    </if>
+    <if test="type!=null and type!=''">
+      <if test="type==3">
+        and type=#{type}
+      </if>
+    </if>
+    <if test="type!=null and type!='' and type!=3">
+        and (type='1' or type='2')
+    </if>
+    order by create_time desc
+  </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -218,4 +243,22 @@
     from jdb_service_cart
     where oppen_id = #{oppenId,jdbcType=VARCHAR}
   </select>
+
+  <!-- 服务订单后台查询数据总条数 -->
+  <select id="count" resultType="int">
+    select count(1) from jdb_service_cart
+    <where>
+      <include refid="selServiceCartToWeb_sql"></include>
+    </where>
+  </select>
+
+  <!-- 分页查询服务订单 -->
+  <select id="selServiceCartToWeb" resultMap="BaseResultMap" flushCache="true" useCache="false">
+    select <include refid="Base_Column_List" /> from jdb_service_cart
+    <where>
+      <include refid="selServiceCartToWeb_sql"></include>
+    </where>
+    limit #{currentNum},#{pageSize}
+  </select>
+
 </mapper>

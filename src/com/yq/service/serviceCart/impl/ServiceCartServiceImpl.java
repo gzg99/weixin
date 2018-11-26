@@ -64,4 +64,26 @@ public class ServiceCartServiceImpl implements ServiceCartService{
         JdbServiceCart jdbServiceCart = jdbServiceCartMapper.selectByPrimaryKey(id);
         return jdbServiceCart;
     }
+
+    /**
+    * @Description: 分页查询，查询数据总条数
+    * @Author: jkx
+    * @Date: 2018/11/26 14:18
+    */
+    @Override
+    public int count(JdbServiceCart jdbServiceCart) {
+        int count = jdbServiceCartMapper.count(jdbServiceCart);
+        return count;
+    }
+
+    /**
+    * @Description: 分页查询所有服务订单
+    * @Author: jkx
+    * @Date: 2018/11/26 14:34
+    */
+    @Override
+    public List<JdbServiceCart> selServiceCartToWeb(JdbServiceCart jdbServiceCart) {
+        List<JdbServiceCart> jdbServiceCarts = jdbServiceCartMapper.selServiceCartToWeb(jdbServiceCart);
+        return jdbServiceCarts;
+    }
 }

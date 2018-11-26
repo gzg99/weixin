@@ -44,4 +44,7 @@ public class GoodsService {
 		return goodsDao.selGoodsById(goods);
 	}
 
+	public List<Goods> selServiceCollectionList(String oppenId) {
+		return goodsDao.selServiceCollectionList(oppenId);
+	}
 }

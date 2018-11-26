@@ -117,7 +117,8 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a _href="orderList.html" href="javascript:;">订单查看</a></li>
+					<li><a _href="orderList.html" href="javascript:;">商品订单查看</a></li>
+					<li><a _href="serviceCart/selServiceCartToWeb.html"  href="javascript:;">服务订单查看</a></li>
 				</ul>
 			</dd>
 		</dl>

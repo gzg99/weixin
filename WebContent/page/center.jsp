@@ -48,6 +48,9 @@
 		<section class="f-section" style="line-height: 30px">
      		<a class="slide-link" href="serviceCart/selServiceCart.html"><img src="images/wd-012-02.png">服务订单</a>
      	</section>
+		<section class="f-section" style="line-height: 30px">
+			<a class="slide-link" href="serviceCart/selServiceList.html"><img src="images/wd-012-02.png">我的收藏</a>
+		</section>
     </section>
     <div style="height:80px"></div>
 	<jsp:include page="footer5.jsp"></jsp:include>

@@ -20,4 +20,8 @@ public interface JdbServiceCartMapper {
     void addOrder(JdbServiceCart jdbServiceCart);
 
     List<JdbServiceCart> selServiceList(String oppenId);
+
+    int count(JdbServiceCart jdbServiceCart);
+
+    List<JdbServiceCart> selServiceCartToWeb(JdbServiceCart jdbServiceCart);
 }

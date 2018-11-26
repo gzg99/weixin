@@ -1,6 +1,8 @@
 package com.yq.entity.serviceCart;
 
-public class JdbServiceCart {
+import com.yq.entity.Page;
+
+public class JdbServiceCart extends Page{
     private String id;
 
     private Integer goodsId;
@@ -28,6 +30,10 @@ public class JdbServiceCart {
     private String createTime;
 
     private String updateTime;
+
+    private String start_time ;
+
+    private String end_time ;
 
     public String getId() {
         return id;
@@ -139,5 +145,21 @@ public class JdbServiceCart {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
+    }
+
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
     }
 }

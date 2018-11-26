@@ -15,4 +15,8 @@ public interface ServiceCartService {
     List<JdbServiceCart> selServiceList(String oppen_id);
 
     JdbServiceCart selServiceOrder(String id);
+
+    int count(JdbServiceCart jdbServiceCart);
+
+    List<JdbServiceCart> selServiceCartToWeb(JdbServiceCart jdbServiceCart);
 }

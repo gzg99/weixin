@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
     <script type="text/javascript" src="../js/jquery.js"></script>
+
 </head>
 
 <body>
@@ -17,17 +18,12 @@
         <img src="../images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/>
     </a>
 </div>
-<ul class="quanbu-title2">
-    <li class="current" style="display: inline;"><a onclick="serviceAll();">全部</a></li>
-    <li style="display: inline;"><a onclick="serviceFulfil();">已完成</a></li>
-    <li style="display: inline;"><a onclick="serviceUndone();">未完成</a></li>
-    <div style="clear:both;"></div>
-</ul>
 
 <div class="my-dd" id="all" style="display:block;">
-    <c:forEach items="${serviceCartList}" var="list" varStatus="s">
-        <a href="selServiceOrder.html?id=${list.id}">
-            <input value="${list.goodsName}"/><br/>
+    <h1>我的收藏</h1>
+    <c:forEach items="${goodses}" var="list" varStatus="s">
+        <a href="../goodsListById.html?goods_id=${list.goods_id}">
+            <input value="${list.goods_name}"/><br/>
         </a>
     </c:forEach>
 </div>

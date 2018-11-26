@@ -92,4 +92,12 @@
 	<select id="selGoodsById" resultType="com.yq.entity.Goods">
 		select * from jdb_goods where goods_id=#{goods_id}
 	</select>
+
+	<!-- 服务订单查询相关数据 -->
+	<select id="selServiceCollectionList" resultType="com.yq.entity.Goods">
+		select g.*, c.type as collection from jdb_goods g
+		right join jdb_goods_collection c
+		on g.goods_id = c.goods_id
+		where c.oppen_id = #{oppenId} and c.type = '1'
+	</select>
 </mapper>
