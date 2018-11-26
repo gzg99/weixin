@@ -86,4 +86,15 @@ public class ServiceCartServiceImpl implements ServiceCartService{
         List<JdbServiceCart> jdbServiceCarts = jdbServiceCartMapper.selServiceCartToWeb(jdbServiceCart);
         return jdbServiceCarts;
     }
+
+    /**
+    * @Description: 删除订单（后台）
+    * @Author: jkx
+    * @Date: 2018/11/26 17:09
+    */
+    @Override
+    public int delServiceOrder(String id) {
+        int i = jdbServiceCartMapper.deleteByPrimaryKey(id);
+        return i;
+    }
 }

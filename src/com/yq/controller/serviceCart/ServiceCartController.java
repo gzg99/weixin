@@ -118,4 +118,16 @@ public class ServiceCartController {
         mv.addObject("goodses", goodses);
         return mv;
     }
+
+    /**
+    * @Description: 删除订单（后台）
+    * @Author: jkx
+    * @Date: 2018/11/26 17:07
+    */
+    @RequestMapping(value = "/main/serviceCart/delServiceOrder.html")
+    @ResponseBody
+    public String delServiceOrder(String id){
+        int i = serviceCartService.delServiceOrder(id);
+        return i+"";
+    }
 }

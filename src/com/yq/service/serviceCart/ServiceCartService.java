@@ -19,4 +19,6 @@ public interface ServiceCartService {
     int count(JdbServiceCart jdbServiceCart);
 
     List<JdbServiceCart> selServiceCartToWeb(JdbServiceCart jdbServiceCart);
+
+    int delServiceOrder(String id);
 }
