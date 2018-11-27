@@ -1,27 +1,24 @@
 package com.yq.controller;
 
+import com.yq.entity.Worker;
+import com.yq.service.WorkerService;
+import com.yq.util.MD5Util;
+import com.yq.util.PageUtil;
+import com.yq.util.StringUtil;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.yq.util.MD5Util;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.test.annotation.Repeat;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.yq.entity.Worker;
-import com.yq.service.WorkerService;
-import com.yq.util.PageUtil;
-import com.yq.util.StringUtil;
 
 @Controller
 @RequestMapping
@@ -38,8 +35,6 @@ public class WorkerCtrl extends StringUtil {
 		mv.setViewName("page/showWorkersLocation");
 		return mv;
 	}
-	
-	
 	
 	@RequestMapping(value = "main/workersAddjsp.html")
 	public ModelAndView workersAddjsp() {
@@ -219,5 +214,32 @@ public class WorkerCtrl extends StringUtil {
 
 		int i = workerService.add(worker);
 		return i + "";
+	}
+
+	/**
+	 * @Description: 跳转工匠登录页面
+	 * @Author: jkx
+	 * @Date: 2018/11/27 10:45
+	 */
+	@RequestMapping(value = "page/toWorkerSignIn.html")
+	@ResponseBody
+	public ModelAndView toWorkerSignIn(){
+		ModelAndView mv = new ModelAndView("page/worker_sign_in");
+		return mv;
+	}
+
+	/**
+	* @Description: 工匠注册提交
+	* @Author: jkx
+	* @Date: 2018/11/27 10:55
+	*/
+	@RequestMapping(value = "page/workerSignIn.html")
+	@ResponseBody
+	public String workerSignIn(String telPhone, String password){
+		Worker worker = new Worker();
+		worker.setTelPhone(Long.parseLong(telPhone));
+		worker.setPassword(MD5Util.MD5Encode(password, ""));
+		String str = workerService.workerSignIn(worker);
+		return str;
 	}
 }

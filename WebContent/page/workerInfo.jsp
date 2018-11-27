@@ -43,6 +43,7 @@
 				  </span>
 				  </p>
 				<a href="toWorkerSignUp.html" ><p class="hgj_zy">工匠注册</p></a><br/>
+				<a href="toWorkerSignIn.html" ><p class="hgj_zy">工匠登录</p></a><br/>
 			</div>
 		</div>
 		<div class="shop_index_pj" onclick="window.location.href='showWorkerEval.html?workerId=${worker.id}'">

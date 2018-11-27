@@ -244,4 +244,10 @@
         ]]>
     </select>
 
+	<!-- 工匠登录查询 -->
+	<select id="workerSignIn" parameterType="com.yq.entity.Worker" resultType="java.lang.String">
+		select id as id
+		from jdb_worker
+		where tel_phone=#{telPhone} and password=#{password}
+	</select>
 </mapper>

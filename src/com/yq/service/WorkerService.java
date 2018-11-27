@@ -1,13 +1,12 @@
 package com.yq.service;
 
-import java.util.List;
-import java.util.Map;
-
+import com.yq.dao.WorkerDao;
+import com.yq.entity.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yq.dao.WorkerDao;
-import com.yq.entity.Worker;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class WorkerService {
@@ -64,4 +63,8 @@ public class WorkerService {
 		return workerDao.getAllWorkerRangeCurDay(map);
 	}
 
+    public String workerSignIn(Worker worker) {
+		String str = workerDao.workerSignIn(worker);
+		return str;
+    }
 }

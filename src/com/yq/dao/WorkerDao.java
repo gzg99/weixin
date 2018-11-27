@@ -1,9 +1,9 @@
 package com.yq.dao;
 
+import com.yq.entity.Worker;
+
 import java.util.List;
 import java.util.Map;
-
-import com.yq.entity.Worker;
 
 /**
  * 附近工匠Dao
@@ -45,4 +45,6 @@ public interface WorkerDao {
 	Worker getWorkerById(Long id);
 	
 	List<Worker> getAllWorkerRangeCurDay(Map<String, Object> map);
+
+    String workerSignIn(Worker worker);
 }
