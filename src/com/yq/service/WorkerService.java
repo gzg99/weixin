@@ -1,10 +1,15 @@
 package com.yq.service;
 
 import com.yq.dao.WorkerDao;
+import com.yq.dao.receiveOrder.JdbReceiveOrderMapper;
 import com.yq.entity.Worker;
+import com.yq.entity.receiveOrder.JdbReceiveOrder;
+import com.yq.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +17,8 @@ import java.util.Map;
 public class WorkerService {
 	@Autowired
 	private WorkerDao workerDao;
+	@Autowired
+	private JdbReceiveOrderMapper jdbReceiveOrderMapper;
 	
 	/**
 	 * 工匠添加
@@ -66,5 +73,22 @@ public class WorkerService {
     public String workerSignIn(Worker worker) {
 		String str = workerDao.workerSignIn(worker);
 		return str;
+    }
+
+    /**
+    * @Description: 工人接单（工人订单关联表）
+    * @Author: jkx
+    * @Date: 2018/11/27 15:55
+    */
+    public int workerReceiveOrder(String goodsId, String oppendId) {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		JdbReceiveOrder jdbReceiveOrder = new JdbReceiveOrder();
+		jdbReceiveOrder.setId(UUIDUtils.getUUID());
+		jdbReceiveOrder.setGoodsId(Integer.parseInt(goodsId));
+		jdbReceiveOrder.setOppendId(oppendId);
+		jdbReceiveOrder.setCreateTime(sf.format(new Date()));
+		int insert = jdbReceiveOrderMapper.insert(jdbReceiveOrder);
+		return insert;
     }
 }

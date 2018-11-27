@@ -261,4 +261,12 @@
     limit #{currentNum},#{pageSize}
   </select>
 
+  <!-- 根据主键id更新订单数据状态 -->
+  <update id="updateTypeById" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
+    update jdb_service_cart
+    set type = #{type,jdbcType=VARCHAR},
+    update_time = #{updateTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
 </mapper>

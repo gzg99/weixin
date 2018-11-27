@@ -21,4 +21,6 @@ public interface ServiceCartService {
     List<JdbServiceCart> selServiceCartToWeb(JdbServiceCart jdbServiceCart);
 
     int delServiceOrder(String id);
+
+    int updateTypeById(String id);
 }

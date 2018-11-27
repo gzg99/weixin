@@ -1,7 +1,10 @@
 package com.yq.controller;
 
+import com.yq.dao.serviceCart.JdbServiceCartMapper;
 import com.yq.entity.Worker;
+import com.yq.entity.receiveOrder.JdbReceiveOrder;
 import com.yq.service.WorkerService;
+import com.yq.service.serviceCart.ServiceCartService;
 import com.yq.util.MD5Util;
 import com.yq.util.PageUtil;
 import com.yq.util.StringUtil;
@@ -26,6 +29,8 @@ public class WorkerCtrl extends StringUtil {
 	
 	@Autowired
 	private WorkerService workerService;
+	@Autowired
+	private ServiceCartService serviceCartService;
 
 	@RequestMapping(value = "page/workersShowjsp.html")
 	public ModelAndView villageAddjsp(HttpSession session) {
@@ -241,5 +246,23 @@ public class WorkerCtrl extends StringUtil {
 		worker.setPassword(MD5Util.MD5Encode(password, ""));
 		String str = workerService.workerSignIn(worker);
 		return str;
+	}
+
+	/**
+	* @Description: 工匠接单操作
+	* @Author: jkx
+	* @Date: 2018/11/27 16:22
+	*/
+	@RequestMapping(value = "page/workerReceiveOrder.html")
+	@ResponseBody
+	public String workerReceiveOrder(String id, String goodsId, String oppendId){
+		int i = 0;
+		// 根据主键id更新订单数据状态
+		i = serviceCartService.updateTypeById(id);
+		if(0 != i){
+			// 添加工人和订单商品关联数据
+			i = workerService.workerReceiveOrder(goodsId, oppendId);
+		}
+		return i+"";
 	}
 }

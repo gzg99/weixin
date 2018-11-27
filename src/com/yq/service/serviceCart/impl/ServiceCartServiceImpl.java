@@ -97,4 +97,20 @@ public class ServiceCartServiceImpl implements ServiceCartService{
         int i = jdbServiceCartMapper.deleteByPrimaryKey(id);
         return i;
     }
+
+    /**
+    * @Description: 根据主键id更新订单数据状态
+    * @Author: jkx
+    * @Date: 2018/11/27 16:12
+    */
+    @Override
+    public int updateTypeById(String id) {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        JdbServiceCart jdbServiceCart = new JdbServiceCart();
+        jdbServiceCart.setId(id);
+        jdbServiceCart.setType("3");
+        jdbServiceCart.setUpdateTime(sf.format(new Date()));
+        int i = jdbServiceCartMapper.updateTypeById(id);
+        return i;
+    }
 }
