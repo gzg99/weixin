@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.yq.util.MD5Util;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -196,13 +197,14 @@ public class WorkerCtrl extends StringUtil {
 	*/
 	@RequestMapping(value = "page/workerSignUp.html")
 	@ResponseBody
-	public String workerSignUp(String name, Long telPhone, String workerId, int age, String type,
+	public String workerSignUp(String name, Long telPhone, String workerId, String passwordId, int age, String type,
 							   String serviceArea, String serviceDetail, String workerIntro, String worderAlbum, HttpSession session){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Worker worker = new Worker();
 		worker.setName(name);
 		worker.setTelPhone(telPhone);
 		worker.setWorkerId(workerId);
+		worker.setPassword(MD5Util.MD5Encode(passwordId, ""));
 		worker.setAge(age);
 		worker.setType(type);
 		worker.setServiceArea(serviceArea);

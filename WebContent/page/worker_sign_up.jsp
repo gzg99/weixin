@@ -13,6 +13,7 @@
 			var name = $('#name').val();
 			var telPhone = $('#telPhone').val();
 			var workerId = $('#workerId').val();
+			var passwordId = $('#passwordId').val();
 			var age = $('#age').val();
 			var type = $('#type').val();
 			var serviceArea = $('#serviceArea').val();
@@ -23,8 +24,8 @@
 			$.ajax({
 				url:'workerSignUp.html',
 				type:'post',
-				data:'name='+name+'&telPhone='+telPhone+'&workerId='+workerId+'&age='+age+'&type='+type+
-				'&serviceArea='+serviceArea+'&serviceDetail='+serviceDetail+'&workerIntro='+workerIntro+'&worderAlbum='+worderAlbum,
+				data:'name='+name+'&telPhone='+telPhone+'&workerId='+workerId+'&passwordId='+passwordId+'&age='+age+
+				'&type='+type+'&serviceArea='+serviceArea+'&serviceDetail='+serviceDetail+'&workerIntro='+workerIntro+'&worderAlbum='+worderAlbum,
 				success:function(rs){
 					if(rs==1){
 						alert("添加成功！");
@@ -48,6 +49,7 @@
 		手机：<input id="telPhone" name="telPhone"><br/>
 		微信号：<input id="weixin" name="weixin" value="微信号"><br/>
 		省份证号：<input id="workerId" name="workerId"><br/>
+		密码：<input id="passwordId" name="password"><br/>
 		年龄：<input id="age" name="age"><br/>
 		<input id="type" name="type"><br/>
 		<input id="serviceArea" name="serviceArea"><br/>
