@@ -59,7 +59,7 @@
             var start_time = $('#start_time').val();
             var end_time = $('#end_time').val();
             var goods_name = $('#goods_name').val();
-            window.location.href = 'orderList.html?start_time=' + encodeURIComponent(encodeURIComponent(start_time))
+            window.location.href = '../serviceCart/selServiceCartToWeb.html?start_time=' + encodeURIComponent(encodeURIComponent(start_time))
                     + '&end_time=' + encodeURIComponent(encodeURIComponent(end_time))
                     + '&goods_name=' + encodeURIComponent(encodeURIComponent(goods_name))
                     + '&type=' + type;
