@@ -38,7 +38,6 @@
     <div class="pd-20" style="width: 80%">
         手机号：<input id="telPhoneId" name="telPhone"><br/>
         密码：<input id="passwordId" name="password"><br/>
-        验证码：<input id="weixin" name="weixin" value=""><br/>
     </div>
     <div class="col-10 col-offset-2">
         <button onClick="workerSignIn()" type="button">
