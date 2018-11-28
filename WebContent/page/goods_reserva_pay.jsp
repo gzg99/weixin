@@ -26,8 +26,29 @@
                     }
                 }
             });
+        }
 
-
+        /**
+         * 服务商品评价提交
+         */
+        function serviceEval() {
+            var scoreId = $("#scoreId").val();
+            var serviceCatId = $("#serviceCatId").val();
+            $.ajax({
+                url:'serviceGoodsEvaluation.html',
+                type:'post',
+                data:{
+                    score:scoreId,
+                    id:serviceCatId
+                },
+                success :function(rs){
+                    if(rs==1){
+                        alert("评价成功");
+                    }else{
+                        alert("评价失败");
+                    }
+                }
+            });
         }
     </script>
 </head>
@@ -81,8 +102,8 @@
                 支付方式：线下<br/>
             </c:if>
 
-            评价：<input id="pingjia" name="goodsTotal"/><br/>
-            <button onClick="serviceGoodsPingJia()"
+            评价：<input id="scoreId" name="score"/><br/>
+            <button onClick="serviceEval();"
                     class="btn btn-primary radius" type="button">
                 <i class="Hui-iconfont">&#xe632;</i>提交评价
             </button>

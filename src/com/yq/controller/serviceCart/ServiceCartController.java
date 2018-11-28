@@ -173,4 +173,18 @@ public class ServiceCartController {
         int i = serviceCartService.serviceGoodsPayCommit(id, goodsTotal);
         return i+"";
     }
+
+    /**
+    * @Description: 服务订单评价
+    * @Author: jkx
+    * @Date: 2018/11/28 15:37
+     * id 商品主键id
+     * score 评价得分
+    */
+    @RequestMapping(value = "/page/serviceCart/serviceGoodsEvaluation.html")
+    @ResponseBody
+    public String serviceGoodsEvaluation(String id, String score){
+        int i = serviceCartService.serviceGoodsEvaluation(id, score);
+        return i+"";
+    }
 }

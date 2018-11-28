@@ -25,4 +25,6 @@ public interface ServiceCartService {
     int updateTypeById(String id);
 
     int serviceGoodsPayCommit(String id, String goodsTotal);
+
+    int serviceGoodsEvaluation(String id, String score);
 }

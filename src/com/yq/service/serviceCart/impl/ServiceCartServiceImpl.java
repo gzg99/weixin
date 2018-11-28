@@ -1,8 +1,10 @@
 package com.yq.service.serviceCart.impl;
 
 import com.yq.dao.serviceCart.JdbServiceCartMapper;
+import com.yq.dao.serviceEval.JdbServiceEvalMapper;
 import com.yq.entity.Goods;
 import com.yq.entity.serviceCart.JdbServiceCart;
+import com.yq.entity.serviceEval.JdbServiceEval;
 import com.yq.service.serviceCart.ServiceCartService;
 import com.yq.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import java.util.List;
 public class ServiceCartServiceImpl implements ServiceCartService{
     @Autowired
     JdbServiceCartMapper jdbServiceCartMapper;
+    @Autowired
+    JdbServiceEvalMapper jdbServiceEvalMapper;
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
@@ -127,6 +131,24 @@ public class ServiceCartServiceImpl implements ServiceCartService{
         jdbServiceCart.setGoodsTotal(Float.parseFloat(goodsTotal));
         jdbServiceCart.setUpdateTime(sf.format(new Date()));
         int i = jdbServiceCartMapper.updateServiceCartById(jdbServiceCart);
+        return i;
+    }
+
+    /**
+    * @Description: 服务订单评价
+    * @Author: jkx
+    * @Date: 2018/11/28 15:39
+    */
+    @Override
+    public int serviceGoodsEvaluation(String id, String score) {
+        JdbServiceEval jdbServiceEval = new JdbServiceEval();
+        jdbServiceEval.setId(UUIDUtils.getUUID());
+        jdbServiceEval.setOppenId(""); //TODO oppen_id
+        jdbServiceEval.setContent("");
+        jdbServiceEval.setScore(score);
+        jdbServiceEval.setServiceGoodsId(id);
+        jdbServiceEval.setCreatreTime(sf.format(new Date()));
+        int i = jdbServiceEvalMapper.insert(jdbServiceEval);
         return i;
     }
 }
