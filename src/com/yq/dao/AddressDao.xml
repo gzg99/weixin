@@ -56,5 +56,10 @@
     <select id="count" resultType="int">
     	select count(1) from jdb_address where  oppen_id=#{oppen_id}
     </select>
+
+	<!-- 查询服务订单地址信息 -->
+	<select id="selAddrBuId" resultType="com.yq.entity.Address" parameterType="java.lang.String">
+		select * from jdb_address where addr_id=#{addr_id}
+	</select>
     
 </mapper>

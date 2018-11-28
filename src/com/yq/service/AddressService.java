@@ -43,11 +43,11 @@ public class AddressService {
 	}
 
 	/**
-	* @Description: 根据oppen_id获取用户关联地址信息
+	* @Description: 查询服务订单地址信息
 	* @Author: jkx
-	* @Date: 2018/11/23 14:18
+	* @Date: 2018/11/28 12:43
 	*/
-	public List<Address> getUserAddressList(String oppen_id) {
-		return null;
+	public Address selAddrBuId(String addrId) {
+		return addressDao.selAddrBuId(addrId);
 	}
 }

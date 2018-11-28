@@ -3,12 +3,12 @@
 <mapper namespace="com.yq.dao.receiveOrder.JdbReceiveOrderMapper">
   <resultMap id="BaseResultMap" type="com.yq.entity.receiveOrder.JdbReceiveOrder">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="oppend_id" jdbcType="VARCHAR" property="oppendId" />
-    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="oppen_id" jdbcType="VARCHAR" property="oppenId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
     <result column="create_time" jdbcType="VARCHAR" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, oppend_id, goods_id, create_time
+    id, oppen_id, service_id, create_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -21,9 +21,9 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.yq.entity.receiveOrder.JdbReceiveOrder">
-    insert into jdb_receive_order (id, oppend_id, goods_id, 
+    insert into jdb_receive_order (id, oppen_id, service_id,
       create_time)
-    values (#{id,jdbcType=VARCHAR}, #{oppendId,jdbcType=VARCHAR}, #{goodsId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=VARCHAR}, #{oppenId,jdbcType=VARCHAR}, #{serviceId,jdbcType=VARCHAR},
       #{createTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yq.entity.receiveOrder.JdbReceiveOrder">
@@ -32,11 +32,11 @@
       <if test="id != null">
         id,
       </if>
-      <if test="oppendId != null">
-        oppend_id,
+      <if test="oppenId != null">
+        oppen_id,
       </if>
-      <if test="goodsId != null">
-        goods_id,
+      <if test="serviceId != null">
+        service_id,
       </if>
       <if test="createTime != null">
         create_time,
@@ -46,11 +46,11 @@
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="oppendId != null">
-        #{oppendId,jdbcType=VARCHAR},
+      <if test="oppenId != null">
+        #{oppenId,jdbcType=VARCHAR},
       </if>
-      <if test="goodsId != null">
-        #{goodsId,jdbcType=INTEGER},
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=VARCHAR},
@@ -60,11 +60,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.receiveOrder.JdbReceiveOrder">
     update jdb_receive_order
     <set>
-      <if test="oppendId != null">
-        oppend_id = #{oppendId,jdbcType=VARCHAR},
+      <if test="oppenId != null">
+        oppen_id = #{oppenId,jdbcType=VARCHAR},
       </if>
-      <if test="goodsId != null">
-        goods_id = #{goodsId,jdbcType=INTEGER},
+      <if test="serviceId != null">
+        service_id = #{serviceId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=VARCHAR},
@@ -74,8 +74,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yq.entity.receiveOrder.JdbReceiveOrder">
     update jdb_receive_order
-    set oppend_id = #{oppendId,jdbcType=VARCHAR},
-      goods_id = #{goodsId,jdbcType=INTEGER},
+    set oppen_id = #{oppenId,jdbcType=VARCHAR},
+      service_id = #{serviceId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

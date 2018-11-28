@@ -1,10 +1,15 @@
 package com.yq.controller.serviceCart;
 
+import com.yq.entity.Address;
 import com.yq.entity.Goods;
+import com.yq.entity.Worker;
 import com.yq.entity.serviceCart.JdbServiceCart;
+import com.yq.service.AddressService;
 import com.yq.service.GoodsService;
+import com.yq.service.WorkerService;
 import com.yq.service.serviceCart.ServiceCartService;
 import com.yq.util.PageUtil;
+import org.apache.poi.hssf.record.formula.functions.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +35,11 @@ public class ServiceCartController {
     ServiceCartService serviceCartService;
     @Autowired
     GoodsService goodsService;
+    @Autowired
+    AddressService addressService;
+    @Autowired
+    WorkerService workerService;
+
 
     Map<String, Object> map = new HashMap<String, Object>();
 
@@ -130,4 +140,33 @@ public class ServiceCartController {
         int i = serviceCartService.delServiceOrder(id);
         return i+"";
     }
+
+    /**
+    * @Description: 跳转服务订单支付页面
+    * @Author: jkx
+    * @Date: 2018/11/28 12:30
+    */
+    @RequestMapping(value = "/page/serviceCart/toServicePay.html")
+    @ResponseBody
+    public ModelAndView toServicePay(String id, String addrId){
+        ModelAndView mv = new ModelAndView("page/goods_reserva_pay");
+        // 服务地址信息
+        Address address = addressService.selAddrBuId(addrId);
+        // 服务订单信息
+        JdbServiceCart serviceCartData = serviceCartService.selServiceOrder(id);
+        // 根据商品信息查询工匠信息
+        Worker worker = workerService.selWorkerByGoods(id);
+
+        mv.addObject("serviceCartData", serviceCartData);
+        mv.addObject("addressData", address);
+        mv.addObject("workerData", worker);
+        return mv;
+    }
+
+    /**
+    * @Description: 服务完成，订单支付
+    * @Author: jkx
+    * @Date: 2018/11/28 11:42
+    */
+//    public ModelAndView
 }

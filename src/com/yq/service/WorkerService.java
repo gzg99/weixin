@@ -80,15 +80,25 @@ public class WorkerService {
     * @Author: jkx
     * @Date: 2018/11/27 15:55
     */
-    public int workerReceiveOrder(String goodsId, String oppendId) {
+    public int 	workerReceiveOrder(String serviceId, String oppenId) {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		JdbReceiveOrder jdbReceiveOrder = new JdbReceiveOrder();
 		jdbReceiveOrder.setId(UUIDUtils.getUUID());
-		jdbReceiveOrder.setGoodsId(Integer.parseInt(goodsId));
-		jdbReceiveOrder.setOppendId(oppendId);
+		jdbReceiveOrder.setOppenId(oppenId);
+		jdbReceiveOrder.setServiceId(serviceId);
 		jdbReceiveOrder.setCreateTime(sf.format(new Date()));
 		int insert = jdbReceiveOrderMapper.insert(jdbReceiveOrder);
 		return insert;
     }
+
+    /**
+    * @Description: 根据工人查询工匠信息
+    * @Author: jkx
+    * @Date: 2018/11/28 13:38
+    */
+    public Worker selWorkerByGoods(String id) {
+		Worker worker = workerDao.selWorkerByGoods(id);
+		return worker;
+	}
 }

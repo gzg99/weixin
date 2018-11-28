@@ -22,4 +22,5 @@ public interface AddressDao {
 	
 	public int count(Address address);
 
+    Address selAddrBuId(String addrId);
 }

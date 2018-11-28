@@ -47,4 +47,6 @@ public interface WorkerDao {
 	List<Worker> getAllWorkerRangeCurDay(Map<String, Object> map);
 
     String workerSignIn(Worker worker);
+
+	Worker selWorkerByGoods(String id);
 }

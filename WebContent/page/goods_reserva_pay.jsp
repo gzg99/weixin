@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>服务预约</title>
     <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
 </head>
 
 <body>
@@ -22,26 +22,31 @@
     </div>
     <form action="" method="post" enctype="multipart/form-data">
         <div class="pd-20" style="width: 80%">
-            <c:if test="${serviceCartData.type == 1}">
-                <h1>等待接单</h1>
-            </c:if>
-            <c:if test="${serviceCartData.type == 2}">
-                <h1>预约成功</h1>
-            </c:if>
-            <c:if test="${serviceCartData.type == 3}">
-                <h1>服务已完成</h1>
-            </c:if>
-            联系人：<input id="user" name="name"><br/>
-            电话：<input id="tel" name="tel"><br/>
-            地址：<input id="adderss" name="address"><br/>
+            联系人：<input id="user" name="name" value="${addressData.addr_user}"><br/>
+            电话：<input id="tel" name="tel" value="${addressData.addr_tel}"><br/>
+            地址：<input id="adderss" name="address" value="${addressData.addr_name}"><br/>
+        </div><br/>
+        <div class="pd-20" style="width: 80%">
             服务项目：<input id="goodsNameId" name="goodsName" value="${serviceCartData.goodsName}"><br/>
             预约时间：<input id="time" name="reservaTime" value="${serviceCartData.reservaTime}"><br/>
             备注：<input id="remark" name="remark" value="${serviceCartData.remark}"><br/>
+        </div><br/>
+        <div class="pd-20" style="width: 80%">
+            工匠：<input id="gong" name="goodsName" value="${workerData.name}"><br/>
+            工号：<input id="code" name="reservaTime" value="${workerData.id}"><br/>
+            手机号：<input id="phone" name="remark" value="${workerData.telPhone}"><br/>
+        </div><br/>
+        <div id="payDivId" style="display: none;">
+            服务金额：<input id="goodsTotalId" name="goodsTotal" value=""/>
+            <div class="col-10 col-offset-2">
+                <button onClick="serviceGoodsPayCommit()" id="butt"
+                        class="btn btn-primary radius" type="button">
+                    <i class="Hui-iconfont">&#xe632;</i>立即支付
+                </button>
+                <button onClick="history.go(-1);" class="btn btn-default radius"
+                        type="button">&nbsp;&nbsp;线下支付&nbsp;&nbsp;</button>
+            </div>
         </div>
-        <c:if test="${serviceCartData.type == 2}">
-            <%--<a href="toServicePay.html?id=${serviceCartData.id}&addr='177'">服务完成</a>--%>
-            <a href="toServicePay.html?id=fedc57dc58b141909418b7817de1fdf8&addrId=177">服务完成</a>
-        </c:if>
     </form>
 </div>
 </body>

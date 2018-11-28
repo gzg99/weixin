@@ -3,9 +3,9 @@ package com.yq.entity.receiveOrder;
 public class JdbReceiveOrder {
     private String id;
 
-    private String oppendId;
+    private String oppenId;
 
-    private Integer goodsId;
+    private String serviceId;
 
     private String createTime;
 
@@ -17,20 +17,20 @@ public class JdbReceiveOrder {
         this.id = id;
     }
 
-    public String getOppendId() {
-        return oppendId;
+    public String getOppenId() {
+        return oppenId;
     }
 
-    public void setOppendId(String oppendId) {
-        this.oppendId = oppendId;
+    public void setOppenId(String oppenId) {
+        this.oppenId = oppenId;
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
+    public String getServiceId() {
+        return serviceId;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
     }
 
     public String getCreateTime() {

@@ -250,4 +250,36 @@
 		from jdb_worker
 		where tel_phone=#{telPhone} and password=#{password}
 	</select>
+
+    <!-- 根据商品信息查询工匠信息 -->
+    <select id="selWorkerByGoods" parameterType="java.lang.String" resultType="com.yq.entity.Worker">
+        select
+        	w.id as id,
+			w.name as name,
+			w.age as age,
+			w.sex as sex,
+			w.longitude as longitude,
+			w.latitude as latitude,
+			w.open_id as openId,
+			w.tel_phone as telPhone,
+			w.credentials as credentials,
+			w.credentials_img as credentialsImg,
+			w.worker_id as workerId,
+			w.worker_img as workerImg,
+			w.worker_intro as workerIntro,
+			w.is_vip as isVip,
+			w.add_time as addTime,
+			w.type as type,
+			w.update_time as updateTime,
+			w.service_count as serviceCount,
+			w.password as password,
+			w.service_area as serviceArea,
+			w.service_detail as serviceDetail,
+			w.worder_album as worderAlbum, c.id from jdb_worker w
+        LEFT JOIN jdb_receive_order o
+        on w.open_id = o.oppen_id
+        LEFT JOIN jdb_service_cart c
+        on o.service_id = c.id
+        HAVING c.id = #{id}
+    </select>
 </mapper>

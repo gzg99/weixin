@@ -252,16 +252,18 @@ public class WorkerCtrl extends StringUtil {
 	* @Description: 工匠接单操作
 	* @Author: jkx
 	* @Date: 2018/11/27 16:22
+	 * id 商品主键id
+	 * oppenId 工匠公众号id
 	*/
 	@RequestMapping(value = "page/workerReceiveOrder.html")
 	@ResponseBody
-	public String workerReceiveOrder(String id, String goodsId, String oppendId){
+	public String workerReceiveOrder(String id, String oppenId){
 		int i = 0;
 		// 根据主键id更新订单数据状态
 		i = serviceCartService.updateTypeById(id);
 		if(0 != i){
 			// 添加工人和订单商品关联数据
-			i = workerService.workerReceiveOrder(goodsId, oppendId);
+			i = workerService.workerReceiveOrder(id, oppenId);
 		}
 		return i+"";
 	}
