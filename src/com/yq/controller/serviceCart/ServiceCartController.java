@@ -9,7 +9,6 @@ import com.yq.service.GoodsService;
 import com.yq.service.WorkerService;
 import com.yq.service.serviceCart.ServiceCartService;
 import com.yq.util.PageUtil;
-import org.apache.poi.hssf.record.formula.functions.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -168,5 +167,10 @@ public class ServiceCartController {
     * @Author: jkx
     * @Date: 2018/11/28 11:42
     */
-//    public ModelAndView
+    @RequestMapping(value = "/page/serviceCart/serviceGoodsPayCommit.html")
+    @ResponseBody
+    public String serviceGoodsPayCommit(String id, String goodsTotal){
+        int i = serviceCartService.serviceGoodsPayCommit(id, goodsTotal);
+        return i+"";
+    }
 }

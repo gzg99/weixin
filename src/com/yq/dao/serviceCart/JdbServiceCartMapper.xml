@@ -262,10 +262,49 @@
   </select>
 
   <!-- 根据主键id更新订单数据状态 -->
-  <update id="updateTypeById" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
+  <update id="updateServiceCartById" parameterType="com.yq.entity.serviceCart.JdbServiceCart" >
     update jdb_service_cart
-    set type = #{type,jdbcType=VARCHAR},
-    update_time = #{updateTime,jdbcType=VARCHAR}
+      <set >
+          <if test="goodsId != null" >
+              goods_id = #{goodsId,jdbcType=INTEGER},
+          </if>
+          <if test="oppenId != null" >
+              oppen_id = #{oppenId,jdbcType=VARCHAR},
+          </if>
+          <if test="goodsName != null" >
+              goods_name = #{goodsName,jdbcType=VARCHAR},
+          </if>
+          <if test="goodsImg != null" >
+              goods_img = #{goodsImg,jdbcType=VARCHAR},
+          </if>
+          <if test="goodsSpe != null" >
+              goods_spe = #{goodsSpe,jdbcType=VARCHAR},
+          </if>
+          <if test="goodsPrice != null" >
+              goods_price = #{goodsPrice,jdbcType=REAL},
+          </if>
+          <if test="goodsNum != null" >
+              goods_num = #{goodsNum,jdbcType=INTEGER},
+          </if>
+          <if test="goodsTotal != null" >
+              goods_total = #{goodsTotal,jdbcType=REAL},
+          </if>
+          <if test="reservaTime != null" >
+              reserva_time = #{reservaTime,jdbcType=VARCHAR},
+          </if>
+          <if test="remark != null" >
+              remark = #{remark,jdbcType=VARCHAR},
+          </if>
+          <if test="type != null" >
+              type = #{type,jdbcType=VARCHAR},
+          </if>
+          <if test="createTime != null" >
+              create_time = #{createTime,jdbcType=VARCHAR},
+          </if>
+          <if test="updateTime != null" >
+              update_time = #{updateTime,jdbcType=VARCHAR},
+          </if>
+      </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
 

@@ -19,6 +19,7 @@ import java.util.List;
 public class ServiceCartServiceImpl implements ServiceCartService{
     @Autowired
     JdbServiceCartMapper jdbServiceCartMapper;
+    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
     * @Description: 将预约服务订单添加到购物车
@@ -105,12 +106,27 @@ public class ServiceCartServiceImpl implements ServiceCartService{
     */
     @Override
     public int updateTypeById(String id) {
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         JdbServiceCart jdbServiceCart = new JdbServiceCart();
         jdbServiceCart.setId(id);
         jdbServiceCart.setType("3");
         jdbServiceCart.setUpdateTime(sf.format(new Date()));
-        int i = jdbServiceCartMapper.updateTypeById(id);
+        int i = jdbServiceCartMapper.updateServiceCartById(jdbServiceCart);
+        return i;
+    }
+
+    /**
+    * @Description: 服务订单支付金额提交
+    * @Author: jkx
+    * @Date: 2018/11/28 15:11
+    */
+    @Override
+    public int serviceGoodsPayCommit(String id, String goodsTotal) {
+        JdbServiceCart jdbServiceCart = new JdbServiceCart();
+        jdbServiceCart.setId(id);
+        jdbServiceCart.setType("3");// 将服务订单状态改为“已完成”
+        jdbServiceCart.setGoodsTotal(Float.parseFloat(goodsTotal));
+        jdbServiceCart.setUpdateTime(sf.format(new Date()));
+        int i = jdbServiceCartMapper.updateServiceCartById(jdbServiceCart);
         return i;
     }
 }

@@ -25,5 +25,5 @@ public interface JdbServiceCartMapper {
 
     List<JdbServiceCart> selServiceCartToWeb(JdbServiceCart jdbServiceCart);
 
-    int updateTypeById(String id);
+    int updateServiceCartById(JdbServiceCart jdbServiceCart);
 }

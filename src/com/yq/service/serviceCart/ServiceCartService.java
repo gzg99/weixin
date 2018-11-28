@@ -23,4 +23,6 @@ public interface ServiceCartService {
     int delServiceOrder(String id);
 
     int updateTypeById(String id);
+
+    int serviceGoodsPayCommit(String id, String goodsTotal);
 }
