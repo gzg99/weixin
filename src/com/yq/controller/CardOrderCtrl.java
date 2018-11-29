@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -88,8 +89,20 @@ public class CardOrderCtrl {
 	@ResponseBody
 	@RequestMapping(value = "page/cardOrderInsert.html")
 	public String cardInsert(Long userPhone,String userAddr,String cardName, Long cardNum, 
-			float cardPrice, String comment,String type) throws IOException {		
+			float cardPrice, String comment, String code, String type, HttpSession session) throws IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// 短信验证码
+		int phoneValideCode = (int) session.getAttribute(userPhone + "Code");
+		long codeTime = (long) session.getAttribute(userPhone + "Time");
+		// 当前时间
+		long time = new Date().getTime();
+		if((time-codeTime)/1000>60){
+			return "time";
+		}
+		if(Integer.parseInt(code) != phoneValideCode){
+			return "error";
+		}
+
 		CardOrder card = new CardOrder();
 		card.setCardName(cardName);
 		card.setAddTime(sdf.format(new Date()));
@@ -100,7 +113,7 @@ public class CardOrderCtrl {
 		card.setCardPrice(cardPrice);
 		card.setStatus(0);
 		card.setType(type);
-		
+
 		card.setComment(comment);
 		service.insert(card);
 		return card.getId() + "";
@@ -109,8 +122,20 @@ public class CardOrderCtrl {
 	@ResponseBody
 	@RequestMapping(value = "page/cardOrderInsertlr.html")
 	public String cardInsertlr(Long userPhone,String userAddr,String cardName, String lrName, 
-			float cardPrice, String lrSfzh,String lrPhone,String lrRelatetion) throws IOException {		
+			float cardPrice, String lrSfzh,String lrPhone,String lrRelatetion,String code, HttpSession session) throws IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// 短信验证码
+		int phoneValideCode = (int) session.getAttribute(userPhone + "Code");
+		long codeTime = (long) session.getAttribute(userPhone + "Time");
+		// 当前时间
+		long time = new Date().getTime();
+		if((time-codeTime)/1000>60){
+			return "time";
+		}
+		if(Integer.parseInt(code) != phoneValideCode){
+			return "error";
+		}
+
 		CardOrder card = new CardOrder();
 //		card.setCardNum(cardNum);
 		card.setCardName(cardName);

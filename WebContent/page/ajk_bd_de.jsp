@@ -52,6 +52,7 @@
 		   <div style="width:100%; margin-top:20px;">
 			   <p>填写验证码：</p>
 			   <input type="text" id="code" style="width:80%;border-bottom:1px orange solid; margin-left:30px;">
+			   <a onclick="getSmsCheckCode();">获取验证码</a>
 		   </div>
 		   <div style="width:100%; margin-top:20px;">
 			   <p>绑&nbsp;定&nbsp;地&nbsp;址：</p>
@@ -59,12 +60,14 @@
 		   </div>
 	   </div>
     
-    <button class="drdd-btn" onclick="add()">绑定并支付</button>
+    <button id="buttonId" class="drdd-btn" onclick="add()">绑定并支付</button>
 	<jsp:include page="footer5.jsp"></jsp:include>
 
 </body>
 <script>
 $(function(){
+	$("#buttonId").attr("disabled",true);
+
 	$.ajax({
 		url:'cardAllList.html',
 		type:'post',
@@ -86,6 +89,7 @@ function add() {
 	var userAddr=$("#userAddr").val();
 	var cardName=$("#cardName").val();
 	var cardPrice=$("#cardPrice").val();
+	var code=$("#code").val();
 	if(userPhone==""){
 		alert("手机不许为空");
 		return;
@@ -96,7 +100,6 @@ function add() {
 			return;
 		}
 	}
-	
 	if(userAddr==""){
 		alert("地址不许为空");
 		return;
@@ -105,17 +108,51 @@ function add() {
 		url:'cardOrderInsert.html',
 		type:'post',
 		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+cardName+"&cardPrice="+
-			cardPrice+"&type=1",
+			cardPrice+"&code="+code+"&type=1",
 		success:function(rs){
 			var re = /^[0-9]+.?[0-9]*$/;
-			if(re.test(rs)&&rs!=0){
-				window.location.href='payCardOrder.html?id='+rs;
+			if(rs == "error"){
+				alert("验证码错误！");
+			}else if(rs == "time"){
+				alert("验证码超时！");
 			}else{
-				alert("失败！");
+				if(re.test(rs)&&rs!=0){
+					window.location.href='payCardOrder.html?id='+rs;
+				}else{
+					alert("失败！");
+				}
 			}
 		}
 	});
 	
+}
+
+/**
+ * 获取验证码信息
+ */
+function getSmsCheckCode() {
+	var userPhone = $("#userPhone").val();
+	if(userPhone==""){
+		alert("手机不许为空");
+		return;
+	}
+	if(userPhone != "") {
+		if(!isPoneAvailable(userPhone)) {
+			alert("手机号不正确");
+			return;
+		}
+	}
+	$.ajax({
+		url:'serviceCart/SendSmsCheckCode.html',
+		type:'post',
+		data:'phone='+userPhone,
+		success:function(rs){
+			if(rs){
+				$("#buttonId").attr("disabled",false);
+				alert(rs);
+			}
+		}
+	});
 }
 
 function isPoneAvailable(phone) {

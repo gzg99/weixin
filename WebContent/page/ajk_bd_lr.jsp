@@ -40,7 +40,7 @@
 			</div>
 			<div style="padding-top:10px;">
 				<p>填写验证码</p>
-				<input type="text" id="code" />
+				<input type="text" id="code" /><a onclick="getSmsCheckCode();">验证码</a>
 			</div>
 			
 			<div class="c"></div>
@@ -68,7 +68,7 @@
 				<input type="text" id="userAddr"/>
 			</div>
 			<input type="hidden" id="type" value="2"/>
-			<button class="drdd-btn" onclick="add()">提交申请</button>
+			<button id="buttonId" class="drdd-btn" onclick="add()">提交申请</button>
 		</div>
 	 <jsp:include page="footer5.jsp"></jsp:include>
 	</div>
@@ -76,6 +76,10 @@
 
 </body>
 <script>
+	$(function () {
+		// 初始提交按钮不可点击
+		$("#buttonId").attr("disabled",true);
+	})
 function add() {
 	var userPhone=$("#userPhone").val();
 	var userAddr=$("#userAddr").val();
@@ -86,6 +90,7 @@ function add() {
 	var lrPhone=$("#lrPhone").val();
 	var lrSfzh=$("#lrSfzh").val();
 	var lrRelatetion=$("#lrRelatetion").val();
+	var code=$("#code").val();
 	if(userPhone==""){
 		alert("手机不许为空");
 		return;
@@ -130,18 +135,53 @@ function add() {
 		url:'cardOrderInsertlr.html',
 		type:'post',
 		data:'userPhone='+userPhone+'&userAddr='+userAddr+"&cardName="+cardName+"&lrName="+lrName+"&cardPrice="+
-			cardPrice+"&lrSfzh="+lrSfzh+"&lrPhone="+lrPhone+"&lrRelatetion="+lrRelatetion+"&type=2",
+			cardPrice+"&lrSfzh="+lrSfzh+"&lrPhone="+lrPhone+"&lrRelatetion="+lrRelatetion+"&code="+code+"&type=2",
 		success:function(rs){
 			var re = /^[0-9]+.?[0-9]*$/;
-			if(re.test(rs)&&rs!=0){
-				alert("添加成功！");
-				window.location.href='./cardAll.html';
+			if(rs == "error"){
+				alert("验证码错误！");
+			}else if(rs == "time"){
+				alert("验证码超时！");
 			}else{
-				alert("失败！");
+				if(re.test(rs)&&rs!=0){
+					alert("添加成功！");
+					window.location.href='./cardAll.html';
+				}else{
+					alert("失败！");
+				}
 			}
+
 		}
 	});
 	
+}
+
+/**
+ * 获取验证码信息
+ */
+function getSmsCheckCode() {
+	var userPhone = $("#userPhone").val();
+	if(userPhone==""){
+		alert("手机不许为空");
+		return;
+	}
+	if(userPhone != "") {
+		if(!isPoneAvailable(userPhone)) {
+			alert("手机号不正确");
+			return;
+		}
+	}
+	$.ajax({
+		url:'serviceCart/SendSmsCheckCode.html',
+		type:'post',
+		data:'phone='+userPhone,
+		success:function(rs){
+			if(rs){
+				$("#buttonId").attr("disabled",false);
+				alert(rs);
+			}
+		}
+	});
 }
 
 function isPoneAvailable(phone) {
