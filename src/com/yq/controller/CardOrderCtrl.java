@@ -1,27 +1,5 @@
 package com.yq.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.weixin.pay.action.NotifyServlet;
 import com.weixin.pay.util.GetWxOrderno;
 import com.weixin.pay.util.RequestHandler;
@@ -33,8 +11,21 @@ import com.yq.entity.CardOrder;
 import com.yq.service.CardOrderService;
 import com.yq.service.CardService;
 import com.yq.util.PageUtil;
-
 import net.sf.json.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 家居卡管理
@@ -86,6 +77,11 @@ public class CardOrderCtrl {
 		return new ModelAndView("main/card/add");
 	}
 	
+	/**
+	* @Description: 安居卡绑定（增加注释）
+	* @Author: jkx
+	* @Date: 2018/11/29 15:08
+	*/
 	@ResponseBody
 	@RequestMapping(value = "page/cardOrderInsert.html")
 	public String cardInsert(Long userPhone,String userAddr,String cardName, Long cardNum, 
@@ -118,7 +114,12 @@ public class CardOrderCtrl {
 		service.insert(card);
 		return card.getId() + "";
 	}
-	
+
+	/**
+	* @Description: 敬老卡绑定（增加注释）
+	* @Author: jkx
+	* @Date: 2018/11/29 15:09
+	*/
 	@ResponseBody
 	@RequestMapping(value = "page/cardOrderInsertlr.html")
 	public String cardInsertlr(Long userPhone,String userAddr,String cardName, String lrName, 
