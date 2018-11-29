@@ -77,6 +77,7 @@
 			<dd>
 				<ul>
 					<li><a _href="getCardOrderList.html?pageNo=1&pageSize=10" href="javascript:void(0)">安居卡查看</a></li>
+					<li><a _href="layerCard/toLayerCardMain.html?pageNo=1&pageSize=10" href="javascript:void(0)">图层卡查看</a></li>
 				</ul>
 			</dd>
 		</dl>
