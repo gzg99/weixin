@@ -172,7 +172,7 @@ function getSmsCheckCode() {
 		}
 	}
 	$.ajax({
-		url:'serviceCart/SendSmsCheckCode.html',
+		url:'serviceCart/sendSmsCheckCode.html',
 		type:'post',
 		data:'phone='+userPhone,
 		success:function(rs){

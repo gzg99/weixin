@@ -2,7 +2,7 @@ package com.yq.service.layerCard;
 
 import com.yq.entity.layerCard.JdbLayerCard;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface LayerCardService {
 
-    String cardBinding(HttpServletRequest req);
+    String cardBinding(String cardType, String cardNum, String userPhone, String userAddr, String code, HttpSession session);
 
     int getCount(JdbLayerCard jdbLayerCard);
 

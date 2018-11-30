@@ -185,6 +185,24 @@
         select
         <include refid="Base_Column_List"/>
         from jdb_layer_card
-        where card_num = #{cardNum,jdbcType=VARCHAR} and card_type = #{cardType,jdbcType=VARCHAR}
+        where
+            card_num = #{cardNum,jdbcType=VARCHAR}
+            and card_type = #{cardType,jdbcType=VARCHAR}
+            <if test="status != null and status != ''">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
     </select>
+
+    <!-- 涂层卡线下绑定 -->
+    <update id="cardBinding" parameterType="com.yq.entity.layerCard.JdbLayerCard">
+        update jdb_layer_card
+        set
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+        user_addr = #{userAddr,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        binding_time = #{bindingTime,jdbcType=VARCHAR},
+        update_time = #{updateTime,jdbcType=VARCHAR}
+        where card_num = #{cardNum,jdbcType=VARCHAR}
+        and card_type = #{cardType,jdbcType=VARCHAR}
+    </update>
 </mapper>

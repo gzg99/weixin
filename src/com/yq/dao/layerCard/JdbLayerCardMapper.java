@@ -22,4 +22,6 @@ public interface JdbLayerCardMapper {
     List<JdbLayerCard> getLayerCardList(JdbLayerCard jdbLayerCard);
 
     JdbLayerCard selLayerCardByCardNum(JdbLayerCard jdbLayerCard);
+
+    int cardBinding(JdbLayerCard jdbLayerCard);
 }

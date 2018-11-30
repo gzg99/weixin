@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -99,8 +98,10 @@ public class LayerCardController {
     * @Author: jkx
     * @Date: 2018/11/29 16:30
     */
-    public String cardBinding(HttpServletRequest req, HttpServletResponse res){
-        layerCardService.cardBinding(req);
-        return null;
+    @RequestMapping(value = "/page/layerCard/cardBinding.html")
+    @ResponseBody
+    public String cardBinding(String cardType, String cardNum, String userPhone, String userAddr, String code, HttpSession session){
+        String s = layerCardService.cardBinding(cardType, cardNum, userPhone, userAddr, code, session);
+        return s;
     }
 }

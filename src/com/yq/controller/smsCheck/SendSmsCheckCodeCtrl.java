@@ -21,9 +21,9 @@ public class SendSmsCheckCodeCtrl {
     @Autowired
     SendSmsCheckCodeService sendSmsCheckCodeService;
 
-    @RequestMapping(value = "/page/serviceCart/SendSmsCheckCode.html")
+    @RequestMapping(value = "/page/serviceCart/sendSmsCheckCode.html")
     @ResponseBody
-    public String SendSmsCheckCode(HttpServletRequest req, HttpServletResponse res){
+    public String sendSmsCheckCode(HttpServletRequest req, HttpServletResponse res){
         String phone = req.getParameter("phone");
         HttpSession session = req.getSession();
         // 随机生成4位短信验证码

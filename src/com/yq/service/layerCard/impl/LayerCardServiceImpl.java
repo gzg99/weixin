@@ -7,7 +7,7 @@ import com.yq.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -28,10 +28,33 @@ public class LayerCardServiceImpl implements LayerCardService{
     * @Date: 2018/11/29 16:37
     */
     @Override
-    public String cardBinding(HttpServletRequest req) {
-        JdbLayerCard jdbLayerCard = new JdbLayerCard();
+    public String cardBinding(String cardType, String cardNum, String userPhone, String userAddr, String code, HttpSession session) {
+        // 短信验证码
+        int phoneValideCode = (int) session.getAttribute(userPhone + "Code");
+        long codeTime = (long) session.getAttribute(userPhone + "Time");
+        // 当前时间
+        long time = new Date().getTime();
+        if((time-codeTime)/1000>60){
+            return "time";
+        }
+        if(Integer.parseInt(code) != phoneValideCode){
+            return "error";
+        }
 
-        return null;
+        JdbLayerCard jdbLayerCard = new JdbLayerCard();
+        jdbLayerCard.setCardType(cardType);
+        jdbLayerCard.setCardNum(cardNum);
+        jdbLayerCard.setUserPhone(userPhone);
+        jdbLayerCard.setUserAddr(userAddr);
+        jdbLayerCard.setStatus("1");// 数据绑定
+        jdbLayerCard.setBindingTime(sf.format(new Date()));
+        jdbLayerCard.setUpdateTime(sf.format(new Date()));
+        JdbLayerCard layerCardData = jdbLayerCardMapper.selLayerCardByCardNum(jdbLayerCard);
+        if(null != layerCardData){
+            return "no";
+        }
+        int i = jdbLayerCardMapper.cardBinding(jdbLayerCard);
+        return i+"";
     }
 
     /**
