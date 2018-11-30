@@ -44,9 +44,6 @@
 		<input type="text" value="${end_time}" onfocus="WdatePicker()"
 			   id="end_time" class="input-text"
 			   style="width: 15%;" placeholder="请选择结束时间">
-		<input type="text" value="${goods_name}"
-			   id="goods_name" class="input-text"
-			   style="width: 15%;" placeholder="请输入卡片名称">
 		<button type="button" onclick="search()"
 				class="btn btn-success radius" id="b1" name="">
 			<i class="Hui-iconfont">&#xe665;</i> 查询
@@ -55,19 +52,23 @@
 
 		<script type="text/javascript">
 			function search() {
-				var type = '${type}';
 				var start_time = $('#start_time').val();
 				var end_time = $('#end_time').val();
-				var goods_name = $('#goods_name').val();
-				window.location.href = 'orderList.html?start_time=' + encodeURIComponent(encodeURIComponent(start_time))
-						+ '&end_time=' + encodeURIComponent(encodeURIComponent(end_time))
-						+ '&goods_name=' + encodeURIComponent(encodeURIComponent(goods_name))
-						+ '&type=' + type;
+				window.location.href = '../layerCard/toLayerCardMain.html?start_time=' + encodeURIComponent(encodeURIComponent(start_time))
+						+ '&end_time=' + encodeURIComponent(encodeURIComponent(end_time));
 			}
 		</script>
 	</div>
 
 	<div class="pd-20">
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+			<span class="l">
+				<a href="../layerCard/toAddLayerCard.html" class="btn btn-primary radius">
+					<i class="Hui-iconfont">&#xe600;</i>添加记录
+				</a>
+			</span>
+		</div>
+
 		<div class="mt-20">
 			<table
 				class="table table-border table-bordered table-hover table-bg table-sort">
@@ -78,20 +79,24 @@
 						<th width="15%">卡号</th>
 						<th width="15%">手机号</th>
 						<th width="25%">地址</th>
-						<th width="15%">绑定时间</th>
-						<th width="15%">操作</th>
+						<th width="15%">创建时间</th>
+						<%--<th width="15%">操作</th>--%>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${cards}" var="list" varStatus="s">
+					<c:forEach items="${layerCardList}" var="list" varStatus="s">
 						<tr class="text-c">
 							<td><input type="checkbox" value="1" name=""></td>
-							<td>${list.cardName}</td>
+							<c:if test="${list.cardType == 1}">
+								<td>365 安居卡</td>
+							</c:if>
+							<c:if test="${list.cardType == 2}">
+								<td>敬老卡</td>
+							</c:if>
 							<td>${list.cardNum}</td>
-							<td>${list.userName}</td>
 							<td>${list.userPhone}</td>
 							<td>${list.userAddr}</td>
-							<td>${list.addTime}</td>		
+							<td>${list.createTime}</td>
 						</tr>
 					</c:forEach>
 
@@ -154,12 +159,12 @@
 		}
 	</script>
 	
-	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="lib/layer/1.9.3/layer.js"></script>
-	<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
-	<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script>
-	<script type="text/javascript" src="js/H-ui.js"></script>
-	<script type="text/javascript" src="js/H-ui.admin.js"></script>
+	<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../lib/layer/1.9.3/layer.js"></script>
+	<script type="text/javascript" src="../lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../js/H-ui.js"></script>
+	<script type="text/javascript" src="../js/H-ui.admin.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('.table-sort').dataTable({

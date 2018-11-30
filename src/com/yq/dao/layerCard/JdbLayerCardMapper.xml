@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yq.dao.layerCard.JdbLayerCardMapper" >
-  <resultMap id="BaseResultMap" type="com.yq.entity.layerCard.JdbLayerCard" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="card num" property="cardNum" jdbcType="VARCHAR" />
-    <result column="card_type" property="cardType" jdbcType="VARCHAR" />
-    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
-    <result column="user_addr" property="userAddr" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="binding_time" property="bindingTime" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, "card num", card_type, user_phone, user_addr, status, remark, binding_time, create_time, 
+<mapper namespace="com.yq.dao.layerCard.JdbLayerCardMapper">
+    <resultMap id="BaseResultMap" type="com.yq.entity.layerCard.JdbLayerCard">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="card_num" property="cardNum" jdbcType="VARCHAR"/>
+        <result column="card_type" property="cardType" jdbcType="VARCHAR"/>
+        <result column="user_phone" property="userPhone" jdbcType="VARCHAR"/>
+        <result column="user_addr" property="userAddr" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="binding_time" property="bindingTime" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="update_time" property="updateTime" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, card_num, card_type, user_phone, user_addr, status, remark, binding_time, create_time,
     update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from jdb_layer_card
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+
+    <sql id="selLayerCard_sql">
+        1=1
+        <!-- 按日期查询订单 -->
+        <if test="start_time!=null and start_time!='' and end_time!=null and end_time!=''">
+            and create_time between #{start_time} and #{end_time}
+        </if>
+        order by create_time desc
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from jdb_layer_card
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from jdb_layer_card
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.yq.entity.layerCard.JdbLayerCard" >
-    insert into jdb_layer_card (id, "card num", card_type, 
+    <insert id="insert" parameterType="com.yq.entity.layerCard.JdbLayerCard">
+    insert into jdb_layer_card (id, card_num, card_type,
       user_phone, user_addr, status, 
       remark, binding_time, create_time, 
       update_time)
@@ -37,109 +47,109 @@
       #{remark,jdbcType=VARCHAR}, #{bindingTime,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yq.entity.layerCard.JdbLayerCard" >
-    insert into jdb_layer_card
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="cardNum != null" >
-        "card num",
-      </if>
-      <if test="cardType != null" >
-        card_type,
-      </if>
-      <if test="userPhone != null" >
-        user_phone,
-      </if>
-      <if test="userAddr != null" >
-        user_addr,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-      <if test="bindingTime != null" >
-        binding_time,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="cardNum != null" >
-        #{cardNum,jdbcType=VARCHAR},
-      </if>
-      <if test="cardType != null" >
-        #{cardType,jdbcType=VARCHAR},
-      </if>
-      <if test="userPhone != null" >
-        #{userPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="userAddr != null" >
-        #{userAddr,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="bindingTime != null" >
-        #{bindingTime,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.layerCard.JdbLayerCard" >
+    <insert id="insertSelective" parameterType="com.yq.entity.layerCard.JdbLayerCard">
+        insert into jdb_layer_card
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cardNum != null">
+                card_num,
+            </if>
+            <if test="cardType != null">
+                card_type,
+            </if>
+            <if test="userPhone != null">
+                user_phone,
+            </if>
+            <if test="userAddr != null">
+                user_addr,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="bindingTime != null">
+                binding_time,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="cardNum != null">
+                #{cardNum,jdbcType=VARCHAR},
+            </if>
+            <if test="cardType != null">
+                #{cardType,jdbcType=VARCHAR},
+            </if>
+            <if test="userPhone != null">
+                #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="userAddr != null">
+                #{userAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="bindingTime != null">
+                #{bindingTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.layerCard.JdbLayerCard">
+        update jdb_layer_card
+        <set>
+            <if test="cardNum != null">
+                card_num = #{cardNum,jdbcType=VARCHAR},
+            </if>
+            <if test="cardType != null">
+                card_type = #{cardType,jdbcType=VARCHAR},
+            </if>
+            <if test="userPhone != null">
+                user_phone = #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="userAddr != null">
+                user_addr = #{userAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="bindingTime != null">
+                binding_time = #{bindingTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yq.entity.layerCard.JdbLayerCard">
     update jdb_layer_card
-    <set >
-      <if test="cardNum != null" >
-        "card num" = #{cardNum,jdbcType=VARCHAR},
-      </if>
-      <if test="cardType != null" >
-        card_type = #{cardType,jdbcType=VARCHAR},
-      </if>
-      <if test="userPhone != null" >
-        user_phone = #{userPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="userAddr != null" >
-        user_addr = #{userAddr,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="bindingTime != null" >
-        binding_time = #{bindingTime,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yq.entity.layerCard.JdbLayerCard" >
-    update jdb_layer_card
-    set "card num" = #{cardNum,jdbcType=VARCHAR},
+    set card_num = #{cardNum,jdbcType=VARCHAR},
       card_type = #{cardType,jdbcType=VARCHAR},
       user_phone = #{userPhone,jdbcType=VARCHAR},
       user_addr = #{userAddr,jdbcType=VARCHAR},
@@ -150,4 +160,31 @@
       update_time = #{updateTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+    <!-- 分页查询数据总条数 -->
+    <select id="getCount" resultType="int">
+        select count(1) from jdb_layer_card
+        <where>
+            <include refid="selLayerCard_sql"></include>
+        </where>
+    </select>
+
+    <!-- 分页查询涂层卡数据 -->
+    <select id="getLayerCardList" resultMap="BaseResultMap" flushCache="true" useCache="false">
+        select
+        <include refid="Base_Column_List"/>
+        from jdb_layer_card
+        <where>
+            <include refid="selLayerCard_sql"></include>
+        </where>
+        limit #{currentNum},#{pageSize}
+    </select>
+
+    <!-- 根据图层卡卡号和客片类型查询数据是否存在 -->
+    <select id="selLayerCardByCardNum" resultMap="BaseResultMap" parameterType="com.yq.entity.layerCard.JdbLayerCard">
+        select
+        <include refid="Base_Column_List"/>
+        from jdb_layer_card
+        where card_num = #{cardNum,jdbcType=VARCHAR} and card_type = #{cardType,jdbcType=VARCHAR}
+    </select>
 </mapper>
