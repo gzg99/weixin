@@ -1,28 +1,42 @@
 package com.yq.service.serviceCart.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.weixin.util.AdvancedUtil;
+import com.yq.dao.WorkerDao;
 import com.yq.dao.serviceCart.JdbServiceCartMapper;
 import com.yq.dao.serviceEval.JdbServiceEvalMapper;
 import com.yq.entity.Goods;
+import com.yq.entity.TemplateData;
+import com.yq.entity.Worker;
 import com.yq.entity.serviceCart.JdbServiceCart;
 import com.yq.entity.serviceEval.JdbServiceEval;
 import com.yq.service.serviceCart.ServiceCartService;
 import com.yq.util.UUIDUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServlet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/11/23.
  */
 @Service
-public class ServiceCartServiceImpl implements ServiceCartService{
+public class ServiceCartServiceImpl extends HttpServlet implements ServiceCartService{
+    Logger logger = LoggerFactory.getLogger(ServiceCartServiceImpl.class);
     @Autowired
     JdbServiceCartMapper jdbServiceCartMapper;
     @Autowired
     JdbServiceEvalMapper jdbServiceEvalMapper;
+    @Autowired
+    WorkerDao workerDao;
+
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
@@ -33,6 +47,10 @@ public class ServiceCartServiceImpl implements ServiceCartService{
     @Override
     public JdbServiceCart addOrder(Goods goodsData, String oppendId, JdbServiceCart jdbServiceCart) {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // 读取配置文件信息
+        String appid = getInitParameter("appid");;
+        String appsecret = getInitParameter("appsecret");
+
         jdbServiceCart.setId(UUIDUtils.getUUID());
         jdbServiceCart.setGoodsId(goodsData.getGoods_id());
         jdbServiceCart.setOppenId(oppendId);
@@ -43,8 +61,25 @@ public class ServiceCartServiceImpl implements ServiceCartService{
 //        jdbServiceCart.setGoodsNum(Integer.parseInt(goodsData.getGoods_num()));
         jdbServiceCart.setType("1");// 默认等待接单
         jdbServiceCart.setCreateTime(sf.format(new Date()));
-
+        // 添加订单服务到订单数据表
         jdbServiceCartMapper.addOrder(jdbServiceCart);
+        logger.info("服务订单入库成功！");
+
+        // 获取微信接口访问凭证
+        String accessToken = AdvancedUtil.getAccessToken(appid, appsecret);
+        logger.info("获取微信接口访问凭证成功！accessToken：{}"+accessToken);
+
+        // 获取工匠信息（open_id）
+        for (Worker worker : workerDao.selWorker()) {
+            if(null != worker){
+                // 组装发送模板信息
+                String sendMessage = buildMessage(worker.getOpenId());
+                // 发送订单消息给工匠
+                AdvancedUtil.sendTemplateMessage(accessToken, "sendMessage");
+            }
+        }
+
+
         return jdbServiceCart;
     }
 
@@ -150,5 +185,26 @@ public class ServiceCartServiceImpl implements ServiceCartService{
         jdbServiceEval.setCreatreTime(sf.format(new Date()));
         int i = jdbServiceEvalMapper.insert(jdbServiceEval);
         return i;
+    }
+
+    /**
+    * @Description: 组装模板消息
+    * @Author: jkx
+    * @Date: 2018/12/4 15:43
+    */
+    public String buildMessage(String opendId){
+        JSONObject json = new JSONObject();
+        Map<String,TemplateData> param = new HashMap<>();
+        param.put("first",new TemplateData("恭喜您注册成功！","#696969"));
+        param.put("keyword1",new TemplateData("15618551533","#696969"));
+        param.put("keyword2",new TemplateData("2017年05月06日","#696969"));
+        param.put("remark",new TemplateData("祝投资愉快！","#696969"));
+
+        json.put("touser", opendId);// 接收消息人的openId
+        json.put("template_id", ""); // 模板消息id
+        json.put("url", "");
+        json.put("topcolor", "");
+        json.put("data", param);// 发送的消息
+        return json.toJSONString();
     }
 }

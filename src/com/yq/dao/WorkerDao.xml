@@ -282,4 +282,32 @@
         on o.service_id = c.id
         HAVING c.id = #{id}
     </select>
+
+	<!-- 查询所有工匠信息 -->
+	<select id="selWorker" resultType="com.yq.entity.Worker">
+		select
+		id as id,
+		name as name,
+		age as age,
+		sex as sex,
+		longitude as longitude,
+		latitude as latitude,
+		open_id as openId,
+		tel_phone as telPhone,
+		credentials as credentials,
+		credentials_img as credentialsImg,
+		worker_id as workerId,
+		worker_img as workerImg,
+		worker_intro as workerIntro,
+		is_vip as isVip,
+		add_time as addTime,
+		type as type,
+		update_time as updateTime,
+		service_count as serviceCount,
+		password as password,
+		service_area as serviceArea,
+		service_detail as serviceDetail,
+		worder_album as worderAlbum
+		from jdb_worker
+	</select>
 </mapper>

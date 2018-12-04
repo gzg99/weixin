@@ -49,4 +49,9 @@ public interface WorkerDao {
     String workerSignIn(Worker worker);
 
 	Worker selWorkerByGoods(String id);
+
+	/**
+	 * 查询所有的工匠
+	 * */
+	List<Worker> selWorker();
 }
