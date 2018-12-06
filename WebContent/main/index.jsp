@@ -158,7 +158,8 @@
 				<ul>
 					<li><a _href="sellerAreaList.html?currentPage=1" href="javascript:;">商圈管理</a></li>
 					<li><a _href="sellerList.html" href="javascript:;">商家管理</a></li>
-					
+					<li><a _href="selStreetSellerList.html" href="javascript:;">临街店铺</a></li>
+
 				</ul>
 			</dd>
 		</dl>

@@ -1,9 +1,9 @@
 package com.yq.dao;
 
+import com.yq.entity.Seller;
+
 import java.util.List;
 import java.util.Map;
-
-import com.yq.entity.Seller;
 
 public interface SellerDao {
 
@@ -22,4 +22,8 @@ public interface SellerDao {
 	int deleteByPrimaryKey(Long id);
 	
 	int updateByPrimaryKeySelective(Seller seller);
+
+    int selAllCount(Map<String, Object> map);
+
+    List<Seller> selStreetSellerList(Map<String, Object> map);
 }

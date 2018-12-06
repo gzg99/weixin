@@ -53,21 +53,21 @@
 
 </head>
 <body>
-	<!-- <nav class="breadcrumb">
+	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
-		搜索热词 <span class="c-gray en">&gt;</span>  <a
+		临街店铺 <span class="c-gray en">&gt;</span>  <a
 			class="btn btn-success radius r mr-20"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
 			class="Hui-iconfont">&#xe68f;</i></a>
-	</nav> -->
+	</nav>
 	<br>
 	<br>
 	<div class="pd-20" style="width: 80%">
 		<form action="" method="post" id="addseller" enctype="multipart/form-data">
 			<div class="row cl">
 				<input type="hidden"  name="id" value="${seller.id}" >
-				<input type="hidden"  name="status" value="0" >
+				<input type="hidden"  name="status" value="1" >
 				<label class="form-label col-2">用户名：</label>
 				<div class="formControls col-10">
 					<input type="text" id="userName" name="userName" placeholder="请填写名称" value="${seller.userName}"
@@ -77,23 +77,10 @@
 				<label class="form-label col-2">类别：</label>
 				<div class="formControls col-10">
 					<select id="type" name="type" class="input-text" style="width: 80%" onchange="sellerAreaList()">
-<%-- 						<c:if test="${type == 1 }"> --%>
-							<option value="1" ${type == 1 ? 'selected="selected"' : ''}>建材</option>
-							<option value="2" ${type == 2 ? 'selected="selected"' : ''}>家居</option>
-							<option value="3" ${type == 3 ? 'selected="selected"' : ''}>花卉</option>
-<%-- 						</c:if> --%>
-						<%-- <c:if test="${type == 2 }">
-							<option value="1">建材</option>
-							<option value="2" selected="selected">家居</option>
-							<option value="3">花卉</option>
-						</c:if>
-						<c:if test="${type == 3 }">
-							<option value="1">建材</option>
-							<option value="2">家居</option>
-							<option value="3" selected="selected">花卉</option>
-						</c:if> --%>
-						
-					</select> 
+						<option value="1" ${type == 1 ? 'selected="selected"' : ''}>建材</option>
+						<option value="2" ${type == 2 ? 'selected="selected"' : ''}>家居</option>
+						<option value="3" ${type == 3 ? 'selected="selected"' : ''}>花卉</option>
+					</select>
 				</div>
 				
 				<label class="form-label col-2" style="margin-top:20px;">商家昵称：</label>
@@ -111,11 +98,6 @@
 				<div class="formControls col-10" style="margin-top:20px;">
 					<textarea name="sellerDetail" id="sellerDetail" style="width: 80%;height: 100px;">${seller.sellerDetail}</textarea>
 				</div>
-				<label class="form-label col-2" style="margin-top:20px;">所属商圈：</label>
-				<div class="formControls col-10" style="margin-top:20px;">
-					<input type="hidden" id="sellerAreaId" name="sellerAreaId">
-					<select id="sellerAreaId1" class="input-text"  style="width: 80%" onchange="getSellerArea()"></select>
-				</div>
 				<div class="row cl">
 				<label class="form-label col-2">商家图片：</label>
 				<div class="formControls col-10">
@@ -128,14 +110,8 @@
 				<div class="formControls col-10" id="img2">
 					<img alt="" src="${seller.sellerImg}" style="width:100px;height:100px">
 				</div>
-				<input type="hidden" id="sellerAreaName" value="${sellerAreaName }">
-			</div><br>
-				</div>
 			</div>
-			<br>
-			<br>
 			<div class="col-10 col-offset-2" style="margin-top:20px;">
-
 				<button onClick="add()" id="butt" class="btn btn-primary radius"
 					type="button">
 					<i class="Hui-iconfont">&#xe632;</i> 提交
@@ -149,30 +125,7 @@
 	<br>
 	
 	<script type="text/javascript">
-		$(function(){
-			var type=$("#type").val();
-			var sellerAreaName = $("#sellerAreaName").val();
-			$.ajax({
-				url:"getAllSellerArea.html",
-				type:"POST",
-				data:{"type":type},
-				dataType:'json',
-				success:function(result){
-					$("#sellerAreaId").val(result[0].id);
-					var str = "";
-					for(var i = 0;i<result.length;i++){
-						if(result[i].sellerArea == sellerAreaName){
-							$("#sellerAreaId").val(result[i].id);
-							str += "<option value='"+result[i].id+"' selected='selected'>"+result[i].sellerArea+"</option>";
-						} else {
-							str += "<option value='"+result[i].id+"'>"+result[i].sellerArea+"</option>";
-						}
-					}
-					$("#sellerAreaId1").html(str);
-				}
-			});
-		});
-	
+
 		function sellerAreaList() {
 			var type=$("#type").val();
 			if(type == "" || type == undefined) {
@@ -215,11 +168,9 @@
 	    		processData : false,
 				success : function(rs) {
 					if (rs == 1) {
-
 						alert("操作成功！");
-						window.location.href = 'sellerList.html'
+						window.location.href = 'selStreetSellerList.html'
 					} else {
-
 						alert("操作失败！");
 					}
 				},

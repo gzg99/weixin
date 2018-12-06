@@ -21,6 +21,8 @@ public class Seller {
 	private String addTime;
 	
 	private String sellerArea;
+
+	private String status;
 	
 
 	public Long getId() {
@@ -102,6 +104,12 @@ public class Seller {
 	public void setSellerArea(String sellerArea) {
 		this.sellerArea = sellerArea;
 	}
-	
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

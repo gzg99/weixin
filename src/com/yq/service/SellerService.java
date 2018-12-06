@@ -1,14 +1,13 @@
 package com.yq.service;
 
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.yq.dao.SellerDao;
 import com.yq.entity.Seller;
 import com.yq.util.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class SellerService {
@@ -42,7 +41,7 @@ public class SellerService {
 		map.put("pageSize",10);
 		
 		int total = sellerDao.total(map);
-		
+        map.put("status", "0");
 		List<Seller> listSeller = sellerDao.getSellerByList(map);
 		map.clear();
 		map.put("listSeller", listSeller);
@@ -76,4 +75,23 @@ public class SellerService {
 	public int updateSeller(Seller seller) {
 		return sellerDao.updateByPrimaryKeySelective(seller);
 	}
+
+	/**
+	 * @Description:
+	 * @Param: 
+	 * @return: 
+	 * @Author: Mr.Jiang
+	 * @Date: 2018/12/6 14:47
+	 */ 
+    public Map<String, Object> selStreetSellerList(Map<String, Object> map) {
+        map.put("currentNum", PageUtil.currentNum(Integer.parseInt(map.get("currentPage").toString()), 10));
+        map.put("pageSize",10);
+        int total = sellerDao.selAllCount(map);
+        map.put("status", "1");
+        List<Seller> listSeller = sellerDao.selStreetSellerList(map);
+        map.clear();
+        map.put("listSeller", listSeller);
+        map.put("total", total);
+        return map;
+    }
 }

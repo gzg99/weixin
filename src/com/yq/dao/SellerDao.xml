@@ -1,116 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yq.dao.SellerDao">
-	<select id="getSellerListBySellerAreaId" resultType="com.yq.entity.Seller">
-		select 
-			id as id, 
-			user_name as userName,
-			password as password,
-			seller_area_id as sellerAreaId, 
-			seller_name as sellerName, 
-			seller_img as sellerImg, 
-			address as address, 
-			seller_detail as sellerDetail, 
-			add_time as addTime 
-		from jdb_seller 
-		where seller_area_id=#{sellerAreaId,jdbcType=BIGINT}
-	</select>
-	
-	<select id="getSellerByCondition" parameterType="java.util.HashMap" resultType="com.yq.entity.Seller">
-		select 
-			id as id, 
-			user_name as userName,
-			password as password,
-			seller_area_id as sellerAreaId, 
-			seller_name as sellerName, 
-			seller_img as sellerImg, 
-			address as address, 
-			seller_detail as sellerDetail, 
-			add_time as addTime 
-		from jdb_seller 
-		where user_name=#{username,jdbcType=VARCHAR} 
-		and password=#{password,jdbcType=VARCHAR} 
-	</select>
-	
-	
-	<select id="getSellerByList" parameterType="java.util.HashMap" resultType="com.yq.entity.Seller">
-		select 
-			s.id as id, 
-			s.user_name as userName,
-			s.password as password,
-			s.seller_name as sellerName, 
-			s.seller_area_id as sellerAreaId, 
-			s.seller_img as sellerImg, 
-			s.address as address, 
-			s.seller_detail as sellerDetail, 
-			a.seller_area as sellerArea,
-			s.add_time as addTime 
-		from jdb_seller s left join jdb_seller_area a on s.seller_area_id= a.id
-		limit #{currentNum}, #{pageSize}
-	</select>
-	<select id="getSeller" parameterType="String" resultType="com.yq.entity.Seller">
-		select 
-			id as id, 
-			user_name as userName,
-			password as password,
-			seller_area_id as sellerAreaId, 
-			seller_name as sellerName, 
-			seller_img as sellerImg, 
-			address as address, 
-			seller_detail as sellerDetail, 
-			add_time as addTime 
-		from jdb_seller 
-		where id = #{id}
-	</select>
-	
-	<select id="total" parameterType="java.util.HashMap" resultType="java.lang.Integer">
-		select 
-			count(1)
-		from jdb_seller 
-		
-	</select>
-	
-	<insert id="insertSeller"  parameterType="com.yq.entity.Seller" >
-		insert into jdb_seller
-		    (seller_area_id,address,user_name,password,seller_name,seller_img,seller_detail,add_time)
-		values 
-		    (#{sellerAreaId}, #{address},#{userName}, #{password},#{sellerName} ,#{sellerImg},#{sellerDetail},now())
-	</insert>
-	
-	
-	<update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.Seller" >
-    update jdb_seller
-    <set >
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sellerAreaId != null" >
-        seller_area_id = #{sellerAreaId,jdbcType=BIGINT},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="sellerName != null" >
-        seller_name = #{sellerName,jdbcType=VARCHAR},
-      </if>
-      <if test="sellerImg != null" >
-        seller_img = #{sellerImg,jdbcType=VARCHAR},
-      </if>
-      <if test="addTime != null" >
-        add_time = #{addTime,jdbcType=VARCHAR},
-      </if>
-      <if test="sellerDetail != null" >
-        seller_detail = #{sellerDetail,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  
-   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from jdb_seller
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+    <select id="getSellerListBySellerAreaId" resultType="com.yq.entity.Seller">
+        select
+            id             as id,
+            user_name      as userName,
+            password       as password,
+            seller_area_id as sellerAreaId,
+            seller_name    as sellerName,
+            seller_img     as sellerImg,
+            address        as address,
+            seller_detail  as sellerDetail,
+            add_time       as addTime,
+            status           as status
+        from jdb_seller
+        where seller_area_id = #{sellerAreaId,jdbcType=BIGINT}
+    </select>
+
+    <select id="getSellerByCondition" parameterType="java.util.HashMap" resultType="com.yq.entity.Seller">
+        select
+            id             as id,
+            user_name      as userName,
+            password       as password,
+            seller_area_id as sellerAreaId,
+            seller_name    as sellerName,
+            seller_img     as sellerImg,
+            address        as address,
+            seller_detail  as sellerDetail,
+            add_time       as addTime,
+            status           as status
+        from jdb_seller
+        where user_name = #{username,jdbcType=VARCHAR}
+          and password = #{password,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="getSellerByList" parameterType="java.util.HashMap" resultType="com.yq.entity.Seller">
+        select
+            s.id             as id,
+            s.user_name      as userName,
+            s.password       as password,
+            s.seller_name    as sellerName,
+            s.seller_area_id as sellerAreaId,
+            s.seller_img     as sellerImg,
+            s.address        as address,
+            s.seller_detail  as sellerDetail,
+            a.seller_area    as sellerArea,
+            s.add_time       as addTime,
+            s.status           as status
+        from jdb_seller s
+         left join jdb_seller_area a on s.seller_area_id = a.id
+         where s.status = #{status,jdbcType=VARCHAR}
+         limit
+         #{currentNum},
+         #{pageSize}
+    </select>
+    <select id="getSeller" parameterType="String" resultType="com.yq.entity.Seller">
+        select
+            id             as id,
+            user_name      as userName,
+            password       as password,
+            seller_area_id as sellerAreaId,
+            seller_name    as sellerName,
+            seller_img     as sellerImg,
+            address        as address,
+            seller_detail  as sellerDetail,
+            add_time       as addTime,
+            status           as status
+        from jdb_seller
+        where id = #{id}
+    </select>
+
+    <select id="total" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select
+            count(1)
+        from jdb_seller s
+         left join jdb_seller_area a
+           on s.seller_area_id = a.id
+        where s.status = #{status,jdbcType=VARCHAR}
+
+    </select>
+
+    <insert id="insertSeller" parameterType="com.yq.entity.Seller">
+        insert into jdb_seller
+        (seller_area_id, address, user_name, password, seller_name, seller_img, seller_detail, add_time, status)
+        values
+        (#{sellerAreaId}, #{address}, #{userName}, #{password}, #{sellerName}, #{sellerImg}, #{sellerDetail}, now(),
+         #{status})
+    </insert>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.yq.entity.Seller">
+        update jdb_seller
+        <set>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerAreaId != null">
+                seller_area_id = #{sellerAreaId,jdbcType=BIGINT},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerName != null">
+                seller_name = #{sellerName,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerImg != null">
+                seller_img = #{sellerImg,jdbcType=VARCHAR},
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerDetail != null">
+                seller_detail = #{sellerDetail,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from jdb_seller
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!-- 邻家店铺分页总条数查询 -->
+    <select id="selAllCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select count(1)
+        from jdb_seller
+        where status = #{status}
+    </select>
+
+    <!-- 邻家店铺分页查询数据 -->
+    <select id="selStreetSellerList" parameterType="java.util.HashMap" resultType="com.yq.entity.Seller">
+        select
+            id             as id,
+            user_name      as userName,
+            password       as password,
+            seller_area_id as sellerAreaId,
+            seller_name    as sellerName,
+            seller_img     as sellerImg,
+            address        as address,
+            seller_detail  as sellerDetail,
+            add_time       as addTime,
+            status           as status
+        from jdb_seller
+        where status = #{status,jdbcType=VARCHAR}
+    </select>
 </mapper>

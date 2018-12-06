@@ -1,19 +1,13 @@
 package com.yq.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.yq.entity.Seller;
+import com.yq.entity.SellerArea;
+import com.yq.service.GoodsBuildService;
+import com.yq.service.SellerAreaService;
+import com.yq.service.SellerService;
+import com.yq.util.MD5Util;
+import com.yq.util.PageUtil;
+import com.yq.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yq.entity.Seller;
-import com.yq.entity.SellerArea;
-import com.yq.service.GoodsBuildService;
-import com.yq.service.SellerAreaService;
-import com.yq.service.SellerService;
-import com.yq.util.MD5Util;
-import com.yq.util.PageUtil;
-import com.yq.util.StringUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -97,7 +91,7 @@ public class SellerAreaCtrl extends StringUtil {
 			view.addObject("sellerAreaName", sellerArea.getSellerArea());
 			view.addObject("type", sellerArea.getType());
 		}
-		
+
 		return view;
 	}
 	
@@ -117,8 +111,7 @@ public class SellerAreaCtrl extends StringUtil {
 		view.addObject("currentPage", currentPage);
 		return view;
 	}
-	
-	
+
 	/**
 	 * 删除商家
 	 * @param seller
@@ -141,14 +134,11 @@ public class SellerAreaCtrl extends StringUtil {
 	@RequestMapping(value = "/main/insertSeller.html", method = RequestMethod.POST)
 	public @ResponseBody String insert(Seller seller,
 			HttpServletRequest reques) {
-		
-		
 		try {
 			seller.setAddress(new String (seller.getAddress().getBytes("iso8859-1"),"UTF-8"));
 			seller.setSellerName(new String (seller.getSellerName().getBytes("iso8859-1"),"UTF-8"));
 			seller.setSellerDetail(new String (seller.getSellerDetail().getBytes("iso8859-1"),"UTF-8"));
 			seller.setUserName(new String (seller.getUserName().getBytes("iso8859-1"),"UTF-8"));
-			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -270,7 +260,41 @@ public class SellerAreaCtrl extends StringUtil {
 		}
 	}
 
-	
+	/**
+	 * @Description: 邻家店铺列表页面
+	 * @Param:
+	 * @return:
+	 * @Author: Mr.Jiang
+	 * @Date: 2018/12/6 14:37
+	 */
+	@RequestMapping(value = "/main/selStreetSellerList.html")
+	public ModelAndView selStreetSellerList(@RequestParam(defaultValue = "1") Integer currentPage ) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("currentPage", currentPage);
+
+		Map<String,Object> mapList = sellerService.selStreetSellerList(map);
+		ModelAndView view = new ModelAndView("main/seller/listStreetSeller");
+		view.addObject("mapList", mapList);
+		view.addObject("currentPage", currentPage);
+		return view;
+	}
+
+	/**
+	 * @Description: 进入临街店铺添加编辑页面
+	 * @Param:
+	 * @return: 
+	 * @Author: Mr.Jiang
+	 * @Date: 2018/12/6 15:18
+	 */
+	@RequestMapping(value = "/main/toAddStreetSeller.html")
+	public ModelAndView toAddStreetSeller(String id) {
+		ModelAndView view = new ModelAndView("main/seller/addStreetSeller");
+		if(StringUtils.isNotBlank(id)){
+			Seller seller = sellerService.getSeller(id);
+			view.addObject("seller",seller);
+		}
+		return view;
+	}
 	
 	
 }
