@@ -52,7 +52,9 @@ public class SellerAreaCtrl extends StringUtil {
 	public ModelAndView getAllSellerAreaList(Integer type) {
 		ModelAndView mv = new ModelAndView();
 		List<SellerArea> list = sellerAreaService.getAllSellerArea(type);
-		mv.addObject("list", list);
+        List<Seller> sellers = sellerService.selStreetSellers();
+        mv.addObject("list", list); //商圈数据
+        mv.addObject("sellers", sellers); //临街店铺数据
 		mv.setViewName("page/jjsy");
 		return mv;
 	}
@@ -295,6 +297,6 @@ public class SellerAreaCtrl extends StringUtil {
 		}
 		return view;
 	}
-	
-	
+
+
 }

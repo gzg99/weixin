@@ -39,6 +39,19 @@
 			</li>
 		</c:forEach>
 	</ul>
+	<ul class="sq_list">
+		<c:forEach items="${sellers}" var="streetSeller" varStatus="seller">
+			<li>
+				<a href="getGoodsBuildListBySellerId.html?sellerId=${streetSeller.id }">
+					<img src="${streetSeller.sellerImg }" alt="" />
+					<div class="sq_list_bt">
+						<h1>${streetSeller.sellerName }</h1>
+						<p>${streetSeller.sellerDetail }</p>
+					</div>
+				</a>
+			</li>
+		</c:forEach>
+	</ul>
 	<div class="clear"></div>
 	<jsp:include page="footer4.jsp"></jsp:include>
 	

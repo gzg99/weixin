@@ -26,4 +26,6 @@ public interface SellerDao {
     int selAllCount(Map<String, Object> map);
 
     List<Seller> selStreetSellerList(Map<String, Object> map);
+
+	List<Seller> selStreetSellers(String status);
 }

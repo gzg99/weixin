@@ -152,5 +152,25 @@
             status           as status
         from jdb_seller
         where status = #{status,jdbcType=VARCHAR}
+        limit
+        #{currentNum},
+        #{pageSize}
+    </select>
+
+    <!-- 查询和商圈并列展示的临街店铺 -->
+    <select id="selStreetSellers" parameterType="java.lang.String" resultType="com.yq.entity.Seller">
+        select
+            id             as id,
+            user_name      as userName,
+            password       as password,
+            seller_area_id as sellerAreaId,
+            seller_name    as sellerName,
+            seller_img     as sellerImg,
+            address        as address,
+            seller_detail  as sellerDetail,
+            add_time       as addTime,
+            status           as status
+        from jdb_seller
+        where status = #{status,jdbcType=VARCHAR}
     </select>
 </mapper>

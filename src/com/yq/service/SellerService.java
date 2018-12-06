@@ -94,4 +94,17 @@ public class SellerService {
         map.put("total", total);
         return map;
     }
+
+    /**
+     * @Description: 查询和商圈并列展示的临街店铺
+     * @Param:
+     * @return:
+     * @Author: Mr.Jiang
+     * @Date: 2018/12/6 16:36
+     */
+    public List<Seller> selStreetSellers() {
+    	String status = "1";// 临街店铺数据状态
+		List<Seller> sellers = sellerDao.selStreetSellers(status);
+		return sellers;
+    }
 }
