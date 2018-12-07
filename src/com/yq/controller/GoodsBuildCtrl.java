@@ -1,22 +1,5 @@
 package com.yq.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.yq.entity.CategoryEnter;
 import com.yq.entity.GoodsBuild;
 import com.yq.entity.GoodsBuildSearchVo;
@@ -24,6 +7,17 @@ import com.yq.service.CategoryEnterService;
 import com.yq.service.GoodsBuildService;
 import com.yq.service.evaluate.EvaluateService;
 import com.yq.util.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 /**
@@ -77,7 +71,7 @@ public class GoodsBuildCtrl {
 	@ResponseBody
 	@RequestMapping(value = "/main/goodsBuildAdd.html")
 	public String goodsBuildAdd(String goodsName,String goodsSpe, String goodsImg, 
-			@RequestParam(defaultValue="0")float goodsPrice,
+			@RequestParam(defaultValue="0")float goodsPrice, @RequestParam(defaultValue="0")float goodsOldPrice,
 			String goodsDetail, String firstCategory, String secondCategory, 
 			@RequestParam(defaultValue="0")Long goodsNum,
 			String goodsBrand, String goodsMaterial, String goodsColor, HttpSession session) {
@@ -86,6 +80,7 @@ public class GoodsBuildCtrl {
 		goods.setGoodsSpe(goodsSpe);
 		goods.setGoodsImg(goodsImg);
 		goods.setGoodsPrice(goodsPrice);
+		goods.setGoodsOldPrice(goodsOldPrice);
 		goods.setGoodsDetail(goodsDetail);
 		goods.setFirstCategory(firstCategory);
 		goods.setSecondCategory(secondCategory);

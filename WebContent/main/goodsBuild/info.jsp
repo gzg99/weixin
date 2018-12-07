@@ -155,6 +155,13 @@
 				</div>
 			</div><br>
 			<div class="row cl">
+				<label class="form-label col-2">价格：</label>
+				<div class="formControls col-10">
+					<input type="text" id="goodsOldPrice"
+						   placeholder="请填写价格" value="${goods.goodsOldPrice }" class="input-text" style="width: 80%">
+				</div>
+			</div><br>
+			<div class="row cl">
 				<label class="form-label col-2">详情：</label>
 				<div class="formControls col-10">
 					<textarea name="content" id="goodsDetail" style="width: 80%;height: 260px;">${list.goods_detail }</textarea>
@@ -180,6 +187,7 @@
 		goods.goodsSpe = $('#goodsSpe').val();
 		goods.goodsImg = $('#filepath').val();
 		goods.goodsPrice = $('#goodsPrice').val();
+		goods.goodsOldPrice = $('#goodsOldPrice').val();
 		goods.goodsDetail = $('#goodsDetail').val();
 		goods.firstCategory = $('#firstCategory').val();
 		goods.secondCategory = $('#secondCategory').val();

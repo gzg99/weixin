@@ -8,6 +8,7 @@
     <result column="goods_img" property="goodsImg" jdbcType="VARCHAR" />
     <result column="goods_spe" property="goodsSpe" jdbcType="VARCHAR" />
     <result column="goods_price" property="goodsPrice" jdbcType="REAL" />
+    <result column="goods_old_price" property="goodsOldPrice" jdbcType="REAL" />
     <result column="goods_brand" property="goodsBrand" jdbcType="VARCHAR" />
     <result column="goods_material" property="goodsMaterial" jdbcType="VARCHAR" />
     <result column="goods_color" property="goodsColor" jdbcType="VARCHAR" />
@@ -23,7 +24,7 @@
     <result column="goods_detail" property="goodsDetail" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, seller_id, goods_name, goods_img, goods_spe, goods_price, goods_brand, goods_material, 
+    id, seller_id, goods_name, goods_img, goods_spe, goods_price, goods_old_price, goods_brand, goods_material,
     goods_color, goods_num, goods_sales, add_time, ord, type, first_category, second_category
   </sql>
   <sql id="Blob_Column_List" >
@@ -43,13 +44,13 @@
   </delete>
   <insert id="insert" parameterType="com.yq.entity.GoodsBuild" >
     insert into jdb_goods_build (id, seller_id, goods_name, 
-      goods_img, goods_spe, goods_price, 
-      goods_brand, goods_material, goods_color, 
+      goods_img, goods_spe, goods_price, goods_old_price,
+      goods_brand, goods_material, goods_color,
       goods_num, goods_sales, add_time, ord, 
       type, first_category, second_category, 
       goods_detail)
     values (#{id,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, 
-      #{goodsImg,jdbcType=VARCHAR}, #{goodsSpe,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=REAL}, 
+      #{goodsImg,jdbcType=VARCHAR}, #{goodsSpe,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=REAL}, #{goodsOldPrice,jdbcType=REAL},
       #{goodsBrand,jdbcType=VARCHAR}, #{goodsMaterial,jdbcType=VARCHAR}, #{goodsColor,jdbcType=VARCHAR}, 
       #{goodsNum,jdbcType=BIGINT}, #{goodsSales,jdbcType=BIGINT}, #{addTime,jdbcType=VARCHAR}, 
       #{ord,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{firstCategory,jdbcType=VARCHAR}, 
@@ -75,6 +76,9 @@
       </if>
       <if test="goodsPrice != null" >
         goods_price,
+      </if>
+      <if test="goodsOldPrice != null" >
+          goods_old_price,
       </if>
       <if test="goodsBrand != null" >
         goods_brand,
@@ -129,6 +133,9 @@
       <if test="goodsPrice != null" >
         #{goodsPrice,jdbcType=REAL},
       </if>
+      <if test="goodsOldPrice != null" >
+          #{goodsOldPrice,jdbcType=REAL},
+      </if>
       <if test="goodsBrand != null" >
         #{goodsBrand,jdbcType=VARCHAR},
       </if>
@@ -182,6 +189,9 @@
       <if test="goodsPrice != null" >
         goods_price = #{goodsPrice,jdbcType=REAL},
       </if>
+      <if test="goodsOldPrice != null" >
+          goods_old_price = #{goodsOldPrice,jdbcType=REAL},
+      </if>
       <if test="goodsBrand != null" >
         goods_brand = #{goodsBrand,jdbcType=VARCHAR},
       </if>
@@ -225,6 +235,7 @@
       goods_img = #{goodsImg,jdbcType=VARCHAR},
       goods_spe = #{goodsSpe,jdbcType=VARCHAR},
       goods_price = #{goodsPrice,jdbcType=REAL},
+      goods_old_price = #{goodsOldPrice,jdbcType=REAL},
       goods_brand = #{goodsBrand,jdbcType=VARCHAR},
       goods_material = #{goodsMaterial,jdbcType=VARCHAR},
       goods_color = #{goodsColor,jdbcType=VARCHAR},
@@ -245,6 +256,7 @@
       goods_img = #{goodsImg,jdbcType=VARCHAR},
       goods_spe = #{goodsSpe,jdbcType=VARCHAR},
       goods_price = #{goodsPrice,jdbcType=REAL},
+      goods_old_price = #{goodsOldPrice,jdbcType=REAL},
       goods_brand = #{goodsBrand,jdbcType=VARCHAR},
       goods_material = #{goodsMaterial,jdbcType=VARCHAR},
       goods_color = #{goodsColor,jdbcType=VARCHAR},
@@ -262,7 +274,7 @@
   	resultType="com.yq.entity.GoodsBuild">
 	  	select 
 	    	    id as id, seller_id as sellerId, goods_name as goodsName, goods_img as goodsImg, 
-	    	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_brand as goodsBrand, 
+	    	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_old_price as goodsOldPrice, goods_brand as goodsBrand,
 	    	    goods_material as goodsMaterial, goods_color as goodsColor, goods_num as goodsNum, 
 	    	    goods_sales as goodsSales, add_time as addTime, ord as ord, type as type, 
 	    	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodDetail 
@@ -333,7 +345,7 @@
   <select id="selectById" parameterType="java.lang.Long" resultType="com.yq.entity.GoodsBuild">
 	select 
    	    id as id, seller_id as sellerId, goods_name as goodsName, goods_img as goodsImg, 
-   	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_brand as goodsBrand, 
+   	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_old_price as goodsOldPrice, goods_brand as goodsBrand,
    	    goods_material as goodsMaterial, goods_color as goodsColor, goods_num as goodsNum, 
    	    goods_sales as goodsSales, add_time as addTime, ord as ord, type as type, 
    	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodsDetail 
@@ -345,7 +357,7 @@
   <select id="getGoodsBuildListBySellerId" parameterType="java.util.Map" resultType="com.yq.entity.GoodsBuild">
 	select 
    	    id as id, seller_id as sellerId, goods_name as goodsName, goods_img as goodsImg, 
-   	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_brand as goodsBrand, 
+   	    goods_spe as goodsSpe, goods_price as goodsPrice, goods_old_price as goodsOldPrice, goods_brand as goodsBrand,
    	    goods_material as goodsMaterial, goods_color as goodsColor, goods_num as goodsNum, 
    	    goods_sales as goodsSales, add_time as addTime, ord as ord, type as type, 
    	    first_category as firstCategory, second_category as secondCategory, goods_detail as goodDetail 

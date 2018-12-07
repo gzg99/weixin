@@ -13,6 +13,8 @@ public class GoodsBuild {
 
     private Float goodsPrice;
 
+    private Float goodsOldPrice;
+
     private String goodsBrand;
 
     private String goodsMaterial;
@@ -81,6 +83,14 @@ public class GoodsBuild {
 
     public void setGoodsPrice(Float goodsPrice) {
         this.goodsPrice = goodsPrice;
+    }
+
+    public Float getGoodsOldPrice() {
+        return goodsOldPrice;
+    }
+
+    public void setGoodsOldPrice(Float goodsOldPrice) {
+        this.goodsOldPrice = goodsOldPrice;
     }
 
     public String getGoodsBrand() {

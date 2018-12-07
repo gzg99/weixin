@@ -97,11 +97,12 @@
 						<th width="30px">ID</th>
 						<th width="15%">名称</th>
 						<th width="15%">缩略图</th>
-						<th width="10%">价格</th>
+						<th width="5%">现价</th>
+						<th width="5%">价格</th>
 						<th width="15%">库存</th>
-						<th width="15%">总销量</th>
+						<th width="10%">总销量</th>
 						<th width="15%">上架日期</th>
-						<th width="15%">操作</th>
+						<th width="10%">操作</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -112,6 +113,7 @@
 							<td>${list.goodsName}</td>
 							<td><img alt="" src="${list.goodsImg}" width="50" height="50"> </td>
 							<td>${list.goodsPrice}</td>
+							<td>${list.goodsOldPrice}</td>
 							<td>${list.goodsNum}</td>
 							<td>${list.goodsSales}</td>
 							<td>${list.addTime}</td>

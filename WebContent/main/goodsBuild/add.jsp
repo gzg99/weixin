@@ -139,10 +139,18 @@
 			</div><br>
 			
 			<div class="row cl">
-				<label class="form-label col-2">价格：</label>
+				<label class="form-label col-2">现价：</label>
 				<div class="formControls col-10">
 					<input type="text" id="goodsPrice"
 						placeholder="请填写价格" value="" class="input-text" style="width: 80%">
+				</div>
+			</div><br>
+
+			<div class="row cl">
+				<label class="form-label col-2">价格：</label>
+				<div class="formControls col-10">
+					<input type="text" id="goodsOldPrice"
+						   placeholder="请填写价格" value="" class="input-text" style="width: 80%">
 				</div>
 			</div><br>
 			<div class="row cl">
@@ -169,6 +177,7 @@
 		var goodsSpe = $('#goodsSpe').val();
 		var goodsImg = $('#filepath').val();
 		var goodsPrice = $('#goodsPrice').val();
+		var goodsOldPrice = $('#goodsOldPrice').val();
 		var goodsDetail = $('#goodsDetail').val();
 		var firstCategory = $('#firstCategory').val();
 		var secondCategory = $('#secondCategory').val();
@@ -196,7 +205,7 @@
 		$.ajax({
 			url:'goodsBuildAdd.html',
 			type:'POST',
-		    data: 'goodsName='+goodsName+'&goodsSpe='+goodsSpe+'&goodsImg='+goodsImg+'&goodsPrice='+goodsPrice
+		    data: 'goodsName='+goodsName+'&goodsSpe='+goodsSpe+'&goodsImg='+goodsImg+'&goodsPrice='+goodsPrice+'&goodsOldPrice='+goodsOldPrice
 			+'&goodsDetail='+goodsDetail+'&firstCategory='+firstCategory+'&secondCategory='+secondCategory
 			+'&goodsNum='+goodsNum+'&goodsBrand='+goodsBrand+'&goodsMaterial='+goodsMaterial
 			+'&goodsColor='+goodsColor, 
