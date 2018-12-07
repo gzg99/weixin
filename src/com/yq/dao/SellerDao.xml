@@ -12,7 +12,8 @@
             address        as address,
             seller_detail  as sellerDetail,
             add_time       as addTime,
-            status           as status
+            status           as status,
+            seller_type           as sellerType
         from jdb_seller
         where seller_area_id = #{sellerAreaId,jdbcType=BIGINT}
     </select>
@@ -28,7 +29,8 @@
             address        as address,
             seller_detail  as sellerDetail,
             add_time       as addTime,
-            status           as status
+            status           as status,
+            seller_type           as sellerType
         from jdb_seller
         where user_name = #{username,jdbcType=VARCHAR}
           and password = #{password,jdbcType=VARCHAR}
@@ -47,7 +49,8 @@
             s.seller_detail  as sellerDetail,
             a.seller_area    as sellerArea,
             s.add_time       as addTime,
-            s.status           as status
+            s.status           as status,
+            s.seller_type           as sellerType
         from jdb_seller s
          left join jdb_seller_area a on s.seller_area_id = a.id
          where s.status = #{status,jdbcType=VARCHAR}
@@ -66,7 +69,8 @@
             address        as address,
             seller_detail  as sellerDetail,
             add_time       as addTime,
-            status           as status
+            status           as status,
+            seller_type           as sellerType
         from jdb_seller
         where id = #{id}
     </select>
@@ -83,10 +87,10 @@
 
     <insert id="insertSeller" parameterType="com.yq.entity.Seller">
         insert into jdb_seller
-        (seller_area_id, address, user_name, password, seller_name, seller_img, seller_detail, add_time, status)
+        (seller_area_id, address, user_name, password, seller_name, seller_img, seller_detail, add_time, status, seller_type)
         values
         (#{sellerAreaId}, #{address}, #{userName}, #{password}, #{sellerName}, #{sellerImg}, #{sellerDetail}, now(),
-         #{status})
+         #{status}, #{sellerType})
     </insert>
 
 
@@ -120,6 +124,9 @@
             <if test="status != null">
                 status = #{status,jdbcType=VARCHAR},
             </if>
+            <if test="sellerType != null">
+                seller_type = #{sellerType,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
@@ -149,7 +156,8 @@
             address        as address,
             seller_detail  as sellerDetail,
             add_time       as addTime,
-            status           as status
+            status           as status,
+            seller_type           as sellerType
         from jdb_seller
         where status = #{status,jdbcType=VARCHAR}
         limit
@@ -158,7 +166,7 @@
     </select>
 
     <!-- 查询和商圈并列展示的临街店铺 -->
-    <select id="selStreetSellers" parameterType="java.lang.String" resultType="com.yq.entity.Seller">
+    <select id="selStreetSellers" parameterType="com.yq.entity.Seller" resultType="com.yq.entity.Seller">
         select
             id             as id,
             user_name      as userName,
@@ -169,8 +177,10 @@
             address        as address,
             seller_detail  as sellerDetail,
             add_time       as addTime,
-            status           as status
+            status           as status,
+            seller_type           as sellerType
         from jdb_seller
         where status = #{status,jdbcType=VARCHAR}
+        and seller_type = #{sellerType,jdbcType=VARCHAR}
     </select>
 </mapper>

@@ -76,7 +76,7 @@
 							
 				<label class="form-label col-2">类别：</label>
 				<div class="formControls col-10">
-					<select id="type" name="type" class="input-text" style="width: 80%" onchange="sellerAreaList()">
+					<select id="type" name="sellerType" class="input-text" style="width: 80%" onchange="sellerAreaList()">
 <%-- 						<c:if test="${type == 1 }"> --%>
 							<option value="1" ${type == 1 ? 'selected="selected"' : ''}>建材</option>
 							<option value="2" ${type == 2 ? 'selected="selected"' : ''}>家居</option>

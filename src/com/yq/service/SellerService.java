@@ -102,9 +102,11 @@ public class SellerService {
      * @Author: Mr.Jiang
      * @Date: 2018/12/6 16:36
      */
-    public List<Seller> selStreetSellers() {
-    	String status = "1";// 临街店铺数据状态
-		List<Seller> sellers = sellerDao.selStreetSellers(status);
+    public List<Seller> selStreetSellers(Integer type) {
+		Seller seller = new Seller();
+		seller.setStatus("1");// 临街店铺数据状态
+		seller.setSellerType(String.valueOf(type));
+		List<Seller> sellers = sellerDao.selStreetSellers(seller);
 		return sellers;
     }
 }

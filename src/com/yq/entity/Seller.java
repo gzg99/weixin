@@ -23,6 +23,8 @@ public class Seller {
 	private String sellerArea;
 
 	private String status;
+
+	private String sellerType;
 	
 
 	public Long getId() {
@@ -111,5 +113,13 @@ public class Seller {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getSellerType() {
+		return sellerType;
+	}
+
+	public void setSellerType(String sellerType) {
+		this.sellerType = sellerType;
 	}
 }

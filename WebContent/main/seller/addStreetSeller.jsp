@@ -76,10 +76,10 @@
 							
 				<label class="form-label col-2">类别：</label>
 				<div class="formControls col-10">
-					<select id="type" name="type" class="input-text" style="width: 80%" onchange="sellerAreaList()">
-						<option value="1" ${type == 1 ? 'selected="selected"' : ''}>建材</option>
-						<option value="2" ${type == 2 ? 'selected="selected"' : ''}>家居</option>
-						<option value="3" ${type == 3 ? 'selected="selected"' : ''}>花卉</option>
+					<select id="type" name="sellerType" class="input-text" style="width: 80%" onchange="sellerAreaList()">
+						<option value="1" ${seller.sellerType == 1 ? 'selected="selected"' : ''}>建材</option>
+						<option value="2" ${seller.sellerType == 2 ? 'selected="selected"' : ''}>家居</option>
+						<option value="3" ${seller.sellerType == 3 ? 'selected="selected"' : ''}>花卉</option>
 					</select>
 				</div>
 				
