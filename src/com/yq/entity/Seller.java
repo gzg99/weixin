@@ -25,7 +25,11 @@ public class Seller {
 	private String status;
 
 	private String sellerType;
-	
+
+	private String longitude;
+
+	private String latitude;
+
 
 	public Long getId() {
 		return id;
@@ -121,5 +125,21 @@ public class Seller {
 
 	public void setSellerType(String sellerType) {
 		this.sellerType = sellerType;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 }

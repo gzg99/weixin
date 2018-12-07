@@ -48,6 +48,9 @@
 						<h1>${streetSeller.sellerName }</h1>
 						<p>${streetSeller.sellerDetail }</p>
 					</div>
+					<div class="sq_list_jl">
+						<a href="javascript:"></a><span class="sp" onclick="thisMap('${streetSeller.longitude}','${streetSeller.latitude}','${seller.index}'+'streetSellerAreas');" id="${seller.index}streetSellerAreas" ></span>
+					</div>
 				</a>
 			</li>
 		</c:forEach>
@@ -101,7 +104,7 @@
 	    }
 	    
 	    function thisMap(thislongitude,thislatitude ,ids) {
-	    	var p1 = [longitude, latitude];
+	    	var p1 = [12, 45];
 		    var p2 = [thislongitude, thislatitude];
 		    // 返回 p1 到 p2 间的地面距离，单位：米
 		    var dis = "";

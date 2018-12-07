@@ -13,7 +13,9 @@
             seller_detail  as sellerDetail,
             add_time       as addTime,
             status           as status,
-            seller_type           as sellerType
+            seller_type           as sellerType,
+            longitude           as longitude,
+            latitude           as latitude
         from jdb_seller
         where seller_area_id = #{sellerAreaId,jdbcType=BIGINT}
     </select>
@@ -30,7 +32,9 @@
             seller_detail  as sellerDetail,
             add_time       as addTime,
             status           as status,
-            seller_type           as sellerType
+            seller_type           as sellerType,
+            longitude           as longitude,
+            latitude           as latitude
         from jdb_seller
         where user_name = #{username,jdbcType=VARCHAR}
           and password = #{password,jdbcType=VARCHAR}
@@ -50,7 +54,9 @@
             a.seller_area    as sellerArea,
             s.add_time       as addTime,
             s.status           as status,
-            s.seller_type           as sellerType
+            s.seller_type           as sellerType,
+            s.longitude           as longitude,
+            s.latitude           as latitude
         from jdb_seller s
          left join jdb_seller_area a on s.seller_area_id = a.id
          where s.status = #{status,jdbcType=VARCHAR}
@@ -70,7 +76,9 @@
             seller_detail  as sellerDetail,
             add_time       as addTime,
             status           as status,
-            seller_type           as sellerType
+            seller_type           as sellerType,
+            longitude           as longitude,
+            latitude           as latitude
         from jdb_seller
         where id = #{id}
     </select>
@@ -87,10 +95,13 @@
 
     <insert id="insertSeller" parameterType="com.yq.entity.Seller">
         insert into jdb_seller
-        (seller_area_id, address, user_name, password, seller_name, seller_img, seller_detail, add_time, status, seller_type)
+        (seller_area_id, address, user_name, password, seller_name,
+         seller_img, seller_detail, add_time, status, seller_type,
+         longitude, latitude)
         values
-        (#{sellerAreaId}, #{address}, #{userName}, #{password}, #{sellerName}, #{sellerImg}, #{sellerDetail}, now(),
-         #{status}, #{sellerType})
+        (#{sellerAreaId}, #{address}, #{userName}, #{password}, #{sellerName},
+         #{sellerImg}, #{sellerDetail}, now(), #{status}, #{sellerType},
+         #{longitude}, #{latitude})
     </insert>
 
 
@@ -127,6 +138,12 @@
             <if test="sellerType != null">
                 seller_type = #{sellerType,jdbcType=VARCHAR},
             </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
@@ -157,7 +174,9 @@
             seller_detail  as sellerDetail,
             add_time       as addTime,
             status           as status,
-            seller_type           as sellerType
+            seller_type           as sellerType,
+            longitude           as longitude,
+            latitude           as latitude
         from jdb_seller
         where status = #{status,jdbcType=VARCHAR}
         limit
@@ -178,7 +197,9 @@
             seller_detail  as sellerDetail,
             add_time       as addTime,
             status           as status,
-            seller_type           as sellerType
+            seller_type           as sellerType,
+            longitude           as longitude,
+            latitude           as latitude
         from jdb_seller
         where status = #{status,jdbcType=VARCHAR}
         and seller_type = #{sellerType,jdbcType=VARCHAR}
