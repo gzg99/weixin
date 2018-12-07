@@ -20,7 +20,7 @@
 
 <body>
 	<div class="search"></div>
-	<div class="map" style="width: 100%;height: 3rem;"  id="container"></div>
+	<div class="map" style="width: 100%;height: 3rem;"  id="container"></div><br/><br/>
 	<div class="small_title">-家居商圈-</div>
 	<ul class="sq_list">
 		<c:forEach items="${list}" var="listSellerAread" varStatus="seller">
