@@ -44,7 +44,12 @@
 						<p>品牌：${goods.goodsBrand }</p>
 						<p>材料：${goods.goodsMaterial }</p>
 						<p>颜色：${goods.goodsColor }</p>
-						<p><span class="jg1 red">¥ ${goods.goodsPrice }</span><span class="jg2">¥ ${goods.goodsOldPrice }</span></p>
+						<p>
+							<span class="jg1 red">¥ ${goods.goodsPrice }</span>
+							<c:if test="${not empty  goods.goodsOldPrice }">
+								<span class="jg2">¥ ${goods.goodsOldPrice }</span>
+							</c:if>
+						</p>
 					</div>
 			 	</a>
 			</li>
