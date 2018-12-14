@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+	<link rel="stylesheet" href="css/inall/ajkmegbd.css">
     <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
 	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.8&key=9e1d9c358dabbf185022c2c8cddaba94"></script>
 	<style type="text/css">
@@ -44,7 +45,9 @@
 	</style>
 </head>
 <body style="padding-bottom:1.2rem;">
+<a href="javascript:;"><div class="li_gps"></div></a>
 <div class="title" style="border-bottom:1px solid rgba(204, 204, 204, 0.15);text-align:center;">
+
         <div class="title-left"><a href="index.html"><img src="images/back.png" alt=""></a></div>
         <div class="title-right"><a href="secList.html"><img src="images/sjsc-13.png" alt=""></a></div>
     </div>

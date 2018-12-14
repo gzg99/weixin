@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/search.css">
 	<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
 	<link rel="stylesheet" type="text/css" href="css/ajkbd.css">
+	<link rel="stylesheet" href="css/inall/ajkmegbd.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
 	<script type="text/javascript" src="js/showTip.js"></script>
@@ -27,7 +28,7 @@
 	}
 </style>
 <body id="wrap">
-	
+
        <div class="sjsc-title2">
         <a href="ajkDetail.html?id=${card.cardId}" class="sjsc-t2r">
         <img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
@@ -43,20 +44,20 @@
 			</div>
 		</div>
      <input type="hidden" id="cardName"  value="${card.cardName}"/>
-	   <div style="padding:20px">
+	   <div style="padding:20px" class="li_bdmeg">
 		   <h4>请填写绑定信息</h4>
 		   <div style="width:100%; margin-top:20px;">
 			   <p>持卡人手机：</p>
-			   <input type="text" id="userPhone" style="width:80%;border-bottom:1px orange solid; margin-left:30px;">
+			   <input type="text" id="userPhone" style="width:80%;border-bottom:1px orange solid; margin-left:88px;">
 		   </div>
-		   <div style="width:100%; margin-top:20px;">
+		   <div style="width:100%; margin-top:20px;" class="code">
 			   <p>填写验证码：</p>
-			   <input type="text" id="code" style="width:80%;border-bottom:1px orange solid; margin-left:30px;">
+			   <input type="text" id="code" style="width:80%;border-bottom:1px orange solid; margin-left:88px;">
 			   <a onclick="getSmsCheckCode();">获取验证码</a>
 		   </div>
 		   <div style="width:100%; margin-top:20px;">
 			   <p>绑&nbsp;定&nbsp;地&nbsp;址：</p>
-			   <input type="text" id="userAddr" style="width:80%;border-bottom:1px orange solid; margin-left:30px;">
+			   <input type="text" id="userAddr" style="width:80%;border-bottom:1px orange solid; margin-left:88px;">
 		   </div>
 	   </div>
     

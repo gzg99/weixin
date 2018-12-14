@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/search.css">
     <link rel="stylesheet" type="text/css" href="../css/shoujisc.css">
     <link rel="stylesheet" type="text/css" href="../css/ajkbd.css">
+    <link rel="stylesheet" href="../css/inall/ajkmegbd.css">
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/TouchSlide.1.1.js"></script>
     <script type="text/javascript" src="../js/showTip.js"></script>
@@ -42,7 +43,7 @@
     </div>
 </div>
 
-<div class="drdd-info2" id="zitidian-choose">
+<div class="drdd-info2 kjlx" id="zitidian-choose">
     <p>卡券类型</p>
     <select id="cardType">
         <option value="1">365 安居卡</option>
@@ -52,24 +53,24 @@
 
 <div class="drdd-info4">
     <p>涂层卡号：</p>
-    <input type="text" id="cardNum" style="width:80%;border:0px">
+    <input type="text" id="cardNum cardNum2" class="li_inputstyle li_inputstyle2">
     <div style="clear:both;"></div>
 </div>
 
 <div class="drdd-info4">
     <p>持卡人手机：</p>
-    <input type="text" id="userPhone" style="width:75%;border:0px">
+    <input type="text" id="userPhone userPhon2" class="li_inputstyle li_inputstyle2">
     <div style="clear:both;"></div>
 </div>
 <div class="drdd-info4">
     <p>填写验证码：</p>
-    <input type="text" id="code" style="width:75%;border:0px"><a onclick="getSmsCheckCode();">获取验证码</a>
+    <input type="text" id="code code2" class="li_inputstyle li_inputstyle2"><a onclick="getSmsCheckCode();" class="li_bgcolorstyle li_yzcode">获取验证码</a>
     <div style="clear:both;"></div>
 </div>
 
 <div class="drdd-info4">
     <p>绑定地址：</p>
-    <input type="text" id='userAddr' placeholder="地址具体到门牌号，卡片与地址一对一绑定" style="width:80%;border:0px">
+    <input type="text" id='userAddr userAddr2' placeholder="地址具体到门牌号，卡片与地址一对一绑定" class="li_inputstyle li_inputstyle2">
     <div style="clear:both;"></div>
 </div>
 

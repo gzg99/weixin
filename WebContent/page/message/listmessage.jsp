@@ -35,6 +35,7 @@
 		    <div class="clear"></div>
 		</div>
 		<c:forEach items="${messageList}" var="messageList" varStatus="seller">
+
 			<div class="sq_list">
 			    <div class="gy_list_zz">
 			        <img src="${messageList.headImg }"/>

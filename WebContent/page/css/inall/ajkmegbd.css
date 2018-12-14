@@ -1,0 +1,396 @@
+/*公共样式*/
+
+.li_bgcolorstyle {
+    display: block;
+    background:#E9E5E1;
+}
+
+li_inputstyle {
+    margin-left: 95px;
+    width:80%;
+    border:0px;
+    height:30px;
+    border-bottom:1px orange solid;
+}
+
+/*1.安居卡-绑定并支付*/
+
+.li_bdmeg {
+    position: relative;
+}
+
+.li_bdmeg #userPhone {
+    position: absolute;
+    top:55px;
+
+}
+
+.li_bdmeg #code {
+    position: absolute;
+    top:95px;
+}
+
+
+.li_bdmeg #userAddr{
+    position: absolute;
+    top:138px;
+}
+
+.li_bdmeg .code a {
+    display: inline-block;
+    position: absolute;
+    top: 105px;
+    left:78%;
+    background:#E9E5E1;
+    z-index: 1;
+}
+
+
+
+
+/*2.社区服务*/
+
+.sjsc-title1 .le {
+    position: relative;
+}
+
+
+.gy_top1 {
+    border-bottom:0.3px solid #FFB56B;
+    height: 225px;
+}
+
+.gy_top img {
+
+    width: 100%;
+    height: 50%;
+}
+
+.fw_img {
+    width: 100%;
+    margin:2px;
+    border-top:0.3px solid #FFB56B;
+}
+
+
+.gy_top .text{
+    font-size: 13px;
+}
+
+
+.fw_img img {
+    width: 63%;
+    padding-left: 16px;
+
+}
+
+.fw_img a {
+    display: block;
+    border-size:border-box;
+    padding-top: 0.5rem;
+    float: left;
+}
+
+.fw_img p {
+    font-size: 13px;
+    padding-left: 25px;
+    padding-top: 10px;
+
+}
+
+
+.gy_jr {
+    position: relative;
+    margin-top:10%;
+}
+
+.gy_title {
+    display: inline-block;
+    margin-left: -2%;
+}
+
+
+.gy_ico3 img {
+    width: 6%;
+    position: absolute;
+    top: 27%;
+    left: 1%;
+
+}
+
+#li_indstyle{
+ margin-top:-5px;
+
+}
+
+
+/*3.安居卡-提交申请*/
+
+.li_content h4 {
+    font-size: 16px;
+}
+
+
+.vcode a {
+    display: block;
+    background: #E9E5E1;
+    height: 20px;
+    position: absolute;
+    top: 86px;
+    left: 80%;
+    font-size: 14px;
+
+}
+
+input[type='text'] {
+    margin-left: 95px;
+    width:80%;
+}
+
+div p {
+    font-size: 14px;
+}
+
+.content {
+    position: relative;
+}
+
+#userName {
+    position: absolute;
+    top:32px;
+}
+
+#userPhone {
+    position: absolute;
+    top:77px;
+}
+
+#code {
+    position: absolute;
+    top: 121px;
+}
+
+#lrName {
+    position: absolute;
+    top: 256px;
+}
+
+#lrPhone {
+    position: absolute;
+    top: 300px;
+}
+
+#lrSfzh {
+    position: absolute;
+    top: 346px;
+}
+
+#lrRelatetion {
+    position: absolute;
+    top: 387px;
+}
+
+#userAddr{
+    position: absolute;
+    top: 436px;
+}
+
+.content div {
+    margin-bottom: 15px;
+}
+
+.old {
+    padding-bottom: 15px;
+}
+
+.li_c {
+    background:#EBE4DD;
+}
+
+
+/*安居卡-绑定至本卡*/
+
+.kjlx p {
+    position: absolute;
+    top:135px;
+
+}
+
+.li_inputstyle {
+
+    /*border-style:none;*/
+    margin-left: 95px;
+    width:88%;
+    border:0px;
+    height:35px;
+    border-bottom:1px orange solid;
+}
+
+
+
+.drdd-info4 {
+    margin-bottom: 40px;
+    position:relative;
+}
+
+.li_inputstyle2{
+    position:absolute;
+    top:-3px;
+    left:0;
+}
+
+
+.drdd-info4 #cardNum2 {
+    position:absolute;
+    top:-10px;
+    left:1%;
+}
+
+
+#userPhone2 {
+    position:absolute;
+    top:-10px;
+    left:1%;
+}
+
+#code2 {
+    position:absolute;
+    top:-10px;
+    left:1%;
+}
+
+#userAddr2 {
+    position:absolute;
+    top:-10px;
+    left:1%;
+}
+
+#zitidian-choose {
+    border-style: none;
+}
+
+.drdd-info2 {
+    margin-bottom:20px;
+}
+
+.drdd-info4 p {
+    padding-left:2%;
+}
+
+#cardType {
+    margin-top:10px;
+}
+
+.li_yzcode {
+    position:absolute;
+    top:0;
+    left:80%;
+}
+
+
+/*爱心公益*/
+
+.li_itmes,
+.li_txts{
+   display: inline-block;
+}
+
+.li_fontsize {
+    font-size: 30%;
+}
+.li_gynr {
+    width: 30%;
+    float: left;
+    margin-left:3%;
+}
+.li_gynr .li_itmes {
+    width: 80%;
+}
+
+.li_down {
+    margin-top: 20px;
+}
+
+/*公益活动*/
+.li_aximg {
+    width: 100%;
+    height: 500px;
+}
+
+.li_axtxt {
+    padding:0;
+    margin:0;
+    border-bottom: 1px solid #ccc;
+}
+
+.li_axtxt p{
+ font-size: 0.7rem;
+}
+
+.li_imgs img {
+    margin-bottom:10px;
+    display: block;
+    width: 100%;
+    height: 500px;
+}
+.a {
+    color:red;
+}
+
+/*附近工匠_好工匠*/
+
+/*.li_gps {*/
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*border:1px solid deepskyblue;*/
+    /*background:deepskyblue;*/
+    /*border-radius: 20px 20px 20px 3px;*/
+ /*position: absolute;*/
+    /*top:46%;*/
+    /*left:59%;*/
+    /*z-index: 100;*/
+/*}*/
+
+
+/*装修—工长列表*/
+
+.li_gzlist {
+    margin-top: 20px;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #000;
+}
+.li_gzimg img {
+
+    width:50%;
+
+}
+
+/*.li_gzimg  {*/
+    /*width:20%;*/
+/*}*/
+
+.li_gzmeg {
+    width: 30%;
+
+}
+
+.left {
+    float: left;
+}
+
+.rigth {
+    float: left;
+}
+
+
+
+
+/*.li_gzsign {*/
+    /**/
+/*}*/
+
+
+
+
+

@@ -9,6 +9,7 @@
 		<title>好工匠</title>
 		<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
+		<link rel="stylesheet" type="text/css" href="css/inall/ajkmegbd.css">
 		<style type="text/css">
 			.hgj_top{width:6.7rem; padding: 0.2rem 0.4rem; float: left;}
 			.hgj_top img{float: left;width:1rem; height: 1rem; border-radius: 50%; border: #fff solid 0.05rem; box-shadow:0 0 0.05rem rgba(0,0,0,.2);}
@@ -28,6 +29,7 @@
 	    	</a>
 	        <div style="clear:both;"></div>
 	    </div>
+		<div class="a">liqing</div>
 		<div class="hgj_top">
 			<img src="${worker.workerImg }"/>
 			<div class="hgj_top_cont">

@@ -13,6 +13,7 @@
             <link rel="stylesheet" href="css/search.css">
             <link rel="stylesheet" type="text/css" href="css/shoujisc.css">
             <link rel="stylesheet" type="text/css" href="css/ajkbdlr.css">
+	        <link rel="stylesheet" href="css/inall/ajkmegbd.css">
             <script type="text/javascript" src="js/jquery.js"></script>
             <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
             <script type="text/javascript" src="js/showTip.js"></script>
@@ -26,26 +27,26 @@
     </div>
 	<div class="body" >
 
-		<div class="content">
+		<div class="content li_content">
 			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;">申请人信息</h4>
 			<input type="hidden" id="cardPrice" value="${card.cardPrice }"/>
 			<input type="hidden" id="cardName"  value="${card.cardName}"/>
-			<div style="padding-top:10px;">
-				<p>姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;</p>
+			<div style="padding-top:10px;" class="line">
+				<p>姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;:</p>
 				<input type="text" id="userName" />
 			</div>
 			<div style="padding-top:10px;">
-				<p>手机号&nbsp;&nbsp;&nbsp;</p>
+				<p>手机号&nbsp;&nbsp;&nbsp;:</p>
 				<input type="text" id="userPhone" />
 			</div>
-			<div style="padding-top:10px;">
-				<p>填写验证码</p>
-				<input type="text" id="code" /><a onclick="getSmsCheckCode();">验证码</a>
+			<div style="padding-top:10px;" class="vcode">
+				<p>填写验证码:</p>
+				<input type="text" id="code" /><a onclick="getSmsCheckCode();">获取验证码</a>
 			</div>
 			
-			<div class="c"></div>
+			<div class="c li_c"></div>
 			
-			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;">老人信息</h4>
+			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;" class="old">老人信息</h4>
 			
 			<div style="padding-top:10px;">
 				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -68,7 +69,8 @@
 				<input type="text" id="userAddr"/>
 			</div>
 			<input type="hidden" id="type" value="2"/>
-			<button id="buttonId" class="drdd-btn" onclick="add()">提交申请</button>
+			<button id="buttonId" class="drdd-btn" onclick="add()">
+				提交申请</button>
 		</div>
 	 <jsp:include page="footer5.jsp"></jsp:include>
 	</div>
