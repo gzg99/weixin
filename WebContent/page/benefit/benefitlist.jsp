@@ -18,13 +18,11 @@
 			alt="" style="width:30px;height: 30px;padding-top: 11px;padding-bottom:6px;padding-left: 5px"/></span></a></h3>
 		   	<div style="clear:both;"></div>
 		</div>
-		<%--<div class="gy_top"><a href="firstList.html"><img src="${mapList.jdbBenefit.picture }"/></a></div>--%>
 		<div class="gy_top">
 			<img src="./images/gy_banner.jpg" style="width:100%;height:170px;margin:auto;"/>
 		</div>
 
 		<div class="gy_title ico1 li_down">家滴爱老计划</div>
-		<%--<div class="gy_nr"><a href="toUpdateLoveoldplan.html"><img src="${mapList.jdvLoveoldplan.oldpicture }" style="width:100%;height:170px;margin:auto;"></a></div>--%>
 		<div class="gy_nr">
 			<a href="ajkDetail.html?id=2">
 				<img src="${mapList.jdvLoveoldplan.oldpicture }" style="width:100%;height:170px;margin:auto;">
