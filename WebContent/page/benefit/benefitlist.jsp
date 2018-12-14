@@ -39,7 +39,7 @@
 				   <a href="toloveList.html?id=${list.id}" class="li_itmes">
 					   <img src="${list.picture}"  style="margin:auto;">
 				   </a>
-				   <a href="toloveList.html?id=${list.id}" class="img-txt li_itme li_txts li_fontsize">${list.pictureNote}</a>
+				   <a href="toloveList.html?id=${list.id}" class="img-txt li_itme li_txts li_fontsize">${list.organizationName}</a>
 			   </div>
 			<c:if test="${s.count > 2}">
 				<a href="toloveList.html?id=${list.id}" class="img-txt"><P class="li_fontsize">>>>更多</P></a>
@@ -49,7 +49,7 @@
 		<div class="gy_title ico3">加入我们</div>
 		<div class="gy_nr gy_jrwm">
 			<div class="gy_nr">
-				<a href="torelationList.html"><img src="${mapList.jdbRelation.picture }"></a>
+				<a href="###"><img src="${mapList.jdbRelation.picture }"></a>
 			</div>
 		</div>
 		<div class="clear"></div>
