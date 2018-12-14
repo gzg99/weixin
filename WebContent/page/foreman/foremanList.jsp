@@ -19,17 +19,26 @@
 
      <div class="li_gzlist">
 
-         <div class="li_gzimg left">
-             <img src="../images/express.png" alt="">
+
+
+         <div class="li_gzimg right">
+            <img src="../images/worker_icon.png" alt="">
          </div>
 
-         <div class="li_gzmeg left">
-             <a class="li_gzname">李小鹏<i>icon</i></a>
-             <p>技能 <span>装修队长</span><span>空调移机</span></p>
-             <p>服务 <span>各类装修</span><span>水电改造等</span></p>
+         <div class="li_gzmeg right">
+             <ul>
+                 <li class="li_gzname">李小鹏</li>
+                 <li>技能: <a>装修队长</a><a>空调移机</a></li>
+                 <li>服务: <a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
+             </ul>
          </div>
 
-
+        <div class="li_icon right">
+            <ul>
+                <li class="phone"><a href="javascript:;" ><img src="../images/phone_icon.png" alt=""></a></li>
+                <li class="like"><a href="javascript:;"><img src="../images/yu-like.png" alt=""></a>好评:<span>111</span></li>
+            </ul>
+        </div>
 
      </div>
     <%--<c:forEach items="${jdbForemenList}" var="list">--%>
@@ -47,6 +56,5 @@
 
 </div>
 <%--<jsp:include page="../footer6.jsp"></jsp:include>--%>
-
 </body>
 </html>
