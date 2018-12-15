@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<link rel="stylesheet" href="inall/ajkmegbd.css">
 <html>
 <head>
 </head>
 <body>
+
 	<ul class="quanbu-ul11"style="height: 40px; padding: 5px 0;">
     	<li style="height:40px;">
         	<div class="qu-tu1" align="center" style="height:28px;">

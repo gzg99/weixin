@@ -8,6 +8,7 @@
 		<title>aa装修</title>
 		<link href="css/jj20180626.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="css/shoujisc.css">
+        <link rel="stylesheet" href="css/inall/ajkmegbd.css">
 		<%--<style type="text/css">--%>
 			<%--.zx_list{width:7.5rem; padding:0.2rem 0;}--%>
 			<%--.zx_list a{width:7.1rem;  padding:0.3rem; border-bottom: #ddd solid 1px;float: left;  display: block; font-size: 0.28rem;}--%>
@@ -18,7 +19,59 @@
 	</head>
 
 	<body style="padding-bottom:1.2rem;">
-		<%--<div class="zx_list">--%>
+
+       <div class="li_jpgz" style="clear: both">
+           <ul style="clear: both">
+               <li class="img"><img src="images/Boutique.png" alt=""></li>
+               <li class="title">精品工装</li>
+               <li class="much">更多&gt;</li>
+           </ul>
+       </div>
+
+       <div class="li_allfirm">
+
+           <div class="li_firm">
+             <ul style="clear: both">
+                <li class="firm_img"><img src="images/zx_firm.png" alt=""></li>
+                <li class="firm_name">幸福人家装修公司</li>
+                <li class="vip_img"><img src="images/member.png" alt=""></li>
+             </ul>
+           </div>
+
+               <p class="li_firmtxt">飞得更高个发光飞碟还是规划局飞得更高个发光飞碟还是规划局飞得更高个发光飞碟还是规划局飞得更高个发光飞碟还是规划局</p>
+
+           <div class="li_gzshow">
+               <ul>
+                   <li><img src="images/zx_img02.jpg" alt=""></li>
+                   <li><img src="images/zx_img03.jpg" alt=""></li>
+                   <li><img src="images/zx_img04.jpg" alt=""></li>
+               </ul>
+           </div>
+       </div>
+
+       <div class="li_allfirm">
+
+           <div class="li_firm">
+               <ul style="clear: both">
+                   <li class="firm_img"><img src="images/zx_firm.png" alt=""></li>
+                   <li class="firm_name">幸福人家装修公司</li>
+                   <li class="vip_img"><img src="images/member.png" alt=""></li>
+               </ul>
+           </div>
+
+           <p class="li_firmtxt">飞得更高个发光飞碟还是规划局飞得更高个发光飞碟还是规划局飞得更高个发光飞碟还是规划局飞得更高个发光飞碟还是规划局</p>
+
+           <div class="li_gzshow">
+               <ul>
+                   <li><img src="images/zx_img02.jpg" alt=""></li>
+                   <li><img src="images/zx_img03.jpg" alt=""></li>
+                   <li><img src="images/zx_img04.jpg" alt=""></li>
+               </ul>
+           </div>
+       </div>
+
+
+       <%--<div class="zx_list">--%>
 			<%--<c:forEach items="${list}" var="decoration">--%>
 				<%--<c:if test="${decoration.isFineQuality == '1'}">--%>
 					<%--<a href="getDecorationById.html?id=${decoration.id }">--%>

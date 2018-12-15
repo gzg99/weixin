@@ -18,6 +18,7 @@ li_inputstyle {
 
 a {
     text-decoration: none;
+    list-style: none;
 }
 
 ul,li {
@@ -460,15 +461,118 @@ div p {
     height: 65px;
     border-radius: 50%;
     background:#E59449;
-    margin-left:280px;
     text-align: center;
     line-height: 70px;
-    color: #fff;
+    position: fixed;
+    bottom: 50px;
+    right:5%;
 }
 
-/*.li_gzsign {*/
-    /**/
-/*}*/
+/*工长注册按钮*/
+.li_gzsign a {
+    color:#fff;
+}
+
+
+.quanbu-ul11 {
+    width: 100%;
+    margin-left:10%;
+}
+
+.quanbu-ul11 li {
+    float: left;
+    width: 33%;
+}
+
+
+
+/*精装列表页*/
+
+
+
+.li_jpgz ul li {
+    float: left;
+}
+
+
+.li_jpgz {
+    width: 100%;
+    height: 0.7rem;
+    border-bottom:1px solid #000;
+}
+
+.li_jpgz .img {
+    width: 8%;
+    margin-top: -20px;
+}
+
+
+.li_jpgz .title {
+    font-size:0.4rem;
+    margin-left:0.3rem;
+    margin: 8px;
+}
+
+.li_jpgz .much {
+    font-size:0.3rem;
+    margin-left:46%;
+    margin-top:15px;
+}
+
+
+
+.li_allfirm {
+    width: 100%;
+    border-bottom:1px solid #ccc;
+}
+
+.li_firm {
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+
+.li_firm ul li {
+    float: left;
+}
+
+.li_firm .firm_img {
+    width: 0.7rem;
+    margin-top: -25px;
+}
+
+.li_firm .firm_name{
+   font-size: 0.4rem;
+}
+
+.li_firm .vip_img {
+    width: 0.7rem;
+    margin-top: -25px;
+
+}
+
+
+.li_firmtxt {
+    width: 100%;
+}
+
+
+
+.li_gzshow {
+    width: 100%;
+    height: 70px;
+    float: left;
+    margin-top: 20px;
+}
+
+
+
+.li_gzshow ul li {
+    width: 29.333%;
+    float: left;
+    padding-left: 3%;
+}
+
 
 
 
