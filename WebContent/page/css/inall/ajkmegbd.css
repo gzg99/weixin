@@ -1,5 +1,8 @@
 /*公共样式*/
-
+html,body {
+    margin:0;
+    padding:0;
+}
 .li_bgcolorstyle {
     display: block;
     background:#E9E5E1;
@@ -372,18 +375,10 @@ div p {
 /*装修—工长列表*/
 
 .li_gzlist {
-    margin-top: 20px;
     width: 100%;
-    height: 100px;
+    height: 4.7rem;
     border-bottom: 1px solid #000;
-}
-/*.li_gzimg {*/
-    /**/
-/*}*/
-
-
-.li_gzname{
-   font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
 .li_gzmeg a {
@@ -400,31 +395,44 @@ div p {
    background:#488AEA;
 }
 
-.li_gzimg img {
-    width: 20%;
-}
+.li_gzimg {
+    width: 4.6rem;
 
+}
 .li_gzimg img {
-    width: 20%;
+    width: 90%;
 }
 
 
 .li_icon {
-    width: 25%;
+    width: 6.3rem;
+    margin-right: 3%;
+    margin-top: 5px;
+
 }
 
 .li_icon .phone img {
-    width: 20%;
+    width: 50%;
+
 }
 
 .li_icon .phone {
-    padding-left:10px;
+    padding-left:2rem;
 }
 
+
+
+
+.li_icon .like span {
+    color:#E59449;
+}
 
 .li_icon .like img {
-    width: 10%;
+    width: 19%;
 }
+
+
+
 
 .li_icon .gps img {
     width: 10%;
@@ -432,6 +440,31 @@ div p {
 
 
 
+.li_gzmeg .li_gzname {
+    font-size: 1rem;
+}
+
+.li_gzmeg .li_gzname img {
+    width: 13%;
+}
+
+
+.li_gzmeg ul li {
+    font-size: 0.8rem;
+    padding-bottom: 4px;
+}
+
+.li_gzsign {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background:#E59449;
+    margin-left:280px;
+    text-align: center;
+    line-height: 70px;
+    color: #fff;
+}
 
 /*.li_gzsign {*/
     /**/

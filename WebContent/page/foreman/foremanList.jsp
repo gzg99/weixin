@@ -16,31 +16,122 @@
     <div class="sjsc-title2">
         <a href="../index.html" class="sjsc-t2r"><img src="../images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     </div>
-
+    
      <div class="li_gzlist">
-
-
-
-         <div class="li_gzimg right">
+         <div class="li_gzimg left">
             <img src="../images/worker_icon.png" alt="">
          </div>
-
-         <div class="li_gzmeg right">
+         <div class="li_gzmeg left">
              <ul>
-                 <li class="li_gzname">李小鹏</li>
-                 <li>技能: <a>装修队长</a><a>空调移机</a></li>
-                 <li>服务: <a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
+                 <li class="li_gzname">李小鹏 <span><img src="../images/member.png" alt=""></span></li>
+                 <li>技能:<a>装修队长</a><a>空调移机</a></li>
+                 <li>服务:<a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
              </ul>
          </div>
-
         <div class="li_icon right">
             <ul>
-                <li class="phone"><a href="javascript:;" ><img src="../images/phone_icon.png" alt=""></a></li>
-                <li class="like"><a href="javascript:;"><img src="../images/yu-like.png" alt=""></a>好评:<span>111</span></li>
+                <li class="phone"><a href="javascript:;" ><img src="../images/tel.png" alt=""></a></li>
+                <li class="like"><a href="javascript:;"><img src="../images/like.png" alt="">&nbsp;</a>好评:&nbsp;<span>111</span></li>
             </ul>
         </div>
-
      </div>
+
+    <div class="li_gzlist">
+        <div class="li_gzimg left">
+            <img src="../images/worker_icon.png" alt="">
+        </div>
+        <div class="li_gzmeg left">
+            <ul>
+                <li class="li_gzname">李小鹏 <span><img src="../images/member.png" alt=""></span></li>
+                <li>技能:<a>装修队长</a><a>空调移机</a></li>
+                <li>服务:<a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
+            </ul>
+        </div>
+        <div class="li_icon right">
+            <ul>
+                <li class="phone"><a href="javascript:;" ><img src="../images/tel.png" alt=""></a></li>
+                <li class="like"><a href="javascript:;"><img src="../images/like.png" alt="">&nbsp;</a>好评:&nbsp;<span>111</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="li_gzlist">
+        <div class="li_gzimg left">
+            <img src="../images/worker_icon.png" alt="">
+        </div>
+        <div class="li_gzmeg left">
+            <ul>
+                <li class="li_gzname">李小鹏 <span><img src="../images/member.png" alt=""></span></li>
+                <li>技能:<a>装修队长</a><a>空调移机</a></li>
+                <li>服务:<a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
+            </ul>
+        </div>
+        <div class="li_icon right">
+            <ul>
+                <li class="phone"><a href="javascript:;" ><img src="../images/tel.png" alt=""></a></li>
+                <li class="like"><a href="javascript:;"><img src="../images/like.png" alt="">&nbsp;</a>好评:&nbsp;<span>111</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="li_gzlist">
+        <div class="li_gzimg left">
+            <img src="../images/worker_icon.png" alt="">
+        </div>
+        <div class="li_gzmeg left">
+            <ul>
+                <li class="li_gzname">李小鹏 <span><img src="../images/member.png" alt=""></span></li>
+                <li>技能:<a>装修队长</a><a>空调移机</a></li>
+                <li>服务:<a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
+            </ul>
+        </div>
+        <div class="li_icon right">
+            <ul>
+                <li class="phone"><a href="javascript:;" ><img src="../images/tel.png" alt=""></a></li>
+                <li class="like"><a href="javascript:;"><img src="../images/like.png" alt="">&nbsp;</a>好评:&nbsp;<span>111</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="li_gzlist">
+        <div class="li_gzimg left">
+            <img src="../images/worker_icon.png" alt="">
+        </div>
+        <div class="li_gzmeg left">
+            <ul>
+                <li class="li_gzname">李小鹏 <span><img src="../images/member.png" alt=""></span></li>
+                <li>技能:<a>装修队长</a><a>空调移机</a></li>
+                <li>服务:<a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
+            </ul>
+        </div>
+        <div class="li_icon right">
+            <ul>
+                <li class="phone"><a href="javascript:;" ><img src="../images/tel.png" alt=""></a></li>
+                <li class="like"><a href="javascript:;"><img src="../images/like.png" alt="">&nbsp;</a>好评:&nbsp;<span>111</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="li_gzlist">
+        <div class="li_gzimg left">
+            <img src="../images/worker_icon.png" alt="">
+        </div>
+        <div class="li_gzmeg left">
+            <ul>
+                <li class="li_gzname">李小鹏 <span><img src="../images/member.png" alt=""></span></li>
+                <li>技能:<a>装修队长</a><a>空调移机</a></li>
+                <li>服务:<a class="blue">各类装修</a><a class="blue">水电改造等</a></li>
+            </ul>
+        </div>
+        <div class="li_icon right">
+            <ul>
+                <li class="phone"><a href="javascript:;" ><img src="../images/tel.png" alt=""></a></li>
+                <li class="like"><a href="javascript:;"><img src="../images/like.png" alt="">&nbsp;</a>好评:&nbsp;<span>111</span></li>
+            </ul>
+        </div>
+    </div>
+
+
     <%--<c:forEach items="${jdbForemenList}" var="list">--%>
         <%--<div>--%>
             <%--<a href="../foreman/selForeman.html?id=${list.id}">${list.name }</a>--%>
@@ -50,11 +141,13 @@
             <%--</a>--%>
         <%--</div>--%>
     <%--</c:forEach>--%>
-    <%--<div class="li_gzsign">--%>
-        <%--<a href="../foreman/toForemanSignUp.html">工长注册</a>--%>
-    <%--</div>--%>
+
+    <a class="li_gzsign" href="../foreman/toForemanSignUp.html">工长注册</a>
+
+
+
 
 </div>
 <%--<jsp:include page="../footer6.jsp"></jsp:include>--%>
-</body>
+<%--</body>--%>
 </html>
