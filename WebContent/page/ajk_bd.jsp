@@ -21,29 +21,29 @@
     <script type="text/javascript" src="../js/swiper.js"></script>
     <script type="text/javascript" src="../js/foot.js"></script>
 </head>
-<style>
-    select {
-        width: 100%;
-        height: 30px;
-    }
-</style>
+<%--<style>--%>
+    <%--select {--%>
+        <%--width: 100%;--%>
+        <%--height: 30px;--%>
+    <%--}--%>
+<%--</style>--%>
 <body id="wrap">
 
-<div class="sjsc-title2">
+<div class="sjsc-title2 li-title2">
     <a href="javascript:history.back();" class="sjsc-t2r">
         <img src="../images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
-    <div class="head">
-        <div class="left">
-            <img src="../images/ajk01.png" style="height:100px;float:right; width: 100px;"/>
+    <div class="head li_top">
+        <div class="left li_left">
+            <img src="../images/ajk01.png" style="height:100px; width: 100px;"/>
         </div>
 
-        <div class="right">
+        <div class="right li_right">
             <p>365安居卡，享受家滴帮优质家政服务 终生免费享受定期保洁服务，家滴帮自营产品免运费</p>
         </div>
     </div>
 </div>
 
-<div class="drdd-info2 kjlx" id="zitidian-choose">
+<div class="drdd-info2 li_kjlx" id="zitidian-choose">
     <p>卡券类型</p>
     <select id="cardType">
         <option value="1">365 安居卡</option>
@@ -53,24 +53,24 @@
 
 <div class="drdd-info4">
     <p>涂层卡号：</p>
-    <input type="text" id="cardNum cardNum2" class="li_inputstyle li_inputstyle2">
+    <input type="text" id="cardNum cardNum2" class="li_inputstyle li_inputstyle2 li_inputplace">
     <div style="clear:both;"></div>
 </div>
 
 <div class="drdd-info4">
     <p>持卡人手机：</p>
-    <input type="text" id="userPhone userPhon2" class="li_inputstyle li_inputstyle2">
+    <input type="text" id="userPhone userPhon2" class="li_inputstyle li_inputstyle2 li_inputplace">
     <div style="clear:both;"></div>
 </div>
 <div class="drdd-info4">
     <p>填写验证码：</p>
-    <input type="text" id="code code2" class="li_inputstyle li_inputstyle2"><a onclick="getSmsCheckCode();" class="li_bgcolorstyle li_yzcode">获取验证码</a>
+    <input type="text" id="code code2" class="li_inputstyle li_inputstyle2 li_inputplace "><a onclick="getSmsCheckCode();" class="li_bgcolorstyle li_yzcode">获取验证码</a>
     <div style="clear:both;"></div>
 </div>
 
 <div class="drdd-info4">
     <p>绑定地址：</p>
-    <input type="text" id='userAddr userAddr2' placeholder="地址具体到门牌号，卡片与地址一对一绑定" class="li_inputstyle li_inputstyle2">
+    <input type="text" id='userAddr userAddr2' placeholder="地址具体到门牌号，卡片与地址一对一绑定" class="li_inputstyle li_inputstyle2 li_inputplace ">
     <div style="clear:both;"></div>
 </div>
 

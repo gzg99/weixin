@@ -25,6 +25,7 @@ import com.weixin.util.MenuUtil;
 @Controller
 @RequestMapping
 public class ButtonController {
+
 	@Autowired
 	private ButtonService buttonService ;
 //	private Button button;

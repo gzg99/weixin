@@ -31,42 +31,42 @@
 			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;">申请人信息</h4>
 			<input type="hidden" id="cardPrice" value="${card.cardPrice }"/>
 			<input type="hidden" id="cardName"  value="${card.cardName}"/>
-			<div style="padding-top:10px;" class="line">
+			<div style="padding-top:10px;" class="line li_line">
 				<p>姓&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;:</p>
-				<input type="text" id="userName" />
+				<input type="text" class="li_input" />
 			</div>
-			<div style="padding-top:10px;">
+			<div style="padding-top:10px;"class="li_line">
 				<p>手机号&nbsp;&nbsp;&nbsp;:</p>
-				<input type="text" id="userPhone" />
+				<input type="text" class="li_input" />
 			</div>
-			<div style="padding-top:10px;" class="vcode">
-				<p>填写验证码:</p>
-				<input type="text" id="code" /><a onclick="getSmsCheckCode();">获取验证码</a>
+			<div style="padding-top:10px;" class="vcode li_line">
+				<p class="txcode">填写验证码:</p>
+				<input type="text" id="code" class="li_input" /><a onclick="getSmsCheckCode();"class="yzcode li_bgcolorstyle">获取验证码</a>
 			</div>
 			
 			<div class="c li_c"></div>
 			
 			<h4 style="text-align:left;width:100%;float: left;margin-top:10px;margin-bottom:10px;" class="old">老人信息</h4>
 			
-			<div style="padding-top:10px;">
+			<div style="padding-top:10px;"class="li_line">
 				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-				<input type="text" id="lrName" />
+				<input type="text" class="li_input" />
 			</div>
-			<div style="padding-top:10px;">
+			<div style="padding-top:10px;"class="li_line">
 				<p>联&nbsp;系&nbsp;方&nbsp;式:&nbsp;&nbsp;&nbsp;</p>
-				<input type="text" id="lrPhone"/>
+				<input type="text" class="li_input"/>
 			</div>
-			<div style="padding-top:10px;">
+			<div style="padding-top:10px;" class="li_line">
 				<p>身&nbsp;份&nbsp;证&nbsp;号:&nbsp;&nbsp;</p>
-				<input type="text" id="lrSfzh"/>
+				<input type="text" class="li_input"/>
 			</div>
-			<div style="padding-top:10px;">
-				<p>与申请人关系:</p>
-				<input type="text" style="margin-top:5px;" id="lrRelatetion"/>
+			<div style="padding-top:10px;" class="li_line">
+				<p class="proposer">与申请人关系:</p>
+				<input type="text" style="margin-top:5px;" class="li_input"/>
 			</div>
-			<div style="padding-top:10px;">
+			<div style="padding-top:10px;" class="li_line">
 				<p>住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:&nbsp;&nbsp;&nbsp;</p>
-				<input type="text" id="userAddr"/>
+				<input type="text" class="li_input"/>
 			</div>
 			<input type="hidden" id="type" value="2"/>
 			<button id="buttonId" class="drdd-btn" onclick="add()">

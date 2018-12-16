@@ -8,14 +8,6 @@ html,body {
     background:#E9E5E1;
 }
 
-li_inputstyle {
-    margin-left: 95px;
-    width:80%;
-    border:0px;
-    height:30px;
-    border-bottom:1px orange solid;
-}
-
 a {
     text-decoration: none;
     list-style: none;
@@ -38,40 +30,78 @@ ul,li {
 }
 /*1.安居卡-绑定并支付*/
 
-.li_bdmeg {
+.li_bdpay{
+    overflow: hidden;
+    display: flex;
     position: relative;
 }
 
-.li_bdmeg #userPhone {
-    position: absolute;
-    top:55px;
+
+.li_paycode {
+    position:absolute;
+    top:5px;
+    right:0;
+}
+.li_bdmeg p{
+    padding-top:5px;
+}
+.li_bdp {
+    width: 140px;
 
 }
 
-.li_bdmeg #code {
-    position: absolute;
-    top:95px;
+.li_bdpay .li_code {
+    width: 140px;
 }
 
+/*.li_head {*/
+    /*height: 110px;*/
+    /*overflow: hidden;*/
+    /*display: flex;*/
+/*}*/
+/*.li_ajkimg {*/
+    /*width: 100px;*/
+/*}*/
 
-.li_bdmeg #userAddr{
-    position: absolute;
-    top:138px;
-}
+/*.li_bdmeg {*/
+    /*position: relative;*/
+/*}*/
 
-.li_bdmeg .code a {
-    display: inline-block;
-    position: absolute;
-    top: 105px;
-    left:78%;
-    background:#E9E5E1;
-    z-index: 1;
-}
+/*.li_bdmeg #userPhone {*/
+    /*position: absolute;*/
+    /*top:55px;*/
+
+/*}*/
+
+/*.li_bdmeg #code {*/
+    /*position: absolute;*/
+    /*top:95px;*/
+/*}*/
+
+
+/*.li_bdmeg #userAddr{*/
+    /*position: absolute;*/
+    /*top:138px;*/
+/*}*/
+
+/*.li_bdmeg .code a {*/
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    /*top: 105px;*/
+    /*right:10px;*/
+    /*background:#E9E5E1;*/
+    /*z-index: 1;*/
+/*}*/
+
+
+/*.li_ajktxt {*/
+    /*width: 100%;*/
+    /*margin:20px 20px;*/
+/*}*/
 
 
 
-
-/*2.社区服务*/
+    /*2.社区服务*/
 
 .sjsc-title1 .le {
     position: relative;
@@ -147,82 +177,34 @@ ul,li {
 
 
 /*3.安居卡-提交申请*/
-
-.li_content h4 {
-    font-size: 16px;
-}
-
-
-.vcode a {
-    display: block;
-    background: #E9E5E1;
-    height: 20px;
-    position: absolute;
-    top: 86px;
-    left: 80%;
-    font-size: 14px;
-
-}
-
-input[type='text'] {
-    margin-left: 95px;
-    width:80%;
-}
-
-div p {
-    font-size: 14px;
-}
-
-.content {
+.li_line {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
     position: relative;
 }
 
-#userName {
-    position: absolute;
-    top:32px;
+.li_line p {
+    width: 100px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+.li_line .txcode {
+     width: 120px;
+ }
+
+.li_line .proposer{
+      width: 150px;
 }
 
-#userPhone {
-    position: absolute;
-    top:77px;
+.li_line .li_input {
+    width: 100%;
 }
 
-#code {
-    position: absolute;
-    top: 121px;
-}
-
-#lrName {
-    position: absolute;
-    top: 256px;
-}
-
-#lrPhone {
-    position: absolute;
-    top: 300px;
-}
-
-#lrSfzh {
-    position: absolute;
-    top: 346px;
-}
-
-#lrRelatetion {
-    position: absolute;
-    top: 387px;
-}
-
-#userAddr{
-    position: absolute;
-    top: 436px;
-}
-
-.content div {
-    margin-bottom: 15px;
-}
-
-.old {
-    padding-bottom: 15px;
+.vcode .yzcode {
+  position: absolute;
+    top:13px;
+    right: 10px;
 }
 
 .li_c {
@@ -231,60 +213,55 @@ div p {
 
 
 /*安居卡-绑定至本卡*/
+.drdd-info4 .li_inputplace{
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
 
-.kjlx p {
-    position: absolute;
-    top:135px;
+.li-title2 {
+    height: 136px;
+}
+
+.li-title2 sjsc-t2r {
+    display: block;
+    border:1px solid red;
+}
+
+.li-title2 .li_top {
+    padding:0;
+    margin:0;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+}
+
+.li-title2 .li_left {
+    margin-left: 10px;
 
 }
 
-.li_inputstyle {
-
-    /*border-style:none;*/
-    margin-left: 95px;
-    width:88%;
-    border:0px;
-    height:35px;
-    border-bottom:1px orange solid;
+.li_top .li_right {
+    width:58%;
+    margin-right:10%;
+    box-sizing: border-box;
+}
+.li_kjlx {
+    box-sizing: border-box;
 }
 
 
 
 .drdd-info4 {
-    margin-bottom: 40px;
+    overflow: hidden;
+    display: flex;
     position:relative;
 }
 
-.li_inputstyle2{
-    position:absolute;
-    top:-3px;
-    left:0;
-}
-
-
-.drdd-info4 #cardNum2 {
-    position:absolute;
-    top:-10px;
-    left:1%;
-}
-
-
-#userPhone2 {
-    position:absolute;
-    top:-10px;
-    left:1%;
-}
-
-#code2 {
-    position:absolute;
-    top:-10px;
-    left:1%;
-}
-
-#userAddr2 {
-    position:absolute;
-    top:-10px;
-    left:1%;
+.drdd-info4 p {
+    width: 115px;
+    margin-top:15px;
+    padding-left:10px;
 }
 
 #zitidian-choose {
@@ -292,45 +269,58 @@ div p {
 }
 
 .drdd-info2 {
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
-.drdd-info4 p {
-    padding-left:2%;
-}
-
-#cardType {
-    margin-top:10px;
-}
 
 .li_yzcode {
     position:absolute;
-    top:0;
-    left:80%;
+    top:15px;
+    right:10px;
 }
 
 
 /*爱心公益*/
-
+.li_gytp {
+    height: 170px;
+}
 .li_itmes,
 .li_txts{
    display: inline-block;
+
 }
 
 .li_fontsize {
-    font-size: 30%;
+    font-size: 15px;
+}
+
+.img-txt {
+    position: relative;
+
+}
+
+
+.img-txt .much {
+    position: absolute;
+    top:140px;
+    right: 5px;
+    width: 60px;
 }
 .li_gynr {
     width: 30%;
     float: left;
-    margin-left:3%;
+    margin-left:8px;
 }
 .li_gynr .li_itmes {
-    width: 80%;
+    width: 100%;
 }
 
-.li_down {
-    margin-top: 20px;
+
+.gyicon {
+    width: 6%;
+    margin-left:-25px;
+    padding-right: 10px;
+    margin-top: 10px;
 }
 
 /*公益活动*/
@@ -476,7 +466,7 @@ div p {
 
 .quanbu-ul11 {
     width: 100%;
-    margin-left:10%;
+    /*margin-left:10%;*/
 }
 
 .quanbu-ul11 li {
@@ -487,8 +477,6 @@ div p {
 
 
 /*精装列表页*/
-
-
 
 .li_jpgz ul li {
     float: left;

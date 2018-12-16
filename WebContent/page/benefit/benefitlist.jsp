@@ -18,18 +18,18 @@
 			alt="" style="width:30px;height: 30px;padding-top: 11px;padding-bottom:6px;padding-left: 5px"/></span></a></h3>
 		   	<div style="clear:both;"></div>
 		</div>
-		<div class="gy_top">
+		<div class="gy_top li_gytp">
 			<img src="./images/gy_banner.jpg" style="width:100%;height:170px;margin:auto;"/>
 		</div>
 
-		<div class="gy_title ico1 li_down">家滴爱老计划</div>
+		<div class="gy_title ico1 li_down"><img src="images/gy_ico2.png" alt=""class="gyicon">家滴爱老计划</div>
 		<div class="gy_nr">
 			<a href="ajkDetail.html?id=2">
 				<img src="${mapList.jdvLoveoldplan.oldpicture }" style="width:100%;height:170px;margin:auto;">
 			</a>
 		</div>
 
-		<div class="gy_title ico2 ">家滴爱心接力</div>
+		<div class="gy_title ico2 "><img src="images/gy_ico2.png" alt=""class="gyicon">家滴爱心接力</div>
 
 		<c:forEach items="${mapList.jdbLove}" var="list" varStatus="s">
 
@@ -40,11 +40,11 @@
 				   <a href="toloveList.html?id=${list.id}" class="img-txt li_itme li_txts li_fontsize">${list.organizationName}</a>
 			   </div>
 			<c:if test="${s.count > 2}">
-				<a href="toloveList.html?id=${list.id}" class="img-txt"><P class="li_fontsize">>>>更多</P></a>
+				<a href="toloveList.html?id=${list.id}" class="img-txt"><P class="li_fontsize much">>>>更多</P></a>
 			</c:if>
 		</c:forEach>
 
-		<div class="gy_title ico3">加入我们</div>
+		<div class="gy_title ico3"><img src="images/gy_ico3.png" alt=""class="gyicon">加入我们</div>
 		<div class="gy_nr gy_jrwm">
 			<div class="gy_nr">
 				<a href="###"><img src="${mapList.jdbRelation.picture }"></a>

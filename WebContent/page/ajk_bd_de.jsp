@@ -27,37 +27,37 @@
 		height:30px;
 	}
 </style>
-<body id="wrap">
+<body id="wrap" style="overflow: hidden;">
 
        <div class="sjsc-title2">
         <a href="ajkDetail.html?id=${card.cardId}" class="sjsc-t2r">
         <img src="images/back.png" alt="" style="width:20px;height: 20px;padding-top: 11px;padding-left: 5px"/></a>
     	</div>
-    	<div class="head">
-			<div class="left">
-				<img src="./images/ajk01.png"  style="height:100px;float:right; width: 100px;"/>
+    	<div class="head li_head">
+			<div class="li_ajkimg">
+				<img src="./images/ajk01.png"  style="height:100px; width: 100px;"/>
 			</div>
 		 
-			<div class="right">
-				<p>365安居卡，享受家滴帮优质家政服务 终生免费享受定期保洁服务，家滴帮自营产品免运费</p>
+			<div class="li_ajktxt">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;365安居卡，享受家滴帮优质家政服务 终生免费享受定期保洁服务，家滴帮自营产品免运费</p>
 				<input type="hidden" id="cardPrice" value="${card.cardPrice }">
 			</div>
 		</div>
      <input type="hidden" id="cardName"  value="${card.cardName}"/>
 	   <div style="padding:20px" class="li_bdmeg">
 		   <h4>请填写绑定信息</h4>
-		   <div style="width:100%; margin-top:20px;">
-			   <p>持卡人手机：</p>
-			   <input type="text" id="userPhone" style="width:80%;border-bottom:1px orange solid; margin-left:88px;">
+		   <div style="width:100%; margin-top:20px;"class="li_bdpay">
+			   <p class="li_code">持卡人手机：</p>
+			   <input type="text" id="userPhone"  style="width:100%;border-bottom:1px orange solid; ">
 		   </div>
-		   <div style="width:100%; margin-top:20px;" class="code">
-			   <p>填写验证码：</p>
-			   <input type="text" id="code" style="width:80%;border-bottom:1px orange solid; margin-left:88px;">
-			   <a onclick="getSmsCheckCode();">获取验证码</a>
+		   <div style="width:100%; margin-top:20px;" class="code li_bdpay">
+			   <p class="li_code">填写验证码：</p>
+			   <input type="text" id="code" style="width:100%;border-bottom:1px orange solid;">
+			   <a class="li_paycode li_bgcolorstyle" getSmsCheckCode();>获取验证码</a>
 		   </div>
-		   <div style="width:100%; margin-top:20px;">
+		   <div style="width:100%; margin-top:20px;" class="li_bdpay">
 			   <p>绑&nbsp;定&nbsp;地&nbsp;址：</p>
-			   <input type="text" id="userAddr" style="width:80%;border-bottom:1px orange solid; margin-left:88px;">
+			   <input type="text" id="userAddr"  style="width:100%;border-bottom:1px orange solid;">
 		   </div>
 	   </div>
     

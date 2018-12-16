@@ -10,6 +10,7 @@ import com.weixin.entity.ClickText;
 
 @Service
 public class ClickTextService {
+
 	@Autowired
 	private ClickTextMapper clickTextMapper;
 	
