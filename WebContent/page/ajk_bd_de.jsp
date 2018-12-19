@@ -53,7 +53,7 @@
 		   <div style="width:100%; margin-top:20px;" class="code li_bdpay">
 			   <p class="li_code">填写验证码：</p>
 			   <input type="text" id="code" style="width:100%;border-bottom:1px orange solid;">
-			   <a class="li_paycode li_bgcolorstyle" getSmsCheckCode();>获取验证码</a>
+			   <a class="li_paycode li_bgcolorstyle" onclick="getSmsCheckCode();">获取验证码</a>
 		   </div>
 		   <div style="width:100%; margin-top:20px;" class="li_bdpay">
 			   <p>绑&nbsp;定&nbsp;地&nbsp;址：</p>

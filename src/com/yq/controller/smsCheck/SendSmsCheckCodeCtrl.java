@@ -1,7 +1,7 @@
 package com.yq.controller.smsCheck;
 
 import com.yq.service.smsCheck.SendSmsCheckCodeService;
-import com.yq.util.HTTPSendMsgUtil;
+import com.yq.util.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,19 +26,15 @@ public class SendSmsCheckCodeCtrl {
     public String sendSmsCheckCode(HttpServletRequest req, HttpServletResponse res){
         String phone = req.getParameter("phone");
         HttpSession session = req.getSession();
-        // 随机生成4位短信验证码
-        int random = HTTPSendMsgUtil.createRandom(6);
+        // 随机生成6位短信验证码
+        String code = CodeUtil.generateVerifyCode(6);
         //短信验证码
-        session.setAttribute(phone+"Code",random);
+        session.setAttribute(phone+"Code",code);
         // 生成验证码的时间
         session.setAttribute(phone+"Time",new Date().getTime());
 
-        //短信发送内容，只用一次
-        String content_a = "验证码是";
-        String content_b = "，仅用于登录校验，请勿告知他人。工作人员不会向您索取。";
-
         //调用service方法发送短信
-        String rs = sendSmsCheckCodeService.sendPhoneMsg(phone, content_a, content_b, String.valueOf(random));
+        String rs = sendSmsCheckCodeService.sendPhoneMsg(phone, code);
 
         return rs;
     }
